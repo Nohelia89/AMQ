@@ -36,9 +36,9 @@ export default function Login() {
       
       <button class="sign-up">Registrarse </button>
       </Link>
-   
-      <button class="btn submits frgt-pass">¿Olvidaste tu contraseña?</button>
-
+      <Link to="/forgot">
+      <button class="btn submits frgt-pass" >¿Olvidaste tu contraseña?</button>
+      </Link>
      
 
    </div>
