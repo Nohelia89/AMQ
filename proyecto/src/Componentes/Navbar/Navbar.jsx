@@ -1,9 +1,10 @@
-import { Container, Nav, Navbar } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Container, Nav, Navbar} from "react-bootstrap";
+import { Link, NavLink } from "react-router-dom";
 
-function Nabvar() {
+
+function NavBar() {
     return (
-        <Navbar expand="lg" bg="light" style={{ 
+     /*    <Navbar expand="lg" bg="light" style={{ 
             backgroundColor: "#f4efef", width: "100%"
        }}>
   <Container>
@@ -19,10 +20,31 @@ function Nabvar() {
     </Nav>
   </Navbar.Collapse>
   </Container>
-</Navbar>
-      
+</Navbar> */
+<Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+<Container>
+  <Link to='/'>
+    <Navbar.Brand >Aqui Me Quedo</Navbar.Brand>
+  </Link>
+  <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+  <Navbar.Collapse id="responsive-navbar-nav">
+    <Nav className="me-auto">
+
+
+
+    </Nav>
+    <Nav>
+
+            <NavLink to='/login' className={({ isActive }) => isActive ? 'active' : ''}>
+            <Nav.Link as={Link} to="/login">Login</Nav.Link>
+
+            </NavLink>
+          </Nav>
+  </Navbar.Collapse>
+</Container>
+</Navbar>  
                  
     )
   }
   
-  export default Nabvar;
+  export default NavBar;

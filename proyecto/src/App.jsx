@@ -2,14 +2,15 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Login from './Componentes/Login/Login';
 import Main from './Componentes/Main/Main';
-import Nabvar from './Componentes/Navbar/Navbar';
+import NavBar from './Componentes/Navbar/Navbar';
 import Registro from './Componentes/Registro/Registro';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
     <BrowserRouter>
     <div className="App">
-    <Nabvar/>
+    <NavBar/>
      <Routes>
      <Route
             path = "/" element = { <Main /> }  
