@@ -34,7 +34,7 @@ export default function Login() {
    <div class="other">
    <Link to="/registro">
       
-      <button class="btn submits sign-up">Registrarse </button>
+      <button class="sign-up">Registrarse </button>
       </Link>
    
       <button class="btn submits frgt-pass">¿Olvidaste tu contraseña?</button>
