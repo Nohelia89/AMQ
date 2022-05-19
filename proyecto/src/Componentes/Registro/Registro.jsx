@@ -1,14 +1,23 @@
 
+import { Form } from 'react-bootstrap';
 import './Registro.css';
+
+
+
+
+
 export default function Registro() {
     return (
 <div class="bod">
       <form class="form1">
       <div class="tit">REGISTRO</div>
-      <p class="form-input2" type="Name:"><input class="form-input1" placeholder="Write your name here.."></input></p>
-      <p class="form-input2" type="Email:"><input class="form-input1" placeholder="Let us know how to contact you back.."></input></p>
-      <p class="form-input2" type="Message:"><input class="form-input1" placeholder="What would you like to tell us.."></input></p>
-      <button class = "btn submits boton">Send Message</button>
+      <input type="checkbox" id="cbox1" value="pricheck"/> <label for="cbox2">Huesped</label> 
+      <input type="checkbox" id="cbox2" value="segcheck"/> <label for="cbox2">Anfitrion</label>
+      <div class="input_container">
+      <p class="form-input2" type="Nombre:"><input class="form-input1" ></input></p>
+      <p class="form-input2" type="Apellido:"><input class="form-input1" ></input></p></div>
+      <p class="form-input2" type="Mail:"><input class="form-input1" ></input></p>
+      <button class = "btn submits boton">Registrar</button>
      
     </form>
   </div>
