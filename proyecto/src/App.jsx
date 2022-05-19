@@ -6,6 +6,7 @@ import NavBar from './Componentes/Navbar/Navbar';
 import Registro from './Componentes/Registro/Registro';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Forgot from './Componentes/Forgot/Forgot';
+import UserList from './Componentes/UserList/UserList';
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
      <Routes>
      <Route
             path = "/" element = { <Main /> }  
+        />
+         <Route
+            path = "/userList" element = { <UserList /> }  
         />
            <Route
             path = "/forgot" element = { <Forgot /> }  
