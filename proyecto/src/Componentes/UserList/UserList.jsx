@@ -2,43 +2,58 @@ import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table'
 
 
-
+import { useEffect, useState } from "react";
+export default function UserList() {
+  
+  const [isLoading, setIsLoading] = useState(true);
+  const [usuario, setUsuario] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:8080/usuarios")
+      .then((response) => response.json())
+      .then((resp) => {
+        setUsuario(resp.message);
+        setIsLoading(false);
+      });
+  }, []);
+  if (isLoading) {
+    return (
+      <div>
+        <h1>Cargando...</h1>
+      </div>
+    );
+  }
+  return (
+    <div>
+      {usuario}
+    </div>
+  );
+}
+/*
 export default function UserList() {
     return (
 <div>
 <Table striped bordered hover variant="light" style={{ padding: 10 }}>
 
-<thead>
-  <tr>
-    <th>Cantidad</th>
-    <th>Nombre</th>
-    <th>Precio</th>
-    <th>Eliminar</th>
-  </tr>
-</thead>
-<tbody  >
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td>     <Button variant="dark" >X</Button></td>
-  </tr>
-
-</tbody>
-
-
-
-
-  <tbody >
-
-    <td><h6>Total de su compra:</h6></td>
-    <td>US$ PRECIO</td>
-
-
-
-  </tbody>
- 
-</Table>
+ <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Mail</th>
+            <th>Activo</th>
+          </tr>
+        </thead>
+ {usuarios.map((usu) => 
+        <tbody key={usu.email}>
+          <tr>
+            <td>{usu.nombre}</td>
+            <td>{usu.apellido}</td>
+            <td>{usu.email}</td>
+            <td>{usu.Activo}</td>            
+            <td><Button variant="light" style={{  backgroundColor: "#F7B1BD", borderColor: "#F7B1BD" }} onClick={() => eliminarItem(prod.id)}>Eliminar Item</Button></td>
+          </tr>
+        </tbody>
+        )}
+      </Table>
 </div>
     )
 
@@ -46,4 +61,4 @@ export default function UserList() {
 
 
 
-
+*/
