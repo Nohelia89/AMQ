@@ -9,9 +9,8 @@ export default function UserList() {
   const [usuario, setUsuario] = useState([]);
   useEffect(() => {
     fetch("http://localhost:8080/usuarios")
-      .then((response) => response.json())
-      .then((resp) => {
-        setUsuario(resp.message);
+      .then((response) => {
+        setUsuario(response);
         setIsLoading(false);
       });
   }, []);
@@ -24,7 +23,30 @@ export default function UserList() {
   }
   return (
     <div>
-      {usuario}
+      <div>
+<Table striped bordered hover variant="light" style={{ padding: 10 }}>
+
+ <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Mail</th>
+            <th>Activo</th>
+          </tr>
+        </thead> 
+ {usuario.map((usu) => 
+        <tbody key={usu.email}>
+          <tr>
+            <td>{usu.nombre}</td>
+            <td>{usu.apellido}</td>
+            <td>{usu.email}</td>
+            <td>{usu.Activo}</td>            
+            <td><Button variant="light" style={{  backgroundColor: "#F7B1BD", borderColor: "#F7B1BD" }}/></td>
+          </tr>
+        </tbody>
+        )}
+      </Table>
+</div>
     </div>
   );
 }
