@@ -7,13 +7,27 @@ export default function UserList() {
   
   const [isLoading, setIsLoading] = useState(true);
   const [usuario, setUsuario] = useState([]);
-  useEffect(() => {
+  /*useEffect(() => {
     fetch("http://localhost:8080/usuarios")
       .then((response) => {
-        setUsuario(response);
+        setUsuario(response.);
         setIsLoading(false);
+        console.log(usuario)
+        
       });
-  }, []);
+  }, []);*/
+  
+  const gfetch = new Promise((resolve) => {resolve("http://localhost:8080/usuarios")})
+ 
+  useEffect(() => {
+    gfetch //simulacion de llamado a una api
+
+        .then((resp) => setUsuario(resp))
+        .catch((err) => console.log(err)) // capturamos todos los errores con el catch
+        .finally(() => setIsLoading(false))//ej loading
+
+}, [])
+
   if (isLoading) {
     return (
       <div>
