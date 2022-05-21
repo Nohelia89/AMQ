@@ -1,6 +1,6 @@
-import Button from 'react-bootstrap/Button';
-import Table from 'react-bootstrap/Table'
 
+import Table from 'react-bootstrap/Table'
+import Button from 'react-bootstrap/Button';
 
 import { useEffect, useState } from "react";
 
@@ -30,72 +30,50 @@ export default function UserList() {
 
 }, [])
 
-  if (isLoading) {
-    return (
-      <div>
-        <h1>Cargando...</h1>
-      </div>
-    );
-  }
-  return 
-    (
-      <div>
-      <Table striped bordered hover variant="light" style={{ padding: 10 }}>
-      
-       <thead>
-                <tr>
-                  <th>Nombre</th>
-                  <th>Apellido</th>
-                  <th>Mail</th>
-                  <th>Activo</th>
-                </tr>
-              </thead>
-       {usuarios.map((usu) => 
-              <tbody key={usu.email}>
-                <tr>
-                  <td>{usu.nombre}</td>
-                  <td>{usu.apellido}</td>
-                  <td>{usu.email}</td>
-                  <td>{usu.Activo}</td>            
-                  <td><Button variant="light" style={{  backgroundColor: "#F7B1BD", borderColor: "#F7B1BD" }} onClick={() => eliminarItem(prod.id)}>Eliminar Item</Button></td>
-                </tr>
-              </tbody>
-              )}
-            </Table>
-      </div>
-          )
+return (
+
+  <>
+
+
+
+    {isLoading ? <h2>Cargando...</h2> : 
+          <Table striped bordered hover variant="light" style={{ padding: 10 }}>
+
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Mail</th>
+              <th>Activo</th>
+            </tr>
+          </thead>
+          {usuario.map(usuario => <tbody key={usuario.email} >
+            <tr>
+              <td>{usuario.nombre}</td>
+              <td>{usuario.apellido}</td>
+              <td>{usuario.email}</td>
+              <td>{usuario.activo}</td>
+              <td>     <Button variant="dark" >X</Button></td>
+            </tr>
+  
+          </tbody>)}
+  
+          {usuario.length > 0 ?
+  
+  
+            <tbody >
+  
+              <td><h6>Total de su compra:</h6></td>
+              <td>US$PRECIO</td>
+  
+  
+  
+            </tbody>
+            : null}
+        </Table>
+  
+    }
+
+  </>
+)
 }
-/*
-export default function UserList() {
-    return (
-<div>
-<Table striped bordered hover variant="light" style={{ padding: 10 }}>
-
- <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Mail</th>
-            <th>Activo</th>
-          </tr>
-        </thead>
- {usuarios.map((usu) => 
-        <tbody key={usu.email}>
-          <tr>
-            <td>{usu.nombre}</td>
-            <td>{usu.apellido}</td>
-            <td>{usu.email}</td>
-            <td>{usu.Activo}</td>            
-            <td><Button variant="light" style={{  backgroundColor: "#F7B1BD", borderColor: "#F7B1BD" }} onClick={() => eliminarItem(prod.id)}>Eliminar Item</Button></td>
-          </tr>
-        </tbody>
-        )}
-      </Table>
-</div>
-    )
-
-} 
-
-
-
-*/
