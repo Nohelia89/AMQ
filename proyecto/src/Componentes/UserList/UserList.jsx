@@ -3,6 +3,8 @@ import Table from 'react-bootstrap/Table'
 
 
 import { useEffect, useState } from "react";
+
+//const gfetch = new Promise((resolve) => {resolve("http://localhost:8080/usuarios")})
 export default function UserList() {
   
   const [isLoading, setIsLoading] = useState(true);
@@ -17,14 +19,14 @@ export default function UserList() {
       });
   }, []);*/
   
-  const gfetch = new Promise((resolve) => {resolve("http://localhost:8080/usuarios")})
- 
   useEffect(() => {
-    gfetch //simulacion de llamado a una api
+    fetch("http://localhost:8080/usuarios")
+    //simulacion de llamado a una api
 
         .then((resp) => setUsuario(resp))
         .catch((err) => console.log(err)) // capturamos todos los errores con el catch
         .finally(() => setIsLoading(false))//ej loading
+      
 
 }, [])
 
@@ -35,34 +37,33 @@ export default function UserList() {
       </div>
     );
   }
-  return (
-    <div>
+  return 
+    (
       <div>
-<Table striped bordered hover variant="light" style={{ padding: 10 }}>
-
- <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Mail</th>
-            <th>Activo</th>
-          </tr>
-        </thead> 
- {usuario.map((usu) => 
-        <tbody key={usu.email}>
-          <tr>
-            <td>{usu.nombre}</td>
-            <td>{usu.apellido}</td>
-            <td>{usu.email}</td>
-            <td>{usu.Activo}</td>            
-            <td><Button variant="light" style={{  backgroundColor: "#F7B1BD", borderColor: "#F7B1BD" }}/></td>
-          </tr>
-        </tbody>
-        )}
-      </Table>
-</div>
-    </div>
-  );
+      <Table striped bordered hover variant="light" style={{ padding: 10 }}>
+      
+       <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Apellido</th>
+                  <th>Mail</th>
+                  <th>Activo</th>
+                </tr>
+              </thead>
+       {usuarios.map((usu) => 
+              <tbody key={usu.email}>
+                <tr>
+                  <td>{usu.nombre}</td>
+                  <td>{usu.apellido}</td>
+                  <td>{usu.email}</td>
+                  <td>{usu.Activo}</td>            
+                  <td><Button variant="light" style={{  backgroundColor: "#F7B1BD", borderColor: "#F7B1BD" }} onClick={() => eliminarItem(prod.id)}>Eliminar Item</Button></td>
+                </tr>
+              </tbody>
+              )}
+            </Table>
+      </div>
+          )
 }
 /*
 export default function UserList() {
