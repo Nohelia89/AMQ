@@ -1,40 +1,26 @@
 
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button';
-
+import axios from 'axios';
 import { useEffect, useState } from "react";
 
-//const gfetch = new Promise((resolve) => {resolve("http://localhost:8080/usuarios")})
 export default function UserList() {
   
   const [isLoading, setIsLoading] = useState(true);
   const [usuario, setUsuario] = useState([]);
-  /*useEffect(() => {
-    fetch("http://localhost:8080/usuarios")
-      .then((response) => {
-        setUsuario(response.);
-        setIsLoading(false);
-        console.log(usuario)
-        
-      });
-  }, []);*/
+
   
-  useEffect(() => {
-    fetch("http://localhost:8080/usuarios")
-    //simulacion de llamado a una api
-
-        .then((resp) => setUsuario(resp))
-        .catch((err) => console.log(err)) // capturamos todos los errores con el catch
-        .finally(() => setIsLoading(false))//ej loading
-      
-
-}, [])
+  axios.get("http://localhost:8080/usuarios")
+  .then(res => {
+ 
+  const usuario = res.data;
+    setUsuario( usuario);
+    setIsLoading(false);
+  })
 
 return (
 
   <>
-
-
 
     {isLoading ? <h2>Cargando...</h2> : 
           <Table striped bordered hover variant="light" style={{ padding: 10 }}>
@@ -57,19 +43,6 @@ return (
             </tr>
   
           </tbody>)}
-  
-          {usuario.length > 0 ?
-  
-  
-            <tbody >
-  
-              <td><h6>Total de su compra:</h6></td>
-              <td>US$PRECIO</td>
-  
-  
-  
-            </tbody>
-            : null}
         </Table>
   
     }
