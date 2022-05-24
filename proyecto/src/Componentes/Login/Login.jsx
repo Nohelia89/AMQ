@@ -1,4 +1,5 @@
  import { Link } from 'react-router-dom';
+import LogoSinFondo from '../Logo/LogoSinFondo';
 import './Login.css';
 
 export default function Login() {
@@ -10,7 +11,7 @@ export default function Login() {
    <div class="con">
    <header class="head-form">
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css" />
-      <h2>AMQ (logo)</h2>
+   <LogoSinFondo />
       <h4>¡Bienvenidos!</h4>
    </header>
    <br />

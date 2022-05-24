@@ -1,30 +1,16 @@
 import { Container, Nav, Navbar} from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
+import Logo from "../Logo/Logo";
+import LogWidget from "./LogWidget";
 
 
 function NavBar() {
     return (
-     /*    <Navbar expand="lg" bg="light" style={{ 
-            backgroundColor: "#f4efef", width: "100%"
-       }}>
-  <Container>
-      
-      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-      <Navbar.Collapse id="responsive-navbar-nav">
-        
-   
-    <Nav>
-    <Link to="login">
-          Iniciar sesion
-    </Link>
-    </Nav>
-  </Navbar.Collapse>
-  </Container>
-</Navbar> */
-<Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+
+<Navbar collapseOnSelect expand="lg" bg="light" variant="light">
 <Container>
   <Link to='/'>
-    <Navbar.Brand >Aqui Me Quedo</Navbar.Brand>
+    <Navbar.Brand ><Logo /></Navbar.Brand>
   </Link>
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
@@ -36,7 +22,7 @@ function NavBar() {
     <Nav>
 
             <NavLink to='/login' className={({ isActive }) => isActive ? 'active' : ''}>
-            <Nav.Link as={Link} to="/login">Login</Nav.Link>
+            <Nav.Link as={Link} to="/login"><LogWidget /></Nav.Link>
 
             </NavLink>
           </Nav>

@@ -89,6 +89,7 @@ const upload2 = async (e) =>{
               <p className="form-input2" type="Descripción:"><textarea className="textarea" rows="7" cols="55"  onChange={handleChangeH} value={dataFormH.descripcion}></textarea></p>
 
               <button className = "btn submits boton">Registrar</button>
+              <button className = "btn submits boton">Cargar Otra Habitacion</button>
                 
             </form>
           </div>
@@ -103,19 +104,19 @@ const upload2 = async (e) =>{
 const uploadFirestore = async (e) =>{
   e.preventDefault()
       const newRef1 = ref(storage, `${image.name}`);
-      const newRef2 = ref(storage, `${image2.name}`);
+     const newRef2 = ref(storage, `${image2.name}`);
       const newRef3 = ref(storage, `${image3.name}`);
       const enlaceUrl1 = await getDownloadURL(newRef1);
       const enlaceUrl2 = await getDownloadURL(newRef2);
       const enlaceUrl3 = await getDownloadURL(newRef3);
-      await setDoc(doc(db, "fotos", `${dataForm.nombre}`), {
+      await setDoc(doc(db, "fotos", "logosinfondo"), {
         url1: enlaceUrl1,
         url2: enlaceUrl2,
         url3: enlaceUrl3
       });
         
     console.log("archivo cargado:", `${dataForm.nombre}`, "ulr:", enlaceUrl1);
-    console.log("archivo cargado2:", `${dataForm.nombre}`, "ulr:", enlaceUrl2);
+   console.log("archivo cargado2:", `${dataForm.nombre}`, "ulr:", enlaceUrl2);
     console.log("archivo cargado3:", `${dataForm.nombre}`, "ulr:", enlaceUrl3);
   }
 
