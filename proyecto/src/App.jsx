@@ -7,6 +7,9 @@ import Registro from './Componentes/Registro/Registro';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Forgot from './Componentes/Forgot/Forgot';
 import UserList from './Componentes/UserList/UserList';
+import FormHuesped from './Componentes/FormHuesped/FormHuesped';
+import FormAnfitrion from './Componentes/FormAnfitrion/FormAnfitrion';
+
 
 function App() {
   return (
@@ -29,7 +32,12 @@ function App() {
         <Route
             path = "/registro" element = { <Registro /> }  
         />
-        
+          <Route
+            path = "/anfitrion" element = { <FormAnfitrion /> }  
+        />
+            <Route
+            path = "/huesped" element = { <FormHuesped /> }  
+        />
         <Route
             path = "/*" element = { <Navigate to = '/' /> }  
         />
