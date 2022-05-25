@@ -2,6 +2,7 @@
 import { Link } from 'react-router-dom';
 import { Button } from "react-bootstrap";
 import { useState } from 'react';
+import axios from 'axios';
 
 function FormHuesped() {
 
@@ -15,11 +16,12 @@ function FormHuesped() {
 
     if (dataForm.password === dataForm.password2) {
       
-      let user = {}
-      user.data = dataForm
-
             console.log("soy"+dataForm.nombre, dataForm.apellido, dataForm.email, dataForm.password)
-        
+            axios.post(`https://jsonplaceholder.typicode.com/users`, { dataForm })
+            .then(res => {
+              console.log(res);
+              console.log(res.data);
+            })
       }
     }
 
