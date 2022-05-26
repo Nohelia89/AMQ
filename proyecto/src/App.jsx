@@ -9,6 +9,7 @@ import Forgot from './Componentes/Forgot/Forgot';
 import UserList from './Componentes/UserList/UserList';
 import FormHuesped from './Componentes/FormHuesped/FormHuesped';
 import FormAnfitrion from './Componentes/FormAnfitrion/FormAnfitrion';
+import FormAdmin from './Componentes/FormAdmin/FormAdmin';
 
 
 function App() {
@@ -37,6 +38,10 @@ function App() {
         />
             <Route
             path = "/huesped" element = { <FormHuesped /> }  
+        />
+
+            <Route
+            path = "/admin" element = { <FormAdmin /> }  
         />
         <Route
             path = "/*" element = { <Navigate to = '/' /> }  
