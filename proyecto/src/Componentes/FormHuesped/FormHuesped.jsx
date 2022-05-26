@@ -9,15 +9,27 @@ function FormHuesped() {
 
     const [dataForm, setDataForm] = useState({ nombre: '', apellido: '', email: '', password: '', password2:'' })
 
-
     
   const generateUser = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
+
+    
+    var huesped = {
+
+      email: dataForm.email,
+      nombre: dataForm.nombre,
+      apellido: dataForm.apellido,
+      activo: true,
+      pass: dataForm.password2,
+      calificacionGlobal: 0
+    } ;
 
     if (dataForm.password === dataForm.password2) {
       
-            console.log("soy"+dataForm.nombre, dataForm.apellido, dataForm.email, dataForm.password)
-            axios.post(`https://jsonplaceholder.typicode.com/users`, { dataForm })
+            console.log("soy"+dataForm.nombre, dataForm.apellido, dataForm.email, dataForm.password,)
+            console.log("soyhuesped"+huesped.nombre, huesped.apellido, huesped.email, huesped.pass, huesped.calificacionGlobal)
+            axios.post(`http://localhost:8080/usuario/altaHuesped/` + "1", huesped )
+            
             .then(res => {
               console.log(res);
               console.log(res.data);
@@ -46,7 +58,7 @@ function FormHuesped() {
         </div>
         <div>
         <p class="form-input2" type="Mail:"><input required class="form-input1" name='email' type='email' value={dataForm.email} onChange={handleChange} placeholder='Ingrese email'></input></p>
-        <p class="form-input2" type="Password:"><input required type='password' name='password' class="form-input1" value={dataForm.password} onChange={handleChange} placeholder='Ingrese Password'></input></p>
+        <p class="form-input2" type="Password:"><input required type='password' name='pass' class="form-input1" value={dataForm.password} onChange={handleChange} placeholder='Ingrese Password'></input></p>
         <input required type='password' name='password2' class="form-input1" value={dataForm.password2} onChange={handleChange} placeholder='Repita Password'></input>
         </div>
   
