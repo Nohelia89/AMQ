@@ -10,7 +10,7 @@ function FormHuesped() {
 
     const [dataForm, setDataForm] = useState({ nombre: '', apellido: '', email: '', password: '', password2:'' })
 
-    var hash = Base64.encode(dataForm.password2); 
+    var hash = Base64.encode(dataForm.password); 
   
     
   const generateUser = async (e) => {
@@ -62,7 +62,7 @@ function FormHuesped() {
         </div>
         <div>
         <p class="form-input2" type="Mail:"><input required class="form-input1" name='email' type='email' value={dataForm.email} onChange={handleChange} placeholder='Ingrese email'></input></p>
-        <p class="form-input2" type="Password:"><input required type='password' name='pass' class="form-input1" value={dataForm.password} onChange={handleChange} placeholder='Ingrese Password'></input></p>
+        <p class="form-input2" type="Password:"><input required type='password' name='password' class="form-input1" value={dataForm.password} onChange={handleChange} placeholder='Ingrese Password'></input></p>
         <input required type='password' name='password2' class="form-input1" value={dataForm.password2} onChange={handleChange} placeholder='Repita Password'></input>
         </div>
   
