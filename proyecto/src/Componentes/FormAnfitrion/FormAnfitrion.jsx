@@ -8,6 +8,7 @@ function FormAnfitrion() {
     const [dataForm, setDataForm] = useState({ nombre: '', apellido: '', email: '', password: '', password2: '', activo: false })
     const [botontype, setBotonType ] = useState('aloj');
 
+
     const CargarAlojamiento= ()=> {
         if (dataForm.password === dataForm.password2) {
         return (

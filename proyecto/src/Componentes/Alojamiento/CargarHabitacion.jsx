@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { Base64 } from 'js-base64';
 
 
 function CargarHabitacion({dataUser, dataAloj}) {
@@ -8,6 +9,9 @@ function CargarHabitacion({dataUser, dataAloj}) {
     console.log("data aloJ");
     console.log(dataAloj);
     const [dataFormH, setDataFormH] = useState({descripcion: '', camas: '', precionoche: ''})
+
+
+    var hash = Base64.encode(dataUser.password2); 
 
     const handleChangeH = (e) => {
         setDataFormH({
@@ -26,7 +30,7 @@ function CargarHabitacion({dataUser, dataAloj}) {
           nombre: dataUser.nombre,
           apellido: dataUser.apellido,
           activo: true,
-          pass: dataUser.password2,
+          pass: hash,
           tipo: "anfitrion",
           calificacionGlobal: 0,
           estado: "PENDIENTE"

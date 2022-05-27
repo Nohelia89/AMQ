@@ -3,11 +3,14 @@ import { Link } from 'react-router-dom';
 import { Button } from "react-bootstrap";
 import { useState } from 'react';
 import axios from 'axios';
+import { Base64 } from 'js-base64';
 
 function FormAdmin() {
 
 
     const [dataForm, setDataForm] = useState({ nombre: '', apellido: '', email: '', password: '', password2:'' })
+
+    var hash = Base64.encode(dataForm.password2); 
 
     var admin = {
 
@@ -15,7 +18,7 @@ function FormAdmin() {
       nombre: dataForm.nombre,
       apellido: dataForm.apellido,
       activo: true,
-      pass: dataForm.password2,
+      pass: hash,
       tipo:"ADMIN"
     } ;
     

@@ -9,8 +9,6 @@ function FormHuesped() {
 
 
     const [dataForm, setDataForm] = useState({ nombre: '', apellido: '', email: '', password: '', password2:'' })
-    
-   
 
     var hash = Base64.encode(dataForm.password2); 
   
