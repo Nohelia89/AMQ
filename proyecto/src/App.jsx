@@ -10,6 +10,7 @@ import UserList from './Componentes/UserList/UserList';
 import FormHuesped from './Componentes/FormHuesped/FormHuesped';
 import FormAnfitrion from './Componentes/FormAnfitrion/FormAnfitrion';
 import FormAdmin from './Componentes/FormAdmin/FormAdmin';
+import AltaAlojamiento from './Componentes/Alojamiento/AltaAlojamiento';
 
 
 function App() {
@@ -43,6 +44,11 @@ function App() {
             <Route
             path = "/admin" element = { <FormAdmin /> }  
         />
+
+        <Route
+            path = "/altaAlojamiento" element = { <AltaAlojamiento /> }  
+        />
+
         <Route
             path = "/*" element = { <Navigate to = '/' /> }  
         />

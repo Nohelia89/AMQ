@@ -4,11 +4,13 @@ import 'firebase/storage';
 import { getFirestoreApp } from "./firebase";
 import { doc, getFirestore, setDoc } from "firebase/firestore";
 import './Alojamiento.css';
+import CargarHabitacion from './CargarHabitacion';
 
 
 
-function AltaAlojamiento() {
-     
+function AltaAlojamiento({dataUser}) {
+    
+  
     const db = getFirestore();
     getFirestoreApp();
     const storage = getStorage();
@@ -16,13 +18,9 @@ function AltaAlojamiento() {
     const [image2 , setImage2] = useState('');
     const [image3 , setImage3] = useState('');
     const [dataForm, setDataForm] = useState({nombre: '', descripcion: '', direccion: ''})
-    const [dataFormH, setDataFormH] = useState({nombre: '', descripcion: '', camas: '', precionoche: ''})
     const [botontype, setBotonType ] = useState('aloj');
 
 
-
-    
-    
     const handleChange = (e) => {
         setDataForm({
           ...dataForm,
@@ -31,13 +29,7 @@ function AltaAlojamiento() {
       })
     }
 
-    const handleChangeH = (e) => {
-        setDataFormH({
-          ...dataFormH,
-          [e.target.name]: e.target.value,
-        
-      })
-    }
+   
 
     const changeStateButton = (e) => {
         setBotonType("hab")
@@ -79,28 +71,11 @@ const upload2 = async (e) =>{
     
   }
     
-  const CargarHabitacion= ()=> {
- 
+  const Habitacion= ()=> {
+    console.log(dataForm);
     return (
-    
-         <div className="bod1">
-              <form className="form1"  >
-              <div className="tit">HABITACION</div>
-              <div className="input_container">
-              <p class="form-input2" type="Nombre:"><input required class="form-input1" name='nombre' type='text' value={dataFormH.nombre} onChange={handleChangeH} placeholder='Ingrese Nombre'></input></p>
-              <p className="form-input2" type="Precio Por Noche (en US$):"><input required class="form-input1" name='precionoche' type='text' value={dataFormH.precionoche} onChange={handleChangeH} placeholder='Ingrese Precio por Noche'></input></p>
-              <p className="form-input2" type="Camas"><input required class="form-input1" name='camas' type='text' value={dataFormH.camas} onChange={handleChangeH} placeholder='Ingrese Cantidad de Camas'></input></p></div>
-              <p className="form-input2" type="Descripcion:"><textarea className="textarea" rows="7" cols="70" name='descripcion' type='text'  onChange={handleChangeH} value={dataFormH.descripcion}></textarea></p>
-
-              <button className = "btn submits boton">Registrar</button>
-              <button className = "btn submits boton">Cargar Otra Habitacion</button>
-                
-            </form>
-          </div>
-    
-        
-      )
-    
+    <CargarHabitacion dataUser={dataUser} dataAloj={dataForm} />
+    )
   }
 
     
@@ -161,7 +136,7 @@ const uploadFirestore = async (e) =>{
         
       </div>
     
-    : <CargarHabitacion />
+    : <Habitacion />
     
   );
 }

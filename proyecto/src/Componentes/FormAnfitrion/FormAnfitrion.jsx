@@ -1,25 +1,38 @@
 import { Link } from 'react-router-dom';
 import { Button } from "react-bootstrap";
 import { useState } from 'react';
+import AltaAlojamiento from '../Alojamiento/AltaAlojamiento';
 
 function FormAnfitrion() {
 
-    const [dataForm, setDataForm] = useState({ nombre: '', apellido: '', email: '', password: '', password2: '', activo: 'false' })
+    const [dataForm, setDataForm] = useState({ nombre: '', apellido: '', email: '', password: '', password2: '', activo: false })
+    const [botontype, setBotonType ] = useState('aloj');
 
-
-
-    const generateUser = async (e) => {
+  /*  const generateUser = async (e) => {
         e.preventDefault()
 
         if (dataForm.password === dataForm.password2) {
-
-            let user = {}
-            user.data = dataForm
-
+        
+            cargarAlojamiento();
             console.log("soy" + dataForm.nombre, dataForm.apellido, dataForm.email, dataForm.password, dataForm.activo)
 
         }
-    }
+    }*/
+
+    const CargarAlojamiento= ()=> {
+        if (dataForm.password === dataForm.password2) {
+        return (
+        
+            <AltaAlojamiento dataUser={dataForm} />
+            
+          )
+        }
+      }
+    
+      const changeStateButton = (e) => {
+        setBotonType("hab")
+        
+      }
 
     const handleChange = (e) => {
         setDataForm({
@@ -27,11 +40,15 @@ function FormAnfitrion() {
             [e.target.name]: e.target.value
         })
     }
+
+
     return (
+
+        botontype === "aloj" ? 
 
 
         <div class="bod">
-            <form class="form1" onSubmit={generateUser}>
+            <form class="form1">
                 <div class="tit">REGISTRO ANFITRION</div>
 
 
@@ -51,16 +68,17 @@ function FormAnfitrion() {
                 <div>
                     <Link to={'/registro'}>
                         <Button variant="dark" >Volver</Button>
-                    </Link>
-
-                    <button variant="dark" class="btn submits boton">Registrar anfitrión</button>
+                        </Link>
+                        
+                    <button variant="dark" class="btn submits boton" onClick={changeStateButton}>Crear Alojamiento</button>
+                  
                 </div>
 
 
 
             </form>
         </div>
-
+     : <CargarAlojamiento />
     );
 
 }

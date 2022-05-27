@@ -2,7 +2,7 @@
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function UserList() {
   
@@ -10,7 +10,7 @@ export default function UserList() {
   const [usuario, setUsuario] = useState([]);
 
   
-  axios.get("http://localhost:8080/usuarios")
+  axios.get("http://localhost:8080/usuario/listar")
   .then(res => {
  
   const usuario = res.data;
@@ -38,7 +38,9 @@ return (
               <td>{usuario.nombre}</td>
               <td>{usuario.apellido}</td>
               <td>{usuario.email}</td>
-              <td>{usuario.activo}</td>
+              {usuario.activo === true ? 
+              <td>Si</td> : <td>No</td> 
+            }
               <td>     <Button variant="dark" >X</Button></td>
             </tr>
   
