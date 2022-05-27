@@ -1,13 +1,17 @@
-import AltaAlojamiento from "../Alojamiento/AltaAlojamiento";
-import UserList from "../UserList/UserList";
+
+import ControlledCarousel from "../Carousel/ControlledCarousel";
+
 
 export default function Main
 () {
+
+
+  
     return (
 
     <>
-      
-      <AltaAlojamiento />
+      <ControlledCarousel/>
+  
 
     </>
       
