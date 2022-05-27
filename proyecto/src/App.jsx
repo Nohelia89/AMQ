@@ -11,6 +11,7 @@ import FormHuesped from './Componentes/FormHuesped/FormHuesped';
 import FormAnfitrion from './Componentes/FormAnfitrion/FormAnfitrion';
 import FormAdmin from './Componentes/FormAdmin/FormAdmin';
 import AltaAlojamiento from './Componentes/Alojamiento/AltaAlojamiento';
+import UserProfile from './Componentes/UserProfile/UserProfile';
 
 
 function App() {
@@ -43,6 +44,9 @@ function App() {
 
             <Route
             path = "/admin" element = { <FormAdmin /> }  
+        />
+     <Route
+            path = "/profile" element = { <UserProfile /> }  
         />
 
         <Route

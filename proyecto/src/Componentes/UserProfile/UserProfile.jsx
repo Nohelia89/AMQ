@@ -5,30 +5,35 @@ import { useState } from 'react';
 import axios from 'axios';
 import { Base64 } from 'js-base64';
 
-function FormAdmin() {
+function UserProfile() {
 
 
-    const [dataForm, setDataForm] = useState({ nombre: '', apellido: '', email: '', password: '', password2:'' })
+    const [dataForm, setDataForm] = useState({ nombre: 'Nohelia', apellido: 'Yanibelli', email: 'asd@asdf.com', password: 'asd', password2:'asd' })
 
     var hash = Base64.encode(dataForm.password); 
+  
+    
+  const generateUser = async (e) => {
+    e.preventDefault();
 
-    var admin = {
+  
+    
+    var huesped = {
 
       email: dataForm.email,
       nombre: dataForm.nombre,
       apellido: dataForm.apellido,
       activo: true,
       pass: hash,
-      tipo:"ADMIN"
+      calificacionGlobal: 0
     } ;
-    
-  const generateAdmin = async (e) => {
-    e.preventDefault()
 
     if (dataForm.password === dataForm.password2) {
       
-            console.log("soy"+dataForm.nombre, dataForm.apellido, dataForm.email, dataForm.password)
-            axios.post(`http://localhost:8080/usuario/altaAdmin/` + "1", admin )
+            console.log("soy"+dataForm.nombre, dataForm.apellido, dataForm.email, dataForm.password,)
+            console.log("soyhuesped"+huesped.nombre, huesped.apellido, huesped.email, huesped.pass, huesped.calificacionGlobal)
+            axios.post(`http://localhost:8080/usuario/altaHuesped/` + "1", huesped )
+            
             .then(res => {
               console.log(res);
               console.log(res.data);
@@ -46,8 +51,8 @@ function FormAdmin() {
         
 
         <div class="bod">
-        <form class="form1"  onSubmit={generateAdmin}>
-        <div class="tit">REGISTRO ADMINISTRADOR</div>
+        <form class="form1"  onSubmit={generateUser}>
+        <div class="tit">PERFIL HUESPED</div>
       
   
   
@@ -68,7 +73,7 @@ function FormAdmin() {
               <Button variant="dark" >Volver</Button>
             </Link>
 
-        <button variant="dark" class = "btn submits boton">Registrar administrador</button>
+        <button variant="dark" class = "btn submits boton">Modificar cambios</button>
         </div>
         
         
@@ -79,4 +84,4 @@ function FormAdmin() {
     );
   
    }
-  export default FormAdmin;
+  export default UserProfile;
