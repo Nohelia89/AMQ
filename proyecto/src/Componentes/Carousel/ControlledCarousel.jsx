@@ -13,7 +13,7 @@ export default function ControlledCarousel() {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src="./img1.jpg"
+            src="../img1.jpg"
             alt="First slide"
           />
           <Carousel.Caption>
@@ -24,7 +24,7 @@ export default function ControlledCarousel() {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src="holder.js/800x400?text=Second slide&bg=282c34"
+            src="../img2.jpg"
             alt="Second slide"
           />
   
@@ -36,7 +36,7 @@ export default function ControlledCarousel() {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src="img1.jpg"
+            src="../img3.jpg"
             alt="Third slide"
           />
   
