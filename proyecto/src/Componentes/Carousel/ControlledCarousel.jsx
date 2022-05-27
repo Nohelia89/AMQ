@@ -15,10 +15,13 @@ export default function ControlledCarousel() {
             className="d-block w-100"
             src="../img1.jpg"
             alt="First slide"
+            width={400}
+            height={500}
+            
           />
           <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            <h3>Playas de Mexico</h3>
+            <p>Ingresa acá y disfruta de los alojamientos mejor valorados de la temporada</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -26,11 +29,13 @@ export default function ControlledCarousel() {
             className="d-block w-100"
             src="../img2.jpg"
             alt="Second slide"
+            width={400}
+            height={500}
           />
   
           <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <h3>New York</h3>
+            <p>Reserva en la ciudad que nunca duerme</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -38,12 +43,14 @@ export default function ControlledCarousel() {
             className="d-block w-100"
             src="../img3.jpg"
             alt="Third slide"
+            width={400}
+            height={500}
           />
   
           <Carousel.Caption>
-            <h3>Third slide label</h3>
+            <h3>Europa low Cost</h3>
             <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+             Conoce Suiza en Invierno !
             </p>
           </Carousel.Caption>
         </Carousel.Item>
