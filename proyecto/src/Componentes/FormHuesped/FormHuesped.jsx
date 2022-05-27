@@ -3,16 +3,22 @@ import { Link } from 'react-router-dom';
 import { Button } from "react-bootstrap";
 import { useState } from 'react';
 import axios from 'axios';
+import { Base64 } from 'js-base64';
 
 function FormHuesped() {
 
 
     const [dataForm, setDataForm] = useState({ nombre: '', apellido: '', email: '', password: '', password2:'' })
+    
+   
 
+    var hash = Base64.encode(dataForm.password2); 
+  
     
   const generateUser = async (e) => {
     e.preventDefault();
 
+  
     
     var huesped = {
 
@@ -20,7 +26,7 @@ function FormHuesped() {
       nombre: dataForm.nombre,
       apellido: dataForm.apellido,
       activo: true,
-      pass: dataForm.password2,
+      pass: hash,
       calificacionGlobal: 0
     } ;
 
