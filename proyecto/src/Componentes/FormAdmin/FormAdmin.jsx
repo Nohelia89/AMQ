@@ -9,7 +9,15 @@ function FormAdmin() {
 
     const [dataForm, setDataForm] = useState({ nombre: '', apellido: '', email: '', password: '', password2:'' })
 
+    var admin = {
 
+      email: dataForm.email,
+      nombre: dataForm.nombre,
+      apellido: dataForm.apellido,
+      activo: true,
+      pass: dataForm.password2,
+      tipo:"ADMIN"
+    } ;
     
   const generateAdmin = async (e) => {
     e.preventDefault()
@@ -17,7 +25,7 @@ function FormAdmin() {
     if (dataForm.password === dataForm.password2) {
       
             console.log("soy"+dataForm.nombre, dataForm.apellido, dataForm.email, dataForm.password)
-            axios.post(`https://jsonplaceholder.typicode.com/users`, { dataForm })
+            axios.post(`http://localhost:8080/usuario/altaAdmin/` + "1", admin )
             .then(res => {
               console.log(res);
               console.log(res.data);

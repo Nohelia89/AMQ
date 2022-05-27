@@ -8,17 +8,6 @@ function FormAnfitrion() {
     const [dataForm, setDataForm] = useState({ nombre: '', apellido: '', email: '', password: '', password2: '', activo: false })
     const [botontype, setBotonType ] = useState('aloj');
 
-  /*  const generateUser = async (e) => {
-        e.preventDefault()
-
-        if (dataForm.password === dataForm.password2) {
-        
-            cargarAlojamiento();
-            console.log("soy" + dataForm.nombre, dataForm.apellido, dataForm.email, dataForm.password, dataForm.activo)
-
-        }
-    }*/
-
     const CargarAlojamiento= ()=> {
         if (dataForm.password === dataForm.password2) {
         return (
