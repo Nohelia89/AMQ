@@ -4,12 +4,9 @@ import { Base64 } from 'js-base64';
 
 
 function CargarHabitacion({dataUser, dataAloj}) {
-    console.log("Dta user");
-   console.log(dataUser);
-    console.log("data aloJ");
-    console.log(dataAloj);
-    const [dataFormH, setDataFormH] = useState({descripcion: '', camas: '', precionoche: ''})
 
+    const [dataFormH, setDataFormH] = useState({descripcion: '', camas: '', precionoche: ''})
+    const [idAloj, setIdAloj] = useState('')
 
     var hash = Base64.encode(dataUser.password2); 
 
@@ -56,7 +53,7 @@ function CargarHabitacion({dataUser, dataAloj}) {
             precionoche: dataFormH.precionoche,
             camas: dataFormH.camas,
             dtservicios: {
-                id: 0,
+                id: idAloj,
                 aire: true,
                 tvCable: true,
                 jacuzzi: true,
@@ -72,14 +69,21 @@ function CargarHabitacion({dataUser, dataAloj}) {
                 .then(res => {
                   console.log("ANFITRION");
                   console.log(res.data);
+                  console.log(res.data.id);
                 })
 
-                console.log("aloj"+alojamiento.activo, alojamiento.descripcion, alojamiento.direcion, alojamiento.nombre)
+                console.log("aloj"+alojamiento.activo, alojamiento.descripcion, alojamiento.direccion, alojamiento.nombre)
                 axios.post(`http://localhost:8080/alojamiento/alta/` + "1", alojamiento )
                 
                 .then(res => {
                   console.log("ALOJAMIENTO");
+                  console.log(res.data.id);
                   console.log(res.data);
+                  setIdAloj(res.data.id)
+
+                })
+                .catch(error => {
+                  console.log(error)
                 })
 
                 console.log("habitacion"+ habitacion.camas, habitacion.descripcion, habitacion.dtservicios, habitacion.precionoche)

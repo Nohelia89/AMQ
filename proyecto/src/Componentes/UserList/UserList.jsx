@@ -12,11 +12,18 @@ export default function UserList() {
   
   axios.get("http://localhost:8080/usuario/listar")
   .then(res => {
- 
   const usuario = res.data;
     setUsuario( usuario);
     setIsLoading(false);
   })
+
+  const Desactivar = (id) => {
+      axios.post(`http://localhost:8080/usuario/desactivar/` + id, id )
+                  
+                  .then(res => {
+                    console.log(res.data)
+                  })
+      }
 
 return (
 
@@ -30,7 +37,9 @@ return (
               <th>Nombre</th>
               <th>Apellido</th>
               <th>Mail</th>
-              <th>Activo</th>
+              <th>Activo/Desactivo</th>
+              <th>Bloqueado/Desbloqueado</th>
+              
             </tr>
           </thead>
           {usuario.map(usuario => <tbody key={usuario.email} >
@@ -39,9 +48,9 @@ return (
               <td>{usuario.apellido}</td>
               <td>{usuario.email}</td>
               {usuario.activo === true ? 
-              <td>Si</td> : <td>No</td> 
+              <td><Button variant="danger" onClick={() => Desactivar(usuario.id)}>Desactivar</Button></td> : <td><Button variant="success" >Activar</Button></td> 
             }
-              <td>     <Button variant="dark" >X</Button></td>
+              <td><Button variant="dark"> Bloquear </Button></td> 
             </tr>
   
           </tbody>)}
