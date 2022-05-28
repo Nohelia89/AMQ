@@ -21,6 +21,7 @@ export default function UserList() {
       axios.post(`http://localhost:8080/usuario/desactivar/` + id, id )
                   
                   .then(res => {
+                    alert("Usuario Desactivado")
                     console.log(res.data)
                   })
       }
@@ -34,6 +35,7 @@ return (
 
           <thead>
             <tr>
+              <th>Tipo</th>
               <th>Nombre</th>
               <th>Apellido</th>
               <th>Mail</th>
@@ -44,6 +46,9 @@ return (
           </thead>
           {usuario.map(usuario => <tbody key={usuario.email} >
             <tr>
+            {usuario.tipo === "Ad" ? 
+             <td>Administrador</td> : (usuario.tipo === "Hu" ? <td>Huesped</td>  : <td>Anfitrion</td> )            
+            }
               <td>{usuario.nombre}</td>
               <td>{usuario.apellido}</td>
               <td>{usuario.email}</td>

@@ -15,7 +15,8 @@ function NavBar() {
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="me-auto">
-
+   
+    <Link to='/userList'> <li className="nav-item">Listados</li></Link>
 
 
     </Nav>
@@ -23,7 +24,7 @@ function NavBar() {
 
             <NavLink to='/login' className={({ isActive }) => isActive ? 'active' : ''}>
             <Nav.Link as={Link} to="/login"><LogWidget /></Nav.Link>
-
+            <Link to='/profile'> <li className="nav-item">Perfil</li></Link>
             </NavLink>
           </Nav>
   </Navbar.Collapse>

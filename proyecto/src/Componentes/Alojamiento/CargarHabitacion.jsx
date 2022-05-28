@@ -72,7 +72,7 @@ function CargarHabitacion({dataUser, dataAloj}) {
                   console.log(res.data.id);
                 })
 
-                console.log("aloj"+alojamiento.activo, alojamiento.descripcion, alojamiento.direccion, alojamiento.nombre)
+                console.log("aloj"+alojamiento.activo, alojamiento.descripcion, alojamiento.direcion, alojamiento.nombre)
                 axios.post(`http://localhost:8080/alojamiento/alta/` + "1", alojamiento )
                 
                 .then(res => {

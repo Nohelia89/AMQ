@@ -25,6 +25,11 @@ export default function Registro() {
             <Link to={'/anfitrion'}>
             <Button variant="dark" >Anfitrion</Button>
             </Link>
+
+            
+            <Link to={'/admin'}>
+            <Button variant="dark" >Administrador</Button>
+            </Link>
     
    
  </form>

@@ -43,8 +43,8 @@ export default function ControlledCarousel() {
             className="d-block w-100"
             src="../img3.jpg"
             alt="Third slide"
-            width={400}
-            height={500}
+            width="400"
+            height="500"
           />
   
           <Carousel.Caption>

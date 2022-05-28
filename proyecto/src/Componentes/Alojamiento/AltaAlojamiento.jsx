@@ -88,7 +88,7 @@ const uploadFirestore = async (e) =>{
       const enlaceUrl1 = await getDownloadURL(newRef1);
       const enlaceUrl2 = await getDownloadURL(newRef2);
       const enlaceUrl3 = await getDownloadURL(newRef3);
-      await setDoc(doc(db, "fotos", "logosinfondo"), {
+      await setDoc(doc(db, "fotos", `${dataForm.nombre}`), {
         url1: enlaceUrl1,
         url2: enlaceUrl2,
         url3: enlaceUrl3

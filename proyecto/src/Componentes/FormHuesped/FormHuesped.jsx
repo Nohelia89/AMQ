@@ -32,7 +32,7 @@ function FormHuesped() {
       
             console.log("soy"+dataForm.nombre, dataForm.apellido, dataForm.email, dataForm.password,)
             console.log("soyhuesped"+huesped.nombre, huesped.apellido, huesped.email, huesped.pass, huesped.calificacionGlobal)
-            axios.post(`http://localhost:8080/usuario/altaHuesped/` + "1", huesped )
+            axios.post(`http://localhost:8080/usuario/altaHuesped`, huesped )
             
             .then(res => {
               console.log(res);
