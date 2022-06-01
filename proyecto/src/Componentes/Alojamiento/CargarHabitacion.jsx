@@ -22,7 +22,7 @@ function CargarHabitacion({dataUser, dataAloj}) {
         e.preventDefault();
         console.log("ENTRE A GENERATE");
         var anfitrion = {
-    
+          id: 0,
           email: dataUser.email,
           nombre: dataUser.nombre,
           apellido: dataUser.apellido,
@@ -30,8 +30,12 @@ function CargarHabitacion({dataUser, dataAloj}) {
           pass: hash,
           tipo: "anfitrion",
           calificacionGlobal: 0,
+          bloqueado: false,
           estado: "PENDIENTE"
         } ;
+
+
+       
 
         var alojamiento = {
     
@@ -64,7 +68,7 @@ function CargarHabitacion({dataUser, dataAloj}) {
           } ;
 
                 console.log("soyanfitrion"+anfitrion.nombre, anfitrion.apellido, anfitrion.email, anfitrion.pass, anfitrion.calificacionGlobal)
-                axios.post(`http://localhost:8080/usuario/altaAnfitiron/` + "1", anfitrion )
+                axios.post(`http://localhost:8080/usuario/altaAnfitiron/` + "0", anfitrion )
                 
                 .then(res => {
                   console.log("ANFITRION");
@@ -73,7 +77,7 @@ function CargarHabitacion({dataUser, dataAloj}) {
                 })
 
                 console.log("aloj"+alojamiento.activo, alojamiento.descripcion, alojamiento.direcion, alojamiento.nombre)
-                axios.post(`http://localhost:8080/alojamiento/alta/` + "1", alojamiento )
+                axios.post(`http://localhost:8080/alojamiento/alta/` + "0", alojamiento )
                 
                 .then(res => {
                   console.log("ALOJAMIENTO");
@@ -87,7 +91,7 @@ function CargarHabitacion({dataUser, dataAloj}) {
                 })
 
                 console.log("habitacion"+ habitacion.camas, habitacion.descripcion, habitacion.dtservicios, habitacion.precionoche)
-                axios.post(`http://localhost:8080/alojamiento/agregarHabitaciones/` + "1", habitacion )
+                axios.post(`http://localhost:8080/alojamiento/agregarHabitaciones/` + "0", habitacion )
                 
                 .then(res => {
                   alert("Se creo el anfitrion correctamente")
