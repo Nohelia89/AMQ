@@ -12,6 +12,7 @@ import FormAnfitrion from './Componentes/FormAnfitrion/FormAnfitrion';
 import FormAdmin from './Componentes/FormAdmin/FormAdmin';
 import AltaAlojamiento from './Componentes/Alojamiento/AltaAlojamiento';
 import UserProfile from './Componentes/UserProfile/UserProfile';
+import ItemListContainer from './Componentes/ItemListContainer/ItemListContainer';
 
 
 function App() {
@@ -52,7 +53,9 @@ function App() {
         <Route
             path = "/altaAlojamiento" element = { <AltaAlojamiento /> }  
         />
-
+     <Route
+            path = "/listarAlojamientos" element = { <ItemListContainer /> }  
+        />
         <Route
             path = "/*" element = { <Navigate to = '/' /> }  
         />
