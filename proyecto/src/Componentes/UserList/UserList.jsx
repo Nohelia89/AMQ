@@ -85,7 +85,7 @@ return (
               
             </tr>
           </thead>
-          {usuario.map(usuario => <tbody key={usuario.email} >
+          {usuario.map(usuario => <tbody key={usuario.id} >
             <tr>
             {usuario.tipo === "Ad" ? 
              <td>Administrador</td> : (usuario.tipo === "Hu" ? <td>Huesped</td>  : <td>Anfitrion</td> )            
@@ -93,8 +93,8 @@ return (
               <td>{usuario.nombre}</td>
               <td>{usuario.apellido}</td>
               <td>{usuario.email}</td>
-              {usuario.activo === true ? 
-              <td><Button variant="danger" onClick={() => Desactivar(usuario.id)}>Desactivar</Button></td> : <td><Button variant="success" >Activar</Button></td> 
+              { usuario.tipo !== "Ad" ? (usuario.activo === true ? 
+              <td><Button variant="danger" onClick={() => Desactivar(usuario.id)}>Desactivar</Button></td> : <td><Button variant="success" >Activar</Button></td>) : <td>Activo</td>  
             }
              {usuario.bloqueado === true ? 
               <td><Button variant="dark" onClick={() => Desbloquear(usuario.id)}> Desbloquear </Button></td> : <td><Button variant="success" onClick={() => Bloquear(usuario.id)}>Bloquear</Button></td> 
