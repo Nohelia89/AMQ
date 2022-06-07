@@ -39,18 +39,59 @@ function ItemListContainer() {
 
 
   
-  axios.get("http://localhost:8080/alojamiento/listarAlojamientos")
+/*   axios.get("http://localhost:8080/alojamiento/listarAlojamientos")
   .then(res => {
   const alojamiento = res.data;
     setAloj( alojamiento);
     setLoading(false);
-  })
+  }) */
+
+/*   var alojamiento = {
+    
+      id_anf: 0,
+      aloj_activo: true,
+      aloj_nombre: "string",
+      aloj_desc: "string",
+      aloj_pais: "1001",
+      aloj_ciudad: "string",
+      hab_desc: "string",
+      hab_precio: 0,
+      hab_precio_hasta: 1000000,
+      hab_camas: 0,
+      hab_camas_mas_de: 0,
+      hab_serv_aire: true,
+      hab_serv_tvCable: true,
+      hab_serv_jacuzzi: true,
+      hab_serv_wifi: true,
+      hab_serv_desayuno: true,
+      hab_serv_parking: true
+    
+  }; */
+     var alojamiento = {
+    
+      aloj_pais: "pais_ 1001",
+      
+    
+  }; 
+  
+    axios.post(`http://localhost:8080/alojamiento/listarAlojamientos`, alojamiento ) 
+                
+                .then(res => {
+                  console.log(res.data)
+                  const alojamiento = res.data;
+                  
+    setAloj( res.data);
+    console.log(alojamiento+ "SOY ALOJAMIENTOOOOOOOOOOOOOOOOOOOOOOO" + aloj)
+    setLoading(false);
+                })
+
+    
   return (
 
     <>
 
 
-
+  {console.log(aloj+"soy alojjjjjjjjjjjj")}
       {loading ? <h2>Cargando...</h2> : <CardGroup><ItemList alojamiento={aloj} /></CardGroup>}
 
     </>
