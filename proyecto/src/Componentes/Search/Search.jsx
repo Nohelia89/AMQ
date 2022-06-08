@@ -11,7 +11,7 @@ function Search() {
 
     const [val , setVal] = useState();
     const [valC , setValC] = useState();
-    const [valP , setValP] = useState();
+    const [valP , setValP] = useState(0);
     const [precioDesde , setPrecioDesde] = useState();
     const [precioHasta , setPrecioHasta] = useState();
     const [valorPais , setValor] = useState([]);
@@ -25,39 +25,64 @@ function Search() {
       
     }; 
 
+
+   
+
+      useEffect(() => {
+    
+
+setPrecioDesde(0);
+setPrecioHasta(50);
+
+          console.log(valP);
+        if (valP === "1"){
+          console.log("entre al if 1" )
+     
+            setPrecioDesde(0);
+            setPrecioHasta(50);
+        } else if (valP === "2"){
+          console.log("entre al if 2" )
+          setPrecioDesde(51);
+          setPrecioHasta(100);
+        } else if (valP === "3") {
+          setPrecioDesde("101");
+          setPrecioHasta("200");
+        } else if (valP === "4") {
+          setPrecioDesde("201");
+            setPrecioHasta("300");
+        } else if (valP === "5") {
+          setPrecioDesde("301");
+          setPrecioHasta("1000");
+        }
+    
+          
+        console.log(precioDesde + "precio desde")
+        console.log(precioHasta + "precio hasta")
+    
+          
+        
+      },[valP])
+    
+   
+
    
     async function buscar() {
   
 
-        try {
-        
-            if (valP === 1){
-                setPrecioDesde("0");
-                setPrecioHasta("50");
-            } else if (valP === 2){
-              setPrecioDesde("51");
-              setPrecioHasta("100");
-            } else if (valP === 3) {
-              setPrecioDesde("101");
-              setPrecioHasta("200");
-            } else if (valP === 4) {
-              setPrecioDesde("201");
-                setPrecioHasta("300");
-            } else if (valP === 5) {
-              setPrecioDesde("301");
-              setPrecioHasta("1000");
-            }
-        console.log(precioDesde);
+  
+console.log("entre a buscar ")
           
     var alojamiento = {
     
         aloj_idPais: val,
         //calificacion_global: valC,
-        hab_precio: '',
-        hab_precio_hasta: ''
+        hab_precio: precioDesde,
+        hab_precio_hasta: precioHasta
        
       
     }; 
+    console.log(precioDesde + "precio desde")
+    console.log(precioHasta + "precio hasta")
 
           const response =   await axios.post(`http://localhost:8080/alojamiento/listarAlojamientos`, alojamiento ) 
         //  console.log(response.data);
@@ -66,12 +91,7 @@ function Search() {
           return response.data;
        
           
-        } catch (err) {
-      
-          console.log("ko -> error");
-          return 'errorr';
-        }
-        
+       
       }
 
     //let valor = []
