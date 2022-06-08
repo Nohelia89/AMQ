@@ -2,7 +2,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Col, FloatingLabel, Row, Form, CardGroup } from "react-bootstrap";
 import ItemList from "../ItemList/ItemList";
-import ItemListContainer from "../ItemListContainer/ItemListContainer";
 
 
 
