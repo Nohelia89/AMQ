@@ -7,7 +7,8 @@ function ItemList({ alojamiento }) {
 
     return (
         <>
-            {alojamiento.map(alojamiento => <Item key={alojamiento.id_anf} alojamiento={alojamiento} />)}
+         {console.log(alojamiento+"soy alojamiento de itemlist")}
+            {alojamiento.map(alojamiento => <Item key={alojamiento.id} aloj={alojamiento} />)}
         </>
     )
 }

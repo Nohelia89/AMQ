@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Col, FloatingLabel, Row, Form } from "react-bootstrap";
+import { Col, FloatingLabel, Row, Form, CardGroup } from "react-bootstrap";
+import ItemList from "../ItemList/ItemList";
+import ItemListContainer from "../ItemListContainer/ItemListContainer";
 
 
 
@@ -12,6 +14,9 @@ function Search() {
     const [valC , setValC] = useState();
     const [valP , setValP] = useState();
     const [valorPais , setValor] = useState([]);
+    const [botontype, setBotonType ] = useState('sincards');
+    const [aloj , setAloj] = useState([]);
+
     var paises = {
     
         activo: true,
@@ -21,6 +26,7 @@ function Search() {
 
    
     async function buscar() {
+  setBotonType('concards')
 
         try {
       
@@ -58,7 +64,8 @@ function Search() {
 
 
           const response =   await axios.post(`http://localhost:8080/alojamiento/listarAlojamientos`, alojamiento ) 
-          console.log(response.data);
+        //  console.log(response.data);
+        setAloj(response.data)
           return response.data;
           
         } catch (err) {
@@ -92,7 +99,15 @@ function Search() {
 
       
       
-   
+  const Habitacion= ()=> {
+  
+    return (
+      <>
+      {console.log(aloj+"soy aloj")}
+      <CardGroup><ItemList alojamiento={aloj} /></CardGroup>
+      </>
+    )
+  }
  
 
      
@@ -117,6 +132,10 @@ function Search() {
       }
 
     return (
+
+
+
+    botontype === "sincards" ? 
 <>
        
 
@@ -166,7 +185,10 @@ function Search() {
   
 </Row>
 </div>               
-</>  )
+</> 
+:
+
+<Habitacion /> )
   }
   
   export default Search;

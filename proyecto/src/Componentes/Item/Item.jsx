@@ -14,13 +14,13 @@ function Item({ aloj }) {
       <Card style={{ width: '18rem' }}>
         <Card.Img variant="top" />
         <Card.Body>
-          <Card.Title>{aloj.aloj_nombre}</Card.Title>
+          <Card.Title>Nombre:{aloj.nombre}</Card.Title>
           <Card.Text>
 
           </Card.Text>
         </Card.Body>
         <ListGroup className="list-group-flush">
-          <ListGroupItem>  {aloj.aloj_pais}</ListGroupItem>
+          <ListGroupItem> Pais: {aloj.pais}</ListGroupItem>
 
         </ListGroup>
        
