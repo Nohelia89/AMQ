@@ -25,7 +25,7 @@ function Search() {
 
    
     async function buscar() {
-  setBotonType('concards')
+  
 
         try {
       
@@ -49,30 +49,30 @@ function Search() {
                 precio_hasta = 1000;
             }
         
-        
+          
     var alojamiento = {
     
-        aloj_pais: "Afganistán",
+        aloj_idPais: val,
         //calificacion_global: valC,
         hab_precio: precio_desde,
         hab_precio_hasta: precio_hasta
        
-
+       
     }; 
-
-
 
           const response =   await axios.post(`http://localhost:8080/alojamiento/listarAlojamientos`, alojamiento ) 
         //  console.log(response.data);
         setAloj(response.data)
+        setBotonType('concards')
           return response.data;
+       
           
         } catch (err) {
       
           console.log("ko -> error");
           return 'errorr';
         }
-
+        
       }
 
     //let valor = []
