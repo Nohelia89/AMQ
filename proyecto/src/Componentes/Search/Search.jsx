@@ -32,22 +32,22 @@ function Search() {
         try {
         
             if (valP === 1){
-                setPrecioDesde(0);
-                setPrecioHasta(50);
+                setPrecioDesde("0");
+                setPrecioHasta("50");
             } else if (valP === 2){
-              setPrecioDesde(51);
-              setPrecioHasta(100);
+              setPrecioDesde("51");
+              setPrecioHasta("100");
             } else if (valP === 3) {
-              setPrecioDesde(101);
-              setPrecioHasta(200);
+              setPrecioDesde("101");
+              setPrecioHasta("200");
             } else if (valP === 4) {
-              setPrecioDesde(201);
-                setPrecioHasta(300);
+              setPrecioDesde("201");
+                setPrecioHasta("300");
             } else if (valP === 5) {
-              setPrecioDesde(301);
-              setPrecioHasta(1000);
+              setPrecioDesde("301");
+              setPrecioHasta("1000");
             }
-        
+        console.log(precioDesde);
           
     var alojamiento = {
     
@@ -107,13 +107,6 @@ function Search() {
     )
   }
   
-  
-
- 
-
-     
-            
-
 
       const handleChange = (e) => {
         console.log(`Seleccionaste ${e.target.value}`);
@@ -147,11 +140,11 @@ function Search() {
   <FloatingLabel controlId="floatingSelectGrid" label="Calificacion Global">
       <Form.Select aria-label="Floating label select example" value={valC} onChange={handleChangeC}>
       
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
+        <option value="6">1</option>
+        <option value="7">2</option>
+        <option value="8">3</option>
+        <option value="9">4</option>
+        <option value="10">5</option>
       </Form.Select>
     </FloatingLabel>
   </Col>
@@ -160,8 +153,8 @@ function Search() {
       <Form.Select aria-label="Floating label select example" value={val} onChange={handleChange}>
       
    
-        {valorPais.map(option => {
-            return (<option key={option.direcion.pais.id} value={option.direcion.pais.id}>{option.direcion.pais.nombre}</option>);
+        {valorPais.map((option, index) => {
+            return (<option key={index} value={index}>{option.direcion.pais.nombre}</option>);
         })}
  
     
