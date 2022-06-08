@@ -52,7 +52,7 @@ function Search() {
         
     var alojamiento = {
     
-        aloj_pais: "pais_ 1001",
+        aloj_pais: "Afganistán",
         //calificacion_global: valC,
         hab_precio: precio_desde,
         hab_precio_hasta: precio_hasta
@@ -162,7 +162,7 @@ function Search() {
       
    
         {valorPais.map(option => {
-            return (<option key={option.id} value={option.id}>{option.nombre}</option>);
+            return (<option key={option.direcion.pais.id} value={option.direcion.pais.id}>{option.direcion.pais.nombre}</option>);
         })}
  
     
