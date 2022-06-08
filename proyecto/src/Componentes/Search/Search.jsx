@@ -70,7 +70,6 @@ setPrecioHasta(50);
   
 
   
-console.log("entre a buscar ")
           
     var alojamiento = {
     

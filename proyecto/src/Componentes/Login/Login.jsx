@@ -1,8 +1,51 @@
- import { Link } from 'react-router-dom';
+
+import axios from 'axios';
+import { Base64 } from 'js-base64';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import LogoSinFondo from '../Logo/LogoSinFondo';
 import './Login.css';
 
 export default function Login() {
+
+   const [dataForm, setDataForm] = useState({ email: '', password: ''})
+
+   var hash = Base64.encode(dataForm.password); 
+ 
+
+      
+      
+    const acceder = async () => {
+    
+  
+    
+      
+      var acceso = {
+  
+        email: dataForm.email,
+       
+        pass: hash,
+   
+      } ;
+  
+            const response =   await axios.post(`http://localhost:8080/usuario/login`+acceso) 
+          //  console.log(response.data);
+        
+            return response.data;
+         
+            
+         
+        }
+
+        const handleChange = (e) => {
+         setDataForm({
+           ...dataForm,
+           [e.target.name]: e.target.value
+         })
+       }
+
+
+
     return (
 
 <div class="overlay">
@@ -16,20 +59,16 @@ export default function Login() {
    </header>
    <br />
    <div class="field-set">
-         <span class="input-item">
-         <i class="bi bi-person-circle"></i>
-         </span>
-         <input class="form-input" id="txt-input" type="text" placeholder="Usuario" required />
-     
+        
+         
+         <input required class="form-input1" name='email' type='text' value={dataForm.email} onChange={handleChange} placeholder='Ingrese email'></input>
       <br />
-      <span class="input-item">
-      <i class="bi bi-key"></i>
-      </span>
-      <input class="form-input" type="password" placeholder="Contraseña" id="pwd"  name="password" required />
+     
+      <input required type='password' name='password' class="form-input1" value={dataForm.password} onChange={handleChange} placeholder='Ingrese Password'></input>
      
       <br />
      
-      <button class="log-in"> Acceder </button>
+      <button class="log-in"  onClick={acceder()}> Acceder </button>
    </div>
 
    <div class="other">
@@ -37,6 +76,7 @@ export default function Login() {
       
       <button class="sign-up">Registrarse </button>
       </Link>
+
       <Link to="/forgot">
       <button class="btn submits frgt-pass" >¿Olvidaste tu contraseña?</button>
       </Link>
