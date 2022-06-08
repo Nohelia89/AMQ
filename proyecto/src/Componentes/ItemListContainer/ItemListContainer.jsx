@@ -15,7 +15,7 @@ function ItemListContainer() {
   const [aloj, setAloj] = useState([])
   const [loading, setLoading] = useState(true)
  // const { category } = useParams()
-
+//var aloj =[]
 
 
   /* useEffect(() => {
@@ -73,24 +73,31 @@ function ItemListContainer() {
       
     
   }; 
-  
-    axios.post(`http://localhost:8080/alojamiento/listarAlojamientos`, alojamiento ) 
-                
-                .then(res => {
-                  console.log(res.data)
-                  const alojamiento = res.data;
+  const listar = async()  =>{
+    //preventDefault();
+   
+      await 
+      axios.post(`http://localhost:8080/alojamiento/listarAlojamientos`, alojamiento ) 
                   
-    setAloj( res.data);
-    console.log(alojamiento+ "SOY ALOJAMIENTOOOOOOOOOOOOOOOOOOOOOOO" + aloj)
-    setLoading(false);
-                })
-
+                  .then(res => {
+                    console.log(res.data)
+            
+                    const alojamiento = res.data;
+                    // aloj = res.data;
+                    
+      setAloj(alojamiento);
+     // console.log(alojamiento+ "SOY ALOJAMIENTOOOOOOOOOOOOOOOOOOOOOOO" + aloj)
+     console.log("SOY ALOJAMIENTOOOOOOOOOOOOOOOOOOOOOOO" + aloj)
+     setLoading(false);
+                  })
+  
+  }
     
   return (
 
     <>
 
-
+{listar()}
   {console.log(aloj+"soy alojjjjjjjjjjjj")}
       {loading ? <h2>Cargando...</h2> : <CardGroup><ItemList alojamiento={aloj} /></CardGroup>}
 
