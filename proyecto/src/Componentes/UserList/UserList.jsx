@@ -2,7 +2,7 @@
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function UserList() {
   
