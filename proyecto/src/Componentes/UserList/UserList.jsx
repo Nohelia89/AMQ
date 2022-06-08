@@ -9,12 +9,23 @@ export default function UserList() {
   const [isLoading, setIsLoading] = useState(true);
   const [usuario, setUsuario] = useState([]);
 
-  axios.get("http://localhost:8080/usuario/listar")
+
+  useEffect(() => {
+    
+   axios.get("http://localhost:8080/usuario/listar")
   .then(res => {
   const usuario = res.data;
     setUsuario( usuario);
     setIsLoading(false);
   })
+
+
+      
+    
+  },[])
+
+
+
 
   const Desactivar = (id) => {
       axios.post(`http://localhost:8080/usuario/desactivar/` + id, id,{
