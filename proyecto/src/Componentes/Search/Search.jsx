@@ -53,10 +53,10 @@ function Search() {
     
         aloj_idPais: val,
         //calificacion_global: valC,
-        hab_precio: precioDesde,
-        hab_precio_hasta: precioHasta
+        hab_precio: '',
+        hab_precio_hasta: ''
        
-       
+      
     }; 
 
           const response =   await axios.post(`http://localhost:8080/alojamiento/listarAlojamientos`, alojamiento ) 
@@ -84,7 +84,7 @@ function Search() {
     
  
 
-    axios.post(`http://localhost:8080/alojamiento/listarAlojamientos`, paises ) 
+    axios.get(`http://localhost:8080/alojamiento/getPaises`) 
     .then(res => {
     let paises = res.data;
       setValor(paises);
@@ -153,8 +153,8 @@ function Search() {
       <Form.Select aria-label="Floating label select example" value={val} onChange={handleChange}>
       
    
-        {valorPais.map((option, index) => {
-            return (<option key={index} value={index}>{option.direcion.pais.nombre}</option>);
+        {valorPais.map((option) => {
+            return (<option key={option.id} value={option.id}>{option.valor}</option>);
         })}
  
     
