@@ -15,7 +15,7 @@ function ItemListContainer() {
   const [aloj, setAloj] = useState([])
   const [loading, setLoading] = useState(true)
  // const { category } = useParams()
-//var aloj =[]
+
 
 
   /* useEffect(() => {
@@ -73,33 +73,43 @@ function ItemListContainer() {
       
     
   }; 
-  const listar = async()  =>{
-    //preventDefault();
-   
-      await 
-      axios.post(`http://localhost:8080/alojamiento/listarAlojamientos`, alojamiento ) 
-                  
-                  .then(res => {
-                    console.log(res.data)
-            
-                    const alojamiento = res.data;
-                    // aloj = res.data;
-                    
-      setAloj(alojamiento);
-     // console.log(alojamiento+ "SOY ALOJAMIENTOOOOOOOOOOOOOOOOOOOOOOO" + aloj)
-     console.log("SOY ALOJAMIENTOOOOOOOOOOOOOOOOOOOOOOO" + aloj)
-     setLoading(false);
-                  })
   
+  async function listar() {
+
+    try {
+  
+      const response =   await axios.post(`http://localhost:8080/alojamiento/listarAlojamientos`, alojamiento ) 
+      return response.data;
+  
+    } catch (err) {
+  
+      console.log("ko -> error");
+      return 'errorr';
+    }
   }
-    
-  return (
+
+  /*  axios.post(`http://localhost:8080/alojamiento/listarAlojamientos`, alojamiento ) 
+                
+                .then(res => {
+                  console.log(res.data)
+                  var alojamiento = res.data;
+                  
+    setAloj( res.data);
+    console.log(alojamiento+ "SOY ALOJAMIENTOOOOOOOOOOOOOOOOOOOOOOO" + aloj)
+    setLoading(false);
+                })
+
+    */
+  return ( 
 
     <>
+{window.addEventListener('load', async(e) => {
+ const valor = await listar()
+ console.log(valor);
+ loading ? <h2>Cargando...</h2> : <CardGroup><ItemList alojamiento={valor} /></CardGroup>
+})
 
-{listar()}
-  {console.log(aloj+"soy alojjjjjjjjjjjj")}
-      {loading ? <h2>Cargando...</h2> : <CardGroup><ItemList alojamiento={aloj} /></CardGroup>}
+     }
 
     </>
   )

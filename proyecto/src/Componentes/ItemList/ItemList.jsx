@@ -2,12 +2,12 @@
 import Item from "../Item/Item";
 
 
-function ItemList({ aloj }) {
+function ItemList({ alojamiento }) {
 
 
     return (
         <>
-            {aloj.map(aloj => <Item key={aloj.id_anf} aloj={aloj} />)}
+            {alojamiento.map(alojamiento => <Item key={alojamiento.id_anf} alojamiento={alojamiento} />)}
         </>
     )
 }
