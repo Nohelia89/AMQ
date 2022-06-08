@@ -65,14 +65,15 @@ function Search() {
 
       }
 
-    var valor = []
+    let valor = []
 
     async function listar() {
 
         try {
       
-          const response =   await axios.post(`http://localhost:8080/alojamiento/listarAlojamientos`, paises ) 
-          return response.data;
+          const resp =   await axios.post(`http://localhost:8080/alojamiento/listarAlojamientos`, paises ) 
+          return resp.data;
+         
       
         } catch (err) {
       
@@ -111,6 +112,7 @@ function Search() {
             
       {window.addEventListener("DOMContentLoaded", async(e) => {
           valor = await listar();
+          console.log(valor + "sor valor")
        valor.map((pais) => {
        
                 <option key={pais.id} value={pais.id}>
