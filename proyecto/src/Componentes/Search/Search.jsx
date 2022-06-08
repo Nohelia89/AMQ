@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Col, FloatingLabel, Row, Form } from "react-bootstrap";
 
 
@@ -11,7 +11,7 @@ function Search() {
     const [val , setVal] = useState();
     const [valC , setValC] = useState();
     const [valP , setValP] = useState();
-
+    const [valorPais , setValor] = useState([]);
     var paises = {
     
         activo: true,
@@ -19,6 +19,7 @@ function Search() {
       
     }; 
 
+   
     async function buscar() {
 
         try {
@@ -54,9 +55,12 @@ function Search() {
 
     }; 
 
+
+
           const response =   await axios.post(`http://localhost:8080/alojamiento/listarAlojamientos`, alojamiento ) 
           console.log(response.data);
           return response.data;
+          
         } catch (err) {
       
           console.log("ko -> error");
@@ -65,22 +69,34 @@ function Search() {
 
       }
 
-    let valor = []
+    //let valor = []
+ 
+  
+ 
+  
+  
+  useEffect(() => {
+    
+ 
 
-    async function listar() {
+    axios.post(`http://localhost:8080/alojamiento/listarAlojamientos`, paises ) 
+    .then(res => {
+    let paises = res.data;
+      setValor(paises);
+    })
 
-        try {
+
       
-          const resp =   await axios.post(`http://localhost:8080/alojamiento/listarAlojamientos`, paises ) 
-          return resp.data;
-         
+    
+  },[])
+
       
-        } catch (err) {
       
-          console.log("ko -> error");
-          return 'errorr';
-        }
-      }
+   
+ 
+
+     
+            
 
 
       const handleChange = (e) => {
@@ -106,23 +122,7 @@ function Search() {
 
         <div style={{marginLeft: "18%", width: "1000px" , padding:"15px", borderRadius: "5px", boxShadow: "0px 9px 30px 9px", border: "1.5px solid gray", backgroundColor: "lightgrey", marginTop: "40px"}}>      
 <Row className="g-3">
-<Col md style={{padding:"10px"}}>
-    <FloatingLabel controlId="floatingSelectGrid" label="Pais">
-      <Form.Select aria-label="Floating label select example" value={val} onChange={handleChange}>
-            
-      {window.addEventListener("DOMContentLoaded", async(e) => {
-          valor = await listar();
-          console.log(valor + "sor valor")
-       valor.map((pais) => {
-       
-                <option key={pais.id} value={pais.id}>
-                  {pais.nombre}
-                </option>
-                 console.log(pais.id)
-            })} )}
-      </Form.Select >
-    </FloatingLabel>
-  </Col>
+
   <Col md style={{padding:"10px"}} >
   <FloatingLabel controlId="floatingSelectGrid" label="Calificacion Global">
       <Form.Select aria-label="Floating label select example" value={valC} onChange={handleChangeC}>
@@ -132,6 +132,20 @@ function Search() {
         <option value="3">3</option>
         <option value="3">4</option>
         <option value="3">5</option>
+      </Form.Select>
+    </FloatingLabel>
+  </Col>
+  <Col md style={{padding:"10px"}} >
+  <FloatingLabel controlId="floatingSelectGrid" label="País">
+      <Form.Select aria-label="Floating label select example" value={val} onChange={handleChange}>
+      
+   
+        {valorPais.map(option => {
+            return (<option key={option.id} value={option.id}>{option.nombre}</option>);
+        })}
+ 
+    
+        
       </Form.Select>
     </FloatingLabel>
   </Col>
