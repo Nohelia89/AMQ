@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { Col, FloatingLabel, Row, Form, CardGroup } from "react-bootstrap";
-import ItemList from "../ItemList/ItemList";
+import { Col, FloatingLabel, Row, Form } from "react-bootstrap";
 
 
 
@@ -12,14 +11,7 @@ function Search() {
     const [val , setVal] = useState();
     const [valC , setValC] = useState();
     const [valP , setValP] = useState();
-    const [botontype, setBotonType ] = useState('aloj');
 
-    const changeStateButton = (e) => {
-        setBotonType("hab")
-        
-      }
-    
-      
     var paises = {
     
         activo: true,
@@ -27,7 +19,7 @@ function Search() {
       
     }; 
 
-     const Buscar= ()=> {
+    async function buscar() {
 
         try {
       
@@ -62,14 +54,15 @@ function Search() {
 
     }; 
 
-          const response =   axios.post(`http://localhost:8080/alojamiento/listarAlojamientos`, alojamiento ) 
+          const response =   await axios.post(`http://localhost:8080/alojamiento/listarAlojamientos`, alojamiento ) 
           console.log(response.data);
-          return (<ItemList alojamiento={response.data} />)
+          return response.data;
         } catch (err) {
       
           console.log("ko -> error");
+          return 'errorr';
         }
-        
+
       }
 
     var valor = []
@@ -107,7 +100,6 @@ function Search() {
       }
 
     return (
-        botontype === "aloj" ? 
 <>
        
 
@@ -153,12 +145,12 @@ function Search() {
     </FloatingLabel>
   </Col>
   <Col md style={{padding:"10px", paddingRight:"90px"}} >
-  <button className = "boton" onClick={changeStateButton} >Buscar</button>
+  <button className = "boton" onClick={buscar} >Buscar</button>
   </Col>
   
 </Row>
 </div>               
-</> : < Buscar /> )
+</>  )
   }
   
   export default Search;
