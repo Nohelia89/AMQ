@@ -12,6 +12,8 @@ function Search() {
     const [val , setVal] = useState();
     const [valC , setValC] = useState();
     const [valP , setValP] = useState();
+    const [precioDesde , setPrecioDesde] = useState();
+    const [precioHasta , setPrecioHasta] = useState();
     const [valorPais , setValor] = useState([]);
     const [botontype, setBotonType ] = useState('sincards');
     const [aloj , setAloj] = useState([]);
@@ -28,25 +30,22 @@ function Search() {
   
 
         try {
-      
-            var precio_desde = '';
-            var precio_hasta = '';
         
             if (valP === 1){
-                precio_desde = 0;
-                precio_hasta = 50;
+                setPrecioDesde(0);
+                setPrecioHasta(50);
             } else if (valP === 2){
-                precio_desde = 51;
-                precio_hasta = 100;
+              setPrecioDesde(51);
+              setPrecioHasta(100);
             } else if (valP === 3) {
-                precio_desde = 101;
-                precio_hasta = 200;
+              setPrecioDesde(101);
+              setPrecioHasta(200);
             } else if (valP === 4) {
-                precio_desde = 201;
-                precio_hasta = 300;
+              setPrecioDesde(201);
+                setPrecioHasta(300);
             } else if (valP === 5) {
-                precio_desde = 301;
-                precio_hasta = 1000;
+              setPrecioDesde(301);
+              setPrecioHasta(1000);
             }
         
           
@@ -54,8 +53,8 @@ function Search() {
     
         aloj_idPais: val,
         //calificacion_global: valC,
-        hab_precio: precio_desde,
-        hab_precio_hasta: precio_hasta
+        hab_precio: precioDesde,
+        hab_precio_hasta: precioHasta
        
        
     }; 
@@ -151,8 +150,8 @@ function Search() {
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
-        <option value="3">4</option>
-        <option value="3">5</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
       </Form.Select>
     </FloatingLabel>
   </Col>
@@ -176,8 +175,8 @@ function Search() {
         <option value="1">US$ 0 - US$ 50</option>
         <option value="2">US$ 51 - US$ 100</option>
         <option value="3">US$ 101 - US$ 200</option>
-        <option value="3">US$ 201 - US$ 300</option>
-        <option value="3">US$ 301 - US$ 1000</option>
+        <option value="4">US$ 201 - US$ 300</option>
+        <option value="5">US$ 301 - US$ 1000</option>
       </Form.Select>
     </FloatingLabel>
   </Col>
