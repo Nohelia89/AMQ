@@ -13,6 +13,7 @@ import FormAdmin from './Componentes/FormAdmin/FormAdmin';
 import AltaAlojamiento from './Componentes/Alojamiento/AltaAlojamiento';
 import UserProfile from './Componentes/UserProfile/UserProfile';
 import ItemListContainer from './Componentes/ItemListContainer/ItemListContainer';
+import Search from './Componentes/Search/Search';
 
 
 function App() {
@@ -54,7 +55,7 @@ function App() {
             path = "/altaAlojamiento" element = { <AltaAlojamiento /> }  
         />
      <Route
-            path = "/listarAlojamientos" element = { <ItemListContainer /> }  
+            path = "/listarAlojamientos" element = { <Search /> }  
         />
         <Route
             path = "/*" element = { <Navigate to = '/' /> }  
