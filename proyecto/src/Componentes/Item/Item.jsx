@@ -20,7 +20,7 @@ function Item({ aloj }) {
           </Card.Text>
         </Card.Body>
         <ListGroup className="list-group-flush">
-          <ListGroupItem> Pais: {aloj.direcion.pais.nombre}</ListGroupItem>
+          <ListGroupItem> Pais: {aloj.direcion.ciudad}</ListGroupItem>
 
         </ListGroup>
        

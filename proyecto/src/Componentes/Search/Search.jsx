@@ -18,12 +18,6 @@ function Search() {
     const [botontype, setBotonType ] = useState('sincards');
     const [aloj , setAloj] = useState([]);
 
-    var paises = {
-    
-        activo: true,
-        
-      
-    }; 
 
 
    
@@ -103,7 +97,7 @@ setPrecioHasta(50);
     
  
 
-    axios.get(`http://localhost:8080/alojamiento/getPaises`) 
+    axios.get(`http://localhost:8080/alojamiento/getPaisesEnAlojamiento`) 
     .then(res => {
     let paises = res.data;
       setValor(paises);
