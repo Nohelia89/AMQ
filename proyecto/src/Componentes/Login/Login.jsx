@@ -4,10 +4,11 @@ import { Base64 } from 'js-base64';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import LogoSinFondo from '../Logo/LogoSinFondo';
+import { useUserContext } from '../UserContext/userContext';
 import './Login.css';
 
 export default function Login() {
-
+   const {setear} = useUserContext();
    const [dataForm, setDataForm] = useState({ email: '', password: ''})
    const [user , setUser] = useState();
    
@@ -22,28 +23,14 @@ export default function Login() {
 
 
 
-   /*async function acceder() {
-
-    
-     
-            const response =   await axios.post(`http://localhost:8080/usuario/login`, acceso) 
-            setUser(response.data)
-            console.log(response.data);
-            return response.data;
-            
-         
-            
-         
-        }*/
-        
         
         async function acceder(e) {
           e.preventDefault();
           const response =  await axios.post(`http://localhost:8080/usuario/login`, acceso) 
-          setUser(response.data.jwToken)
-          console.log(response.data.jwToken)
-            return response.data.jwToken;
-      
+          
+          
+          
+            return setear(response.data.jwToken)
          } 
             
           

@@ -1,56 +1,32 @@
 import { createContext, useContext, useState} from "react";
 
-const CartContext = createContext([])
+const UserContext = createContext([])
 
-export const useCartContext =  () => useContext(CartContext)
+export const useUserContext =  () => useContext(UserContext)
 
-function CartContextProvider({children}) {
+function UserContextProvider({children}) {
 
-    const [cartList, setCartList ] = useState([]);
-    const [cartList2, setCartList2 ] = useState([]);
+    const [userToken, setUserToken ] = useState([]);
+  
 
-    const addToCart = (item) => {
 
-        const arraysin = cartList.filter(i=> i.id !== item.id);
-        const arraycon = cartList.filter(i=> i.id === item.id);
 
-        if (arraycon.length  === 1) {
-            setCartList( [...arraysin, item])
-        }else{
-            setCartList( [...cartList, item])
-      }
 
-        
-    }
 
-    const eliminarItem = (id) => {
-        const array3 = cartList.filter(i=> i.id !== id );
-        setCartList( [...array3])
-
-        const array4 = cartList2.filter(i=> i.id !== id );
-        setCartList2( [...array4])
+    const setear = (token) => {
+        setUserToken(token)
+        console.log("ENTRE AL TOKEN " + userToken )
     }
 
 
-    const vaciarCart = () => {
-        setCartList( [])
-        setCartList2( [])
-    }
-
-    const precioTotal = () => {
-        return cartList.reduce((acum, prod) => acum + (prod.cantidad * prod.price) , 0)
-    }
-    const cantidadTotalItem = () => {
-        return cartList.reduce((acum, prod) => acum += prod.cantidad , 0)
-    }
 
     return (
-        <CartContext.Provider value={{cartList, cartList2, addToCart, vaciarCart,precioTotal,cantidadTotalItem, eliminarItem}}>
+        <UserContext.Provider value={{userToken, setear}}>
 
         {children}
 
-        </CartContext.Provider>
+        </UserContext.Provider>
     )
 }
 
-export default CartContextProvider
+export default UserContextProvider
