@@ -3,12 +3,13 @@ import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import { useEffect, useState } from "react";
+import { useUserContext } from '../UserContext/userContext';
 
 export default function UserList() {
   
   const [isLoading, setIsLoading] = useState(true);
   const [usuario, setUsuario] = useState([]);
-
+  const {userToken, userType} = useUserContext();
 
   useEffect(() => {
     
@@ -19,7 +20,8 @@ export default function UserList() {
     setIsLoading(false);
   })
 
-
+  console.log("ENTRE AL TOKEN LISTADO" + userToken )
+  console.log("GUARDE EL TIPO DE USUARIO LISTADO: " + userType )  
       
     
   },[])

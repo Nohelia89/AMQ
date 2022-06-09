@@ -1,17 +1,17 @@
 
 import axios from 'axios';
 import { Base64 } from 'js-base64';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import LogoSinFondo from '../Logo/LogoSinFondo';
 import { useUserContext } from '../UserContext/userContext';
 import './Login.css';
 
 export default function Login() {
-   const {setear, userToken} = useUserContext();
+   const {setearToken, setearTipoUsuario} = useUserContext();
    const [dataForm, setDataForm] = useState({ email: '', password: ''})
-   const [user , setUser] = useState();
-   
+   const [user , setUser] = useState('');
+   const [token , setToken] = useState('');
    var hash = Base64.encode(dataForm.password); 
    var acceso = {
   
@@ -23,11 +23,25 @@ export default function Login() {
 
 
 
+  useEffect(() => {
+    
+   setearTipoUsuario(user)
+   setearToken(token)
+   
+           
+         },[][token, user])
         
+
+
+
+
         async function acceder(e) {
           e.preventDefault();
           const response =  await axios.post(`http://localhost:8080/usuario/login`, acceso) 
-            return setear(response.data.jwToken)
+          setUser(response.data.tipo)
+          setToken(response.data.jwToken)
+          console.log("VARIABLE LOGIN "+ user)
+           console.log("VARIABLE TOKEN"+ token)
          } 
             
         const handleChange = (e) => {

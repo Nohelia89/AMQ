@@ -2,13 +2,14 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Col, FloatingLabel, Row, Form, CardGroup } from "react-bootstrap";
 import ItemList from "../ItemList/ItemList";
+import { useUserContext } from "../UserContext/userContext";
 
 
 
 
 function Search() {
 
-
+  const {userToken, userType} = useUserContext();
     const [val , setVal] = useState();
     const [valC , setValC] = useState();
     const [valP , setValP] = useState(0);
@@ -56,8 +57,6 @@ setPrecioHasta(50);
           
         
       },[valP])
-    
-   
 
    
     async function buscar() {
@@ -103,8 +102,8 @@ setPrecioHasta(50);
       setValor(paises);
     })
 
-
-      
+    console.log("ENTRE AL TOKEN usercontext" + userToken )
+    console.log("GUARDE EL TIPO DE USUARIO usercontext: " + userType )  
     
   },[])
 
