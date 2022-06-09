@@ -14,11 +14,13 @@ import AltaAlojamiento from './Componentes/Alojamiento/AltaAlojamiento';
 import UserProfile from './Componentes/UserProfile/UserProfile';
 
 import Search from './Componentes/Search/Search';
+import UserContextProvider from './Componentes/UserContext/userContext';
 
 
 function App() {
   return (
     <BrowserRouter>
+     <UserContextProvider>
     <div className="App">
     <NavBar/>
      <Routes>
@@ -63,8 +65,9 @@ function App() {
 
      </Routes>
      </div>
+     </UserContextProvider>
     </BrowserRouter>
   );
 }
 
-export default App;
+export default App

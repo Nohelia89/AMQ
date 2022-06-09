@@ -9,10 +9,6 @@ function UserContextProvider({children}) {
     const [userToken, setUserToken ] = useState([]);
   
 
-
-
-
-
     const setear = (token) => {
         setUserToken(token)
         console.log("ENTRE AL TOKEN " + userToken )

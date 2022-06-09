@@ -8,7 +8,7 @@ import { useUserContext } from '../UserContext/userContext';
 import './Login.css';
 
 export default function Login() {
-   const {setear} = useUserContext();
+   const {setear, userToken} = useUserContext();
    const [dataForm, setDataForm] = useState({ email: '', password: ''})
    const [user , setUser] = useState();
    
@@ -27,23 +27,15 @@ export default function Login() {
         async function acceder(e) {
           e.preventDefault();
           const response =  await axios.post(`http://localhost:8080/usuario/login`, acceso) 
-          
-          
-          
             return setear(response.data.jwToken)
          } 
             
-          
-       
-
         const handleChange = (e) => {
          setDataForm({
            ...dataForm,
            [e.target.name]: e.target.value
          })
        }
-
-
 
     return (
 
