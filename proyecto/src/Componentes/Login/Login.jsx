@@ -9,33 +9,45 @@ import './Login.css';
 export default function Login() {
 
    const [dataForm, setDataForm] = useState({ email: '', password: ''})
-
-   var hash = Base64.encode(dataForm.password); 
- 
-
-      
-      
-    const acceder = async () => {
-    
-  
-    
-      
-      var acceso = {
-  
-        email: dataForm.email,
-       
-        pass: hash,
+   const [user , setUser] = useState();
    
-      } ;
+   var hash = Base64.encode(dataForm.password); 
+   var acceso = {
   
-            const response =   await axios.post(`http://localhost:8080/usuario/login`+acceso) 
-          //  console.log(response.data);
-        
+    email: dataForm.email,
+
+    pass: hash,
+
+  } ;
+
+
+
+   /*async function acceder() {
+
+    
+     
+            const response =   await axios.post(`http://localhost:8080/usuario/login`, acceso) 
+            setUser(response.data)
+            console.log(response.data);
             return response.data;
+            
          
             
          
-        }
+        }*/
+        
+        
+        async function acceder(e) {
+          e.preventDefault();
+          const response =  await axios.post(`http://localhost:8080/usuario/login`, acceso) 
+          setUser(response.data.jwToken)
+          console.log(response.data.jwToken)
+            return response.data.jwToken;
+      
+         } 
+            
+          
+       
 
         const handleChange = (e) => {
          setDataForm({
@@ -68,7 +80,7 @@ export default function Login() {
      
       <br />
      
-      <button class="log-in"  onClick={acceder()}> Acceder </button>
+      <button class="log-in"  onClick={acceder}> Acceder </button>
    </div>
 
    <div class="other">

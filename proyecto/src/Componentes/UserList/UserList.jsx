@@ -12,10 +12,10 @@ export default function UserList() {
 
   useEffect(() => {
     
-   axios.get("http://localhost:8080/usuario/listar")
+   axios.post("http://localhost:8080/usuario/listar", {})
   .then(res => {
   const usuario = res.data;
-    setUsuario( usuario);
+    setUsuario(usuario);
     setIsLoading(false);
   })
 
@@ -28,13 +28,7 @@ export default function UserList() {
 
 
   const Desactivar = (id) => {
-      axios.post(`http://localhost:8080/usuario/desactivar/` + id, id,{
-        headers: 
-        { "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": 
-        "Origin, X-Requested-With, Content-Type, Accept"
-        }
-      }  )
+      axios.post(`http://localhost:8080/usuario/desactivar/` + id, id )
                   
                   .then(res => {
                     alert("Usuario Desactivado")
@@ -44,13 +38,7 @@ export default function UserList() {
 
 
       const Desbloquear = (id) => {
-        axios.post(`http://localhost:8080/usuario/desbloquear/` + id, id,{
-          headers: 
-          { "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Headers": 
-          "Origin, X-Requested-With, Content-Type, Accept"
-          }
-        }  )
+        axios.post(`http://localhost:8080/usuario/desbloquear/` + id, id)
                     
                     .then(res => {
                       alert("Usuario Desbloqueado")
@@ -59,13 +47,7 @@ export default function UserList() {
         }
 
       const Bloquear = (id) => {
-        axios.post(`http://localhost:8080/usuario/bloquear/` + id, id,{
-          headers: 
-          { "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Headers": 
-          "Origin, X-Requested-With, Content-Type, Accept"
-          }
-        }  )
+        axios.post(`http://localhost:8080/usuario/bloquear/` + id, id)
                     
                     .then(res => {
                       alert("Usuario Bloqueado")
@@ -104,7 +86,7 @@ return (
               <td><Button variant="danger" onClick={() => Desactivar(usuario.id)}>Desactivar</Button></td> : <td><Button variant="success" >Activar</Button></td>) : <td>Activo</td>  
             }
              { usuario.tipo !== "Ad" ? (usuario.bloqueado === true ? 
-              <td><Button variant="dark" onClick={() => Desbloquear(usuario.id)}> Desbloquear </Button></td> : <td><Button variant="success" onClick={() => Bloquear(usuario.id)}>Bloquear</Button></td>) : <td>Desbloqueado</td>   
+              <td><Button variant="success" onClick={() => Desbloquear(usuario.id)}> Desbloquear </Button></td> : <td><Button variant="dark" onClick={() => Bloquear(usuario.id)}>Bloquear</Button></td>) : <td>Desbloqueado</td>   
             } 
             
               </tr>
