@@ -40,7 +40,7 @@ export default function Login() {
 
 
    const redirect = () => {
-      console.log("entre al redirect")
+   
       if (user === 'Hu')
          return (<NavBarAdministrador />)
        else if (user === 'Ad')
@@ -117,6 +117,6 @@ export default function Login() {
    }
 
    return (
-
+      
    )
 }  
