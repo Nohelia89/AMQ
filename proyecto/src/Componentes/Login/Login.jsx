@@ -4,6 +4,7 @@ import { Base64 } from 'js-base64';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import FormHuesped from '../FormHuesped/FormHuesped';
+import FormAnfitrion from '../FormAnfitrion/FormAnfitrion';
 import LogoSinFondo from '../Logo/LogoSinFondo';
 import NavBarAdministrador from '../Navbar/NavBarAdministrador';
 import { useUserContext } from '../UserContext/userContext';
@@ -39,14 +40,14 @@ export default function Login() {
 
 
 
-   const redirect = () => {
+   const Redirect = () => {
    
       if (user === 'Hu')
          return (<NavBarAdministrador />)
        else if (user === 'Ad')
          return (<FormHuesped />)
          else if (user === 'An')
-         return (<Registro />)
+         return (<FormAnfitrion />)
    }
 
 
@@ -54,10 +55,8 @@ export default function Login() {
    async function acceder(e) {
       e.preventDefault();
       const response = await axios.post(`http://localhost:8080/usuario/login`, acceso)
-      
       setToken(response.data.jwToken)
       setUser(response.data.tipo)
-      redirect()
 
 
    }
@@ -69,7 +68,7 @@ export default function Login() {
       })
    }
 
-   const redirect2 = () => {
+   const Redirect2 = () => {
       return (
 
          <div class="overlay">
@@ -117,6 +116,7 @@ export default function Login() {
    }
 
    return (
+      user === "" ? <Redirect2 /> : <Redirect />
       
    )
 }  

@@ -43,7 +43,7 @@ function NavBarAdministrador() {
     width={171}
     height={180}
     alt="171x180"
-    src="../public/reparacionpc.jpg"
+    src="../reparacion.jpg"
   />
   <Figure.Caption>
     Nulla vitae elit libero, a pharetra augue mollis interdum.
