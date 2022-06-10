@@ -4,7 +4,7 @@ import Logo from "../Logo/Logo";
 import LogWidget from "./LogWidget";
 
 
-function NavBar() {
+function NavBarInvitado() {
     return (
 
 <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
@@ -16,15 +16,15 @@ function NavBar() {
   <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="me-auto">
    
-    <Link to='/userList'> <li className="nav-item">Listados</li></Link>
-    <Link to='/listarAlojamientos'> <li className="nav-item">Search</li></Link>
+   
+    <Link to='/listarAlojamientos'> <li className="nav-item">Encontra tu lugar!</li></Link>
 
     </Nav>
     <Nav>
 
             <NavLink to='/login' className={({ isActive }) => isActive ? 'active' : ''}>
             <Nav.Link as={Link} to="/login"><LogWidget /></Nav.Link>
-            <Link to='/profile'> <li className="nav-item">Perfil</li></Link>
+          
             </NavLink>
           </Nav>
   </Navbar.Collapse>
@@ -34,4 +34,4 @@ function NavBar() {
     )
   }
   
-  export default NavBar;
+  export default NavBarInvitado;

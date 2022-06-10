@@ -2,12 +2,13 @@ import { Button, Card, ListGroup, ListGroupItem } from "react-bootstrap"
 import { useEffect, useState } from "react";
 import { getFirestore, collection, getDoc, doc, getDocs, where, query} from "firebase/firestore";
 import { getFirestoreApp } from "../Alojamiento/firebase";
+import DetalleAlojamiento from "../DetalleAlojamiento/DetalleAlojamiento";
 
 
 
 function Item({ aloj }) {
 
-
+  const [botontype, setBotonType ] = useState('sinDetalle');
   const [url1, setUrl1] = useState ('');
   const [url2, setUrl2] = useState ('');
   const [url3, setUrl3] = useState ('');
@@ -33,9 +34,24 @@ function Item({ aloj }) {
         
       },[])
 
+    
+      const Habitacion= ()=> {
+  
+        
+           setBotonType('detalles') 
+           
+      }
 
+
+      const Detalle= ()=> {
+        return(
+        <DetalleAlojamiento aloj={aloj} />
+        )
+   }
+    
   return (
-
+    botontype === "sinDetalle" ? 
+    <>
     <div>
      
       <Card style={{ width: '18rem' }}>
@@ -53,15 +69,19 @@ function Item({ aloj }) {
        
        
           <Card.Body>
-
-            <Button variant="dark" >Reservar</Button>
+     
+          <Button variant="dark" onClick={Habitacion}>Más Info</Button>
+        
+      
 
           </Card.Body>
 
       </Card>
 
     </div>
-
+    </>
+    :
+    <DetalleAlojamiento aloj={aloj} />
   )
 
 }
