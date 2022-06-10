@@ -76,7 +76,11 @@ setPrecioHasta(50);
     console.log(precioDesde + "precio desde")
     console.log(precioHasta + "precio hasta")
 
-          const response =   await axios.post(`http://localhost:8080/alojamiento/listarAlojamientos`, alojamiento ) 
+          const response =   await axios.post(`http://localhost:8080/alojamiento/listarAlojamientos`, alojamiento, {
+            headers: {
+              'Authorization': `Basic ${userToken}` 
+            }
+          } ) 
         //  console.log(response.data);
         setAloj(response.data)
         setBotonType('concards')
@@ -96,7 +100,11 @@ setPrecioHasta(50);
     
  
 
-    axios.get(`http://localhost:8080/alojamiento/getPaisesEnAlojamiento`) 
+    axios.get(`http://localhost:8080/alojamiento/getPaisesEnAlojamiento`, {
+      headers: {
+        'Authorization': `token ${userToken}`
+      }
+    })
     .then(res => {
     let paises = res.data;
       setValor(paises);

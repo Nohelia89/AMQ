@@ -42,6 +42,8 @@ export default function Login() {
           setToken(response.data.jwToken)
           console.log("VARIABLE LOGIN "+ user)
            console.log("VARIABLE TOKEN"+ token)
+           console.log("response"+ response)
+
          } 
             
         const handleChange = (e) => {

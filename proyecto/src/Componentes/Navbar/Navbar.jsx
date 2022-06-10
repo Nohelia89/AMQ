@@ -17,7 +17,7 @@ function NavBar() {
     <Nav className="me-auto">
    
     <Link to='/userList'> <li className="nav-item">Listados</li></Link>
-
+    <Link to='/listarAlojamientos'> <li className="nav-item">Search</li></Link>
 
     </Nav>
     <Nav>
