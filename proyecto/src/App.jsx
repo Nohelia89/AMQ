@@ -16,6 +16,9 @@ import UserProfile from './Componentes/UserProfile/UserProfile';
 import Search from './Componentes/Search/Search';
 import UserContextProvider from './Componentes/UserContext/userContext';
 import DetalleAlojamiento from './Componentes/DetalleAlojamiento/DetalleAlojamiento';
+import ListadoAnfitrion from './Componentes/UserList/ListadoAnfitrion';
+import NavBarAdministrador from './Componentes/Navbar/NavBarAdministrador';
+import MainAdministrador from './Componentes/Main/MainAdministrador';
 
 
 function App() {
@@ -23,7 +26,7 @@ function App() {
     <BrowserRouter>
      <UserContextProvider>
     <div className="App">
-    <NavBarInvitado/>
+ 
      <Routes>
      <Route
             path = "/" element = { <Main /> }  
@@ -53,7 +56,9 @@ function App() {
      <Route
             path = "/profile" element = { <UserProfile /> }  
         />
-
+  <Route
+            path = "/listadoAnfitrion" element = { <ListadoAnfitrion /> }  
+        />
         <Route
             path = "/altaAlojamiento" element = { <AltaAlojamiento /> }  
         />
@@ -66,6 +71,10 @@ function App() {
          <Route
             path = "/detalleAlojamiento" element = { <DetalleAlojamiento /> }  
         />
+            <Route
+            path = "/mainAdministrador" element = { <MainAdministrador /> }  
+        />
+
 
      </Routes>
      </div>

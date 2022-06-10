@@ -3,14 +3,14 @@ import { Link, NavLink } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import LogWidget from "./LogWidget";
 
-import Figure from 'react-bootstrap/Figure'
+
 
 function NavBarAdministrador() {
     return (
 <>
 <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
 <Container>
-  <Link to='/'>
+  <Link to='/MainAdministrador'>
     <Navbar.Brand ><Logo /></Navbar.Brand>
   </Link>
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -18,7 +18,7 @@ function NavBarAdministrador() {
     <Nav className="me-auto">
    
    
-    <Link to='/listarAlojamientos'> <li className="nav-item">Encontra tu lugar!</li></Link>
+    <Link to='/listadoAnfitrion'> <li className="nav-item">Listado de anfitriones</li></Link>
 
     </Nav>
     <Nav className="me-auto">
@@ -38,17 +38,7 @@ function NavBarAdministrador() {
 </Container>
 </Navbar>  
    
-   <Figure>
-  <Figure.Image
-    width={171}
-    height={180}
-    alt="171x180"
-    src="../reparacion.jpg"
-  />
-  <Figure.Caption>
-    Nulla vitae elit libero, a pharetra augue mollis interdum.
-  </Figure.Caption>
-</Figure>
+ 
 </>
     )
   }

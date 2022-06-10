@@ -6,23 +6,34 @@ import { useEffect, useState } from "react";
 import { useUserContext } from '../UserContext/userContext';
 import NavBarAdministrador from '../Navbar/NavBarAdministrador';
 
-export default function UserList() {
+export default function ListadoAnfitrion() {
   
   const [isLoading, setIsLoading] = useState(true);
-  const [usuario, setUsuario] = useState([]);
+  const [anfitrion, setAnfitrion] = useState([]);
   const {userToken, userType} = useUserContext();
 
+
+  
   useEffect(() => {
     
-   axios.post("http://localhost:8080/usuario/listar", {})
+
+    var anfitriones = {
+
+      tipo:'An'
+      
+    } ;
+
+
+
+
+   axios.post("http://localhost:8080/usuario/listar", anfitriones)
   .then(res => {
-  const usuario = res.data;
-    setUsuario(usuario);
+  const anfitriones = res.data;
+    setAnfitrion(anfitriones);
     setIsLoading(false);
   })
 
-  console.log("ENTRE AL TOKEN LISTADO" + userToken )
-  console.log("GUARDE EL TIPO DE USUARIO LISTADO: " + userType )  
+   
       
     
   },[])
@@ -62,7 +73,8 @@ export default function UserList() {
 return (
 
   <>
-<NavBarAdministrador/>
+  <NavBarAdministrador/>
+
     {isLoading ? <h2>Cargando...</h2> : 
           <Table striped bordered hover variant="light" style={{ padding: 10 }}>
 
@@ -72,28 +84,31 @@ return (
               <th>Nombre</th>
               <th>Apellido</th>
               <th>Mail</th>
-              <th>Calificación Global</th>
-              <th>Activo/Desactivo</th>
-              <th>Bloqueado/Desbloqueado</th>
+              <th>Calificación</th>
+              <th>Estado</th>
+              <th>Rechazar</th>
               
             </tr>
           </thead>
-          {usuario.map(usuario => <tbody key={usuario.id} >
+          {anfitrion.map(anfitrion => <tbody key={anfitrion.id} >
             <tr>
-            {usuario.tipo === "Ad" ? 
-             <td>Administrador</td> : (usuario.tipo === "Hu" ? <td>Huesped</td>  : <td>Anfitrion</td> )            
+            {anfitrion.tipo === "Ad" ? 
+             <td>Administrador</td> : (anfitrion.tipo === "Hu" ? <td>Huesped</td>  : <td>Anfitrion</td> )            
             }
-              <td>{usuario.nombre}</td>
-              <td>{usuario.apellido}</td>
-              <td>{usuario.email}</td>
-              <td>{usuario.calificacionGlobal}</td>
-              { usuario.tipo !== "Ad" ? (usuario.activo === true ? 
-              <td><Button variant="danger" onClick={() => Desactivar(usuario.id)}>Desactivar</Button></td> : <td><Button variant="success" >Activar</Button></td>) : <td>Activo</td>  
-            }
-             { usuario.tipo !== "Ad" ? (usuario.bloqueado === true ? 
-              <td><Button variant="success" onClick={() => Desbloquear(usuario.id)}> Desbloquear </Button></td> : <td><Button variant="dark" onClick={() => Bloquear(usuario.id)}>Bloquear</Button></td>) : <td>Desbloqueado</td>   
+              <td>{anfitrion.nombre}</td>
+              <td>{anfitrion.apellido}</td>
+              <td>{anfitrion.email}</td>
+              <td>{anfitrion.calificacionGlobal}</td>
+             { anfitrion.estado === 'PENDIENTE' ?  
+             <td><Button variant="success" onClick={() => Desbloquear(anfitrion.id)}> Aprobar </Button></td>:
+             <td>{anfitrion.estado}</td>
+               
             } 
-            
+             { anfitrion.estado === 'PENDIENTE' ?  
+               <td><Button variant="dark" onClick={() => Bloquear(anfitrion.id)}>Rechazar</Button></td>:
+         
+             <td>--- </td>
+            }
               </tr>
          
           </tbody>)}
