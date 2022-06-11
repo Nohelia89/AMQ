@@ -11,7 +11,7 @@ export default function ListadoAnfitrion() {
   const [isLoading, setIsLoading] = useState(true);
   const [anfitrion, setAnfitrion] = useState([]);
   const {userToken, userType} = useUserContext();
-
+  const [botonType, setBotonType ] = useState('sinActualizar');
 
   
   useEffect(() => {
@@ -36,42 +36,36 @@ export default function ListadoAnfitrion() {
    
       
     
-  },[])
+  },[],[botonType])
 
 
 
 
-  const Desactivar = (id) => {
-      axios.post(`http://localhost:8080/usuario/desactivar/` + id, id )
-                  
-                  .then(res => {
-                    alert("Usuario Desactivado")
-                    console.log(res.data)
-                  })
-      }
 
 
-      const Desbloquear = (id) => {
-        axios.post(`http://localhost:8080/usuario/desbloquear/` + id, id)
+      const Aprobar = (id) => {
+        axios.get(`http://localhost:8080/usuario/aprobarAnfitrion/` + id)
                     
                     .then(res => {
-                      alert("Usuario Desbloqueado")
+                      alert("Usuario Aprobado")
+                      setBotonType("aprobado")
                       console.log(res.data)
                     })
         }
 
-      const Bloquear = (id) => {
-        axios.post(`http://localhost:8080/usuario/bloquear/` + id, id)
+      const Rechazar = (id) => {
+        axios.get(`http://localhost:8080/usuario/rechazarAnfitrion/` + id)
                     
                     .then(res => {
-                      alert("Usuario Bloqueado")
+                      alert("Usuario Rechazado")
+                      setBotonType("rechazado")
                       console.log(res.data)
                     })
         }
 
 
 return (
-
+  botonType === "sinActualizar" ? 
   <>
   <NavBarAdministrador/>
 
@@ -100,12 +94,12 @@ return (
               <td>{anfitrion.email}</td>
               <td>{anfitrion.calificacionGlobal}</td>
              { anfitrion.estado === 'PENDIENTE' ?  
-             <td><Button variant="success" onClick={() => Desbloquear(anfitrion.id)}> Aprobar </Button></td>:
+             <td><Button variant="success" onClick={() => Aprobar(anfitrion.id)}> Aprobar </Button></td>:
              <td>{anfitrion.estado}</td>
                
             } 
              { anfitrion.estado === 'PENDIENTE' ?  
-               <td><Button variant="dark" onClick={() => Bloquear(anfitrion.id)}>Rechazar</Button></td>:
+               <td><Button variant="dark" onClick={() => Rechazar(anfitrion.id)}>Rechazar</Button></td>:
          
              <td>--- </td>
             }
@@ -116,6 +110,10 @@ return (
   
     }
 
+  </>
+  :
+  <>
+  <ListadoAnfitrion/>
   </>
 )
 }

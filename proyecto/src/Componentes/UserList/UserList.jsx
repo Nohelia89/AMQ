@@ -11,6 +11,8 @@ export default function UserList() {
   const [isLoading, setIsLoading] = useState(true);
   const [usuario, setUsuario] = useState([]);
   const {userToken, userType} = useUserContext();
+  const [botonType, setBotonType ] = useState('sinActualizar');
+
 
   useEffect(() => {
     
@@ -36,6 +38,7 @@ export default function UserList() {
                   .then(res => {
                     alert("Usuario Desactivado")
                     console.log(res.data)
+                    setBotonType("actualizado")
                   })
       }
 
@@ -45,6 +48,7 @@ export default function UserList() {
                     
                     .then(res => {
                       alert("Usuario Desbloqueado")
+                      setBotonType("actualizado")
                       console.log(res.data)
                     })
         }
@@ -54,12 +58,14 @@ export default function UserList() {
                     
                     .then(res => {
                       alert("Usuario Bloqueado")
+                      setBotonType("actualizado")
                       console.log(res.data)
                     })
         }
 
 
 return (
+  botonType === "sinActualizar" ? 
 
   <>
 <NavBarAdministrador/>
@@ -101,6 +107,10 @@ return (
   
     }
 
+  </>
+  :
+  <>
+ <UserList/>
   </>
 )
 }
