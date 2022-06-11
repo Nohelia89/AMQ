@@ -17,8 +17,9 @@ import Search from './Componentes/Search/Search';
 import UserContextProvider from './Componentes/UserContext/userContext';
 import DetalleAlojamiento from './Componentes/DetalleAlojamiento/DetalleAlojamiento';
 import ListadoAnfitrion from './Componentes/UserList/ListadoAnfitrion';
-import NavBarAdministrador from './Componentes/Navbar/NavBarAdministrador';
+
 import MainAdministrador from './Componentes/Main/MainAdministrador';
+import Item from './Componentes/Item/Item';
 
 
 function App() {
@@ -30,6 +31,9 @@ function App() {
      <Routes>
      <Route
             path = "/" element = { <Main /> }  
+        />
+           <Route
+            path = "/item" element = { <Item /> }  
         />
          <Route
             path = "/userList" element = { <UserList /> }  

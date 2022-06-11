@@ -9,14 +9,14 @@ import { useUserContext } from "../UserContext/userContext";
 
 function DetalleAlojamiento() {
     
-      const {aloj} = useUserContext();
+      const {aloj, url} = useUserContext();
       console.log("ESTOY EN DETALLE " + aloj)
-
+      console.log("ESTOY EN DETALLE IMAGENES " + url)
       var nombre =  "Nombre: "+aloj.nombre
       var descripcion =  "Descripcion: "+aloj.descripcion
       var direccion =  "Dirección: "+aloj.direcion.calle + aloj.direcion.numero 
       var ubicacion = "Ubicación: "+aloj.direcion.ciudad+ aloj.direcion.pais.nombre 
-
+    
    
 /*     useEffect(() => {
     
