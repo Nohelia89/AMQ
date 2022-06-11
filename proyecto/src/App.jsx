@@ -6,6 +6,7 @@ import NavBarInvitado from './Componentes/Navbar/NavbarInvitado';
 import Registro from './Componentes/Registro/Registro';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Forgot from './Componentes/Forgot/Forgot';
+import Forgot2 from './Componentes/Forgot/Forgot2';
 import UserList from './Componentes/UserList/UserList';
 import FormHuesped from './Componentes/FormHuesped/FormHuesped';
 import FormAnfitrion from './Componentes/FormAnfitrion/FormAnfitrion';
@@ -77,6 +78,10 @@ function App() {
         />
             <Route
             path = "/mainAdministrador" element = { <MainAdministrador /> }  
+        />
+
+<Route
+            path = "/savePassword" element = { <Forgot2 /> }  
         />
 
 

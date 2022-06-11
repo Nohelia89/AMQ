@@ -1,12 +1,15 @@
 
 import axios from 'axios';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Forgot.css';
+import Forgot2 from './Forgot2';
 export default function Forgot() {
 
 
 
   const [dataForm, setDataForm] = useState({ email:''})
+  const [botontype, setBotonType ] = useState('forgot1');
 
 
 
@@ -27,6 +30,7 @@ console.log(sendMail+ "SOY SENDMAIL")
                   alert("Se envió email")
                   console.log(res.data)
                 })
+                setBotonType('forgot2')
     }
 
 
@@ -36,19 +40,37 @@ console.log(sendMail+ "SOY SENDMAIL")
         [e.target.name]: e.target.value
       })
     }
-    return (
-<div class="bod">
-      <form class="form3" onSubmit={Resetear}>
-      <div class="tit2"><h2>¿Olvidaste tu contraseña?</h2>Si tu correo es correcto se enviarán los datos para reestablecerla
-    
-      </div>
 
-      <p class="form-input2" type="Mail" ><input required class="form-input1" name='email' type='email' value={dataForm.email} onChange={handleChange} placeholder='Ingrese email'></input></p>
+
     
-      <button class = "btn submits boton">Enviar</button>
-     
-    </form>
-  </div>
-      
+    const Olvidar = () => {
+      return (
+        <div class="bod">
+              <form class="form3">
+              <div class="tit2"><h2>¿Olvidaste tu contraseña?</h2>Si tu correo es correcto se enviarán los datos para reestablecerla
+            
+              </div>
+        
+              <p class="form-input2" type="Mail" ><input required class="form-input1" name='email' type='email' value={dataForm.email} onChange={handleChange} placeholder='Ingrese email'></input></p>
+        
+              <button class = "btn submits boton" onClick={Resetear}>Enviar</button>
+        
+            </form>
+          </div>
+              
+         )
+    }
+
+    const Olvidar2 = () => {
+      return (
+
+        <Forgot2/>
+
+      )
+    }
+
+    return (
+      botontype === "forgot1" ? <Olvidar /> : <Olvidar2 />
+
  )
 } 
