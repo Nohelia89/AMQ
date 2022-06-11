@@ -8,6 +8,7 @@ function UserContextProvider({children}) {
 
     const [userToken, setUserToken ] = useState();
     const [userType, setUserType ] = useState();
+    const [aloj, setAloj ] = useState([]);
 
     const setearToken = (token) => {
         setUserToken(token)
@@ -15,6 +16,11 @@ function UserContextProvider({children}) {
         console.log("ENTRE AL TOKEN usercontext" + userToken )
         
   
+       
+    }
+
+    const setearAloj = (aloj) => {
+        setAloj(aloj)
        
     }
 
@@ -26,7 +32,7 @@ function UserContextProvider({children}) {
 
 
     return (
-        <UserContext.Provider value={{userToken, userType, setearToken, setearTipoUsuario}}>
+        <UserContext.Provider value={{userToken, userType, aloj, setearAloj, setearToken, setearTipoUsuario}}>
 
         {children}
 

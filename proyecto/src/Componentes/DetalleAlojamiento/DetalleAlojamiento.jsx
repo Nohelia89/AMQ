@@ -7,20 +7,16 @@ import { Base64 } from 'js-base64';
     
 import { useUserContext } from "../UserContext/userContext";
 
-function DetalleAlojamiento({aloj}) {
-
-
-    const [datosAloj, setDatosAloj] = useState([] )
+function DetalleAlojamiento() {
     
-      const {userToken, userType} = useUserContext();
+      const {aloj} = useUserContext();
+      console.log("ESTOY EN DETALLE " + aloj)
 
       var nombre =  "Nombre: "+aloj.nombre
       var descripcion =  "Descripcion: "+aloj.descripcion
       var direccion =  "Dirección: "+aloj.direcion.calle + aloj.direcion.numero 
       var ubicacion = "Ubicación: "+aloj.direcion.ciudad+ aloj.direcion.pais.nombre 
- 
-       
-    
+
    
 /*     useEffect(() => {
     
