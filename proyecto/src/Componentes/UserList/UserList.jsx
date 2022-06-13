@@ -6,13 +6,17 @@ import { useEffect, useState } from "react";
 import { useUserContext } from '../UserContext/userContext';
 import NavBarAdministrador from '../Navbar/NavBarAdministrador';
 
+import { Col, FloatingLabel, Row, Form, CardGroup } from "react-bootstrap";
 export default function UserList() {
   
   const [isLoading, setIsLoading] = useState(true);
   const [usuario, setUsuario] = useState([]);
   const {userToken, userType} = useUserContext();
   const [botonType, setBotonType ] = useState('sinActualizar');
-
+  const [val , setVal] = useState();
+  const [valC , setValC] = useState();
+  const [valH , setValH] = useState('');
+  const [valorPais , setValor] = useState([]);
 
   useEffect(() => {
     
@@ -64,11 +68,122 @@ export default function UserList() {
         }
 
 
+
+
+
+        async function buscarConFiltro() {
+  
+
+  
+          
+          var usuario = {
+          
+              aloj_idPais: val,
+              tipo: valH
+             
+            
+          }; 
+        
+      
+                const response =   await axios.post(`http://localhost:8080/usuario/listar`, usuario ) 
+              //  console.log(response.data);
+              setUsuario(response.data)
+             // setBotonType('concards')
+                return response.data;
+             
+                
+             
+            }
+
+
+              
+  
+  useEffect(() => {
+    
+ 
+
+    axios.get(`http://localhost:8080/alojamiento/getPaises`) 
+    .then(res => {
+    let paises = res.data;
+      setValor(paises);
+    })
+
+
+      
+    
+  },[])
+
+
+  const handleChange = (e) => {
+    console.log(`Seleccionaste ${e.target.value}`);
+    setVal(e.target.value);
+  }
+
+  const handleChangeC = (e) => {
+    console.log(`Seleccionaste ${e.target.value}`);
+    setValC(e.target.value);
+    
+  }
+
+  const handleChangeP = (e) => {
+    console.log(`Seleccionaste ${e.target.value}`);
+    setValH(e.target.value);
+    
+  }
+
+
 return (
   botonType === "sinActualizar" ? 
 
   <>
+ 
 <NavBarAdministrador/>
+<div style={{marginLeft: "18%", width: "1000px" , padding:"15px", borderRadius: "5px", boxShadow: "0px 9px 30px 9px", border: "1.5px solid gray", backgroundColor: "lightgrey", marginTop: "40px"}}>      
+<Row className="g-3">
+
+  <Col md style={{padding:"10px"}} >
+  <FloatingLabel controlId="floatingSelectGrid" label="Calificacion Global">
+      <Form.Select aria-label="Floating label select example" value={valC} onChange={handleChangeC}>
+      
+        <option value="6">1</option>
+        <option value="7">2</option>
+        <option value="8">3</option>
+        <option value="9">4</option>
+        <option value="10">5</option>
+      </Form.Select>
+    </FloatingLabel>
+  </Col>
+  <Col md style={{padding:"10px"}} >
+  <FloatingLabel controlId="floatingSelectGrid" label="País">
+      <Form.Select aria-label="Floating label select example" value={val} onChange={handleChange}>
+      
+   
+        {valorPais.map((option) => {
+            return (<option key={option.id} value={option.id}>{option.valor}</option>);
+        })}
+ 
+    
+        
+      </Form.Select>
+    </FloatingLabel>
+  </Col>
+  <Col md style={{padding:"10px"}} >
+  <FloatingLabel controlId="floatingSelectGrid" label="Tipo de Usuario">
+      <Form.Select aria-label="Floating label select example" value={valH} onChange={handleChangeP}> 
+        <option value="Ad">Administrador</option>
+        <option value="An">Anfitrion</option>
+        <option value="Hu">Huesped</option>
+       
+      </Form.Select>
+    </FloatingLabel>
+  </Col>
+  <Col md style={{padding:"10px", paddingRight:"90px"}} >
+  <button className = "boton" onClick={buscarConFiltro} >Buscar</button>
+  </Col>
+  
+</Row>
+</div>    
+
     {isLoading ? <h2>Cargando...</h2> : 
           <Table striped bordered hover variant="light" style={{ padding: 10 }}>
 

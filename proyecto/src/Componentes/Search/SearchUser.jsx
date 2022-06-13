@@ -1,85 +1,38 @@
-import axios from "axios";
+/* import axios from "axios";
 import { useEffect, useState } from "react";
 import { Col, FloatingLabel, Row, Form, CardGroup } from "react-bootstrap";
 import ItemList from "../ItemList/ItemList";
 
 
-//HACER CUANDO ESTEN LOS FILTROS DE USUARIO
 
 
 
-function Search() {
+
+function SearchUser() {
 
 
     const [val , setVal] = useState();
     const [valC , setValC] = useState();
-    const [valP , setValP] = useState(0);
-    const [precioDesde , setPrecioDesde] = useState();
-    const [precioHasta , setPrecioHasta] = useState();
+    const [valH , setValH] = useState('');
     const [valorPais , setValor] = useState([]);
     const [botontype, setBotonType ] = useState('sincards');
     const [aloj , setAloj] = useState([]);
-
     
-
-   
-
-      useEffect(() => {
-    
-
-setPrecioDesde(0);
-setPrecioHasta(50);
-
-          console.log(valP);
-        if (valP === "1"){
-          console.log("entre al if 1" )
-     
-            setPrecioDesde(0);
-            setPrecioHasta(50);
-        } else if (valP === "2"){
-          console.log("entre al if 2" )
-          setPrecioDesde(51);
-          setPrecioHasta(100);
-        } else if (valP === "3") {
-          setPrecioDesde("101");
-          setPrecioHasta("200");
-        } else if (valP === "4") {
-          setPrecioDesde("201");
-            setPrecioHasta("300");
-        } else if (valP === "5") {
-          setPrecioDesde("301");
-          setPrecioHasta("1000");
-        }
-    
-          
-        console.log(precioDesde + "precio desde")
-        console.log(precioHasta + "precio hasta")
-    
-          
-        
-      },[valP])
-    
-   
-
-   
-    async function buscar() {
+    async function buscarConFiltro() {
   
 
   
           
-    var alojamiento = {
+    var usuario = {
     
         aloj_idPais: val,
-        //calificacion_global: valC,
-        hab_precio: precioDesde,
-        hab_precio_hasta: precioHasta
+        tipo: valH
        
       
     }; 
-    console.log(precioDesde + "precio desde")
-    console.log(precioHasta + "precio hasta")
+  
 
-          const response =   await axios.post(`http://localhost:8080/alojamiento/listarAlojamientos`, alojamiento ) 
+          const response =   await axios.post(`http://localhost:8080/usuario/listar`, usuario ) 
         //  console.log(response.data);
         setAloj(response.data)
         setBotonType('concards')
@@ -178,13 +131,12 @@ setPrecioHasta(50);
     </FloatingLabel>
   </Col>
   <Col md style={{padding:"10px"}} >
-  <FloatingLabel controlId="floatingSelectGrid" label="Precio por noche">
-      <Form.Select aria-label="Floating label select example" value={valP} onChange={handleChangeP}> 
-        <option value="1">US$ 0 - US$ 50</option>
-        <option value="2">US$ 51 - US$ 100</option>
-        <option value="3">US$ 101 - US$ 200</option>
-        <option value="4">US$ 201 - US$ 300</option>
-        <option value="5">US$ 301 - US$ 1000</option>
+  <FloatingLabel controlId="floatingSelectGrid" label="Tipo de Usuario">
+      <Form.Select aria-label="Floating label select example" value={valH} onChange={handleChangeP}> 
+        <option value="Ad">Administrador</option>
+        <option value="An">Anfitrion</option>
+        <option value="Hu">Huesped</option>
+       
       </Form.Select>
     </FloatingLabel>
   </Col>
@@ -200,4 +152,4 @@ setPrecioHasta(50);
 <Habitacion /> )
   }
   
-  export default Search;
+  export default SearchUser; */
