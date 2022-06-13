@@ -6,10 +6,10 @@ import { useEffect, useState } from "react";
 
 import NavBarAdministrador from '../Navbar/NavBarAdministrador';
 import { Col, FloatingLabel, Row, Form } from "react-bootstrap";
-export default function ListadoAnfitrion() {
+export default function ListadoHuesped() {
   
   const [isLoading, setIsLoading] = useState(true);
-  const [anfitrion, setAnfitrion] = useState([]);
+  const [huesped, setHuesped] = useState([]);
   const [val1 , setVal1] = useState('APROBADO');
   const [valC , setValC] = useState();
   const [valH , setValH] = useState('');
@@ -20,19 +20,19 @@ export default function ListadoAnfitrion() {
   useEffect(() => {
     
 
-    var anfitriones = {
+    var huespedes = {
 
-      tipo:'An'
+      tipo:'Hu'
       
     } ;
 
 
 
 
-   axios.post("http://localhost:8080/usuario/listar", anfitriones)
+   axios.post("http://localhost:8080/usuario/listar", huespedes)
   .then(res => {
-  const anfitriones = res.data;
-    setAnfitrion(anfitriones);
+  const huespedes = res.data;
+    setHuesped(huespedes);
     setIsLoading(false);
   })
 
@@ -57,7 +57,7 @@ export default function ListadoAnfitrion() {
         
                   const response =   await axios.post(`http://localhost:8080/usuario/listar`, usuario ) 
                 //  console.log(response.data);
-                setAnfitrion(response.data)
+                setHuesped(response.data)
                // setBotonType('concards')
                   return response.data;
                
@@ -76,29 +76,11 @@ export default function ListadoAnfitrion() {
                 
               }
             
-              
+          
             
 
 
-      const Aprobar = (id) => {
-        axios.get(`http://localhost:8080/usuario/aprobarAnfitrion/` + id)
-                    
-                    .then(res => {
-                      alert("Usuario Aprobado")
-                      setBotonType("aprobado")
-                      console.log(res.data)
-                    })
-        }
-
-      const Rechazar = (id) => {
-        axios.get(`http://localhost:8080/usuario/rechazarAnfitrion/` + id)
-                    
-                    .then(res => {
-                      alert("Usuario Rechazado")
-                      setBotonType("rechazado")
-                      console.log(res.data)
-                    })
-        }
+   
 
 
 return (
@@ -150,29 +132,21 @@ return (
               <th>Mail</th>
               <th>Calificación</th>
               <th>Estado</th>
-              <th>Rechazar</th>
+    
               
             </tr>
           </thead>
-          {anfitrion.map(anfitrion => <tbody key={anfitrion.id} >
+          {huesped.map(huesped => <tbody key={huesped.id} >
             <tr>
-            {anfitrion.tipo === "Ad" ? 
-             <td>Administrador</td> : (anfitrion.tipo === "Hu" ? <td>Huesped</td>  : <td>Anfitrion</td> )            
+            {huesped.tipo === "Ad" ? 
+             <td>Administrador</td> : (huesped.tipo === "Hu" ? <td>Huesped</td>  : <td>Anfitrion</td> )            
             }
-              <td>{anfitrion.nombre}</td>
-              <td>{anfitrion.apellido}</td>
-              <td>{anfitrion.email}</td>
-              <td>{anfitrion.calificacionGlobal}</td>
-             { anfitrion.estado === 'PENDIENTE' ?  
-          <td><Button variant="success" onClick={() => Aprobar(anfitrion.id)}> Aprobar </Button></td>:
-             <td>{anfitrion.estado}</td>
-               
-            } 
-             { anfitrion.estado === 'PENDIENTE' ?  
-               <td><Button variant="dark" onClick={() => Rechazar(anfitrion.id)}>Rechazar</Button></td>:
-         
-             <td>--- </td>
-            }
+              <td>{huesped.nombre}</td>
+              <td>{huesped.apellido}</td>
+              <td>{huesped.email}</td>
+              <td>{huesped.calificacionGlobal}</td>
+              <td>{huesped.estado}</td>
+             
               </tr>
          
           </tbody>)}
@@ -183,7 +157,7 @@ return (
   </>
   :
   <>
-  <ListadoAnfitrion/>
+  <ListadoHuesped/>
   </>
 )
 }

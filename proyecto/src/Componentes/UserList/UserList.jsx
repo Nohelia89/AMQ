@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { useUserContext } from '../UserContext/userContext';
 import NavBarAdministrador from '../Navbar/NavBarAdministrador';
 
-import { Col, FloatingLabel, Row, Form, CardGroup } from "react-bootstrap";
+import { Col, FloatingLabel, Row, Form } from "react-bootstrap";
 export default function UserList() {
   
   const [isLoading, setIsLoading] = useState(true);
@@ -17,7 +17,7 @@ export default function UserList() {
   const [val1 , setVal1] = useState(true);
   const [valC , setValC] = useState();
   const [valH , setValH] = useState('');
-  const [activo , setValor] = useState();
+  
 
   useEffect(() => {
     
@@ -75,11 +75,6 @@ export default function UserList() {
         async function buscarConFiltro() {
   
 
-  if (val1==='true')
-  setValor(true)
-  
-  else
-  setValor(false)
           
           var usuario = {
           
@@ -103,21 +98,6 @@ export default function UserList() {
 
               
   
-  useEffect(() => {
-    
- 
-
-    axios.get(`http://localhost:8080/alojamiento/getPaises`) 
-    .then(res => {
-    let paises = res.data;
-      setValor(paises);
-    })
-
-
-      
-    
-  },[])
-
 
   const handleChange = (e) => {
     console.log(`Seleccionaste ${e.target.value}`);

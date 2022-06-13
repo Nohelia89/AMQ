@@ -21,6 +21,7 @@ import ListadoAnfitrion from './Componentes/UserList/ListadoAnfitrion';
 
 import MainAdministrador from './Componentes/Main/MainAdministrador';
 import Item from './Componentes/Item/Item';
+import ListadoHuesped from './Componentes/UserList/ListadoHuesped';
 
 
 function App() {
@@ -84,7 +85,9 @@ function App() {
             path = "/savePassword" element = { <Forgot2 /> }  
         />
 
-
+<Route
+            path = "/listarHuesped" element = { <ListadoHuesped /> }  
+        />
      </Routes>
      </div>
      </UserContextProvider>
