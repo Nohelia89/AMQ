@@ -54,7 +54,7 @@ export default function ListadoAnfitrion() {
         }
 
       const Rechazar = (id) => {
-        axios.get(`http://localhost:8080/usuario/rechazarAnfitrion/` + id)
+        axios.post(`http://localhost:8080/usuario/rechazarAnfitrion/` + id)
                     
                     .then(res => {
                       alert("Usuario Rechazado")

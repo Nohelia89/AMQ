@@ -1,13 +1,14 @@
 
 import axios from 'axios';
 import { useState } from 'react';
+import { Base64 } from 'js-base64';
 import './Forgot.css';
 export default function Forgot2() {
 
 
 
-  const [dataForm, setDataForm] = useState({ token:'', email:''})
-
+  const [dataForm, setDataForm] = useState({ token:'', pass:''})
+  var hash = Base64.encode(dataForm.pass);
 
 
   const Resetear = async (e) => {
@@ -15,7 +16,7 @@ export default function Forgot2() {
   var sendPass = {
 
     token: dataForm.token,
-    email: dataForm.email
+    pass: hash
 
   } ;
 
@@ -45,7 +46,7 @@ console.log(sendPass+ "SOY SENDMAIL")
       </div>
       <p class="form-input2" type="Token" ><input required class="form-input1" name='token' type='token' value={dataForm.token} onChange={handleChange} placeholder='Ingrese Token'></input></p>
     
-      <p class="form-input2" type="Mail" ><input required class="form-input1" name='email' type='email' value={dataForm.email} onChange={handleChange} placeholder='Ingrese email'></input></p>
+      <p class="form-input2" type="Password" ><input required class="form-input1" name='Password' type='password' value={dataForm.pass} onChange={handleChange} placeholder='Ingrese Password'></input></p>
     
       <button class = "btn submits boton">Enviar</button>
      
