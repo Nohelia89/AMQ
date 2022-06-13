@@ -212,7 +212,7 @@ return (
               <td>{usuario.email}</td>
               <td>{usuario.calificacionGlobal}</td>
               { usuario.tipo !== "Ad" ? (usuario.activo === true ? 
-              <td><Button variant="danger" onClick={() => Desactivar(usuario.id)}>Desactivar</Button></td> : <td><Button variant="success" >Activar</Button></td>) : <td>Activo</td>  
+              <td><Button variant="danger" onClick={() => Desactivar(usuario.id)}>Desactivar</Button></td> : <td>Desactivado</td>) : <td>Activo</td>  
             }
              { usuario.tipo !== "Ad" ? (usuario.bloqueado === true ? 
               <td><Button variant="success" onClick={() => Desbloquear(usuario.id)}> Desbloquear </Button></td> : <td><Button variant="dark" onClick={() => Bloquear(usuario.id)}>Bloquear</Button></td>) : <td>Desbloqueado</td>   
