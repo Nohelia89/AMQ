@@ -13,10 +13,11 @@ export default function UserList() {
   const [usuario, setUsuario] = useState([]);
   const {userToken, userType} = useUserContext();
   const [botonType, setBotonType ] = useState('sinActualizar');
-  const [val , setVal] = useState();
+  //const [val , setVal] = useState(true);
+  const [val1 , setVal1] = useState(true);
   const [valC , setValC] = useState();
   const [valH , setValH] = useState('');
-  const [valorPais , setValor] = useState([]);
+  const [activo , setValor] = useState();
 
   useEffect(() => {
     
@@ -74,11 +75,15 @@ export default function UserList() {
         async function buscarConFiltro() {
   
 
+  if (val1==='true')
+  setValor(true)
   
+  else
+  setValor(false)
           
           var usuario = {
           
-              aloj_idPais: val,
+              activo: val1,
               tipo: valH
              
             
@@ -116,7 +121,7 @@ export default function UserList() {
 
   const handleChange = (e) => {
     console.log(`Seleccionaste ${e.target.value}`);
-    setVal(e.target.value);
+    setVal1(e.target.value);
   }
 
   const handleChangeC = (e) => {
@@ -155,13 +160,11 @@ return (
   </Col>
   <Col md style={{padding:"10px"}} >
   <FloatingLabel controlId="floatingSelectGrid" label="País">
-      <Form.Select aria-label="Floating label select example" value={val} onChange={handleChange}>
+      <Form.Select aria-label="Floating label select example" value={val1} onChange={handleChange}>
       
-   
-        {valorPais.map((option) => {
-            return (<option key={option.id} value={option.id}>{option.valor}</option>);
-        })}
- 
+      <option value="true">Activo</option>
+        <option value="false">No Activo</option>
+      
     
         
       </Form.Select>
@@ -194,7 +197,7 @@ return (
               <th>Apellido</th>
               <th>Mail</th>
               <th>Calificación Global</th>
-              <th>Activo/Desactivo</th>
+              <th>Estado</th>
               <th>Bloqueado/Desbloqueado</th>
               
             </tr>
