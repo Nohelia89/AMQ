@@ -54,7 +54,7 @@ export default function ListadoAnfitrion() {
         }
 
       const Rechazar = (id) => {
-        axios.post(`http://localhost:8080/usuario/rechazarAnfitrion/` + id)
+        axios.get(`http://localhost:8080/usuario/rechazarAnfitrion/` + id)
                     
                     .then(res => {
                       alert("Usuario Rechazado")
@@ -94,7 +94,7 @@ return (
               <td>{anfitrion.email}</td>
               <td>{anfitrion.calificacionGlobal}</td>
              { anfitrion.estado === 'PENDIENTE' ?  
-             <td><Button variant="success" onClick={() => Aprobar(anfitrion.id)}> Aprobar </Button></td>:
+          <td><Button variant="success" onClick={() => Aprobar(anfitrion.id)}> Aprobar </Button></td>:
              <td>{anfitrion.estado}</td>
                
             } 
