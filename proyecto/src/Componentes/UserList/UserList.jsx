@@ -159,7 +159,7 @@ return (
     </FloatingLabel>
   </Col>
   <Col md style={{padding:"10px"}} >
-  <FloatingLabel controlId="floatingSelectGrid" label="País">
+  <FloatingLabel controlId="floatingSelectGrid" label="Estado">
       <Form.Select aria-label="Floating label select example" value={val1} onChange={handleChange}>
       
       <option value="true">Activo</option>
