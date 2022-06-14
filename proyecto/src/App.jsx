@@ -22,6 +22,8 @@ import ListadoAnfitrion from './Componentes/UserList/ListadoAnfitrion';
 import MainAdministrador from './Componentes/Main/MainAdministrador';
 import Item from './Componentes/Item/Item';
 import ListadoHuesped from './Componentes/UserList/ListadoHuesped';
+import MainAnfitrion from './Componentes/Main/MainAnfitrion';
+import ListadoAlojamientosAnf from './Componentes/UserList/ListadoAlojamientosAnf';
 
 
 function App() {
@@ -80,6 +82,9 @@ function App() {
             <Route
             path = "/mainAdministrador" element = { <MainAdministrador /> }  
         />
+            <Route
+            path = "/mainAnfitrion" element = { <MainAnfitrion /> }  
+        />
 
 <Route
             path = "/savePassword" element = { <Forgot2 /> }  
@@ -87,6 +92,10 @@ function App() {
 
 <Route
             path = "/listarHuesped" element = { <ListadoHuesped /> }  
+        />
+        
+<Route
+            path = "/listadoAlojamientos" element = { <ListadoAlojamientosAnf /> }  
         />
      </Routes>
      </div>

@@ -24,7 +24,7 @@ export default function MainAdministrador
   src="../reparacion.jpg"
 />
 <Figure.Caption>
-  Bienvenido al menú administrador
+  Bienvenido al menú Administrador
 </Figure.Caption>
 </Figure>
   

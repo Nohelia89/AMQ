@@ -11,10 +11,11 @@ import { useUserContext } from '../UserContext/userContext';
 import './Login.css';
 
 export default function Login() {
-   const { setearToken, setearTipoUsuario } = useUserContext();
+   const { setearToken, setearTipoUsuario, setearIdUsuario } = useUserContext();
    const [dataForm, setDataForm] = useState({ email: '', password: '' })
    const [user, setUser] = useState('');
    const [token, setToken] = useState('');
+   const [id, setId] = useState('');
    var hash = Base64.encode(dataForm.password);
    var acceso = {
 
@@ -31,10 +32,10 @@ export default function Login() {
 
       setearToken(token)
       setearTipoUsuario(user)
+      setearIdUsuario(id)
 
 
-
-   }, [][token, user])
+   }, [][token, user, id])
 
 
 
@@ -57,6 +58,7 @@ export default function Login() {
       const response = await axios.post(`http://localhost:8080/usuario/login`, acceso)
       setToken(response.data.jwToken)
       setUser(response.data.tipo)
+      setId(response.data.id)
 
 
    }
