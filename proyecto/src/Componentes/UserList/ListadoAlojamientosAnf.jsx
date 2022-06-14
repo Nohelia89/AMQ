@@ -21,18 +21,19 @@ export default function ListadoAlojamientosAnf() {
   useEffect(() => {
     
 
-/* var idAnf =
+ var idAnf =
 {
-id_Anf: userId
+//id_Anf: userId
+id_anf: 10038
 }
    axios.post("http://localhost:8080/alojamiento/listarAlojamientos", idAnf)
   .then(res => {
   const aloj = res.data;
     setAlojamiento(aloj);
     setIsLoading(false);
-  }) */
+  }) 
   
-  axios.post("http://localhost:8080/alojamiento/listarAlojamientos",{})
+ /*  axios.post("http://localhost:8080/alojamiento/listarAlojamientos",{})
   .then(res => {
   const aloj = res.data;
     setAlojamiento(aloj);
@@ -40,10 +41,10 @@ id_Anf: userId
   }) 
   console.log("ENTRE AL TOKEN LISTADO" + userToken )
   console.log("GUARDE EL TIPO DE USUARIO LISTADO: " + userType )  
-      
+      */
     
   },[])
-
+ 
 
 
 
