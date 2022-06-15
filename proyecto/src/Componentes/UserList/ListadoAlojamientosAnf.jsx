@@ -7,6 +7,7 @@ import { useUserContext } from '../UserContext/userContext';
 import NavBarAnfitrion from '../Navbar/NavBarAnfitrion';
 import AgregarHabitacion from '../Alojamiento/AgregarHabitacion';
 import ListadoReseñas from './ListadoReseñas';
+import ModificarAlojamiento from '../Modificar/ModificarAlojamiento';
 
 
 export default function ListadoAlojamientosAnf() {
@@ -35,16 +36,7 @@ export default function ListadoAlojamientosAnf() {
                 setIsLoading(false);
             })
 
-        /*  axios.post("http://localhost:8080/alojamiento/listarAlojamientos",{})
-         .then(res => {
-         const aloj = res.data;
-           setAlojamiento(aloj);
-           setIsLoading(false);
-         }) 
-         console.log("ENTRE AL TOKEN LISTADO" + userToken )
-         console.log("GUARDE EL TIPO DE USUARIO LISTADO: " + userType )  
-             */
-
+     
     }, [])
 
 
@@ -78,14 +70,9 @@ export default function ListadoAlojamientosAnf() {
 
 
         setIdAloj(id)
-        
-        axios.post(`http://localhost:8080/usuario/desbloquear/` + id, id)
-
-            .then(res => {
-                alert("Usuario Desbloqueado")
-                setBotonType("actualizado")
-                console.log(res.data)
-            })
+        console.log(id+"soy idAloj")
+     
+        setBotonType("modificar")
     }
 
     const DesactivarAloj = (id) => {
@@ -186,7 +173,7 @@ export default function ListadoAlojamientosAnf() {
 
             </>
             :    (botonType === "habitacion" ) ? 
-               <AgregarHabitacion id={idAloj}/>:  (botonType === "reseñas" ) ? <ListadoReseñas id={idAloj}/>:   <ListadoAlojamientosAnf/>  
+               <AgregarHabitacion id={idAloj}/>:  (botonType === "reseñas" ) ? <ListadoReseñas id={idAloj}/>:   (botonType === "modificar" ) ?<ModificarAlojamiento id={idAloj}/> :<ListadoAlojamientosAnf/>  
             
     )
 }

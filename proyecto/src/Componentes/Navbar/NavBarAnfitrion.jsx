@@ -24,7 +24,7 @@ function NavBarAnfitrion() {
     <Nav className="me-auto">
    
    
-   <Link to='/userList'> <li className="nav-item">Listado de usuarios</li></Link>
+   <Link to='/perfil'> <li className="nav-item">Perfil de usuario</li></Link>
 
    </Nav>
     <Nav>

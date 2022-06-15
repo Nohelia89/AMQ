@@ -26,6 +26,7 @@ import MainAnfitrion from './Componentes/Main/MainAnfitrion';
 import ListadoAlojamientosAnf from './Componentes/UserList/ListadoAlojamientosAnf';
 import AgregarHabitacion from './Componentes/Alojamiento/AgregarHabitacion';
 import ListadoReseñas from './Componentes/UserList/ListadoReseñas';
+import ModificarAlojamiento from './Componentes/Modificar/ModificarAlojamiento';
 
 
 function App() {
@@ -105,6 +106,12 @@ function App() {
         />
         <Route
             path = "/listadoReseñas" element = { <ListadoReseñas /> }  
+        />
+         <Route
+            path = "/modificarAlojamiento" element = { <ModificarAlojamiento /> }  
+        />
+            <Route
+            path = "/perfil" element = { <UserProfile /> }  
         />
      </Routes>
      </div>

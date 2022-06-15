@@ -1,16 +1,36 @@
 
 import { Link } from 'react-router-dom';
 import { Button } from "react-bootstrap";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Base64 } from 'js-base64';
 
 function UserProfile() {
 
 
-    const [dataForm, setDataForm] = useState({ nombre: 'Nohelia', apellido: 'Yanibelli', email: 'asd@asdf.com', password: 'asd', password2:'asd' })
+  useEffect(() => {
 
-    var hash = Base64.encode(dataForm.password); 
+
+    var idAnf =
+    {
+        //id_Anf: userId
+        id_anf: 10041
+    }
+    axios.post("http://localhost:8080/alojamiento/listarAlojamientos", idAnf)
+        .then(res => {
+            const aloj = res.data;
+        //    setAlojamiento(aloj);
+     
+           // setIsLoading(false);
+        })
+
+ 
+}, [])
+
+
+    const [dataForm, setDataForm] = useState({ nombre: '', apellido: '', email: '', calificacion:'' })
+
+   
   
     
   const generateUser = async (e) => {
@@ -24,7 +44,7 @@ function UserProfile() {
       nombre: dataForm.nombre,
       apellido: dataForm.apellido,
       activo: true,
-      pass: hash,
+    
       calificacionGlobal: 0
     } ;
 
