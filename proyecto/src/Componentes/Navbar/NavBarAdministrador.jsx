@@ -27,6 +27,12 @@ function NavBarAdministrador() {
    <Link to='/userList'> <li className="nav-item">Listado de usuarios</li></Link>
 
    </Nav>
+   <Nav className="me-auto">
+   
+   
+   <Link to='/listarHuesped'> <li className="nav-item">Listado de huespedes</li></Link>
+
+   </Nav>
     <Nav>
 
             <NavLink to='/login' className={({ isActive }) => isActive ? 'active' : ''}>

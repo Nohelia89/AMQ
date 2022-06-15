@@ -2,7 +2,7 @@
 
 import ControlledCarousel from "../Carousel/ControlledCarousel";
 import NavBarAdministrador from "../Navbar/NavBarAdministrador";
-import NavBarInvitado from "../Navbar/NavbarInvitado";
+
 import Figure from 'react-bootstrap/Figure'
 
 

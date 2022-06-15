@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import { useUserContext } from '../UserContext/userContext';
 import NavBarAnfitrion from '../Navbar/NavBarAnfitrion';
 import AgregarHabitacion from '../Alojamiento/AgregarHabitacion';
+import ListadoReseñas from './ListadoReseñas';
+import { Link } from 'react-router-dom';
 
 export default function ListadoAlojamientosAnf() {
 
@@ -23,7 +25,7 @@ export default function ListadoAlojamientosAnf() {
         var idAnf =
         {
             //id_Anf: userId
-            id_anf: 10038
+            id_anf: 10029
         }
         axios.post("http://localhost:8080/alojamiento/listarAlojamientos", idAnf)
             .then(res => {
@@ -50,15 +52,33 @@ export default function ListadoAlojamientosAnf() {
 
     const AgregarHab = (id) => {
      
-    
+
        setIdAloj(id)
-       console.log(idAloj+"soy idAloj")
-        
+       console.log(id+"soy idAloj")
+    
        setBotonType("habitacion")
+       
     }
 
 
+    
+    const VerReseñas = (id) => {
+     
+    
+        setIdAloj(id)
+        console.log(idAloj+"soy idAloj")
+         
+        setBotonType("reseñas")
+     }
+ 
+ 
+
     const ModificarAloj = (id) => {
+
+
+
+        setIdAloj(id)
+        
         axios.post(`http://localhost:8080/usuario/desbloquear/` + id, id)
 
             .then(res => {
@@ -68,13 +88,13 @@ export default function ListadoAlojamientosAnf() {
             })
     }
 
-    const Bloquear = (id) => {
-        axios.post(`http://localhost:8080/usuario/bloquear/` + id, id)
+    const DesactivarAloj = (id) => {
+        axios.post(`http://localhost:8080/alojamiento/desactivarAlojamiento/` + id , {})
 
             .then(res => {
-                alert("Usuario Bloqueado")
-                setBotonType("actualizado")
+                alert("Usuario Desactivado")
                 console.log(res.data)
+                setBotonType("desactivado")
             })
     }
 
@@ -133,8 +153,8 @@ export default function ListadoAlojamientosAnf() {
                                 <th>Ciudad</th>
                                 <th>País</th>
                                 <th>Modificar</th>
-                                <th>Habitaciones</th>
                                 <th>Reseñas</th>
+                                <th>Habitaciones</th>
                                 <th>Baja</th>
 
                             </tr>
@@ -148,8 +168,15 @@ export default function ListadoAlojamientosAnf() {
                                 <td>{alojamiento.direcion.ciudad}</td>
                                 <td>{alojamiento.direcion.pais.nombre}</td>
                                 <td><Button variant="danger" onClick={() => ModificarAloj(alojamiento.id)}>Modificar</Button></td> 
-                                <td><Button variant="danger" onClick={() => AgregarHab(alojamiento.id)}>Agregar</Button></td> 
+                                 
+                                <td><Button variant="danger" onClick={() => VerReseñas(alojamiento.id)}>Reseñas</Button></td> 
+                               
+                                <td><Button variant="danger" onClick={() => AgregarHab(alojamiento.id)}>Agregar</Button></td>
 
+                                { alojamiento.activo === true ? 
+                             <td><Button variant="danger" onClick={() => DesactivarAloj(alojamiento.id)}> X </Button></td> : <td>Desactivado</td>   
+                                     } 
+                               
                             </tr>
 
                         </tbody>)}
@@ -159,7 +186,7 @@ export default function ListadoAlojamientosAnf() {
 
             </>
             :    (botonType === "habitacion" ) ? 
-               <AgregarHabitacion id={idAloj}/>:     <ListadoAlojamientosAnf/>  
+               <AgregarHabitacion id={idAloj}/>:  (botonType === "reseñas" ) ? <ListadoReseñas id={idAloj}/>:   <ListadoAlojamientosAnf/>  
             
     )
 }
