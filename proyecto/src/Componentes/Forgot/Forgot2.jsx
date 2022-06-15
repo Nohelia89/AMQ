@@ -8,9 +8,9 @@ export default function Forgot() {
 
 
 
-  const [dataForm, setDataForm] = useState({ token:'', pass:''})
+  const [dataForm, setDataForm] = useState({ token:'', password:''})
 
-  var hash = Base64.encode(dataForm.pass);
+  var hash = Base64.encode(dataForm.password);
 
 
   const Resetear = async (e) => {
@@ -18,7 +18,7 @@ export default function Forgot() {
   var sendPass = {
 
     token: dataForm.token,
-    pass: hash
+    newPassword: hash
 
   } ;
 
@@ -36,7 +36,7 @@ console.log(sendPass+ "SOY SENDMAIL")
 
     const handleChange = (e) => {
       setDataForm({
-    
+    ...dataForm,
         [e.target.name]: e.target.value
       })
     }
@@ -46,9 +46,9 @@ console.log(sendPass+ "SOY SENDMAIL")
       <div class="tit2"><h2>Ingrese los datos solicitados para recuperar la contraseña</h2>
     
       </div>
-      <p class="form-input2" type="Token" ><input required class="form-input1" name='token' type='token' value={dataForm.token} onChange={handleChange} placeholder='Ingrese Token'></input></p>
+     <input required class="form-input1" name='token' type='token' value={dataForm.token} onChange={handleChange} placeholder='Ingrese Token'></input>
     
-      <p class="form-input2" type="Password" ><input required class="form-input1" name='password' type='password' value={dataForm.pass} onChange={handleChange} placeholder='Ingrese Password'></input></p>
+  <input required class="form-input1" name='password' type='password' value={dataForm.password} onChange={handleChange} placeholder='Ingrese Password'></input>
     
       <button class = "btn submits boton">Enviar</button>
      
