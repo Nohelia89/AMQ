@@ -51,7 +51,7 @@ function AgregarHabitacion({id}) {
                 
   
                 console.log("idAloj: "+idAloj+ "habitacion"+habitacion.camas, habitacion.descripcion, habitacion.dtservicios, habitacion.precionoche)
-                axios.post("http://localhost:8080/alojamiento/agregarHabitaciones/" + idAloj, habitacion )
+                axios.post('http://localhost:8080/alojamiento/agregarHabitaciones/' + idAloj, habitacion )
                 
                 .then(res => {
              
