@@ -12,11 +12,10 @@ function Item({ aloj }) {
   const [url1, setUrl1] = useState('');
   const [url2, setUrl2] = useState('');
   const [url3, setUrl3] = useState('');
-  const { setearAloj,setImagenes } = useUserContext();
-  const [img, setImg] = useState([{url1:'', url2:'', url3:''}])
+  const { setearAloj } = useUserContext();
 
 
-
+console.log(aloj)
   
 /*   useEffect(() => {
    
@@ -29,10 +28,16 @@ function Item({ aloj }) {
 
 
   const setear = async () => {
+    console.log("ENtro en setear en ITEM");
+let alojamiento = [];
 
-
-setImagenes(img)
-  setearAloj(aloj)
+console.log("ALOJAMIENTO")
+var obj = {"url1": url1,"url2": url2,"url3": url3, "aloj": aloj};
+ alojamiento.push(obj);
+ console.log("item" + alojamiento)
+  setearAloj(alojamiento)
+  console.log("LUEGO DELPUSH")
+  
 }
 
 
