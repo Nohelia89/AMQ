@@ -24,6 +24,7 @@ import Item from './Componentes/Item/Item';
 import ListadoHuesped from './Componentes/UserList/ListadoHuesped';
 import MainAnfitrion from './Componentes/Main/MainAnfitrion';
 import ListadoAlojamientosAnf from './Componentes/UserList/ListadoAlojamientosAnf';
+import AgregarHabitacion from './Componentes/Alojamiento/AgregarHabitacion';
 
 
 function App() {
@@ -96,6 +97,10 @@ function App() {
         
 <Route
             path = "/listadoAlojamientos" element = { <ListadoAlojamientosAnf /> }  
+        />
+
+<Route
+            path = "/agregarHabitacion" element = { <AgregarHabitacion /> }  
         />
      </Routes>
      </div>
