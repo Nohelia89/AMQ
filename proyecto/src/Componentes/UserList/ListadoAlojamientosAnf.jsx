@@ -7,7 +7,7 @@ import { useUserContext } from '../UserContext/userContext';
 import NavBarAnfitrion from '../Navbar/NavBarAnfitrion';
 import AgregarHabitacion from '../Alojamiento/AgregarHabitacion';
 import ListadoReseñas from './ListadoReseñas';
-import { Link } from 'react-router-dom';
+
 
 export default function ListadoAlojamientosAnf() {
 
@@ -25,7 +25,7 @@ export default function ListadoAlojamientosAnf() {
         var idAnf =
         {
             //id_Anf: userId
-            id_anf: 10029
+            id_anf: 10041
         }
         axios.post("http://localhost:8080/alojamiento/listarAlojamientos", idAnf)
             .then(res => {
