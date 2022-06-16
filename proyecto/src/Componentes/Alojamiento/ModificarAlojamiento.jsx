@@ -109,12 +109,13 @@ const uploadFirestore = async (e) =>{
         <div className="bod1">
           <form className="form1" >
           <div className="tit">NUEVO ALOJAMIENTO</div>
-          <div className="input_container">
+        
 
-          <p class="form-input2" type="Nombre:"><input required class="form-input1" name='nombre' type='text' value={dataForm.nombre} onChange={handleChange} placeholder='Ingrese Nombre'></input></p>  
-          <p class="form-input2" type="Direccion:"><input required class="form-input1" name='direccion' type='text' value={dataForm.direccion} onChange={handleChange} placeholder='Ingrese Direccion'></input></p>
-          </div>
-          <p className="form-input2" type="Descripcion:"><textarea className="textarea" rows="7" cols="70" name='descripcion' type='text'  onChange={handleChange} value={dataForm.descripcion}></textarea></p>
+          <input required class="form-input1" name='nombre' type='text' value={dataForm.nombre} onChange={handleChange} placeholder='Ingrese Nombre'></input>
+      
+          <input required class="form-input1" name='direccion' type='text' value={dataForm.direccion} onChange={handleChange} placeholder='Ingrese Direccion'></input>
+          
+          <textarea className="textarea" rows="7" cols="70" name='descripcion' type='text'  onChange={handleChange} value={dataForm.descripcion}></textarea>
     
           <center>
           <input type="file" onChange={(e)=>{setImage(e.target.files[0])}}/>

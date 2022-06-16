@@ -13,3 +13,4 @@ p[class="form-input2"]:before{content:attr(type);margin:28px 0 0;font-size:14px;
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;}
 .boton2{float:center;margin-left: 10%;margin-top:3%;font-family:'Montserrat',sans-serif;border:2px solid #78788c;background-color:#70ad90;color:#5a5a6e;cursor:pointer;transition:all .3s}
+.form21{width:900px;height:800px;background:#e6e6e6;border-radius:8px;box-shadow:0 0 40px -10px #000;margin:calc(50vh - 220px) auto;padding:10px 30px;max-width:calc(100vw - 40px);box-sizing:border-box;font-family:'Montserrat',sans-serif;position:relative}

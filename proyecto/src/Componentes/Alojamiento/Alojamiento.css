@@ -13,3 +13,7 @@ p[class="form-input2"]:before{content:attr(type);margin:28px 0 0;font-size:14px;
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;}
 .boton2{float:center;margin-left: 10%;margin-top:3%;font-family:'Montserrat',sans-serif;border:2px solid #78788c;background-color:#70ad90;color:#5a5a6e;cursor:pointer;transition:all .3s}
+.input_container2{ display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+ grid-template-columns: 30%; grid-auto-flow: column;}
