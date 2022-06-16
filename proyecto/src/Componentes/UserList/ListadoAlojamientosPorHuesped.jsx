@@ -73,8 +73,8 @@ export default function ListadoAlojamientosPorHuesped() {
               
               var aloj = {
               
-                  pais: val,
-                  activo: val1,
+                  aloj_activo: val1,
+                  aloj_idPais: val,
                   idHuespedSeQuedoEnAloj: 10053
                  
                 
@@ -85,8 +85,9 @@ export default function ListadoAlojamientosPorHuesped() {
                   //  console.log(response.data);
                   setAlojamiento(response.data)
                  // setBotonType('concards')
+                // setBotonType("sinactualizar")
                     return response.data;
-                 setBotonType("sinactualizar")
+                 
                     
                  
                 } 
