@@ -27,6 +27,10 @@ import ListadoAlojamientosAnf from './Componentes/UserList/ListadoAlojamientosAn
 import AgregarHabitacion from './Componentes/Alojamiento/AgregarHabitacion';
 import ListadoReseñas from './Componentes/UserList/ListadoReseñas';
 import ModificarAlojamiento from './Componentes/Modificar/ModificarAlojamiento';
+import ListadoAlojamientosPorHuesped from './Componentes/UserList/ListadoAlojamientosPorHuesped';
+import MainHuesped from './Componentes/Main/MainHuesped';
+import AgregarAlojamiento from './Componentes/Alojamiento/AgregarAlojamiento';
+import AltaHabitacionAlojamiento from './Componentes/Alojamiento/AltaHabitacionAlojamiento';
 
 
 function App() {
@@ -112,6 +116,20 @@ function App() {
         />
             <Route
             path = "/perfil" element = { <UserProfile /> }  
+        />
+           <Route
+            path = "/mainHuesped" element = { <MainHuesped /> }  
+        />
+           <Route
+            path = "/ListadoAlojamientosPorHuesped" element = { <ListadoAlojamientosPorHuesped /> }  
+        />
+
+<Route
+            path = "/AgregarAlojamiento" element = { <AgregarAlojamiento /> }  
+        />
+     
+     <Route
+            path = "/AltaHabitacionAlojamiento" element = { <AltaHabitacionAlojamiento /> }  
         />
      </Routes>
      </div>
