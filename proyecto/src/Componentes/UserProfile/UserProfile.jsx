@@ -6,20 +6,17 @@ import axios from 'axios';
 import { Base64 } from 'js-base64';
 
 function UserProfile() {
-
-
+  const [user, setUser] = useState([]);
+  const [idAnf, setIdAnf] = useState(10041);
   useEffect(() => {
 
 
-    var idAnf =
-    {
-        //id_Anf: userId
-        id_anf: 10041
-    }
-    axios.post("http://localhost:8080/alojamiento/listarAlojamientos", idAnf)
+   
+      
+    axios.post(`http://localhost:8080/usuario/buscar/`+ idAnf)
         .then(res => {
-            const aloj = res.data;
-        //    setAlojamiento(aloj);
+            const usuario = res.data;
+            setUser(usuario);
      
            // setIsLoading(false);
         })
@@ -28,72 +25,37 @@ function UserProfile() {
 }, [])
 
 
-    const [dataForm, setDataForm] = useState({ nombre: '', apellido: '', email: '', calificacion:'' })
-
+    
    
   
-    
-  const generateUser = async (e) => {
-    e.preventDefault();
-
-  
-    
-    var huesped = {
-
-      email: dataForm.email,
-      nombre: dataForm.nombre,
-      apellido: dataForm.apellido,
-      activo: true,
-    
-      calificacionGlobal: 0
-    } ;
-
-    if (dataForm.password === dataForm.password2) {
-      
-            console.log("soy"+dataForm.nombre, dataForm.apellido, dataForm.email, dataForm.password,)
-            console.log("soyhuesped"+huesped.nombre, huesped.apellido, huesped.email, huesped.pass, huesped.calificacionGlobal)
-            axios.post(`http://localhost:8080/usuario/altaHuesped/` + "1", huesped )
-            
-            .then(res => {
-              console.log(res);
-              console.log(res.data);
-            })
-      }
-    }
-
-    const handleChange = (e) => {
-        setDataForm({
-          ...dataForm,
-          [e.target.name]: e.target.value
-        })
-      }
     return (
         
 
         <div class="bod">
-        <form class="form1"  onSubmit={generateUser}>
+        <form class="form1">
         <div class="tit">PERFIL HUESPED</div>
       
   
   
         <div class="input_container">
-        <p class="form-input2" type="Nombre:"><input required class="form-input1" name='nombre' type='text' value={dataForm.nombre} onChange={handleChange} placeholder='Ingrese Nombre'></input></p>
-        <p class="form-input2" type="Apellido:"><input required class="form-input1" name='apellido' type='text' value={dataForm.apellido} onChange={handleChange} placeholder='Ingrese Apellido'></input></p>
+        <p class="form-input2" type="Nombre:"><input required class="form-input1" name='nombre' type='text' value={user.nombre} ></input></p>
+        <p class="form-input2" type="Apellido:"><input required class="form-input1" name='apellido' type='text' value={user.apellido} ></input></p>
         </div>
         <div>
-        <p class="form-input2" type="Mail:"><input required class="form-input1" name='email' type='email' value={dataForm.email} onChange={handleChange} placeholder='Ingrese email'></input></p>
-        <p class="form-input2" type="Password:"><input required type='password' name='password' class="form-input1" value={dataForm.password} onChange={handleChange} placeholder='Ingrese Password'></input></p>
-        <input required type='password' name='password2' class="form-input1" value={dataForm.password2} onChange={handleChange} placeholder='Repita Password'></input>
+        <p class="form-input2" type="Mail:"><input required class="form-input1" name='email' type='email' value={user.email} ></input></p>
+        <p class="form-input2" type="Calificacion Global:"><input required class="form-input1" name='calificacion' type='text' value={user.calificacionGlobal} ></input></p>
+     {/*    <p class="form-input2" type="Password:"><input required type='password' name='password' class="form-input1" value={user.password} onChange={handleChange} placeholder='Ingrese Password'></input></p>
+        <input required type='password' name='password2' class="form-input1" value={dataForm.password2} onChange={handleChange} placeholder='Repita Password'></input> */}
         </div>
   
         <br />
 
         <div>
-        <Link to={'/registro'}>
+        <Link to={'/mainAnfitrion'}>
               <Button variant="dark" >Volver</Button>
             </Link>
 
-        <button variant="dark" class = "btn submits boton">Modificar cambios</button>
+       
         </div>
         
         

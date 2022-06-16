@@ -17,19 +17,18 @@ function ModificarAlojamiento({id}) {
     const [image , setImage] = useState('');
     const [image2 , setImage2] = useState('');
     const [image3 , setImage3] = useState(''); */
-    const [dataForm, setDataForm] = useState({nombre: '', descripcion: '', direccion: ''})
-    const [botontype, setBotonType ] = useState('aloj');
+    const [dataForm, setDataForm] = useState({nombre: '', descripcion: '', direccion: '', calle:''})
+    const [botontype, setBotonType ] = useState('');
     const [aloj , setAloj] = useState([]);
     //const [alojamiento, setAlojamiento] = useState();
     const handleChange = (e) => {
-        setDataForm({
-          ...dataForm,
+        setAloj({
+          ...aloj,
           [e.target.name]: e.target.value,
         
       })
     }
 
-   
 
     const changeStateButton = (e) => {
         setBotonType("hab")
@@ -60,7 +59,7 @@ function ModificarAlojamiento({id}) {
    
           
                
-                axios.post(`http://localhost:8080/alojamiento/modificarAljamiento/`+ id, alojamiento )
+                axios.post(`http://localhost:8080/alojamiento/modificar`, alojamiento )
                 
                 .then(res => {
                   console.log(res);
@@ -75,7 +74,7 @@ function ModificarAlojamiento({id}) {
             .then(res => {
                 const aloj = res.data;
                 setAloj(aloj);
-         
+         setBotonType('aloj')
                // setIsLoading(false);
             })
 
@@ -153,7 +152,10 @@ const uploadFirestore = async (e) =>{
           <div className="input_container">
 
           <p class="form-input2" type="Nombre:"><input required class="form-input1" name='nombre' type='text' value={aloj.nombre} onChange={handleChange} ></input></p>  
-          <p class="form-input2" type="Direccion:"><input required class="form-input1" name='direccion' type='text' value={aloj.activo} onChange={handleChange}></input></p>
+          <p class="form-input2" type="Direccion:">
+            <input required class="form-input1" name='calle' type='text' value={aloj.direcion.calle} onChange={handleChange}></input>
+            <input required class="form-input1" name='numero' type='text' value={aloj.direcion.numero} onChange={handleChange}></input>
+            <input required class="form-input1" name='ciudad' type='text' value={aloj.direcion.ciudad} onChange={handleChange}></input></p>
           </div>
           <p className="form-input2" type="Descripcion:"><textarea className="textarea" rows="7" cols="70" name='descripcion' type='text'  onChange={handleChange} value={aloj.descripcion}></textarea></p>
     {/* 
@@ -172,7 +174,7 @@ const uploadFirestore = async (e) =>{
 
           <button className = "boton2" onClick={uploadFirestore}>Cargar Imagenes</button> <br></br> */}
       
-          <button className = "boton" onClick={changeStateButton}>Actualizar</button>
+          <button className = "boton" onClick={modificar}>Actualizar</button>
         </form>
         
       </div>
