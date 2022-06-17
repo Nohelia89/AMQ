@@ -1,11 +1,8 @@
 
 import axios from 'axios';
 import { useState } from 'react';
-
-import { Base64 } from 'js-base64';
 import { useUserContext } from '../UserContext/userContext';
 import { Form } from 'react-bootstrap';
-import moment from 'js-moment';
 
 export default function ReservaAloj() {
 
