@@ -7,13 +7,17 @@ import { useUserContext } from '../UserContext/userContext';
 import { Col, FloatingLabel, Row, Form, CardGroup } from "react-bootstrap";
 
 import NavBarHuesped from '../Navbar/NavBarHuesped';
+import AgregarCalificacionDeAnfitrion from '../Calificacion/AgregarCalificacionDeAnfitrion';
+import ModificarCalificacionDeAnfitrion from '../Calificacion/ModificarCalificacionDeAnfitrion';
+
 
 
 export default function ListadoAlojamientosPorHuesped() {
 
     const [isLoading, setIsLoading] = useState(true);
     const [alojamiento, setAlojamiento] = useState([]);
-
+    const [idRes, setIdRes] = useState('');
+    const [idCal, setIdCal] = useState('');
     const { userToken, userType, userId } = useUserContext();
     const [botonType, setBotonType] = useState('sinActualizar');
     const [val , setVal] = useState();
@@ -27,10 +31,10 @@ export default function ListadoAlojamientosPorHuesped() {
         var enviar =
         {
             //id_Anf: userId
-            idHuespedSeQuedoEnAloj: 10053
+            idHu: 10053
 
         }
-        axios.post("http://localhost:8080/alojamiento/listarAlojamientos", enviar)
+        axios.post("http://localhost:8080/reserva/listarDatosRequeridosCalificar", enviar)
             .then(res => {
                 const aloj = res.data;
                 setAlojamiento(aloj);
@@ -65,23 +69,73 @@ export default function ListadoAlojamientosPorHuesped() {
         
       }
     
+      const CalificarAnf = (id) => {
+
+        setIdRes(id)
+        
+        console.log(id+"soy IdRes")
+     
+        setBotonType("calificar")
+    }
 
 
-            async function buscarConFiltro() {
+    const EliminarCal = (id) => {
+    
+              var calificacion = {
+        
+                idUsuario: 10053,
+                idReserva: id,
+                calificacion: 0,
+            
+              } ;
+
+                    axios.post("http://localhost:8080/reserva/calificar", calificacion )
+                    
+                    .then(res => {
+                 
+                     
+                      console.log(res.data);
+                    })
+              
+            
+        setBotonType("recargar")
+                    
+     
+     
+       
+    }
+
+    
+    const ModificarCal = (id, cal) => {
+
+console.log("ENTRE A MODIFICAR Y SOY ID"+id+"Y CAL"+cal )
+
+     setIdRes(id)
+      setIdCal(cal)
+  
+        setBotonType("modificar")
+    }
+          
+    
+    
+    
+    
+    
+    async function buscarConFiltro() {
       
     
               
               var aloj = {
               
                   aloj_activo: val1,
-                  aloj_idPais: val,
-                  idHuespedSeQuedoEnAloj: 10053
+                  idPais: val,
+                  idHu: 10053
                  
                 
               }; 
             
           
-                    const response =   await axios.post("http://localhost:8080/alojamiento/listarAlojamientos", aloj ) 
+                    const response =   await axios.post("http://localhost:8080/reserva/listarDatosRequeridosCalificar", aloj ) 
                   //  console.log(response.data);
                   setAlojamiento(response.data)
                  // setBotonType('concards')
@@ -152,19 +206,30 @@ export default function ListadoAlojamientosPorHuesped() {
                                 <th>Dirección</th>
                                 <th>Ciudad</th>
                                 <th>País</th>
-                               
-
+                                <th>Calificacion obtenida</th>
+                                <th>Calificacion otorgada</th>
+                                <th>Actividad</th>
+                                <th>Calificacion</th>
+                                <th>Eliminar Calificacion</th>
                             </tr>
                         </thead>
-                        {alojamiento.map(alojamiento => <tbody key={alojamiento.id} >
+                        {alojamiento.map(alojamiento => <tbody key={alojamiento.res_id} >
                             <tr>
 
-                                <td>{alojamiento.descripcion}</td>
+                                <td>{alojamiento.aloj_descripcion}</td>
+                                <td>{alojamiento.aloj_dir_calle}{alojamiento.aloj_dir_numero}</td>
+                                <td>{alojamiento.aloj_dir_ciudad}</td>
+                                <td>{alojamiento.aloj_dir_pais_nombre}</td>
+                                <td>{alojamiento.anf_calificacion}</td>
+                                <td>{alojamiento.hu_calificacion}</td>
+                                {alojamiento.aloj_activo	  ?      <td>DISPONIBLE</td>:      <td>NO DISPONIBLE</td>}
+                                {alojamiento.hu_calificacion === 0	  ? 
+                                <td><Button variant="dark" onClick={() => CalificarAnf(alojamiento.res_id)}>Calificar</Button></td>
+                                :
+                                <td><Button variant="dark" onClick={() => ModificarCal(alojamiento.res_id, alojamiento.anf_calificacion)}>Modificar</Button></td>}
                                 
-                                <td>{alojamiento.direcion.calle}{alojamiento.direcion.numero}</td>
-                                <td>{alojamiento.direcion.ciudad}</td>
-                                <td>{alojamiento.direcion.pais.nombre}</td>
                              
+                                <td><Button variant="dark" onClick={() => EliminarCal(alojamiento.res_id)}>X</Button></td>
                             </tr>
 
                         </tbody>)}
@@ -173,7 +238,9 @@ export default function ListadoAlojamientosPorHuesped() {
                 }
 
             </>
-            :   <ListadoAlojamientosPorHuesped/>
+            : (botonType === "calificar" ) ? <AgregarCalificacionDeAnfitrion id={idRes}/>:
+            (botonType === "modificar" ) ? <ModificarCalificacionDeAnfitrion id={idRes} cal={idCal}/>: 
+             <ListadoAlojamientosPorHuesped/>
             
     )
 }
