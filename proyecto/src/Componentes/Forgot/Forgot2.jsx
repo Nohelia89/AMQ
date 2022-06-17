@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import { Base64 } from 'js-base64';
 import './Forgot.css';
-export default function Forgot() {
+export default function Forgot2() {
 
 
 

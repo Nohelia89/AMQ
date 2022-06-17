@@ -9,6 +9,9 @@ import LogoSinFondo from '../Logo/LogoSinFondo';
 import NavBarAdministrador from '../Navbar/NavBarAdministrador';
 import { useUserContext } from '../UserContext/userContext';
 import './Login.css';
+import NavBarAnfitrion from '../Navbar/NavBarAnfitrion';
+
+import NavBarHuesped from '../Navbar/NavBarHuesped';
 
 export default function Login() {
    const { setearToken, setearTipoUsuario, setearIdUsuario } = useUserContext();
@@ -44,11 +47,11 @@ export default function Login() {
    const Redirect = () => {
    
       if (user === 'Hu')
-         return (<NavBarAdministrador />)
+         return (<NavBarHuesped />)
        else if (user === 'Ad')
-         return (<FormHuesped />)
+         return (<NavBarAdministrador />)
          else if (user === 'An')
-         return (<FormAnfitrion />)
+         return (<NavBarAnfitrion />)
    }
 
 
