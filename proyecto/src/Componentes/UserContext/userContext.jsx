@@ -9,9 +9,14 @@ function UserContextProvider({children}) {
     const [userToken, setUserToken ] = useState();
     const [userType, setUserType ] = useState();
     const [userId, setUserId ] = useState();
+    const [compraID, setCompraId ] = useState();
     const [aloj, setAloj ] = useState([]);
 
-    
+    const setearCompraId = (com) => {
+        setCompraId(com)
+           
+    }
+
     const setearToken = (token) => {
         setUserToken(token)
            
@@ -35,7 +40,7 @@ function UserContextProvider({children}) {
     }
 
     return (
-        <UserContext.Provider value={{userToken, userType, aloj,userId,setearIdUsuario, setearAloj, setearToken, setearTipoUsuario}}>
+        <UserContext.Provider value={{userToken, userType, aloj,userId,setearIdUsuario, setearAloj, setearToken, setearTipoUsuario, setearCompraId}}>
 
         {children}
 

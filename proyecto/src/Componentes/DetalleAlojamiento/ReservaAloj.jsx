@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useUserContext } from '../UserContext/userContext';
 import { Form } from 'react-bootstrap';
+import PayPal from '../PayPal/PayPal';
 
 export default function ReservaAloj() {
 
@@ -10,48 +11,32 @@ export default function ReservaAloj() {
   const [val , setVal] = useState();
   const [fechaDesde , setFechaDesde] = useState('');
   const [fechaHasta , setFechaHasta] = useState('');
+  const[cantDias , setCantDias] = useState();
 
+  const [botonType, setBotonType] = useState('sinpaypal');
 
+  const Pay = () => {
+    
+     return(<PayPal cant={cantDias} fechaDesde={fechaDesde} fechaHasta={fechaHasta} idHab={val} /> )
+    }
 
-  const reservar = async (e) => {
-    e.preventDefault();
-  
+  const reservar = () => {
     var diaEnMils = 1000 * 60 * 60 * 24,
   desde = new Date(fechaDesde.substr(0, 10)),
   hasta = new Date(fechaHasta.substr(0, 10)),
-  diff = hasta.getTime() - desde.getTime()// +1 incluir el dia de ini
+  diff = hasta.getTime() - desde.getTime()
 var diferencia = diff / diaEnMils;
-console.log(userId)
-  var reserva = {
-
-    idHu: userId,
-    idHab: 101,
-    cantDias: diferencia,
-    descuento: 0,
-    idPaypal: "pp",
-    ffin: fechaDesde,
-    finicio: fechaHasta
-  } ;
-
-  
-
-console.log(reserva+ "SOY RESERVA")    
-    axios.post(`http://localhost:8080/reserva/alta` , reserva
-    
-      )
-                
-                .then(res => {
-                  alert("Se realizo la reserva correctamente")
-                  console.log(res.data)
-                })
+setCantDias(diferencia);
+setBotonType('conpaypal')
+console.log("VAL en reserva" + val)
     }
-
 
 const handleChange = (e) => {
   console.log(`Seleccionaste ${e.target.value}`);
   setVal(e.target.value);
 }
 
+console.log("luego de handle change" + val)
 
     const handleChangeDateFrom = (e) => {
       setFechaDesde(e.target.value)
@@ -63,7 +48,8 @@ const handleChange = (e) => {
 
 
     return (
-<div class="bod">
+      botonType === 'sinpaypal' ?  
+      (<div class="bod">
       <form class="form3" onSubmit={reservar} >
       <div className="input_container">
       <p class="form-input2">Fecha Desde: <input required class="form-input1" name='fechaDesde' type='date' value={fechaDesde} onChange={handleChangeDateFrom}></input> </p>  
@@ -74,15 +60,15 @@ const handleChange = (e) => {
   <p class="form-input2">Habitacion: 
   <Form.Select aria-label="Floating label select example" value={val} onChange={handleChange}>
       {aloj[0].aloj.habs.map((option) => {
-          return (<option key={option.descripcion} value={option.descripcion}>{option.descripcion}</option>);
+          return (<option key={option.id} value={option.id}>{option.descripcion}</option>);
       })}      
     </Form.Select>
   </p>   
   </div>
-      <button class = "btn submits boton">Reservar</button>
+      <button class = "btn submits boton">Pagar</button>
      
     </form>
   </div>
-      
+       ) :  <Pay />
  )
 } 
