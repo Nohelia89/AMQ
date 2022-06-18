@@ -31,7 +31,7 @@ export default function ListadoAlojamientosPorHuesped() {
         var enviar =
         {
             //id_Anf: userId
-            idHu: 10053
+            idUsuario: 10053
 
         }
         axios.post("http://localhost:8080/reserva/listarDatosRequeridosCalificar", enviar)
@@ -129,7 +129,7 @@ console.log("ENTRE A MODIFICAR Y SOY ID"+id+"Y CAL"+cal )
               
                   aloj_activo: val1,
                   idPais: val,
-                  idHu: 10053
+                  idUsuario: 10053
                  
                 
               }; 
@@ -220,8 +220,8 @@ console.log("ENTRE A MODIFICAR Y SOY ID"+id+"Y CAL"+cal )
                                 <td>{alojamiento.aloj_dir_calle}{alojamiento.aloj_dir_numero}</td>
                                 <td>{alojamiento.aloj_dir_ciudad}</td>
                                 <td>{alojamiento.aloj_dir_pais_nombre}</td>
-                                <td>{alojamiento.anf_calificacion}</td>
                                 <td>{alojamiento.hu_calificacion}</td>
+                                <td>{alojamiento.anf_calificacion}</td>
                                 {alojamiento.aloj_activo	  ?      <td>DISPONIBLE</td>:      <td>NO DISPONIBLE</td>}
                                 {alojamiento.hu_calificacion === 0	  ? 
                                 <td><Button variant="dark" onClick={() => CalificarAnf(alojamiento.res_id)}>Calificar</Button></td>
