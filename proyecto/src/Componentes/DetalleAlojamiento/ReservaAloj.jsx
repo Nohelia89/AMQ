@@ -2,7 +2,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { useUserContext } from '../UserContext/userContext';
-import { Form } from 'react-bootstrap';
+import { FloatingLabel, Form } from 'react-bootstrap';
 import PayPal from '../PayPal/PayPal';
 
 export default function ReservaAloj() {
@@ -57,13 +57,15 @@ console.log("luego de handle change" + val)
       <p class="form-input2">Fecha Hasta:  <input required class="form-input1" name='fechaHasta' type='date' value={fechaHasta} onChange={handleChangeDateTo}></input>  </p>  
   </div>
   <div className="input_container">
-  <p class="form-input2">Habitacion: 
+  
+  <FloatingLabel controlId="floatingSelectGrid" label="Habitacion">
   <Form.Select aria-label="Floating label select example" value={val} onChange={handleChange}>
       {aloj[0].aloj.habs.map((option) => {
           return (<option key={option.id} value={option.id}>{option.descripcion}</option>);
       })}      
     </Form.Select>
-  </p>   
+    </FloatingLabel>
+  
   </div>
       <button class = "btn submits boton">Pagar</button>
      
