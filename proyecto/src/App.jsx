@@ -31,6 +31,7 @@ import ListadoAlojamientosPorHuesped from './Componentes/UserList/ListadoAlojami
 import MainHuesped from './Componentes/Main/MainHuesped';
 import AgregarAlojamiento from './Componentes/Alojamiento/AgregarAlojamiento';
 import AltaHabitacionAlojamiento from './Componentes/Alojamiento/AltaHabitacionAlojamiento';
+import HistoricoAlojamientosAnfitrion from './Componentes/UserList/HistoricoAlojamientosAnfitrion';
 
 
 function App() {
@@ -122,6 +123,10 @@ function App() {
         />
            <Route
             path = "/ListadoAlojamientosPorHuesped" element = { <ListadoAlojamientosPorHuesped /> }  
+        />
+
+<Route
+            path = "/HistoricoAlojamientosAnfitrion" element = { <HistoricoAlojamientosAnfitrion/> }  
         />
 
 <Route
