@@ -4,7 +4,7 @@ import { useUserContext } from "../UserContext/userContext";
 import { Table } from "react-bootstrap";
 import axios from "axios";
 
-export default function PayPal({cant, fechaDesde, fechaHasta, idHab}) {
+export default function PayPal({cant, fechaDesde, fechaHasta, idHab, precioNoche, descripcion}) {
     const {aloj, userId, setearCompraId} = useUserContext();
  const [show, setShow] = useState(false);
  const [success, setSuccess] = useState(false);
@@ -30,7 +30,7 @@ export default function PayPal({cant, fechaDesde, fechaHasta, idHab}) {
 var reserva = {
 
   idHu: userId,
-  idHab: 101,
+  idHab: idHab,
   cantDias: cant,
   descuento: 0,
   idPaypal: compraID,
@@ -64,7 +64,7 @@ console.log(reserva+ "SOY RESERVA")
            description: aloj[0].aloj.nombre + "Huesped: " + userId,
            amount: {
              currency_code: "USD",
-             value: aloj[0].aloj.habs[0].precioNoche * cant,
+             value: precioNoche * cant,
            },
          },
        ],
@@ -129,9 +129,9 @@ console.log(reserva+ "SOY RESERVA")
   <tr>
     <td>{aloj[0].aloj.nombre}</td>
     <td>{cant}</td>
-    <td>{aloj[0].aloj.habs[0].descripcion}</td>
-    <td>{aloj[0].aloj.habs[0].precioNoche}</td>
-    <td>{aloj[0].aloj.habs[0].precioNoche * cant}</td>
+    <td>{descripcion}</td>
+    <td>{parseInt(precioNoche)}</td>
+    <td>{parseInt(precioNoche) * cant}</td>
     </tr>
     </tbody>
 

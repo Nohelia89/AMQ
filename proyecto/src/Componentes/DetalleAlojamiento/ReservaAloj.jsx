@@ -1,6 +1,6 @@
 
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useUserContext } from '../UserContext/userContext';
 import { FloatingLabel, Form } from 'react-bootstrap';
 import PayPal from '../PayPal/PayPal';
@@ -8,16 +8,18 @@ import PayPal from '../PayPal/PayPal';
 export default function ReservaAloj() {
 
   const {aloj, userId} = useUserContext();
-  const [val , setVal] = useState();
+  const [val , setVal] = useState(aloj[0].aloj.habs[0].id);
   const [fechaDesde , setFechaDesde] = useState('');
   const [fechaHasta , setFechaHasta] = useState('');
   const[cantDias , setCantDias] = useState();
+  const[precioNoche , setPrecioNoche] = useState(aloj[0].aloj.habs[0].precioNoche);
+  const[descripcion , setDescripcion] = useState(aloj[0].aloj.habs[0].descripcion);
 
   const [botonType, setBotonType] = useState('sinpaypal');
 
   const Pay = () => {
     
-     return(<PayPal cant={cantDias} fechaDesde={fechaDesde} fechaHasta={fechaHasta} idHab={val} /> )
+     return(<PayPal cant={cantDias} fechaDesde={fechaDesde} fechaHasta={fechaHasta} idHab={val} precioNoche={precioNoche} descripcion={descripcion} /> )
     }
 
   const reservar = () => {
@@ -34,9 +36,10 @@ console.log("VAL en reserva" + val)
 const handleChange = (e) => {
   console.log(`Seleccionaste ${e.target.value}`);
   setVal(e.target.value);
+
+ 
 }
 
-console.log("luego de handle change" + val)
 
     const handleChangeDateFrom = (e) => {
       setFechaDesde(e.target.value)
@@ -45,6 +48,25 @@ console.log("luego de handle change" + val)
     const handleChangeDateTo = (e) => {
       setFechaHasta(e.target.value)
     }
+
+    useEffect(() => {
+
+
+       aloj[0].aloj.habs.map((option, index) => {
+    
+        console.log("ENTRA AL MAP")
+        if(parseInt(option.id) === parseInt(val)){
+          
+        console.log("ENTRA AL OPTION")
+        console.log("OPTION" + index)
+          setPrecioNoche(aloj[0].aloj.habs[index].precioNoche)
+          setDescripcion(aloj[0].aloj.habs[index].descripcion)    
+          console.log("precioNoche" + precioNoche)
+          console.log("Descripcion" + descripcion)
+        }
+    })
+              
+            },[val])
 
 
     return (
@@ -60,9 +82,12 @@ console.log("luego de handle change" + val)
   
   <FloatingLabel controlId="floatingSelectGrid" label="Habitacion">
   <Form.Select aria-label="Floating label select example" value={val} onChange={handleChange}>
-      {aloj[0].aloj.habs.map((option) => {
-          return (<option key={option.id} value={option.id}>{option.descripcion}</option>);
-      })}      
+    
+      {
+      aloj[0].aloj.habs.map((option, index) => {
+          return (<option key={index.id} value={option.id}>{option.descripcion}</option>);
+      })}   
+
     </Form.Select>
     </FloatingLabel>
   
