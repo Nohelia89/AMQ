@@ -154,11 +154,12 @@ export default function ListadoAlojamientosAnf() {
                                 <td>{alojamiento.direcion.calle}{alojamiento.direcion.numero}</td>
                                 <td>{alojamiento.direcion.ciudad}</td>
                                 <td>{alojamiento.direcion.pais.nombre}</td>
-                                <td><Button variant="danger" onClick={() => ModificarAloj(alojamiento.id)}>Modificar</Button></td> 
-                                 
-                                <td><Button variant="danger" onClick={() => VerReseñas(alojamiento.id)}>Reseñas</Button></td> 
-                               
-                                <td><Button variant="danger" onClick={() => AgregarHab(alojamiento.id)}>Agregar</Button></td>
+                                { alojamiento.activo === true ? 
+                                <td><Button variant="danger" onClick={() => ModificarAloj(alojamiento.id)}>Modificar</Button></td> : <td>Modificar</td>  } 
+                                  { alojamiento.activo === true ? 
+                                <td><Button variant="danger" onClick={() => VerReseñas(alojamiento.id)}>Reseñas</Button></td> : <td>Reseñas</td>  }
+                                 { alojamiento.activo === true ? 
+                                <td><Button variant="danger" onClick={() => AgregarHab(alojamiento.id)}>Agregar</Button></td> : <td>Agregar</td>  }
 
                                 { alojamiento.activo === true ? 
                              <td><Button variant="danger" onClick={() => DesactivarAloj(alojamiento.id)}> X </Button></td> : <td>Desactivado</td>   

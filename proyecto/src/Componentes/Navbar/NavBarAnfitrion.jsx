@@ -21,6 +21,13 @@ function NavBarAnfitrion() {
     <Link to='/listadoAlojamientos'> <li className="nav-item">Listado de alojamientos</li></Link>
 
     </Nav>
+
+    <Nav className="me-auto">
+   
+   
+    <Link to='/reservas'> <li className="nav-item">Reservas</li></Link>
+
+    </Nav>
   
    
    <Nav className="me-auto">

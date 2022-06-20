@@ -32,6 +32,8 @@ import MainHuesped from './Componentes/Main/MainHuesped';
 import AgregarAlojamiento from './Componentes/Alojamiento/AgregarAlojamiento';
 import AltaHabitacionAlojamiento from './Componentes/Alojamiento/AltaHabitacionAlojamiento';
 import HistoricoAlojamientosAnfitrion from './Componentes/UserList/HistoricoAlojamientosAnfitrion';
+import ReservasAnf from './Componentes/DetalleAlojamiento/ReservasAnf';
+import ReservasHu from './Componentes/DetalleAlojamiento/ReservasHu';
 
 
 function App() {
@@ -135,6 +137,14 @@ function App() {
      
      <Route
             path = "/AltaHabitacionAlojamiento" element = { <AltaHabitacionAlojamiento /> }  
+        />
+
+<Route
+            path = "/reservas" element = { <ReservasAnf /> }  
+        />
+
+<Route
+            path = "/cancelarReserva" element = { <ReservasHu /> }  
         />
      </Routes>
      </div>
