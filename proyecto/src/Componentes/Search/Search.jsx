@@ -66,7 +66,6 @@ function Search() {
     var alojamiento = {
     
         aloj_idPais: val,
-        calificacion_global: cal,
         hab_precio: precioDesde,
         hab_precio_hasta: precioHasta
        
