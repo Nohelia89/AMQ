@@ -68,7 +68,7 @@ export default function ListadoAnfitrion() {
             var usuario = {
             
                 estado: val1,
-                tipo: valH,
+          
                 calificacion_desde: calDesde,
                 calificacion_hasta: calHasta
                
@@ -164,7 +164,7 @@ return (
 
           <thead>
             <tr>
-              <th>Tipo</th>
+             
               <th>Nombre</th>
               <th>Apellido</th>
               <th>Mail</th>
@@ -176,9 +176,7 @@ return (
           </thead>
           {anfitrion.map(anfitrion => <tbody key={anfitrion.id} >
             <tr>
-            {anfitrion.tipo === "Ad" ? 
-             <td>Administrador</td> : (anfitrion.tipo === "Hu" ? <td>Huesped</td>  : <td>Anfitrion</td> )            
-            }
+
               <td>{anfitrion.nombre}</td>
               <td>{anfitrion.apellido}</td>
               <td>{anfitrion.email}</td>
