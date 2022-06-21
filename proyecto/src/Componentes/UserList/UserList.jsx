@@ -16,9 +16,10 @@ export default function UserList() {
   //const [val , setVal] = useState(true);
   const [val1 , setVal1] = useState(true);
   const [valC , setValC] = useState();
-  const [valH , setValH] = useState('');
+  const [valH , setValH] = useState('Ad');
   
-
+  const [calDesde , setCalDesde] = useState();
+  const [calHasta , setCalHasta] = useState();
   useEffect(() => {
     
    axios.post("http://localhost:8080/usuario/listar", {})
@@ -34,6 +35,26 @@ export default function UserList() {
     
   },[])
 
+  useEffect(() => {
+    
+    setCalDesde("0")
+    setCalHasta("2")
+        if (valC === "1"){
+          console.log("entre al if 1" )
+          setCalDesde("0")
+          setCalHasta("2")
+        } else if (valC === "2"){
+          console.log("entre al if 2" )
+          setCalDesde("2")
+          setCalHasta("3")
+        } else if (valC === "3") {
+          setCalDesde("4")
+          setCalHasta("5")
+        } 
+          
+       
+     
+   },[valC])
 
 
 
@@ -79,11 +100,14 @@ export default function UserList() {
           var usuario = {
           
               activo: val1,
-              tipo: valH
+              tipo: valH,
+              calificacion_desde: calDesde,
+              calificacion_hasta: calHasta
              
             
           }; 
         
+    console.log(valH)
       
                 const response =   await axios.post(`http://localhost:8080/usuario/listar`, usuario ) 
               //  console.log(response.data);
@@ -113,7 +137,7 @@ export default function UserList() {
   const handleChangeP = (e) => {
     console.log(`Seleccionaste ${e.target.value}`);
     setValH(e.target.value);
-    
+    console.log(valH)
   }
 
 
@@ -130,11 +154,9 @@ return (
   <FloatingLabel controlId="floatingSelectGrid" label="Calificacion Global">
       <Form.Select aria-label="Floating label select example" value={valC} onChange={handleChangeC}>
       
-        <option value="6">1</option>
-        <option value="7">2</option>
-        <option value="8">3</option>
-        <option value="9">4</option>
-        <option value="10">5</option>
+        <option value="1">Menor que 2</option>
+        <option value="2">Entre 2 y 3</option>
+        <option value="3">Entre 4 y 5</option>
       </Form.Select>
     </FloatingLabel>
   </Col>
@@ -190,7 +212,7 @@ return (
               <td>{usuario.nombre}</td>
               <td>{usuario.apellido}</td>
               <td>{usuario.email}</td>
-              <td>{usuario.calificacionGlobal}</td>
+              <td>{usuario.calificacion}</td>
               { usuario.tipo !== "Ad" ? (usuario.activo === true ? 
               <td><Button variant="danger" onClick={() => Desactivar(usuario.id)}>Desactivar</Button></td> : <td>Desactivado</td>) : <td>Activo</td>  
             }

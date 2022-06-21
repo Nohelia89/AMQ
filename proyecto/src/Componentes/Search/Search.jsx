@@ -21,42 +21,41 @@ function Search() {
 
 
 
+    useEffect(() => {
+    
+
+      setPrecioDesde(0);
+      setPrecioHasta(50);
+      
+                console.log(valP);
+              if (valP === "1"){
+                console.log("entre al if 1" )
+           
+                  setPrecioDesde(0);
+                  setPrecioHasta(50);
+              } else if (valP === "2"){
+                console.log("entre al if 2" )
+                setPrecioDesde(51);
+                setPrecioHasta(100);
+              } else if (valP === "3") {
+                setPrecioDesde("101");
+                setPrecioHasta("200");
+              } else if (valP === "4") {
+                setPrecioDesde("201");
+                  setPrecioHasta("300");
+              } else if (valP === "5") {
+                setPrecioDesde("301");
+                setPrecioHasta("1000");
+              }
+  
+                
+              console.log(precioDesde + "precio desde")
+              console.log(precioHasta + "precio hasta")
+          
+           
+            },[valP])
    
 
-      useEffect(() => {
-    
-
-setPrecioDesde(0);
-setPrecioHasta(50);
-
-          console.log(valP);
-        if (valP === "1"){
-          console.log("entre al if 1" )
-     
-            setPrecioDesde(0);
-            setPrecioHasta(50);
-        } else if (valP === "2"){
-          console.log("entre al if 2" )
-          setPrecioDesde(51);
-          setPrecioHasta(100);
-        } else if (valP === "3") {
-          setPrecioDesde("101");
-          setPrecioHasta("200");
-        } else if (valP === "4") {
-          setPrecioDesde("201");
-            setPrecioHasta("300");
-        } else if (valP === "5") {
-          setPrecioDesde("301");
-          setPrecioHasta("1000");
-        }
-    
-          
-        console.log(precioDesde + "precio desde")
-        console.log(precioHasta + "precio hasta")
-    
-          
-        
-      },[valP])
 
    
     async function buscar() {
@@ -67,7 +66,7 @@ setPrecioHasta(50);
     var alojamiento = {
     
         aloj_idPais: val,
-        //calificacion_global: valC,
+        calificacion_global: cal,
         hab_precio: precioDesde,
         hab_precio_hasta: precioHasta
        
@@ -76,6 +75,7 @@ setPrecioHasta(50);
     console.log(precioDesde + "precio desde")
     console.log(precioHasta + "precio hasta")
 
+    {console.log(alojamiento +"soy aloj en el post")}
           const response =   await axios.post(`http://localhost:8080/alojamiento/listarAlojamientos`, alojamiento, {
             headers: {
               'Authorization': `Basic ${userToken}` 
@@ -133,11 +133,7 @@ setPrecioHasta(50);
         setVal(e.target.value);
       }
 
-      const handleChangeC = (e) => {
-        console.log(`Seleccionaste ${e.target.value}`);
-        setValC(e.target.value);
-        
-      }
+
 
       const handleChangeP = (e) => {
         console.log(`Seleccionaste ${e.target.value}`);
@@ -156,18 +152,6 @@ setPrecioHasta(50);
         <div style={{marginLeft: "18%", width: "1000px" , padding:"15px", borderRadius: "5px", boxShadow: "0px 9px 30px 9px", border: "1.5px solid gray", backgroundColor: "lightgrey", marginTop: "40px"}}>      
 <Row className="g-3">
 
-  <Col md style={{padding:"10px"}} >
-  <FloatingLabel controlId="floatingSelectGrid" label="Calificacion Global">
-      <Form.Select aria-label="Floating label select example" value={valC} onChange={handleChangeC}>
-      
-        <option value="6">1</option>
-        <option value="7">2</option>
-        <option value="8">3</option>
-        <option value="9">4</option>
-        <option value="10">5</option>
-      </Form.Select>
-    </FloatingLabel>
-  </Col>
   <Col md style={{padding:"10px"}} >
   <FloatingLabel controlId="floatingSelectGrid" label="País">
       <Form.Select aria-label="Floating label select example" value={val} onChange={handleChange}>
