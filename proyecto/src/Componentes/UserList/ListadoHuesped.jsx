@@ -10,9 +10,9 @@ export default function ListadoHuesped() {
   
   const [isLoading, setIsLoading] = useState(true);
   const [huesped, setHuesped] = useState([]);
-  const [val1 , setVal1] = useState('APROBADO');
+  const [val1 , setVal1] = useState(true);
   const [valC , setValC] = useState();
-  const [valH , setValH] = useState('');
+
 
   const [botonType, setBotonType ] = useState('sinActualizar');
 
@@ -48,8 +48,8 @@ export default function ListadoHuesped() {
             
             var usuario = {
             
-                estado: val1,
-                tipo: valH
+              activo: val1,
+                calificacionGlobal: valC
                
               
             }; 
@@ -94,11 +94,11 @@ return (
   <FloatingLabel controlId="floatingSelectGrid" label="Calificacion Global">
       <Form.Select aria-label="Floating label select example" value={valC} onChange={handleChangeC}>
       
-        <option value="6">1</option>
-        <option value="7">2</option>
-        <option value="8">3</option>
-        <option value="9">4</option>
-        <option value="10">5</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
       </Form.Select>
     </FloatingLabel>
   </Col>
@@ -106,8 +106,9 @@ return (
   <FloatingLabel controlId="floatingSelectGrid" label="Estado">
       <Form.Select aria-label="Floating label select example" value={val1} onChange={handleChange}>
       
-      <option value="APROBADO">Aprobado</option>
-        <option value="RECHAZADO">Rechazado</option>
+      <option value="true">Activo</option>
+        <option value="false">No Activo</option>
+      
       
     
         
@@ -126,26 +127,27 @@ return (
 
           <thead>
             <tr>
-              <th>Tipo</th>
+          
               <th>Nombre</th>
               <th>Apellido</th>
               <th>Mail</th>
               <th>Calificación</th>
-              <th>Estado</th>
+              <th>Activo</th>
     
               
             </tr>
           </thead>
           {huesped.map(huesped => <tbody key={huesped.id} >
             <tr>
-            {huesped.tipo === "Ad" ? 
-             <td>Administrador</td> : (huesped.tipo === "Hu" ? <td>Huesped</td>  : <td>Anfitrion</td> )            
-            }
+           
               <td>{huesped.nombre}</td>
               <td>{huesped.apellido}</td>
               <td>{huesped.email}</td>
               <td>{huesped.calificacionGlobal}</td>
-              <td>{huesped.estado}</td>
+              {huesped.activo === true ? 
+             <td>Activo</td> : <td>Inactivo</td> }            
+            
+              <td>{huesped.activo}</td>
              
               </tr>
          
