@@ -3,7 +3,6 @@ import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { useUserContext } from "../UserContext/userContext";
 import { Table } from "react-bootstrap";
 import axios from "axios";
-import {Buffer} from 'buffer';
 
 export default function PayPal({cant, fechaDesde, fechaHasta, idHab, precioNoche, descripcion}) {
     const {aloj, userId} = useUserContext();
