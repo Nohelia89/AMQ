@@ -2,7 +2,7 @@ import { Container, Nav, Navbar} from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import LogWidget from "./LogWidget";
-
+import "./NavBar.css";
 
 function NavBarInvitado() {
     return (
@@ -17,8 +17,8 @@ function NavBarInvitado() {
     <Nav className="me-auto">
    
    
-    <Link to='/listarAlojamientos'> <li className="nav-item">Encontra tu lugar!</li></Link>
-
+    <Nav.Link as={Link} to='/listarAlojamientos'> <li className="nav-item">Encontra tu lugar!</li></Nav.Link>
+  
     </Nav>
     <Nav>
 

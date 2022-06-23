@@ -1,6 +1,7 @@
 
-import ControlledCarousel from "../Carousel/ControlledCarousel";
+
 import NavBarInvitado from "../Navbar/NavbarInvitado";
+import HoverEffects from "./HoverEffects";
 
 
 
@@ -14,8 +15,8 @@ export default function Main
     <>
   
   <NavBarInvitado/>
-      <ControlledCarousel/>
-  
+   
+  <HoverEffects/>
 
     </>
       

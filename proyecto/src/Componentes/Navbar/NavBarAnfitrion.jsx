@@ -18,14 +18,14 @@ function NavBarAnfitrion() {
     <Nav className="me-auto">
    
    
-    <Link to='/listadoAlojamientos'> <li className="nav-item">Listado de alojamientos</li></Link>
+    <Nav.Link as={Link} to='/listadoAlojamientos'> <li className="nav-item">Listado de alojamientos</li></Nav.Link>
 
     </Nav>
 
     <Nav className="me-auto">
    
    
-    <Link to='/reservas'> <li className="nav-item">Reservas</li></Link>
+    <Nav.Link as={Link} to='/reservas'> <li className="nav-item">Reservas</li></Nav.Link>
 
     </Nav>
   
@@ -33,21 +33,21 @@ function NavBarAnfitrion() {
    <Nav className="me-auto">
    
    
-   <Link to='/AgregarAlojamiento'> <li className="nav-item">Agregar Alojamiento</li></Link>
+   <Nav.Link as={Link} to='/AgregarAlojamiento'> <li className="nav-item">Agregar Alojamiento</li></Nav.Link>
 
    </Nav>
    
    <Nav className="me-auto">
    
    
-   <Link to='/HistoricoAlojamientosAnfitrion'> <li className="nav-item">Historial</li></Link>
+   <Nav.Link as={Link} to='/HistoricoAlojamientosAnfitrion'> <li className="nav-item">Historial</li></Nav.Link>
 
    </Nav>
 
    <Nav className="me-auto">
    
    
-   <Link to='/perfil'> <li className="nav-item">Perfil de usuario</li></Link>
+   <Nav.Link as={Link} to='/perfil'> <li className="nav-item">Perfil de usuario</li></Nav.Link>
 
    </Nav>
     <Nav>

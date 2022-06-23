@@ -17,21 +17,21 @@ function NavBarHuesped() {
     <Nav className="me-auto">
    
    
-    <Link to='/listarAlojamientos'> <li className="nav-item">Encontra tu lugar!</li></Link>
+    <Nav.Link as={Link} to='/listarAlojamientos'> <li className="nav-item">Encontra tu lugar!</li></Nav.Link>
 
     </Nav>
 
     <Nav className="me-auto">
    
    
-   <Link to='/ListadoAlojamientosPorHuesped'> <li className="nav-item">Historial</li></Link>
+   <Nav.Link as={Link} to='/ListadoAlojamientosPorHuesped'> <li className="nav-item">Historial</li></Nav.Link>
 
    </Nav>
 
    <Nav className="me-auto">
    
    
-   <Link to='/cancelarReserva'> <li className="nav-item">Cancelar Reserva</li></Link>
+   <Nav.Link as={Link} to='/cancelarReserva'> <li className="nav-item">Cancelar Reserva</li></Nav.Link>
 
    </Nav>
 
@@ -41,7 +41,7 @@ function NavBarHuesped() {
     <Nav className="me-auto">
    
    
-   <Link to='/perfil'> <li className="nav-item">Perfil de usuario</li></Link>
+   <Nav.Link as={Link} to='/perfil'> <li className="nav-item">Perfil de usuario</li></Nav.Link>
   
    </Nav>
             <NavLink to='/login' className={({ isActive }) => isActive ? 'active' : ''}>

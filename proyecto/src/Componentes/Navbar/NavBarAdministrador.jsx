@@ -18,19 +18,19 @@ function NavBarAdministrador() {
     <Nav className="me-auto">
    
    
-    <Link to='/listadoAnfitrion'> <li className="nav-item">Listado de anfitriones</li></Link>
+    <Nav.Link as={Link} to='/listadoAnfitrion'> <li className="nav-item">Listado de anfitriones</li></Nav.Link>
 
     </Nav>
     <Nav className="me-auto">
    
    
-   <Link to='/userList'> <li className="nav-item">Listado de usuarios</li></Link>
+   <Nav.Link as={Link} to='/userList'> <li className="nav-item">Listado de usuarios</li></Nav.Link>
 
    </Nav>
    <Nav className="me-auto">
    
    
-   <Link to='/listarHuesped'> <li className="nav-item">Listado de huespedes</li></Link>
+   <Nav.Link as={Link} to='/listarHuesped'> <li className="nav-item">Listado de huespedes</li></Nav.Link>
 
    </Nav>
     <Nav>
