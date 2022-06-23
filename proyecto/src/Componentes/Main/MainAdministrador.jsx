@@ -4,6 +4,7 @@ import ControlledCarousel from "../Carousel/ControlledCarousel";
 import NavBarAdministrador from "../Navbar/NavBarAdministrador";
 
 import Figure from 'react-bootstrap/Figure'
+import HoverEffectsAdmin from "./HoverEffectsAdmin";
 
 
 export default function MainAdministrador
@@ -16,18 +17,8 @@ export default function MainAdministrador
     <>
   
   <NavBarAdministrador/>
-  <Figure>
-<Figure.Image
-  width={171}
-  height={180}
-  alt="171x180"
-  src="../reparacion.jpg"
-/>
-<Figure.Caption>
-  Bienvenido al menú Administrador
-</Figure.Caption>
-</Figure>
-  
+ 
+<HoverEffectsAdmin/>
 
     </>
       

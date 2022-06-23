@@ -4,7 +4,7 @@ import { getFirestore, collection, getDoc, doc, getDocs, where, query } from "fi
 import { getFirestoreApp } from "../Alojamiento/firebase";
 import { Link } from "react-router-dom";
 import { useUserContext } from "../UserContext/userContext";
-
+import './Item.css'
 
 
 function Item({ aloj }) {
@@ -67,8 +67,8 @@ var obj = {"url1": url1,"url2": url2,"url3": url3, "aloj": aloj};
   return (
     <div>
 
-      <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={url1} />
+      <Card className={"card-grid"} style={{ width: '18rem' } }>
+        <Card.Img className={"card-img"} variant="top" src={url1} />
         <Card.Body>
           <Card.Title>Nombre:{aloj.nombre}</Card.Title>
           <Card.Text>

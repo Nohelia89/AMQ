@@ -33,6 +33,7 @@ var reserva = {
   idHab: idHab,
   cantDias: cant,
   descuento: 0,
+  tieneDescuento: false,
   idPaypal: auth,
   ffin: fechaHasta,
   finicio: fechaDesde
@@ -52,38 +53,40 @@ console.log(reserva+ "SOY RESERVA")
       .catch(error => {
         alert("ERROR: "+error.response.data.mensaje);
       });
-  /*           
+     /*       
     axios.post("https://api-m.sandbox.paypal.com/v2/payments/authorizations/"+auth+"/capture", {}, {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer A21AAKTtXghoyV325RmsGznbMbVNPQTLcw6XZVlCwqBqv2DUi7CjhmHrcBc6rW1yD5yAhJued1OftZkOLyleHWnELalyTin1g'
+          'Authorization': 'Bearer A21AALNgQaPnrhhLzw42iakNoXcufT5ytF0-AP8vp_AfbaRb_k88tFqM7D90AOjL93ZEDXY0io3nAAgUKPTfqNXOfMu9MYHsA'
 
         }
         
        })
        .then(response => {
         console.log("captura exitosa");
+        setCompraID(response.data.id)
      })
- */
-    
-  }
 
-/*const onRefund = (data, actions) => {
-  axios.post("https://api-m.sandbox.paypal.com/v2/payments/captures/7JL19132VC198042F/refund", {
-    "amount": {
-      "value": "10.99",
-      "currency_code": "USD"
-    },
-    "invoice_id": "INVOICE-123",
-    "note_to_payer": "Defective product"
-  }, {
+     axios.post("https://api-m.sandbox.paypal.com/v2/payments/captures/44408600VK494343C/refund", {
+      "amount": {
+        "value": "10.99",
+        "currency_code": "USD"
+      },
+      "invoice_id": "INVOICE-123",
+      "note_to_payer": "Defective product"
+    }, {
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Basic <ASu47G1hfMPmgXVkUg_rJPqszc9fVr6k37EzdzW4H7pviHpb6DE71Slpqtxx3hH91aM8r_5YUTd3-J1W>:<ECwSAIslaCPkTqSTXiL6hAcCbiX5kDQBBC6c6xL2kdpOU40uLLcRmgJFDyYLTRx7RJp3llm708B2SWT7>`,
-        "PayPal-Request-Id": "123e4567-e89b-12d3-a456-426655440020" 
+        'Authorization': 'Bearer A21AALNgQaPnrhhLzw42iakNoXcufT5ytF0-AP8vp_AfbaRb_k88tFqM7D90AOjL93ZEDXY0io3nAAgUKPTfqNXOfMu9MYHsA'
+
       }
-  })
-*/
+    })
+ 
+    */
+  }
+
+
+
 //};
 
 function onApprove (data, actions) {

@@ -3,6 +3,7 @@
 
 import Figure from 'react-bootstrap/Figure'
 import NavBarAnfitrion from '../Navbar/NavBarAnfitrion'
+import HoverEffectsAnfitrion from './HoverEffectsAnfitrion'
 
 
 export default function MainAnfitrion
@@ -15,17 +16,8 @@ export default function MainAnfitrion
     <>
   
   <NavBarAnfitrion/>
-  <Figure>
-<Figure.Image
-  width={171}
-  height={180}
-  alt="171x180"
-  src="../reparacion.jpg"
-/>
-<Figure.Caption>
-  Bienvenido al menú Anfitrión
-</Figure.Caption>
-</Figure>
+  <HoverEffectsAnfitrion/>
+
   
 
     </>

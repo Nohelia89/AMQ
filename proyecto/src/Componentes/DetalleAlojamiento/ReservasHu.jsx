@@ -21,7 +21,7 @@ console.log(userId + "user")
         axios.post("http://localhost:8080/reserva/reservasXHuespXEstado/", {
           "idHu": userId,
           "resEstado": [
-            "PENDIENTE"
+            "APROBADO"
           ]
         })
             .then(res => {
@@ -37,24 +37,22 @@ console.log(res.data + "data")
 
 
     
-    const Cancelar = (id) => {
-/*
-      axios.post("https://api-m.sandbox.paypal.com/v2/payments/captures/7JL19132VC198042F/refund", {
-    "amount": {
-      "value": "10.99",
-      "currency_code": "USD"
-    },
-    "invoice_id": "INVOICE-123",
-    "note_to_payer": "Defective product"
-  }, {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer <A21AAL35zV5o8eBE4iWiXKD0CKHPy9901VuKqvX8QaXD6vlbHdsggSuppy6acAu8S4AOkoJC3OoABnfBhIzFXxVI4p-zRjNVA>',
-        "PayPal-Request-Id": "123e4567-e89b-12d3-a456-426655440020" 
-      }
-  })
-*/
-        axios.post("http://localhost:8080/reserva/cancelarReservaAprobada/" + id)
+    const Cancelar = (idRes, idPayPal) => {
+
+      axios.post("https://api-m.sandbox.paypal.com/v2/payments/captures/"+idPayPal+"/refund", {amount: {
+        value: "",
+        currency_code: "USD"
+      },
+      note_to_payer: "MULTA POR CANCELAR RESERVA APROBADA"
+    }, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer A21AAKTtXghoyV325RmsGznbMbVNPQTLcw6XZVlCwqBqv2DUi7CjhmHrcBc6rW1yD5yAhJued1OftZkOLyleHWnELalyTin1g'
+
+        }
+      }).then(response => {
+        console.log("Reembolso de pago exitoso");
+        axios.post("http://localhost:8080/reserva/cancelarReservaAprobada/" + idRes)
                 
         .then(res => {
      
@@ -62,9 +60,12 @@ console.log(res.data + "data")
           console.log(res.data);
           
           setBotonType("actualizado")
-          alert("Reserva Cancelada")
+          alert("Reserva Cancelada con una multa por haber cancelado una reserva aprobada. La multa equivale al 50% de lo abonado por la reserva")
           
         })
+
+      })
+
 
      }
  
@@ -99,8 +100,8 @@ console.log(res.data + "data")
                                 <td>{reservas.hab_descripcion}</td>
                                 <td>{reservas.res_fechaInicio}</td>
                                 <td>{reservas.res_fechaFin}</td>
-                                {reservas.res_estado === "PENDIENTE" ?   
-                                <td><Button variant="danger" onClick={() => Cancelar(reservas.res_id)}>Cancelar</Button></td> : <td>CANCELADA</td>
+                                {reservas.res_estado === "APROBADO" ?   
+                                <td><Button variant="danger" onClick={() => Cancelar(reservas.res_id,reservas.res_paypal )}>Cancelar</Button></td> : <td>CANCELADA</td>
                                  }
             
                             </tr>

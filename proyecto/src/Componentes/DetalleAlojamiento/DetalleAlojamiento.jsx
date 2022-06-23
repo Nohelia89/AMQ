@@ -7,6 +7,7 @@ import ReservaAloj from "../DetalleAlojamiento/ReservaAloj";
 import { Base64 } from 'js-base64';
     
 import { useUserContext } from "../UserContext/userContext";
+import NavBarInvitado from '../Navbar/NavbarInvitado';
 
 function DetalleAlojamiento() {
     
@@ -15,8 +16,7 @@ function DetalleAlojamiento() {
   
       const [botonType, setBotonType] = useState('sinActualizar');
 
-      console.log(aloj);
-      console.log("ESTOY EN DETALLE " + aloj)
+    
  
       const reservar = () => {
         setBotonType("habitacion")
@@ -36,7 +36,7 @@ function DetalleAlojamiento() {
           useEffect(() => {
             var datos =
             {
-                //id_Anf: userId
+            
                 idAloj: aloj[0].aloj.id
             }
            
@@ -45,7 +45,9 @@ function DetalleAlojamiento() {
           const rese = res.data;
             setReseña(rese);
           })
-        
+          .catch(error => {
+            alert("ERROR: " + error.response.data.mensaje);
+          });
            
               
             
@@ -55,8 +57,9 @@ function DetalleAlojamiento() {
     return (
 
    botonType === 'sinActualizar' ?  
+   
    (<div class="bod">
-    
+      <NavBarInvitado/>
     <form className="form21" >
   <Card>
   <Carousel  activeIndex={index} onSelect={handleSelect}>

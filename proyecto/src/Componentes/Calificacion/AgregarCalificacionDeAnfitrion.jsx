@@ -49,10 +49,14 @@ function AgregarCalificacionDeAnfitrion({id}) {
                 .then(res => {
              
                  
-                  console.log(res.data);
+                  alert("CALIFICACION INGRESADA CORRECTAMENTE");
+                  
                 })
+                .catch(error => {
+                  alert("ERROR: " + error.response.data.mensaje);
+                });
+                
                 setBotonType("actualizado")
-          
         }
 
     return (
