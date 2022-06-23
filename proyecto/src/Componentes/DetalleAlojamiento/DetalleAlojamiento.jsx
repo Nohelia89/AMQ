@@ -7,6 +7,7 @@ import ReservaAloj from "../DetalleAlojamiento/ReservaAloj";
 import { Base64 } from 'js-base64';
     
 import { useUserContext } from "../UserContext/userContext";
+import NavBarInvitado from '../Navbar/NavbarInvitado';
 
 function DetalleAlojamiento() {
     
@@ -55,8 +56,9 @@ function DetalleAlojamiento() {
     return (
 
    botonType === 'sinActualizar' ?  
+   
    (<div class="bod">
-    
+      <NavBarInvitado/>
     <form className="form21" >
   <Card>
   <Carousel  activeIndex={index} onSelect={handleSelect}>

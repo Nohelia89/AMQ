@@ -34,6 +34,7 @@ import AltaHabitacionAlojamiento from './Componentes/Alojamiento/AltaHabitacionA
 import HistoricoAlojamientosAnfitrion from './Componentes/UserList/HistoricoAlojamientosAnfitrion';
 import ReservasAnf from './Componentes/DetalleAlojamiento/ReservasAnf';
 import ReservasHu from './Componentes/DetalleAlojamiento/ReservasHu';
+import ListarAlojamientos from './Componentes/Alojamiento/ListarAlojamientos';
 
 
 function App() {
@@ -81,7 +82,7 @@ function App() {
             path = "/altaAlojamiento" element = { <AltaAlojamiento /> }  
         />
      <Route
-            path = "/listarAlojamientos" element = { <Search /> }  
+            path = "/listarAlojamientos" element = { <ListarAlojamientos /> }  
         />
         <Route
             path = "/*" element = { <Navigate to = '/' /> }  
