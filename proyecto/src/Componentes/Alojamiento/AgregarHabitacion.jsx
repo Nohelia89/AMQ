@@ -57,7 +57,7 @@ function AgregarHabitacion({ id }) {
         alert("SE AGREGO LA HABITACION CORRECTAMENTE ");
       })
       .catch(error => {
-        alert("ERROR: " + error.response.data.mensaje);
+        alert("ERROR: " + error.response.data.mensaje); 
       });
 
   }

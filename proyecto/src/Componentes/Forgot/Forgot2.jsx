@@ -22,15 +22,18 @@ export default function Forgot2() {
 
   } ;
 
-console.log(sendPass+ "SOY SENDMAIL")    
+
     axios.post(`http://localhost:8080/usuario/savePassword` , sendPass
     
       )
                 
                 .then(res => {
                   alert("Se recupero su contraseña exitosamente")
-                  console.log(res.data)
+              
                 })
+                .catch(error => {
+                  alert("ERROR: " + error.response.data.mensaje);
+                });
     }
 
 

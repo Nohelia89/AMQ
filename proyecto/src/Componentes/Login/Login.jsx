@@ -3,15 +3,14 @@ import axios from 'axios';
 import { Base64 } from 'js-base64';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import FormHuesped from '../FormHuesped/FormHuesped';
-import FormAnfitrion from '../FormAnfitrion/FormAnfitrion';
+
 import LogoSinFondo from '../Logo/LogoSinFondo';
-import NavBarAdministrador from '../Navbar/NavBarAdministrador';
+import MainAdministrador from '../Main/MainAdministrador';
+import MainAnfitrion from '../Main/MainAnfitrion';
+import MainHuesped from '../Main/MainHuesped';
 import { useUserContext } from '../UserContext/userContext';
 import './Login.scss';
-import NavBarAnfitrion from '../Navbar/NavBarAnfitrion';
 
-import NavBarHuesped from '../Navbar/NavBarHuesped';
 
 export default function Login() {
    const { setearToken, setearTipoUsuario, setearIdUsuario } = useUserContext();
@@ -47,21 +46,31 @@ export default function Login() {
    const Redirect = () => {
    
       if (user === 'Hu')
-         return (<NavBarHuesped />)
+         return (<MainHuesped />)
        else if (user === 'Ad')
-         return (<NavBarAdministrador />)
+         return (<MainAdministrador />)
          else if (user === 'An')
-         return (<NavBarAnfitrion />)
+         return (<MainAnfitrion />)
    }
 
 
 
    async function acceder(e) {
       e.preventDefault();
-      const response = await axios.post(`http://localhost:8080/usuario/login`, acceso)
-      setToken(response.data.jwToken)
-      setUser(response.data.tipo)
-      setId(response.data.id)
+     await axios.post(`http://localhost:8080/usuario/login`, acceso)
+      
+      .then(response => {
+             
+                 
+         setToken(response.data.jwToken)
+         setUser(response.data.tipo)
+         setId(response.data.id)
+         
+       })
+       .catch(error => {
+         alert("ERROR: " + error.response.data.mensaje);
+       });
+    
 
 
    }

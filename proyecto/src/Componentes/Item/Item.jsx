@@ -17,26 +17,18 @@ function Item({ aloj }) {
 
 console.log(aloj)
   
-/*   useEffect(() => {
-   
-    setAlojCompleto({  aloj })
-    setearAloj(alojCompleto)
-    console.log("alojCompleto ITEM" + alojCompleto)
- 
-
-  },[]) */
 
 
   const setear = async () => {
-    console.log("ENtro en setear en ITEM");
+   
 let alojamiento = [];
 
 console.log("ALOJAMIENTO")
 var obj = {"url1": url1,"url2": url2,"url3": url3, "aloj": aloj};
  alojamiento.push(obj);
- console.log("item" + alojamiento)
+
   setearAloj(alojamiento)
-  console.log("LUEGO DELPUSH")
+
   
 }
 

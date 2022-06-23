@@ -21,15 +21,18 @@ export default function Forgot() {
 
   } ;
 
-console.log(sendMail+ "SOY SENDMAIL")    
+
     axios.post(`http://localhost:8080/usuario/resetPassword` , sendMail
     
       )
                 
                 .then(res => {
                   alert("Se envió email")
-                  console.log(res.data)
+           
                 })
+                .catch(error => {
+                  alert("ERROR: " + error.response.data.mensaje);
+                });
                 setBotonType('forgot2')
     }
 
