@@ -40,7 +40,7 @@ function UserContextProvider({children}) {
     }
 
     return (
-        <UserContext.Provider value={{userToken, userType, aloj,userId,setearIdUsuario, setearAloj, setearToken, setearTipoUsuario, setearCompraId}}>
+        <UserContext.Provider value={{userToken, userType, aloj,userId, setearIdUsuario, setearAloj, setearToken, setearTipoUsuario, setearCompraId}}>
 
         {children}
 

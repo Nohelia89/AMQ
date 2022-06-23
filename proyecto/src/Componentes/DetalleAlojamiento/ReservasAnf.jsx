@@ -12,7 +12,7 @@ export default function ReservasAnf() {
     const [reservas, setReservas] = useState([]);
     const { userId } = useUserContext();
     const [botonType, setBotonType] = useState('sinActualizar');
-    const [idReserva, setIdReserva] = useState('');
+    const [capture, setCapture] = useState('');
   
 
 
@@ -33,24 +33,59 @@ console.log(res.data + "data")
 
 
 
-    const Aceptar = (id) => {
+    const Aceptar = (idPayPal, idRes, idFactura) => {
 
-                axios.post("http://localhost:8080/reserva/confirmar/" + id)
+      axios.post("https://api-m.sandbox.paypal.com/v2/payments/authorizations/"+idPayPal+"/capture", {}, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer A21AAKTtXghoyV325RmsGznbMbVNPQTLcw6XZVlCwqBqv2DUi7CjhmHrcBc6rW1yD5yAhJued1OftZkOLyleHWnELalyTin1g'
+
+        }
+        
+       })
+       .then(response => {
+        console.log("Captura de pago exitosa");
+        setCapture(response.data.id);
+
+        axios.post("http://localhost:8080//reserva/confirmarPagoRealizado/" + idFactura)
                 
-                .then(res => {
-             
-                 
-                  console.log(res.data);
-                  
-                  setBotonType("actualizado")
-                  alert("Reserva Confirmada")
-                })
+        .then(res => {
+     
+         
+          console.log(res.data);
+          
+          setBotonType("actualizado")
+
+          axios.post("http://localhost:8080/reserva/confirmar/" + idRes)
+                
+          .then(res => {
+       
+           
+            console.log(res.data);
+            
+            setBotonType("actualizado")
+            alert("Reserva Confirmada")
+          })
+  
+        })
+
+     })
+
     }
 
-
     
-    const Cancelar = (id) => {
-        axios.post("http://localhost:8080/reserva/cancelarReservaAprobada/" + id)
+    const Cancelar = (idRes) => {
+
+      axios.post("https://api-m.sandbox.paypal.com/v2/payments/captures/"+capture+"/refund", {}, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer A21AAKTtXghoyV325RmsGznbMbVNPQTLcw6XZVlCwqBqv2DUi7CjhmHrcBc6rW1yD5yAhJued1OftZkOLyleHWnELalyTin1g'
+
+        }
+      }).then(response => {
+        console.log("Reembolso de pago exitoso");
+
+        axios.post("http://localhost:8080/reserva/cancelarReservaAprobada/" + idRes)
                 
         .then(res => {
      
@@ -62,31 +97,23 @@ console.log(res.data + "data")
           
         })
 
-     }
+     })}
  
  
 
-    const Rechazar = (id) => {
+    const Rechazar = (idRes, idPayPal) => {
 
-        const onRefund = (data, actions) => {
-            axios.post("https://api-m.sandbox.paypal.com/v2/payments/captures/7JL19132VC198042F/refund", {
-              "amount": {
-                "value": "10.99",
-                "currency_code": "USD"
-              },
-              "invoice_id": "INVOICE-123",
-              "note_to_payer": "Defective product"
-            }, {
-                headers: {
-                  'Content-Type': 'application/json',
-                  'Authorization': `Basic <ASu47G1hfMPmgXVkUg_rJPqszc9fVr6k37EzdzW4H7pviHpb6DE71Slpqtxx3hH91aM8r_5YUTd3-J1W>:<ECwSAIslaCPkTqSTXiL6hAcCbiX5kDQBBC6c6xL2kdpOU40uLLcRmgJFDyYLTRx7RJp3llm708B2SWT7>`,
-                  "PayPal-Request-Id": "123e4567-e89b-12d3-a456-426655440020" 
-                }
-            })
-          
-          };
-          
-        axios.get("http://localhost:8080/reserva/cancelarReservaPendiente/" + id)
+      axios.post("https://api-m.sandbox.paypal.com/v2/payments/authorizations/"+idPayPal+"/void", {}, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer A21AAKTtXghoyV325RmsGznbMbVNPQTLcw6XZVlCwqBqv2DUi7CjhmHrcBc6rW1yD5yAhJued1OftZkOLyleHWnELalyTin1g'
+
+        }
+        
+       })
+       .then(response => {
+        console.log("Reembolso de pago exitoso");
+        axios.get("http://localhost:8080/reserva/cancelarReservaPendiente/" + idRes)
                 
         .then(res => {
      
@@ -97,10 +124,9 @@ console.log(res.data + "data")
           alert("Reserva Rechazada")
           
         })
-    }
+    })
     
-
-
+  }
     return (
 
         botonType === "sinActualizar" ?
@@ -132,8 +158,8 @@ console.log(res.data + "data")
                                 <td>{reservas.res_fechaInicio}</td>
                                 <td>{reservas.res_fechaFin}</td>
                                 {reservas.res_estado === "PENDIENTE" ?   
-                                <td><Button variant="success" onClick={() => Aceptar(reservas.res_id)}>Aceptar</Button></td> :  
-                                 (reservas.res_estado === "APROBADO" ? <td><Button variant="danger" onClick={() => Rechazar(reservas.res_id)}>Rechazar</Button></td> : <td>{reservas.res_estado}</td> )
+                                <td><Button variant="success" onClick={() => Aceptar(reservas.idpaypal, reservas.res_id, reservas.idFactura)}>Aceptar</Button></td> :  
+                                 (reservas.res_estado === "APROBADO" ? <td><Button variant="danger" onClick={() => Rechazar(reservas.res_id, reservas.idpaypal )}>Rechazar</Button></td> : <td>{reservas.res_estado}</td> )
                                  }
                                {reservas.res_estado === "PENDIENTE" ?   
                                 <td><Button variant="danger" onClick={() => Cancelar(reservas.res_id)}>Cancelar</Button></td> :  <td>Cancelada</td> }
