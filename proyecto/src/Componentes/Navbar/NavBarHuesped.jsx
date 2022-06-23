@@ -1,6 +1,7 @@
 import { Container, Nav, Navbar} from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
 import Logo from "../Logo/Logo";
+import LogoSinFondoNavBar from "../Logo/LogoSinFondoNavBar";
 import LogWidget from "./LogWidget";
 
 
@@ -10,7 +11,7 @@ function NavBarHuesped() {
 <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
 <Container>
   <Link to='/'>
-    <Navbar.Brand ><Logo /></Navbar.Brand>
+    <Navbar.Brand ><LogoSinFondoNavBar /></Navbar.Brand>
   </Link>
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
