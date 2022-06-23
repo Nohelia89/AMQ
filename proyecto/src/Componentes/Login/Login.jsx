@@ -8,7 +8,7 @@ import FormAnfitrion from '../FormAnfitrion/FormAnfitrion';
 import LogoSinFondo from '../Logo/LogoSinFondo';
 import NavBarAdministrador from '../Navbar/NavBarAdministrador';
 import { useUserContext } from '../UserContext/userContext';
-import './Login.css';
+import './Login.scss';
 import NavBarAnfitrion from '../Navbar/NavBarAnfitrion';
 
 import NavBarHuesped from '../Navbar/NavBarHuesped';
