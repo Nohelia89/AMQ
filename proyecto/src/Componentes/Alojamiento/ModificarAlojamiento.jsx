@@ -72,7 +72,7 @@ const upload2 = async (e) =>{
   }
     
   const Habitacion= ()=> {
-    console.log(dataForm);
+  
     return (
     <CargarHabitacion dataUser={dataUser} dataAloj={dataForm} />
     )
@@ -94,9 +94,7 @@ const uploadFirestore = async (e) =>{
         url3: enlaceUrl3
       });
         
-    console.log("archivo cargado:", `${dataForm.nombre}`, "ulr:", enlaceUrl1);
-   console.log("archivo cargado2:", `${dataForm.nombre}`, "ulr:", enlaceUrl2);
-    console.log("archivo cargado3:", `${dataForm.nombre}`, "ulr:", enlaceUrl3);
+    
   }
 
 

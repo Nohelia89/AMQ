@@ -47,11 +47,17 @@ function ModificarCalificacionDeAnfitrion({id, cal}) {
            
                 axios.post("http://localhost:8080/reserva/calificar", calificacion )
                 
+                
                 .then(res => {
              
                  
-                  console.log(res.data);
+                  alert("CALIFICACION INGRESADA CORRECTAMENTE");
+                  
                 })
+                .catch(error => {
+                  alert("ERROR: " + error.response.data.mensaje);
+                });
+                
                 setBotonType("actualizado")
           
         }

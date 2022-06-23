@@ -16,8 +16,7 @@ function DetalleAlojamiento() {
   
       const [botonType, setBotonType] = useState('sinActualizar');
 
-      console.log(aloj);
-      console.log("ESTOY EN DETALLE " + aloj)
+    
  
       const reservar = () => {
         setBotonType("habitacion")
@@ -37,7 +36,7 @@ function DetalleAlojamiento() {
           useEffect(() => {
             var datos =
             {
-                //id_Anf: userId
+            
                 idAloj: aloj[0].aloj.id
             }
            
@@ -46,7 +45,9 @@ function DetalleAlojamiento() {
           const rese = res.data;
             setReseña(rese);
           })
-        
+          .catch(error => {
+            alert("ERROR: " + error.response.data.mensaje);
+          });
            
               
             
