@@ -37,7 +37,7 @@ export default function HoverEffects() {
     <div class="wrapper">
     <Link to='/listarAlojamientos'>
       <div class="box postcard">
-        <img src="https://source.unsplash.com/900x900/?caribean" alt="BOX"/>
+        <img src="https://source.unsplash.com/900x900/?beach" alt="BOX"/>
         <h2>Conocé las mejores playas </h2> 
       </div>
       </Link>
