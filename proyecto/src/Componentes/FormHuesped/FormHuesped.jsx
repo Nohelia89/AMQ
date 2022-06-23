@@ -30,14 +30,16 @@ function FormHuesped() {
 
     if (dataForm.password === dataForm.password2) {
       
-            console.log("soy"+dataForm.nombre, dataForm.apellido, dataForm.email, dataForm.password,)
-            console.log("soyhuesped"+huesped.nombre, huesped.apellido, huesped.email, huesped.pass, huesped.calificacionGlobal)
+         
             axios.post(`http://localhost:8080/usuario/altaHuesped`, huesped )
             
             .then(res => {
-              console.log(res);
-              console.log(res.data);
+              alert("El usuario ha sido ingresado con éxito al sistema");
             })
+            .catch(error => {
+              alert("ERROR: " + error.response.data.mensaje);
+            });
+            
       }
     }
 
