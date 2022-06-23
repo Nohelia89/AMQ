@@ -24,7 +24,7 @@ export default function ListadoReseñas({id}) {
 
   useEffect(() => {
     setIdAloj(id)
-    console.log("ENTRE A listadoReseñas"+ idAloj);
+  
     var datos =
     {
         //id_Anf: userId
@@ -38,6 +38,9 @@ console.log(idAloj)
     setReseña(rese);
     setIsLoading(false);
   })
+  .catch(error => {
+    alert("ERROR: " + error.response.data.mensaje);
+  });
 
    
       
@@ -65,17 +68,23 @@ console.log(idAloj)
   
 
           const response =   await axios.post('http://localhost:8080/reserva/listarResenas', datos ) 
-        //  console.log(response.data);
-        setReseña(response.data)
-       // setBotonType('concards')
-          return response.data;
+        
        
-          
+          .then(res => {
+                  
+            setReseña(res.data)
+    
+      
+          })
+          .catch(error => {
+            alert("ERROR: " + error.response.data.mensaje);
+          });
+    
        
       }
 
       const handleChange = (e) => {
-        console.log(`Seleccionaste ${e.target.value}`);
+      
        setValP(e.target.value);
       }
     

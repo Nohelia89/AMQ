@@ -70,6 +70,9 @@ export default function UserList() {
 
         setBotonType("actualizado")
       })
+      .catch(error => {
+        alert("ERROR: " + error.response.data.mensaje);
+      });
   }
 
 
@@ -140,20 +143,20 @@ export default function UserList() {
 
 
   const handleChange = (e) => {
-    console.log(`Seleccionaste ${e.target.value}`);
+
     setVal1(e.target.value);
   }
 
   const handleChangeC = (e) => {
-    console.log(`Seleccionaste ${e.target.value}`);
+ 
     setValC(e.target.value);
 
   }
 
   const handleChangeP = (e) => {
-    console.log(`Seleccionaste ${e.target.value}`);
+  
     setValH(e.target.value);
-    console.log(valH)
+
   }
 
 

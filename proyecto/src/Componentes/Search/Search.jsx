@@ -28,8 +28,7 @@ function Search() {
 
       setPrecioDesde(0);
       setPrecioHasta(50);
-      
-                console.log(valP);
+    
               if (valP === "1"){
                 console.log("entre al if 1" )
            
@@ -51,8 +50,7 @@ function Search() {
               }
   
                 
-              console.log(precioDesde + "precio desde")
-              console.log(precioHasta + "precio hasta")
+          
           
            
             },[valP])
@@ -77,21 +75,31 @@ function Search() {
     console.log(precioHasta + "precio hasta")
 
     {console.log(alojamiento +"soy aloj en el post")}
-          const response =   await axios.post(`http://localhost:8080/alojamiento/listarAlojamientos`, alojamiento, {
+          await axios.post(`http://localhost:8080/alojamiento/listarAlojamientos`, alojamiento, {
             headers: {
               'Authorization': `Basic ${userToken}` 
             }
           } ) 
-        //  console.log(response.data);
+      
+        
+      .then(response => {
+
         setAloj(response.data)
         setBotonType('concards')
-          return response.data;
+    
+     
+
+      })
+      .catch(error => {
+        alert("ERROR: " + error.response.data.mensaje);
+      });
+      
        
           
        
       }
 
-    //let valor = []
+
  
   
  
@@ -110,9 +118,12 @@ function Search() {
     let paises = res.data;
       setValor(paises);
     })
-
-    console.log("ENTRE AL TOKEN usercontext" + userToken )
-    console.log("GUARDE EL TIPO DE USUARIO usercontext: " + userType )  
+    .catch(error => {
+      alert("ERROR: " + error.response.data.mensaje);
+    });
+    
+     
+ 
     
   },[])
 
@@ -131,14 +142,14 @@ function Search() {
   
 
       const handleChange = (e) => {
-        console.log(`Seleccionaste ${e.target.value}`);
+      
         setVal(e.target.value);
       }
 
 
 
       const handleChangeP = (e) => {
-        console.log(`Seleccionaste ${e.target.value}`);
+
         setValP(e.target.value);
         
       }

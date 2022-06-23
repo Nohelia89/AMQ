@@ -51,6 +51,10 @@ export default function ListadoAlojamientosPorHuesped() {
               let paises = res.data;
                 setPaises(paises);
               })
+              
+            .catch(error => {
+                alert("ERROR: " + error.response.data.mensaje);
+              });
      
     }, [])
 
@@ -59,12 +63,12 @@ export default function ListadoAlojamientosPorHuesped() {
 
     
     const handleChange = (e) => {
-        console.log(`Seleccionaste ${e.target.value}`);
+     
         setVal(e.target.value);
       }
 
       const handleChange1= (e) => {
-        console.log(`Seleccionaste ${e.target.value}`);
+      
         setVal1(e.target.value);
         
       }
@@ -73,7 +77,7 @@ export default function ListadoAlojamientosPorHuesped() {
 
         setIdRes(id)
         
-        console.log(id+"soy IdRes")
+   
      
         setBotonType("calificar")
     }
@@ -92,10 +96,12 @@ export default function ListadoAlojamientosPorHuesped() {
                     axios.post("http://localhost:8080/reserva/calificar", calificacion )
                     
                     .then(res => {
-                 
-                     
-                      console.log(res.data);
-                    })
+                     alert("SE ELIMINO LA CALIFICACION CORRECTAMENTE")
+                  })
+                  .catch(error => {
+                      alert("ERROR: " + error.response.data.mensaje);
+                    });
+
               
             
         setBotonType("recargar")
@@ -108,7 +114,7 @@ export default function ListadoAlojamientosPorHuesped() {
     
     const ModificarCal = (id, cal) => {
 
-console.log("ENTRE A MODIFICAR Y SOY ID"+id+"Y CAL"+cal )
+
 
      setIdRes(id)
       setIdCal(cal)
@@ -135,13 +141,18 @@ console.log("ENTRE A MODIFICAR Y SOY ID"+id+"Y CAL"+cal )
               }; 
             
           
-                    const response =   await axios.post("http://localhost:8080/reserva/listarDatosRequeridosCalificar", aloj ) 
-                  //  console.log(response.data);
-                  setAlojamiento(response.data)
-                 // setBotonType('concards')
-                // setBotonType("sinactualizar")
-                    return response.data;
+                    await axios.post("http://localhost:8080/reserva/listarDatosRequeridosCalificar", aloj ) 
                  
+                    .then(res => {
+                  
+                      setAlojamiento(res.data)
+              
+                
+                    })
+                    .catch(error => {
+                      alert("ERROR: " + error.response.data.mensaje);
+                    });
+              
                     
                  
                 } 

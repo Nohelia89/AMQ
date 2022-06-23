@@ -84,9 +84,7 @@ export default function ListadoHuesped() {
 
 
     await axios.post(`http://localhost:8080/usuario/listar`, usuario)
-      //  console.log(response.data);
-
-      // setBotonType('concards')
+   
 
       .then(response => {
         setHuesped(response.data)

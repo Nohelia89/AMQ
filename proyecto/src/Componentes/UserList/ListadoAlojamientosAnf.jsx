@@ -35,6 +35,9 @@ export default function ListadoAlojamientosAnf() {
          
                 setIsLoading(false);
             })
+            .catch(error => {
+                alert("ERROR: " + error.response.data.mensaje);
+              });
 
      
     }, [])
@@ -46,7 +49,7 @@ export default function ListadoAlojamientosAnf() {
      
 
        setIdAloj(id)
-       console.log(id+"soy idAloj")
+  
     
        setBotonType("habitacion")
        
@@ -58,7 +61,7 @@ export default function ListadoAlojamientosAnf() {
      
     
         setIdAloj(id)
-        console.log(idAloj+"soy idAloj")
+  
          
         setBotonType("reseñas")
      }
@@ -70,7 +73,6 @@ export default function ListadoAlojamientosAnf() {
 
 
         setIdAloj(id)
-        console.log(id+"soy idAloj")
      
         setBotonType("modificar")
     }
@@ -80,37 +82,19 @@ export default function ListadoAlojamientosAnf() {
 
             .then(res => {
                 alert("Usuario Desactivado")
-                console.log(res.data)
+          
                 setBotonType("desactivado")
             })
+            .catch(error => {
+                alert("ERROR: " + error.response.data.mensaje);
+              });
+
     }
 
 
 
 
 
-    /*         async function buscarConFiltro() {
-      
-    
-              
-              var usuario = {
-              
-                  activo: val1,
-                  tipo: valH
-                 
-                
-              }; 
-            
-          
-                    const response =   await axios.post(`http://localhost:8080/usuario/listar`, usuario ) 
-                  //  console.log(response.data);
-                  setUsuario(response.data)
-                 // setBotonType('concards')
-                    return response.data;
-                 
-                    
-                 
-                } */
 
 
 
