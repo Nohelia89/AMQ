@@ -1,10 +1,13 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import 'firebase/storage';
 import { getFirestoreApp } from "./firebase";
 import { doc, getFirestore, setDoc } from "firebase/firestore";
 import './Alojamiento.css';
 import CargarHabitacion from './CargarHabitacion';
+import { Form } from 'react-bootstrap';
+import { useUserContext } from '../UserContext/userContext';
+import axios from 'axios';
 
 
 
@@ -12,20 +15,32 @@ function AltaAlojamiento({dataUser}) {
     
   
     const db = getFirestore();
+    const { userToken, userType } = useUserContext();
     getFirestoreApp();
     const storage = getStorage();
     const [image , setImage] = useState('');
     const [image2 , setImage2] = useState('');
     const [image3 , setImage3] = useState('');
-    const [dataForm, setDataForm] = useState({nombre: '', descripcion: '', direccion: ''})
+     const [dataForm, setDataForm] = useState({ nombre: '', descripcion: '' })
+    const [dir, setDir] = useState({ calle: '', numero: '', ciudad: '' })
     const [botontype, setBotonType ] = useState('aloj');
+    const [pais, setPais] = useState()
+    const [paises, setPaises] = useState([])
 
 
     const handleChange = (e) => {
-        setDataForm({
-          ...dataForm,
-          [e.target.name]: e.target.value,
-        
+      setDataForm({
+        ...dataForm,
+        [e.target.name]: e.target.value,
+  
+      })
+    }
+  
+    const handleChange1 = (e) => {
+      setDir({
+        ...dir,
+        [e.target.name]: e.target.value,
+  
       })
     }
 
@@ -37,6 +52,10 @@ function AltaAlojamiento({dataUser}) {
       }
     
 
+      const handleChange2 = (e) => {
+
+        setPais(e.target.value);
+      }
 
 const upload1 = async (e) =>{
  e.preventDefault();
@@ -74,11 +93,30 @@ const upload2 = async (e) =>{
   const Habitacion= ()=> {
     console.log(dataForm);
     return (
-    <CargarHabitacion dataUser={dataUser} dataAloj={dataForm} />
+    <CargarHabitacion dataUser={dataUser} dataAloj={dataForm} dataAlojdir={dir} pais={pais}  />
     )
   }
 
     
+  useEffect(() => {
+
+
+
+    axios.get(`http://localhost:8080/alojamiento/getPaises`, {
+      headers: {
+        'Authorization': `token ${userToken}`
+      }
+    })
+      .then(res => {
+        let paises = res.data;
+        setPaises(paises);
+      })
+
+      .catch(error => {
+        alert("ERROR: " + error.response.data.mensaje);
+      });
+
+  }, [])
 
 const uploadFirestore = async (e) =>{
   e.preventDefault()
@@ -112,9 +150,20 @@ const uploadFirestore = async (e) =>{
           <div className="input_container">
 
           <p class="form-input2" type="Nombre:"><input required class="form-input1" name='nombre' type='text' value={dataForm.nombre} onChange={handleChange} placeholder='Ingrese Nombre'></input></p>  
-          <p class="form-input2" type="Direccion:"><input required class="form-input1" name='direccion' type='text' value={dataForm.direccion} onChange={handleChange} placeholder='Ingrese Direccion'></input></p>
-         
+          <p class="form-input2" type="Dirección:">
+            <input required class="form-input1" name='calle' type='text' value={dir.calle} onChange={handleChange1} placeholder='Calle'></input>
+              <input required class="form-input1" name='numero' type='text' value={dir.numero} onChange={handleChange1} placeholder='Numero'></input>
+              <input required class="form-input1" name='ciudad' type='text' value={dir.ciudad} onChange={handleChange1} placeholder='Ciudad'></input></p>
           </div>
+          <Form.Select aria-label="Floating label select example" value={pais} onChange={handleChange2}>
+
+{paises.map((option) => {
+  return (<option key={option.id} value={option.id}>{option.valor}</option>);
+})}
+
+
+
+</Form.Select>
           <p className="form-input2" type="Descripcion:"><textarea className="textarea" rows="7" cols="70" name='descripcion' type='text'  onChange={handleChange} value={dataForm.descripcion}></textarea></p>
     
           <center>
