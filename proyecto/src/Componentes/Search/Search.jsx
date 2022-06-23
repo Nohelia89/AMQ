@@ -4,6 +4,7 @@ import { Col, FloatingLabel, Row, Form, CardGroup } from "react-bootstrap";
 import ItemList from "../ItemList/ItemList";
 import NavBarInvitado from "../Navbar/NavbarInvitado";
 import { useUserContext } from "../UserContext/userContext";
+import CarouselSearch from "./CarouselSearch";
 
 
 
@@ -147,7 +148,7 @@ function Search() {
 
     botontype === "sincards" ? 
 <>
-       
+<CarouselSearch/>  
 <NavBarInvitado/>
         <div style={{marginLeft: "18%", width: "1000px" , padding:"15px", borderRadius: "5px", boxShadow: "0px 9px 30px 9px", border: "1.5px solid gray", backgroundColor: "lightgrey", marginTop: "40px"}}>      
 <Row className="g-3">

@@ -65,7 +65,7 @@ const images = [
    
 
 
-function CorouselSearch() {
+function CarouselSearch() {
 
 
     return (
@@ -115,4 +115,4 @@ function CorouselSearch() {
 
  )
 
-} export default CorouselSearch;
+} export default CarouselSearch;
