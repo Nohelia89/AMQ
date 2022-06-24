@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useUserContext } from '../UserContext/userContext';
 
+
+
 function UserProfile() {
   const [user, setUser] = useState([]);
   const [idAnf, setIdAnf] = useState(10041);
@@ -39,7 +41,8 @@ function UserProfile() {
     return (
         
 
-        <div class="bod">
+        <div class="overlay">
+      
         <form class="form1">
         <div class="tit">PERFIL HUESPED</div>
       

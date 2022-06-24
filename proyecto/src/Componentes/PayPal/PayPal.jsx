@@ -3,7 +3,7 @@ import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { useUserContext } from "../UserContext/userContext";
 import { Table } from "react-bootstrap";
 import axios from "axios";
-
+import NavBarHuesped from '../Navbar/NavBarHuesped';
 export default function PayPal({cant, fechaDesde, fechaHasta, idHab, precioNoche, descripcion}) {
     const {aloj, userId, userToken} = useUserContext();
  const [show, setShow] = useState(false);
@@ -18,6 +18,7 @@ export default function PayPal({cant, fechaDesde, fechaHasta, idHab, precioNoche
     
   return(
   <div class="bod">
+    <NavBarHuesped/>
     <form class="form4" >
   <button class = "log-in" onClick={FinalReserva}>Confirmar Reserva</button>
   </form>
