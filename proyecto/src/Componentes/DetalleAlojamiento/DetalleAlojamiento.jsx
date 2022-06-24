@@ -50,7 +50,7 @@ function DetalleAlojamiento() {
             setReseña(rese);
           })
           .catch(error => {
-            alert("ERROR: " + error.response.data.mensaje);
+            console.log("ERROR: " + error.response.data.mensaje);
           });
            
               
