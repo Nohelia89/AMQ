@@ -2,6 +2,7 @@
 //import { Form } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import NavBarInvitado from '../Navbar/NavbarInvitado';
 import { useUserContext } from '../UserContext/userContext';
 import './Registro.css';
 
@@ -16,6 +17,7 @@ export default function Registro() {
        
             <>
                 <div class="overlay">
+                    <NavBarInvitado/>
                     <form class="form3">
                         <div class="tit">REGISTRO</div>
 
