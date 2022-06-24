@@ -33,11 +33,7 @@ function FormHuesped() {
     if (dataForm.password === dataForm.password2) {
 
 
-      axios.post(`http://localhost:8080/usuario/altaHuesped`, { huesped }, {
-        headers: {
-          'Authorization': `token ${userToken}`
-        }
-      })
+      axios.post(`http://localhost:8080/usuario/altaHuesped`, huesped )
         .then(res => {
           alert("El usuario ha sido ingresado con éxito al sistema");
         })
