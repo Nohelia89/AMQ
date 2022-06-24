@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Button } from "react-bootstrap";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Base64 } from 'js-base64';
+
 
 function UserProfile() {
   const [user, setUser] = useState([]);
