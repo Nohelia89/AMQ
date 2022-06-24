@@ -8,6 +8,7 @@ import LogoSinFondoNavBar from '../Logo/LogoSinFondoNavBar';
 import MainAdministrador from '../Main/MainAdministrador';
 import MainAnfitrion from '../Main/MainAnfitrion';
 import MainHuesped from '../Main/MainHuesped';
+import NavBarInvitado from '../Navbar/NavbarInvitado';
 import { useUserContext } from '../UserContext/userContext';
 import './Login.scss';
 
@@ -84,7 +85,10 @@ export default function Login() {
 
 
    return (
-      user === "" ? (<div class="overlay">
+
+ 
+
+      user === "" ? (<div class="overlay">     <NavBarInvitado/>
       <form>
          <div class="forml">
             <div class="con">

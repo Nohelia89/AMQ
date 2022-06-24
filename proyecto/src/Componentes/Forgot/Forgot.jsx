@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import NavBarInvitado from '../Navbar/NavbarInvitado';
 import './Forgot.css';
 import Forgot2 from './Forgot2';
 export default function Forgot() {
@@ -48,7 +49,9 @@ export default function Forgot() {
     
     const Olvidar = () => {
       return (
-        <div class="bod">
+           
+        <div class="overlay">
+            <NavBarInvitado/>
               <form class="form3">
               <div class="tit2"><h2>¿Olvidaste tu contraseña?</h2>Si tu correo es correcto se enviarán los datos para reestablecerla
             

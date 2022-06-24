@@ -5,6 +5,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { Base64 } from 'js-base64';
 import { useUserContext } from "../UserContext/userContext";
+import NavBarInvitado from '../Navbar/NavbarInvitado';
 
 function FormAdmin() {
 
@@ -53,7 +54,8 @@ function FormAdmin() {
   return (
 
 
-    <div class="bod">
+    <div class="overlay">
+      <NavBarInvitado/>
       <form class="form1" onSubmit={generateAdmin}>
         <div class="tit">REGISTRO ADMINISTRADOR</div>
 
@@ -71,12 +73,12 @@ function FormAdmin() {
 
         <br />
 
-        <div>
+        <div style={{ padding: "10px", marginTop: "60px" }}>
           <Link to={'/registro'}>
-            <Button variant="dark" >Volver</Button>
+            <Button style={{ marginTop: "10px", marginRight: "-500px" }} variant="dark" >Volver</Button>
           </Link>
 
-          <button variant="dark" class="btn submits boton">Registrar administrador</button>
+          <button style={{ marginLeft: "-500px"}} variant="dark" class="btn submits boton">Registrar administrador</button>
         </div>
 
 

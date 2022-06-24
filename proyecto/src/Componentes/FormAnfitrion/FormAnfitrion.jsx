@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Button } from "react-bootstrap";
 import { useState } from 'react';
 import AltaAlojamiento from '../Alojamiento/AltaAlojamiento';
+import NavBarInvitado from '../Navbar/NavbarInvitado';
 
 function FormAnfitrion() {
 
@@ -37,7 +38,8 @@ function FormAnfitrion() {
         botontype === "aloj" ? 
 
 
-        <div class="bod">
+        <div class="overlay">
+            <NavBarInvitado/>
             <form class="form1">
                 <div class="tit">REGISTRO ANFITRION</div>
 
@@ -55,12 +57,14 @@ function FormAnfitrion() {
 
                 <br />
 
-                <div>
+           
+        <div style={{ padding: "10px", marginTop: "-30px" }}>
+
                     <Link to={'/registro'}>
-                        <Button variant="dark" >Volver</Button>
+                        <Button style={{ marginTop: "10px", marginRight: "-500px" }} variant="dark" >Volver</Button>
                         </Link>
                         
-                    <button variant="dark" class="btn submits boton" onClick={changeStateButton}>Crear Alojamiento</button>
+                    <button  style={{ marginLeft: "-500px"}}  variant="dark" class="btn submits boton" onClick={changeStateButton}>Crear Alojamiento</button>
                   
                 </div>
 
