@@ -1,25 +1,30 @@
 
 
 import NavBarInvitado from "../Navbar/NavbarInvitado";
+import NavBarHuesped from "../Navbar/NavBarHuesped";
 import Search from "../Search/Search";
+import { useUserContext } from "../UserContext/userContext";
 
 
 
 
-export default function ListarAlojamientos
-() {
+export default function ListarAlojamientos() {
 
 
-    return (
+  const { userType } = useUserContext();
 
-      
+
+  return (
+
+
     <>
-  
-  <NavBarInvitado/>
-   
-  <Search/>
+    
+      {userType === "Hu" ? <NavBarHuesped /> : <NavBarInvitado />}
+
+
+      <Search />
 
     </>
-      
- )
+
+  )
 } 
