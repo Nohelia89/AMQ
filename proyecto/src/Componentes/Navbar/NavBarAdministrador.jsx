@@ -32,7 +32,10 @@ function NavBarAdministrador() {
    
    
    <Nav.Link as={Link} to='/listarHuesped'> <li className="nav-item">Listado de huespedes</li></Nav.Link>
-
+   
+   </Nav>
+   <Nav>
+   <Nav.Link as={Link} to='/admin'> <li className="nav-item">Registrar Admin</li></Nav.Link>
    </Nav>
     <Nav>
 

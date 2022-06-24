@@ -88,7 +88,8 @@ export default function Login() {
 
  
 
-      user === "" ? (<div class="overlay">     <NavBarInvitado/>
+      user === "" ? (<div class="overlay">     
+      <NavBarInvitado/>
       <form>
          <div class="forml">
             <div class="con">

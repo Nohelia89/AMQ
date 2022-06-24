@@ -13,23 +13,7 @@ export default function Registro() {
     const { userType } = useUserContext();
 
     return (
-        userType === "Ad" ?
-            <>
-
-                <div class="overlay">
-                    <form class="form7">
-                        <div class="tit">REGISTRO</div>
-
-
-                        <Link to={'/admin'}>
-                            <Button variant="dark" >Administrador</Button>
-                        </Link>
-                    </form>
-
-
-                </div>
-            </>
-            :
+       
             <>
                 <div class="overlay">
                     <form class="form3">
