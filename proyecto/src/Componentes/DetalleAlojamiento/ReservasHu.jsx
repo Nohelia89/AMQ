@@ -25,10 +25,11 @@ console.log(userId + "user")
           ]
         })
             .then(res => {
+              console.log(res.data)
                 const rese = res.data;
                 setReservas(rese);
                 
-console.log(res.data + "data")
+
          
             })
 
@@ -38,21 +39,35 @@ console.log(res.data + "data")
 
     
     const Cancelar = (idRes, idPayPal) => {
+      var factura = {
+        id: idRes,
+        estado: "CANCELADO",
+        monto: 0,
+        fecha: {
+          dia: 0,
+          mes: 0,
+          anio: 0
+        },
+        descuento: false,
+        montoDescuento: 0,
+        idPaypal: idPayPal
+    };
 
-      axios.post("https://api-m.sandbox.paypal.com/v2/payments/captures/"+idPayPal+"/refund", {amount: {
-        value: "",
+      axios.post("https://api-m.sandbox.paypal.com/v2/payments/captures/"+idPayPal+"/refund", {
+        amount: {
+        value: "10",
         currency_code: "USD"
       },
       note_to_payer: "MULTA POR CANCELAR RESERVA APROBADA"
     }, {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer A21AAKTtXghoyV325RmsGznbMbVNPQTLcw6XZVlCwqBqv2DUi7CjhmHrcBc6rW1yD5yAhJued1OftZkOLyleHWnELalyTin1g'
+          'Authorization': 'Bearer A21AAJlLHvZt3hrqp5TF4FYXEbnisc6IZBhAiQli-4-fFJRe7xKSz1qV2nhZ5us1AxH_1qqRHqeDxMIGWEPmY0Mw1USTIAIjg'
 
         }
       }).then(response => {
         console.log("Reembolso de pago exitoso");
-        axios.post("http://localhost:8080/reserva/cancelarReservaAprobada/" + idRes)
+        axios.post("http://localhost:8080/reserva/cancelarReservaAprobada/" + idRes, factura)
                 
         .then(res => {
      
@@ -101,7 +116,7 @@ console.log(res.data + "data")
                                 <td>{reservas.res_fechaInicio}</td>
                                 <td>{reservas.res_fechaFin}</td>
                                 {reservas.res_estado === "APROBADO" ?   
-                                <td><Button variant="danger" onClick={() => Cancelar(reservas.res_id,reservas.res_paypal )}>Cancelar</Button></td> : <td>CANCELADA</td>
+                                <td><Button variant="danger" onClick={() => Cancelar(reservas.res_id,reservas.facturas[0].idPaypal )}>Cancelar</Button></td> : <td>CANCELADA</td>
                                  }
             
                             </tr>

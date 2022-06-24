@@ -32,75 +32,66 @@ console.log(res.data + "data")
             })
 
      
-    }, [])
+    }, [botonType],[capture],[])
 
 
 
 
     const Aceptar = (idPayPal, idRes, idFactura) => {
 
-console.log("aceptar"+ idPayPal)
       var factura = {
-        id: capture,
-        estado: "APROBADO",
-        monto: 0,
-        fecha: {
-          dia: 0,
-          mes: 0,
-          anio: 0
-        },
-        descuento: false,
-        montoDescuento: 0,
+      idFactura: idFactura,
         idPaypal: capture
     };
 
 
 
-      axios.post("https://api-m.sandbox.paypal.com/v2/payments/authorizations/"+idPayPal+"/capture", {}, {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer A21AALNgQaPnrhhLzw42iakNoXcufT5ytF0-AP8vp_AfbaRb_k88tFqM7D90AOjL93ZEDXY0io3nAAgUKPTfqNXOfMu9MYHsA'
-
-        }
-        
-       })
-       .then(response => {
-        console.log("Captura de pago exitosa");
-        setCapture(response.data.id);
-
-        axios.post("http://localhost:8080//reserva/confirmarPagoRealizado/" + idFactura, factura)
+    axios.get("http://localhost:8080/reserva/confirmar/" + idRes)
                 
-        .then(res => {
-     
-         
-          console.log(res.data);
-          
-          setBotonType("actualizado")
-
-          axios.post("http://localhost:8080/reserva/confirmar/" + idRes, factura)
-                
-          .then(res => {
-       
-           
-            console.log(res.data);
-            
-            setBotonType("aprobado")
-            alert("Reserva Confirmada")
-          })
-  
-        })
-
-     })
-
-    }
-
+    .then(res => {
     
+     
+      console.log(res.data);
+      
+      setBotonType("aprobado")
+      alert("Reserva Confirmada")
+    
+    
+          axios.post("https://api-m.sandbox.paypal.com/v2/payments/authorizations/"+idPayPal+"/capture", {}, {
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer A21AAJlLHvZt3hrqp5TF4FYXEbnisc6IZBhAiQli-4-fFJRe7xKSz1qV2nhZ5us1AxH_1qqRHqeDxMIGWEPmY0Mw1USTIAIjg'
+    
+            }
+            
+           })
+           .then(response => {
+            console.log("Captura de pago exitosa");
+            setCapture(response.data.id);
+            
+            axios.post("http://localhost:8080/reserva/confirmarPagoRealizado/", {
+              idFactura: idFactura,
+                idPaypal: response.data.id
+            })
+            .then(res => { 
+              setBotonType("aprobado")
+              alert("Reserva Confirmada")
+              
+      
+            })
+    
+         })
+    
+        }
+      )
+      }     
+
     const Cancelar = (idRes, idPayPal) => {
 
 
       var factura = {
-        id: refund,
-        estado: "CANCELADO",
+        id: idPayPal,
+        estado: "RECHAZADO",
         monto: 0,
         fecha: {
           dia: 0,
@@ -109,14 +100,14 @@ console.log("aceptar"+ idPayPal)
         },
         descuento: false,
         montoDescuento: 0,
-        idPaypal: refund
+        idPaypal: idPayPal
     };
 
 
       axios.post("https://api-m.sandbox.paypal.com/v2/payments/captures/"+idPayPal+"/refund", {}, {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer A21AALNgQaPnrhhLzw42iakNoXcufT5ytF0-AP8vp_AfbaRb_k88tFqM7D90AOjL93ZEDXY0io3nAAgUKPTfqNXOfMu9MYHsA'
+          'Authorization': 'Bearer A21AAJlLHvZt3hrqp5TF4FYXEbnisc6IZBhAiQli-4-fFJRe7xKSz1qV2nhZ5us1AxH_1qqRHqeDxMIGWEPmY0Mw1USTIAIjg'
 
         }
       }).then(response => {
@@ -128,9 +119,9 @@ console.log("aceptar"+ idPayPal)
      
          
           console.log(res.data);
-          
-          alert("Reserva Cancelada")
           setBotonType("cancelado")
+          alert("Reserva Cancelada")
+          
           
         })
 
@@ -143,7 +134,7 @@ console.log("aceptar"+ idPayPal)
       
       var factura = {
         id: voide,
-        estado: "RECHAZAR",
+        estado: "RECHAZADO",
         monto: 0,
         fecha: {
           dia: 0,
@@ -159,7 +150,7 @@ console.log("aceptar"+ idPayPal)
       axios.post("https://api-m.sandbox.paypal.com/v2/payments/authorizations/"+idPayPal+"/void", {}, {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer A21AALNgQaPnrhhLzw42iakNoXcufT5ytF0-AP8vp_AfbaRb_k88tFqM7D90AOjL93ZEDXY0io3nAAgUKPTfqNXOfMu9MYHsA'
+          'Authorization': 'Bearer A21AAJlLHvZt3hrqp5TF4FYXEbnisc6IZBhAiQli-4-fFJRe7xKSz1qV2nhZ5us1AxH_1qqRHqeDxMIGWEPmY0Mw1USTIAIjg'
 
         }
         
@@ -173,9 +164,9 @@ console.log("aceptar"+ idPayPal)
      
          
           console.log(res.data);
-          
-          alert("Reserva Rechazada")
           setBotonType("rechazado")
+          alert("Reserva Rechazada")
+          
           
         })
     })
@@ -217,7 +208,7 @@ console.log("aceptar"+ idPayPal)
                                  }
                                {reservas.res_estado === "PENDIENTE" ?   
                                 <td><Button variant="danger" onClick={() => Rechazar(reservas.res_id, reservas.facturas[0].idPaypal)}>Rechazar</Button></td> :  <td>Rechazada</td> }
-                                <td><Button variant="danger" onClick={() => Cancelar(reservas.res_id, reservas.facturas[0].idPaypal)}>Cancelar</Button></td>
+                               
                             </tr>
 
                         </tbody>)}
