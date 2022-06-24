@@ -5,8 +5,8 @@ import {useEffect, useState} from 'react';
 //import { doc, getFirestore, setDoc } from "firebase/firestore";
 import './Alojamiento.css';
 import axios from 'axios';
-import { Alert } from 'react-bootstrap';
 
+import NavBarAnfitrion from "../Navbar/NavBarAnfitrion";
 
 
 function ModificarAlojamiento({id}) {
@@ -155,6 +155,7 @@ const uploadFirestore = async (e) =>{
     botontype === "aloj" ? 
 
         <div className="bod1">
+          <NavBarAnfitrion/>
           <form className="form21" >
           <div className="tit">MODIFICAR ALOJAMIENTO</div>
           <div className="input_container">
