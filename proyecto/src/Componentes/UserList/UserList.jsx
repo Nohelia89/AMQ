@@ -209,7 +209,8 @@ export default function UserList() {
         </div>
 
         {isLoading ? <h2>Cargando...</h2> :
-          <Table striped bordered hover variant="light" style={{ padding: 10 }}>
+
+          <Table striped bordered hover variant="light" style={{ marginLeft: "18%", width: "1000px",marginBottom: "40px", padding: "15px", borderRadius: "5px", boxShadow: "0px 9px 30px 9px", border: "1.5px solid gray", backgroundColor: "lightgrey", marginTop: "40px" }}>
 
             <thead>
               <tr>
@@ -233,10 +234,10 @@ export default function UserList() {
                 <td>{usuario.email}</td>
                 <td>{usuario.calificacion}</td>
                 {usuario.tipo !== "Ad" ? (usuario.activo === true ?
-                  <td><Button variant="danger" onClick={() => Desactivar(usuario.id)}>Desactivar</Button></td> : <td>Desactivado</td>) : <td>Activo</td>
+                  <td><Button variant="light" onClick={() => Desactivar(usuario.id)}>Desactivar</Button></td> : <td>Desactivado</td>) : <td>Activo</td>
                 }
                 {usuario.tipo !== "Ad" ? (usuario.bloqueado === true ?
-                  <td><Button variant="success" onClick={() => Desbloquear(usuario.id)}> Desbloquear </Button></td> : <td><Button variant="dark" onClick={() => Bloquear(usuario.id)}>Bloquear</Button></td>) : <td>Desbloqueado</td>
+                  <td><Button variant="light" onClick={() => Desbloquear(usuario.id)}> Desbloquear </Button></td> : <td><Button variant="dark" onClick={() => Bloquear(usuario.id)}>Bloquear</Button></td>) : <td>Desbloqueado</td>
                 }
 
               </tr>

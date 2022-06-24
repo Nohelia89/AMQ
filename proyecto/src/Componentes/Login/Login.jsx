@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import LogoSinFondo from '../Logo/LogoSinFondo';
+import LogoSinFondoNavBar from '../Logo/LogoSinFondoNavBar';
 import MainAdministrador from '../Main/MainAdministrador';
 import MainAnfitrion from '../Main/MainAnfitrion';
 import MainHuesped from '../Main/MainHuesped';
@@ -90,7 +91,7 @@ export default function Login() {
             <div class="con">
                <header class="head-form">
                   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css" />
-                  <LogoSinFondo />
+                  <LogoSinFondoNavBar />
                   <h4>¡Bienvenidos!</h4>
                </header>
                <br />

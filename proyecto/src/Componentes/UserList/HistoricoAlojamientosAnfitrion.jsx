@@ -219,7 +219,7 @@ export default function HistoricoAlojamientosAnfitrion() {
         {console.log(botonType + "SOY BOTONTYPE")}
 
         {isLoading ? <h2>Cargando...</h2> :
-          <Table striped bordered hover variant="light" style={{ padding: 10 }}>
+          <Table striped bordered hover variant="light" style={{ marginLeft: "18%", width: "1000px",marginBottom: "40px", padding: "15px", borderRadius: "5px", boxShadow: "0px 9px 30px 9px", border: "1.5px solid gray", backgroundColor: "lightgrey", marginTop: "40px" }}>
 
             <thead>
               <tr>
@@ -245,9 +245,9 @@ export default function HistoricoAlojamientosAnfitrion() {
 
 
                 {alojamiento.hu_calificacion === 0 ?
-                  <td><Button variant="dark" onClick={() => CalificarAnf(alojamiento.res_id)}>Calificar</Button></td>
+                  <td><Button variant="light" onClick={() => CalificarAnf(alojamiento.res_id)}>Calificar</Button></td>
                   :
-                  <td><Button variant="dark" onClick={() => ModificarCal(alojamiento.res_id, alojamiento.anf_calificacion)}>Modificar</Button></td>}
+                  <td><Button variant="light" onClick={() => ModificarCal(alojamiento.res_id, alojamiento.anf_calificacion)}>Modificar</Button></td>}
 
 
                 <td><Button variant="dark" onClick={() => EliminarCal(alojamiento.res_id)}>X</Button></td>

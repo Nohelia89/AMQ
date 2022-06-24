@@ -12,7 +12,7 @@
 
 /* Start body rules */
 body {
-    background-image: linear-gradient(-225deg, #E3FDF5 0%, #bbc8b9 100%);
+    background-image: linear-gradient(-225deg, #e3e8fd 0%, #b9bcc8 100%);
 background-image: linear-gradient(-45deg, #4571d8, #21586f, #666b7a, #2b5ea5);
 background-attachment: fixed;
   background-repeat: no-repeat;
@@ -36,7 +36,7 @@ form .forml {
     margin: 2% auto;
     box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
     padding: 5%;
-    background-image: linear-gradient(-225deg, #d2deda 50%, #65af8b 50%);
+    background-image: linear-gradient(-225deg, #a3afd8 50%, #486bb6 50%);
 }
 /* form Container */
 .con {
@@ -60,7 +60,7 @@ header {
 header h2 {
     font-size: 250%;
     font-family: 'Playfair Display', serif;
-    color: #3e403f;
+    color: #3e3e40;
 }
 /*  A welcome message or an explanation of the login form */
 header p {letter-spacing: 0.05em;}
@@ -120,7 +120,7 @@ input:focus {
     height: 50px;
   
     padding: 0 20px;
-    background: rgb(163, 234, 201);
+    background: rgb(203, 236, 231);
     border-radius: 5px;
     
     outline: none;
@@ -155,7 +155,7 @@ input:focus {
     letter-spacing: 0.05em;}
 
 /*     Sign Up button  */
-.sign-up {background: #b0bfba; display: inline-block;
+.sign-up {background: #e6ccdf; display: inline-block;
     color: #252537;
   
     width: 280px;
