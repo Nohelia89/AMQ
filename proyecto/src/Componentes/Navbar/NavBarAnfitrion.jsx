@@ -1,6 +1,7 @@
 import { Container, Nav, Navbar} from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
 import Logo from "../Logo/Logo";
+import LogoSinFondoNavBar from "../Logo/LogoSinFondoNavBar";
 import LogWidget from "./LogWidget";
 
 
@@ -8,17 +9,17 @@ import LogWidget from "./LogWidget";
 function NavBarAnfitrion() {
     return (
 <>
-<Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+<Navbar collapseOnSelect expand="lg" bg="light" variant="light" >
 <Container>
   <Link to='/MainAnfitrion'>
-    <Navbar.Brand ><Logo /></Navbar.Brand>
+    <Navbar.Brand ><LogoSinFondoNavBar /></Navbar.Brand>
   </Link>
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="me-auto">
    
    
-    <Nav.Link as={Link} to='/listadoAlojamientos'> <li className="nav-item">Listado de alojamientos</li></Nav.Link>
+    <Nav.Link as={Link} to='/listadoAlojamientos'> <li className="nav-item" >Listado de alojamientos</li></Nav.Link>
 
     </Nav>
 

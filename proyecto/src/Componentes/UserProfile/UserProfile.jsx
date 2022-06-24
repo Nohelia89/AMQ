@@ -20,6 +20,9 @@ function UserProfile() {
      
            // setIsLoading(false);
         })
+        .catch(error => {
+        alert("ERROR: " + error.response.data.mensaje);
+      });
 
  
 }, [])

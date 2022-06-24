@@ -70,6 +70,9 @@ export default function UserList() {
 
         setBotonType("actualizado")
       })
+      .catch(error => {
+        alert("ERROR: " + error.response.data.mensaje);
+      });
   }
 
 
@@ -140,20 +143,20 @@ export default function UserList() {
 
 
   const handleChange = (e) => {
-    console.log(`Seleccionaste ${e.target.value}`);
+
     setVal1(e.target.value);
   }
 
   const handleChangeC = (e) => {
-    console.log(`Seleccionaste ${e.target.value}`);
+ 
     setValC(e.target.value);
 
   }
 
   const handleChangeP = (e) => {
-    console.log(`Seleccionaste ${e.target.value}`);
+  
     setValH(e.target.value);
-    console.log(valH)
+
   }
 
 
@@ -163,7 +166,7 @@ export default function UserList() {
       <>
 
         <NavBarAdministrador />
-        <div style={{ marginLeft: "18%", width: "1000px", padding: "15px", borderRadius: "5px", boxShadow: "0px 9px 30px 9px", border: "1.5px solid gray", backgroundColor: "lightgrey", marginTop: "40px" }}>
+        <div style={{ marginLeft: "18%", width: "1000px",marginBottom: "40px", padding: "15px", borderRadius: "5px", boxShadow: "0px 9px 30px 9px", border: "1.5px solid gray", backgroundColor: "lightgrey", marginTop: "40px" }}>
           <Row className="g-3">
 
             <Col md style={{ padding: "10px" }} >

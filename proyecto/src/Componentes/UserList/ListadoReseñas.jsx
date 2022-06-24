@@ -24,7 +24,7 @@ export default function ListadoReseñas({id}) {
 
   useEffect(() => {
     setIdAloj(id)
-    console.log("ENTRE A listadoReseñas"+ idAloj);
+  
     var datos =
     {
         //id_Anf: userId
@@ -38,6 +38,9 @@ console.log(idAloj)
     setReseña(rese);
     setIsLoading(false);
   })
+  .catch(error => {
+    alert("ERROR: " + error.response.data.mensaje);
+  });
 
    
       
@@ -65,17 +68,23 @@ console.log(idAloj)
   
 
           const response =   await axios.post('http://localhost:8080/reserva/listarResenas', datos ) 
-        //  console.log(response.data);
-        setReseña(response.data)
-       // setBotonType('concards')
-          return response.data;
+        
        
-          
+          .then(res => {
+                  
+            setReseña(res.data)
+    
+      
+          })
+          .catch(error => {
+            alert("ERROR: " + error.response.data.mensaje);
+          });
+    
        
       }
 
       const handleChange = (e) => {
-        console.log(`Seleccionaste ${e.target.value}`);
+      
        setValP(e.target.value);
       }
     
@@ -98,7 +107,7 @@ return (
   botonType === "sinActualizar" ? 
   <>
   <NavBarAnfitrion/>
-  <div style={{marginLeft: "18%", width: "1000px" , padding:"15px", borderRadius: "5px", boxShadow: "0px 9px 30px 9px", border: "1.5px solid gray", backgroundColor: "lightgrey", marginTop: "40px"}}>      
+  <div style={{marginLeft: "18%", width: "1000px", marginBottom: "40px" , padding:"15px", borderRadius: "5px", boxShadow: "0px 9px 30px 9px", border: "1.5px solid gray", backgroundColor: "lightgrey", marginTop: "40px"}}>      
 <Row className="g-3">
 
   <Col md style={{padding:"10px"}} >

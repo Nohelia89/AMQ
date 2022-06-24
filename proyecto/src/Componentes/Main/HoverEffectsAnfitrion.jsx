@@ -57,7 +57,7 @@ export default function HoverEffectsAnfitrion() {
     <div class="wrapper">
     <Link to='/perfil'>
       <div class="box blury-card" >
-        <img src="https://source.unsplash.com/900x900/?user" alt="Blue Ridge Mountains"/>
+        <img src="https://source.unsplash.com/900x900/?users" alt="Blue Ridge Mountains"/>
         <div class="frame">
           <h2>Perfil de Usuario</h2>
           

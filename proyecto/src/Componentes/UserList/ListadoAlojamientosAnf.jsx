@@ -35,6 +35,9 @@ export default function ListadoAlojamientosAnf() {
          
                 setIsLoading(false);
             })
+            .catch(error => {
+                alert("ERROR: " + error.response.data.mensaje);
+              });
 
      
     }, [])
@@ -46,7 +49,7 @@ export default function ListadoAlojamientosAnf() {
      
 
        setIdAloj(id)
-       console.log(id+"soy idAloj")
+  
     
        setBotonType("habitacion")
        
@@ -58,7 +61,7 @@ export default function ListadoAlojamientosAnf() {
      
     
         setIdAloj(id)
-        console.log(idAloj+"soy idAloj")
+  
          
         setBotonType("reseñas")
      }
@@ -70,7 +73,6 @@ export default function ListadoAlojamientosAnf() {
 
 
         setIdAloj(id)
-        console.log(id+"soy idAloj")
      
         setBotonType("modificar")
     }
@@ -80,37 +82,19 @@ export default function ListadoAlojamientosAnf() {
 
             .then(res => {
                 alert("Usuario Desactivado")
-                console.log(res.data)
+          
                 setBotonType("desactivado")
             })
+            .catch(error => {
+                alert("ERROR: " + error.response.data.mensaje);
+              });
+
     }
 
 
 
 
 
-    /*         async function buscarConFiltro() {
-      
-    
-              
-              var usuario = {
-              
-                  activo: val1,
-                  tipo: valH
-                 
-                
-              }; 
-            
-          
-                    const response =   await axios.post(`http://localhost:8080/usuario/listar`, usuario ) 
-                  //  console.log(response.data);
-                  setUsuario(response.data)
-                 // setBotonType('concards')
-                    return response.data;
-                 
-                    
-                 
-                } */
 
 
 
@@ -127,9 +111,9 @@ export default function ListadoAlojamientosAnf() {
 
 
 
-{console.log(botonType+"SOY BOTONTYPE")}
-                <NavBarAnfitrion />
 
+                <NavBarAnfitrion />
+<div style={{ marginLeft: "18%", width: "1000px", padding: "15px", borderRadius: "5px", boxShadow: "0px 9px 30px 9px", border: "1.5px solid gray", backgroundColor: "lightgrey", marginTop: "40px",  marginBottom: "40px"}}>
                 {isLoading ? <h2>Cargando...</h2> :
                     <Table striped bordered hover variant="light" style={{ padding: 10 }}>
 
@@ -170,7 +154,7 @@ export default function ListadoAlojamientosAnf() {
                         </tbody>)}
                     </Table>
 
-                }
+                }</div>
 
             </>
             :    (botonType === "habitacion" ) ? 

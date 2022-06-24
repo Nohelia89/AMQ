@@ -84,9 +84,7 @@ export default function ListadoHuesped() {
 
 
     await axios.post(`http://localhost:8080/usuario/listar`, usuario)
-      //  console.log(response.data);
-
-      // setBotonType('concards')
+   
 
       .then(response => {
         setHuesped(response.data)
@@ -121,7 +119,7 @@ export default function ListadoHuesped() {
     botonType === "sinActualizar" ?
       <>
         <NavBarAdministrador />
-        <div style={{ marginLeft: "18%", width: "1000px", padding: "15px", borderRadius: "5px", boxShadow: "0px 9px 30px 9px", border: "1.5px solid gray", backgroundColor: "lightgrey", marginTop: "40px" }}>
+        <div style={{ marginLeft: "18%", marginBottom: "40px", width: "1000px", padding: "15px", borderRadius: "5px", boxShadow: "0px 9px 30px 9px", border: "1.5px solid gray", backgroundColor: "lightgrey", marginTop: "40px" }}>
           <Row className="g-3">
 
             <Col md style={{ padding: "10px" }} >
