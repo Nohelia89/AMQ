@@ -111,9 +111,9 @@ export default function ListadoAlojamientosAnf() {
 
 
 
-{console.log(botonType+"SOY BOTONTYPE")}
-                <NavBarAnfitrion />
 
+                <NavBarAnfitrion />
+<div style={{ marginLeft: "18%", width: "1000px", padding: "15px", borderRadius: "5px", boxShadow: "0px 9px 30px 9px", border: "1.5px solid gray", backgroundColor: "lightgrey", marginTop: "40px",  marginBottom: "40px"}}>
                 {isLoading ? <h2>Cargando...</h2> :
                     <Table striped bordered hover variant="light" style={{ padding: 10 }}>
 
@@ -154,7 +154,7 @@ export default function ListadoAlojamientosAnf() {
                         </tbody>)}
                     </Table>
 
-                }
+                }</div>
 
             </>
             :    (botonType === "habitacion" ) ? 

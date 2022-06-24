@@ -96,7 +96,7 @@ function ModificarAlojamiento({ id }) {
       .then(res => {
 
 
-        alert("ALOJAMIENTO MODIFICADO CORRECTAMENTE");
+      //  alert("ALOJAMIENTO MODIFICADO CORRECTAMENTE");
         const aloj = res.data;
         setAloj(aloj);
         const dir = res.data.direcion
