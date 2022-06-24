@@ -157,7 +157,7 @@ function AgregarAlojamiento() {
               return (<option key={option.id} value={option.id}>{option.valor}</option>);
             })}
 
-
+ 
 
           </Form.Select>
 

@@ -6,7 +6,7 @@ import { doc, getFirestore, setDoc } from "firebase/firestore";
 import './Alojamiento.css';
 import CargarHabitacion from './CargarHabitacion';
 import { Form } from 'react-bootstrap';
-import { useUserContext } from '../UserContext/userContext';
+
 import axios from 'axios';
 
 
@@ -15,7 +15,7 @@ function AltaAlojamiento({dataUser}) {
     
   
     const db = getFirestore();
-    const { userToken, userType } = useUserContext();
+  
     getFirestoreApp();
     const storage = getStorage();
     const [image , setImage] = useState('');
@@ -102,11 +102,7 @@ const upload2 = async (e) =>{
 
 
 
-    axios.get(`http://localhost:8080/alojamiento/getPaises`, {
-      headers: {
-        'Authorization': `token ${userToken}`
-      }
-    })
+    axios.get(`http://localhost:8080/alojamiento/getPaises`)
       .then(res => {
         let paises = res.data;
         setPaises(paises);
@@ -132,9 +128,7 @@ const uploadFirestore = async (e) =>{
         url3: enlaceUrl3
       });
         
-    console.log("archivo cargado:", `${dataForm.nombre}`, "ulr:", enlaceUrl1);
-   console.log("archivo cargado2:", `${dataForm.nombre}`, "ulr:", enlaceUrl2);
-    console.log("archivo cargado3:", `${dataForm.nombre}`, "ulr:", enlaceUrl3);
+    
   }
 
 

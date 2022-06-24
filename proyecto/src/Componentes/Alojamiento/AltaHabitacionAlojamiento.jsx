@@ -3,14 +3,16 @@ import { useState } from "react";
 import { Base64 } from 'js-base64';
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import { useUserContext } from "../UserContext/userContext";
 
 
 function AltaHabitacionAlojamiento({ dataAloj, pais, direccion }) {
-  const idUser = 10034
+  const { userToken, userId } = useUserContext();
+  //const idUser = 10034
   const [dataFormH, setDataFormH] = useState({ descripcion: '', camas: '', precionoche: '' })
   const [aloj, setAloj] = useState([])
 
-  //var hash = Base64.encode(dataUser.password2); 
+
 
   const handleChangeH = (e) => {
     setDataFormH({
@@ -35,7 +37,7 @@ function AltaHabitacionAlojamiento({ dataAloj, pais, direccion }) {
     var enviar = {
 
 
-      idAnfitrion: idUser,
+      idAnfitrion: userId,
       aloj_descripcion: dataAloj.descripcion,
 
       aloj_direcion: {
@@ -69,7 +71,11 @@ function AltaHabitacionAlojamiento({ dataAloj, pais, direccion }) {
 
 
 
-    axios.post('http://localhost:8080/alojamiento/altaAlojHab', enviar)
+    axios.post('http://localhost:8080/alojamiento/altaAlojHab', {enviar},{
+      headers: {
+        'Authorization': `token ${userToken}`
+      }
+    })
 
       .then(res => {
 

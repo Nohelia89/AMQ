@@ -131,14 +131,12 @@ const handleChangeDe = (e) => {
                 axios.post(`http://localhost:8080/usuario/altaAnfitiron`, enviar )
                 
                 .then(res => {
-                  console.log("ALOJAMIENTO");
-                  console.log(res.data.id);
-                  console.log(res.data);
+           
                   setIdAloj(res.data.id)
 
                 })
                 .catch(error => {
-                  console.log(error)
+                  alert("ERROR: " + error.response.data.mensaje);
                 })
 
                
