@@ -23,7 +23,7 @@ function UserProfile() {
             const usuario = res.data;
             setUser(usuario);
      
-           // setIsLoading(false);
+         
         })
         .catch(error => {
         alert("ERROR: " + error.response.data.mensaje);
