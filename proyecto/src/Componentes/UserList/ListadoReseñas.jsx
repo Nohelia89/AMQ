@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 
 import NavBarAnfitrion from '../Navbar/NavBarAnfitrion';
 import { Col, FloatingLabel, Row, Form } from "react-bootstrap";
+import { useUserContext } from '../UserContext/userContext';
 
 
 
@@ -15,7 +16,7 @@ export default function ListadoReseñas({id}) {
   
   const [isLoading, setIsLoading] = useState(true);
   const [reseña, setReseña] = useState([]);
-  
+  const { userToken } = useUserContext();
   const [valP , setValP] = useState();
   const [idAloj, setIdAloj] = useState('')
 
@@ -27,12 +28,16 @@ export default function ListadoReseñas({id}) {
   
     var datos =
     {
-        //id_Anf: userId
+       
         idAloj: id
     }
    
 console.log(idAloj)
-   axios.post('http://localhost:8080/reserva/listarResenas', datos)
+   axios.post('http://localhost:8080/reserva/listarResenas',{ datos }, {
+    headers: {
+      'Authorization': `token ${userToken}`
+    }
+  })
   .then(res => {
   const rese = res.data;
     setReseña(rese);
@@ -57,7 +62,7 @@ console.log(idAloj)
     
       var datos =
       {
-          //id_Anf: userId
+          
           idAloj: id,
           calHuesped: valP
       }
@@ -67,9 +72,11 @@ console.log(idAloj)
     
   
 
-          const response =   await axios.post('http://localhost:8080/reserva/listarResenas', datos ) 
-        
-       
+          const response =   await axios.post('http://localhost:8080/reserva/listarResenas', { datos }, {
+            headers: {
+              'Authorization': `token ${userToken}`
+            }
+          })
           .then(res => {
                   
             setReseña(res.data)

@@ -1,27 +1,20 @@
 import { useEffect, useState } from 'react';
-//import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
-//import 'firebase/storage';
-//import { getFirestoreApp } from "./firebase";
-//import { doc, getFirestore, setDoc } from "firebase/firestore";
+
 import './Alojamiento.css';
 import axios from 'axios';
+import { useUserContext } from '../UserContext/userContext';
 
 
 
 function ModificarAlojamiento({ id }) {
 
-  /*   
-      const db = getFirestore();
-      getFirestoreApp();
-      const storage = getStorage();
-      const [image , setImage] = useState('');
-      const [image2 , setImage2] = useState('');
-      const [image3 , setImage3] = useState(''); */
-
   const [botontype, setBotonType] = useState('');
   const [aloj, setAloj] = useState([]);
   const [dir, setDir] = useState({ calle: '', numero: '', ciudad: '' });
-  //const [alojamiento, setAlojamiento] = useState();
+  const { userToken } = useUserContext();
+
+
+
   const handleChange = (e) => {
     setAloj({
       ...aloj,
@@ -71,8 +64,11 @@ function ModificarAlojamiento({ id }) {
 
 
 
-    axios.post(`http://localhost:8080/alojamiento/modificar`, alojamiento)
-
+    axios.post(`http://localhost:8080/alojamiento/modificar`, { alojamiento }, {
+      headers: {
+        'Authorization': `token ${userToken}`
+      }
+    })
 
       .then(res => {
 
@@ -90,13 +86,16 @@ function ModificarAlojamiento({ id }) {
 
   useEffect(() => {
 
-    axios.get('http://localhost:8080/alojamiento/buscarAlojamiento/' + id)
-
+    axios.get('http://localhost:8080/alojamiento/buscarAlojamiento/' + id, {
+      headers: {
+        'Authorization': `token ${userToken}`
+      }
+    })
 
       .then(res => {
 
 
-      //  alert("ALOJAMIENTO MODIFICADO CORRECTAMENTE");
+
         const aloj = res.data;
         setAloj(aloj);
         const dir = res.data.direcion

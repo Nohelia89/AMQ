@@ -2,7 +2,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Col, FloatingLabel, Row, Form, CardGroup } from "react-bootstrap";
 import ItemList from "../ItemList/ItemList";
-import NavBarInvitado from "../Navbar/NavbarInvitado";
 import { useUserContext } from "../UserContext/userContext";
 
 
@@ -11,7 +10,7 @@ import { useUserContext } from "../UserContext/userContext";
 
 function Search() {
 
-  const {userToken, userType} = useUserContext();
+  const {userToken} = useUserContext();
     const [val , setVal] = useState();
     const [valC , setValC] = useState();
     const [valP , setValP] = useState(0);

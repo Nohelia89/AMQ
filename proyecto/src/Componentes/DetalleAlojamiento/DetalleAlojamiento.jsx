@@ -1,11 +1,10 @@
 
-import { Link } from 'react-router-dom';
-import { Button, Card, Carousel, Table } from "react-bootstrap";
+
+import { Card, Carousel, Table } from "react-bootstrap";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import ReservaAloj from "../DetalleAlojamiento/ReservaAloj";
-import { Base64 } from 'js-base64';
-    
+
 import { useUserContext } from "../UserContext/userContext";
 import NavBarInvitado from '../Navbar/NavbarInvitado';
 
@@ -14,6 +13,7 @@ function DetalleAlojamiento() {
       const {aloj} = useUserContext();
       const [reseña, setReseña] = useState([]);
   
+    const { userToken } = useUserContext();
       const [botonType, setBotonType] = useState('sinActualizar');
 
     
@@ -40,7 +40,11 @@ function DetalleAlojamiento() {
                 idAloj: aloj[0].aloj.id
             }
            
-           axios.post('http://localhost:8080/reserva/listarResenas', datos)
+           axios.post('http://localhost:8080/reserva/listarResenas', {datos},{
+            headers: {
+              'Authorization': `token ${userToken}`
+            }
+          })
           .then(res => {
           const rese = res.data;
             setReseña(rese);

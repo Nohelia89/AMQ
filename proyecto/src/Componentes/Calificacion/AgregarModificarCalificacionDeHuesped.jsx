@@ -6,6 +6,7 @@ import NavBarHuesped from "../Navbar/NavBarHuesped";
 
 import HistoricoAlojamientosAnfitrion from "../UserList/HistoricoAlojamientosAnfitrion";
 import NavBarAnfitrion from "../Navbar/NavBarAnfitrion";
+import { useUserContext } from "../UserContext/userContext";
 
 
 
@@ -13,7 +14,7 @@ function AgregarModificarCalificacionDeHuesped({id}) {
    
     const [dataForm, setDataForm] = useState({calificacion: '', resena: ''})
     const [botonType, setBotonType] = useState('sinActualizar');
-
+    const { userToken, userId } = useUserContext();
     const handleChange = (e) => {
         setDataForm({
           ...dataForm,
@@ -35,7 +36,7 @@ function AgregarModificarCalificacionDeHuesped({id}) {
 
           var calificacion = {
     
-            idUsuario: 10053,
+            idUsuario: userId,
             idReserva: id,
             calificacion: dataForm.calificacion,
             resena: dataForm.resena
@@ -46,7 +47,11 @@ function AgregarModificarCalificacionDeHuesped({id}) {
                 
   
            
-                axios.post("http://localhost:8080/reserva/calificar", calificacion )
+                axios.post("http://localhost:8080/reserva/calificar",{calificacion},{
+                  headers: {
+                    'Authorization': `token ${userToken}`
+                  }
+                })
                 
              
              

@@ -4,7 +4,6 @@ import { Base64 } from 'js-base64';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import LogoSinFondo from '../Logo/LogoSinFondo';
 import LogoSinFondoNavBar from '../Logo/LogoSinFondoNavBar';
 import MainAdministrador from '../Main/MainAdministrador';
 import MainAnfitrion from '../Main/MainAnfitrion';

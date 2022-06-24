@@ -10,7 +10,7 @@ import NavBarAnfitrion from '../Navbar/NavBarAnfitrion';
 export default function ReservasHu() {
 
     const [reservas, setReservas] = useState([]);
-    const { userId } = useUserContext();
+    const { userId, userToken } = useUserContext();
     const [botonType, setBotonType] = useState('sinActualizar');
     const [idReserva, setIdReserva] = useState('');
   
@@ -23,6 +23,10 @@ console.log(userId + "user")
           "resEstado": [
             "APROBADO"
           ]
+        },{
+          headers: {
+            'Authorization': `token ${userToken}`
+          }
         })
             .then(res => {
               console.log(res.data)
@@ -32,7 +36,9 @@ console.log(userId + "user")
 
          
             })
-
+            .catch(error => {
+              alert("ERROR: " + error.response.data.mensaje); 
+            });
      
     }, [])
 
@@ -66,13 +72,18 @@ console.log(userId + "user")
 
         }
       }).then(response => {
-        console.log("Reembolso de pago exitoso");
-        axios.post("http://localhost:8080/reserva/cancelarReservaAprobada/" + idRes, factura)
+      
+        axios.post("http://localhost:8080/reserva/cancelarReservaAprobada/" + idRes, {factura},{
+          headers: {
+            'Authorization': `token ${userToken}`
+          }
+        })
+        
                 
         .then(res => {
      
          
-          console.log(res.data);
+       
           
           setBotonType("actualizado")
           alert("Reserva Cancelada con una multa por haber cancelado una reserva aprobada. La multa equivale al 50% de lo abonado por la reserva")
@@ -80,7 +91,9 @@ console.log(userId + "user")
         })
 
       })
-
+      .catch(error => {
+        alert("ERROR: " + error.response.data.mensaje); 
+      });
 
      }
  

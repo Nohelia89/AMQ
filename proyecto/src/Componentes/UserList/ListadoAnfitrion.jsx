@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 
 import NavBarAdministrador from '../Navbar/NavBarAdministrador';
 import { Col, FloatingLabel, Row, Form } from "react-bootstrap";
+import { useUserContext } from '../UserContext/userContext';
 export default function ListadoAnfitrion() {
 
   const [isLoading, setIsLoading] = useState(true);
@@ -14,7 +15,7 @@ export default function ListadoAnfitrion() {
   const [valC, setValC] = useState();
   const [calDesde, setCalDesde] = useState();
   const [calHasta, setCalHasta] = useState();
-
+  const { userToken } = useUserContext();
   const [botonType, setBotonType] = useState('sinActualizar');
 
 
@@ -28,7 +29,11 @@ export default function ListadoAnfitrion() {
     };
 
 
-    axios.post("http://localhost:8080/usuario/listar", anfitriones)
+    axios.post("http://localhost:8080/usuario/listar",  { anfitriones }, {
+      headers: {
+        'Authorization': `token ${userToken}`
+      }
+    })
       .then(res => {
         const anfitriones = res.data;
         setAnfitrion(anfitriones);
@@ -75,10 +80,12 @@ export default function ListadoAnfitrion() {
     };
 
 
-    const response = await axios.post(`http://localhost:8080/usuario/listar`, usuario)
-      //  console.log(response.data);
-
-      // setBotonType('concards')
+    const response = await axios.post(`http://localhost:8080/usuario/listar`,  { usuario }, {
+      headers: {
+        'Authorization': `token ${userToken}`
+      }
+    })
+      
       .then(response => {
         setAnfitrion(response.data)
 
@@ -107,7 +114,12 @@ export default function ListadoAnfitrion() {
 
 
   const Aprobar = (id) => {
-    axios.get(`http://localhost:8080/usuario/aprobarAnfitrion/` + id)
+    axios.get(`http://localhost:8080/usuario/aprobarAnfitrion/` + id, {
+      headers: {
+        'Authorization': `token ${userToken}`
+      }
+    })
+
 
       .then(res => {
         alert("Usuario Aprobado")
@@ -120,7 +132,12 @@ export default function ListadoAnfitrion() {
   }
 
   const Rechazar = (id) => {
-    axios.get(`http://localhost:8080/usuario/rechazarAnfitrion/` + id)
+    axios.get(`http://localhost:8080/usuario/rechazarAnfitrion/` + id, {
+      headers: {
+        'Authorization': `token ${userToken}`
+      }
+    })
+
 
       .then(res => {
         alert("Usuario Rechazado")

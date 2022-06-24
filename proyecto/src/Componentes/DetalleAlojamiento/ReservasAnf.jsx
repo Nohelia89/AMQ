@@ -10,7 +10,7 @@ import NavBarAnfitrion from '../Navbar/NavBarAnfitrion';
 export default function ReservasAnf() {
 
     const [reservas, setReservas] = useState([]);
-    const { userId } = useUserContext();
+    const { userId, userToken } = useUserContext();
     const [botonType, setBotonType] = useState('sinActualizar');
     const [capture, setCapture] = useState();
     const [refund, setRefund] = useState();
@@ -21,15 +21,24 @@ export default function ReservasAnf() {
 
     useEffect(() => {
 console.log(userId + "user")
-        axios.get("http://localhost:8080/reserva/listarReservasPendientesYAprobadas/" + userId)
+        axios.get("http://localhost:8080/reserva/listarReservasPendientesYAprobadas/" + userId, {
+          headers: {
+            'Authorization': `token ${userToken}`
+          }
+        })
             .then(res => {
                 const rese = res.data;
-                console.log(res.data);
+    
                 setReservas(rese);
                 
-console.log(res.data + "data")
+                
+
          
             })
+            .catch(error => {
+              alert("ERROR: " + error.response.data.mensaje); 
+            })
+                   
 
      
     }, [botonType],[capture],[])
@@ -46,13 +55,14 @@ console.log(res.data + "data")
 
 
 
-    axios.get("http://localhost:8080/reserva/confirmar/" + idRes)
+    axios.get("http://localhost:8080/reserva/confirmar/" + idRes,{
+      headers: {
+        'Authorization': `token ${userToken}`
+      }
+    })
                 
     .then(res => {
     
-     
-      console.log(res.data);
-      
       setBotonType("aprobado")
       alert("Reserva Confirmada")
     
@@ -72,6 +82,10 @@ console.log(res.data + "data")
             axios.post("http://localhost:8080/reserva/confirmarPagoRealizado/", {
               idFactura: idFactura,
                 idPaypal: response.data.id
+            },{
+              headers: {
+                'Authorization': `token ${userToken}`
+              }
             })
             .then(res => { 
               setBotonType("aprobado")
@@ -113,7 +127,11 @@ console.log(res.data + "data")
       }).then(response => {
         console.log("Reembolso de pago exitoso");
         setRefund(response.data.id)
-        axios.post("http://localhost:8080/reserva/cancelarReservaAprobada/" + idRes, factura)
+        axios.post("http://localhost:8080/reserva/cancelarReservaAprobada/" + idRes,  {factura},{
+          headers: {
+            'Authorization': `token ${userToken}`
+          }
+        })
                 
         .then(res => {
      
@@ -158,7 +176,11 @@ console.log(res.data + "data")
        .then(response => {
         console.log("Reembolso de pago exitoso");
         setVoide(response.data.id)
-        axios.get("http://localhost:8080/reserva/cancelarReservaPendiente/" + idRes, factura)
+        axios.get("http://localhost:8080/reserva/cancelarReservaPendiente/" + idRes,  {factura},{
+          headers: {
+            'Authorization': `token ${userToken}`
+          }
+        })
                 
         .then(res => {
      

@@ -18,7 +18,7 @@ export default function ListadoAlojamientosPorHuesped() {
     const [alojamiento, setAlojamiento] = useState([]);
     const [idRes, setIdRes] = useState('');
     const [idCal, setIdCal] = useState('');
-    const { userToken, userType, userId } = useUserContext();
+    const { userToken, userId } = useUserContext();
     const [botonType, setBotonType] = useState('sinActualizar');
     const [val , setVal] = useState();
     const [val1 , setVal1] = useState(true);
@@ -34,7 +34,11 @@ export default function ListadoAlojamientosPorHuesped() {
             idUsuario: 10053
 
         }
-        axios.post("http://localhost:8080/reserva/listarDatosRequeridosCalificar", enviar)
+        axios.post("http://localhost:8080/reserva/listarDatosRequeridosCalificar",  { enviar }, {
+          headers: {
+            'Authorization': `token ${userToken}`
+          }
+        })
             .then(res => {
                 const aloj = res.data;
                 setAlojamiento(aloj);
@@ -93,7 +97,11 @@ export default function ListadoAlojamientosPorHuesped() {
             
               } ;
 
-                    axios.post("http://localhost:8080/reserva/calificar", calificacion )
+                    axios.post("http://localhost:8080/reserva/calificar",  { calificacion }, {
+                      headers: {
+                        'Authorization': `token ${userToken}`
+                      }
+                    })
                     
                     .then(res => {
                      alert("SE ELIMINO LA CALIFICACION CORRECTAMENTE")
@@ -135,13 +143,17 @@ export default function ListadoAlojamientosPorHuesped() {
               
                   aloj_activo: val1,
                   idPais: val,
-                  idUsuario: 10053
+                  idUsuario: userId
                  
                 
               }; 
             
           
-                    await axios.post("http://localhost:8080/reserva/listarDatosRequeridosCalificar", aloj ) 
+                    await axios.post("http://localhost:8080/reserva/listarDatosRequeridosCalificar",  { aloj }, {
+                      headers: {
+                        'Authorization': `token ${userToken}`
+                      }
+                    })
                  
                     .then(res => {
                   

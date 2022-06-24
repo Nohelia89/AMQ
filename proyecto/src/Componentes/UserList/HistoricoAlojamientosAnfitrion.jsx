@@ -6,9 +6,6 @@ import { useEffect, useState } from "react";
 import { useUserContext } from '../UserContext/userContext';
 import { Col, FloatingLabel, Row, Form, CardGroup } from "react-bootstrap";
 
-import NavBarHuesped from '../Navbar/NavBarHuesped';
-import AgregarCalificacionDeAnfitrion from '../Calificacion/AgregarCalificacionDeAnfitrion';
-import ModificarCalificacionDeAnfitrion from '../Calificacion/ModificarCalificacionDeAnfitrion';
 import AgregarModificarCalificacionDeHuesped from '../Calificacion/AgregarModificarCalificacionDeHuesped';
 import NavBarAnfitrion from '../Navbar/NavBarAnfitrion';
 
@@ -20,7 +17,7 @@ export default function HistoricoAlojamientosAnfitrion() {
   const [alojamiento, setAlojamiento] = useState([]);
   const [idRes, setIdRes] = useState('');
   const [idCal, setIdCal] = useState('');
-  const { userToken, userType, userId } = useUserContext();
+  const { userToken,  userId } = useUserContext();
   const [botonType, setBotonType] = useState('sinActualizar');
   const [val, setVal] = useState();
   const [val1, setVal1] = useState(true);
@@ -32,11 +29,15 @@ export default function HistoricoAlojamientosAnfitrion() {
 
     var enviar =
     {
-      //id_Anf: userId
-      idUsuario: 10053
+     
+      idUsuario: userId
 
     }
-    axios.post("http://localhost:8080/reserva/listarDatosRequeridosCalificar", enviar)
+    axios.post("http://localhost:8080/reserva/listarDatosRequeridosCalificar",  { enviar }, {
+      headers: {
+        'Authorization': `token ${userToken}`
+      }
+    })
       .then(res => {
         const aloj = res.data;
         setAlojamiento(aloj);
@@ -100,7 +101,11 @@ export default function HistoricoAlojamientosAnfitrion() {
 
     };
 
-    axios.post("http://localhost:8080/reserva/calificar", calificacion)
+    axios.post("http://localhost:8080/reserva/calificar",  { calificacion }, {
+      headers: {
+        'Authorization': `token ${userToken}`
+      }
+    })
 
     
     .then(res => {
@@ -150,7 +155,11 @@ export default function HistoricoAlojamientosAnfitrion() {
     };
 
 
-    await axios.post("http://localhost:8080/reserva/listarDatosRequeridosCalificar", aloj)
+    await axios.post("http://localhost:8080/reserva/listarDatosRequeridosCalificar", { aloj }, {
+      headers: {
+        'Authorization': `token ${userToken}`
+      }
+    })
 
 
 

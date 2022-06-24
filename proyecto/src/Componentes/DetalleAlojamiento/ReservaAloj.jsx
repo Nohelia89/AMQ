@@ -7,7 +7,7 @@ import PayPal from '../PayPal/PayPal';
 
 export default function ReservaAloj() {
 
-  const {aloj, userId} = useUserContext();
+  const {aloj} = useUserContext();
   const [val , setVal] = useState(aloj[0].aloj.habs[0].id);
   const [fechaDesde , setFechaDesde] = useState('');
   const [fechaHasta , setFechaHasta] = useState('');
@@ -30,11 +30,11 @@ export default function ReservaAloj() {
 var diferencia = diff / diaEnMils;
 setCantDias(diferencia);
 setBotonType('conpaypal')
-console.log("VAL en reserva" + val)
+
     }
 
 const handleChange = (e) => {
-  console.log(`Seleccionaste ${e.target.value}`);
+
   setVal(e.target.value);
 
  
@@ -53,16 +53,13 @@ const handleChange = (e) => {
 
 
        aloj[0].aloj.habs.map((option, index) => {
-    
-        console.log("ENTRA AL MAP")
+
         if(parseInt(option.id) === parseInt(val)){
           
-        console.log("ENTRA AL OPTION")
-        console.log("OPTION" + index)
+     
           setPrecioNoche(aloj[0].aloj.habs[index].precioNoche)
           setDescripcion(aloj[0].aloj.habs[index].descripcion)    
-          console.log("precioNoche" + precioNoche)
-          console.log("Descripcion" + descripcion)
+       
         }
     })
               

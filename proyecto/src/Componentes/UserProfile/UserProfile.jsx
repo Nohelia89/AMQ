@@ -8,12 +8,17 @@ import { Base64 } from 'js-base64';
 function UserProfile() {
   const [user, setUser] = useState([]);
   const [idAnf, setIdAnf] = useState(10041);
+  const { userToken } = useUserContext();
   useEffect(() => {
 
 
    
       
-    axios.post(`http://localhost:8080/usuario/buscar/`+ idAnf)
+    axios.post(`http://localhost:8080/usuario/buscar/`+ idAnf, {}, {
+      headers: {
+        'Authorization': `token ${userToken}`
+      }
+    })
         .then(res => {
             const usuario = res.data;
             setUser(usuario);

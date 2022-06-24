@@ -26,7 +26,11 @@ export default function UserList() {
 
   useEffect(() => {
 
-    axios.post("http://localhost:8080/usuario/listar", {})
+    axios.post("http://localhost:8080/usuario/listar",  {}, {
+      headers: {
+        'Authorization': `token ${userToken}`
+      }
+    })
       .then(res => {
         const usuario = res.data;
         setUsuario(usuario);
@@ -63,7 +67,11 @@ export default function UserList() {
 
 
   const Desactivar = (id) => {
-    axios.post(`http://localhost:8080/usuario/desactivar/` + id, id)
+    axios.post(`http://localhost:8080/usuario/desactivar/` + id, { id }, {
+      headers: {
+        'Authorization': `token ${userToken}`
+      }
+    })
 
       .then(res => {
         alert("Usuario Desactivado")
@@ -77,7 +85,11 @@ export default function UserList() {
 
 
   const Desbloquear = (id) => {
-    axios.post(`http://localhost:8080/usuario/desbloquear/` + id, id)
+    axios.post(`http://localhost:8080/usuario/desbloquear/` + id, { id }, {
+      headers: {
+        'Authorization': `token ${userToken}`
+      }
+    })
 
       .then(res => {
         alert("Usuario Desbloqueado")
@@ -91,7 +103,11 @@ export default function UserList() {
   }
 
   const Bloquear = (id) => {
-    axios.post(`http://localhost:8080/usuario/bloquear/` + id, id)
+    axios.post(`http://localhost:8080/usuario/bloquear/` + id,  { id }, {
+      headers: {
+        'Authorization': `token ${userToken}`
+      }
+    })
 
       .then(res => {
         alert("Usuario Bloqueado")
@@ -124,7 +140,11 @@ export default function UserList() {
 
     console.log(valH)
 
-    await axios.post(`http://localhost:8080/usuario/listar`, usuario)
+    await axios.post(`http://localhost:8080/usuario/listar`,  { usuario }, {
+      headers: {
+        'Authorization': `token ${userToken}`
+      }
+    })
 
 
 

@@ -15,7 +15,7 @@ export default function ListadoAlojamientosAnf() {
     const [isLoading, setIsLoading] = useState(true);
     const [alojamiento, setAlojamiento] = useState([]);
     const [idAloj, setIdAloj] = useState();
-    const { userToken, userType, userId } = useUserContext();
+    const { userToken,  userId } = useUserContext();
     const [botonType, setBotonType] = useState('sinActualizar');
   
 
@@ -25,10 +25,14 @@ export default function ListadoAlojamientosAnf() {
 
         var idAnf =
         {
-            //id_Anf: userId
-            id_anf: 10041
+            
+            id_anf: userId
         }
-        axios.post("http://localhost:8080/alojamiento/listarAlojamientos", idAnf)
+        axios.post("http://localhost:8080/alojamiento/listarAlojamientos",  { idAnf }, {
+            headers: {
+              'Authorization': `token ${userToken}`
+            }
+          })
             .then(res => {
                 const aloj = res.data;
                 setAlojamiento(aloj);
@@ -78,7 +82,11 @@ export default function ListadoAlojamientosAnf() {
     }
 
     const DesactivarAloj = (id) => {
-        axios.post(`http://localhost:8080/alojamiento/desactivarAlojamiento/` + id , {})
+        axios.post(`http://localhost:8080/alojamiento/desactivarAlojamiento/` + id ,  {}, {
+            headers: {
+              'Authorization': `token ${userToken}`
+            }
+          })
 
             .then(res => {
                 alert("Usuario Desactivado")

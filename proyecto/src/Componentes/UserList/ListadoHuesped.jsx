@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 import NavBarAdministrador from '../Navbar/NavBarAdministrador';
 import { Col, FloatingLabel, Row, Form } from "react-bootstrap";
+import { useUserContext } from '../UserContext/userContext';
 export default function ListadoHuesped() {
 
   const [isLoading, setIsLoading] = useState(true);
@@ -14,7 +15,7 @@ export default function ListadoHuesped() {
 
   const [calDesde, setCalDesde] = useState();
   const [calHasta, setCalHasta] = useState();
-
+  const { userToken } = useUserContext();
 
   const [botonType, setBotonType] = useState('sinActualizar');
 
@@ -31,7 +32,11 @@ export default function ListadoHuesped() {
 
 
 
-    axios.post("http://localhost:8080/usuario/listar", huespedes)
+    axios.post("http://localhost:8080/usuario/listar", { huespedes }, {
+      headers: {
+        'Authorization': `token ${userToken}`
+      }
+    })
       .then(res => {
         const huespedes = res.data;
         setHuesped(huespedes);
@@ -83,7 +88,11 @@ export default function ListadoHuesped() {
     };
 
 
-    await axios.post(`http://localhost:8080/usuario/listar`, usuario)
+    await axios.post(`http://localhost:8080/usuario/listar`, { usuario }, {
+      headers: {
+        'Authorization': `token ${userToken}`
+      }
+    })
    
 
       .then(response => {

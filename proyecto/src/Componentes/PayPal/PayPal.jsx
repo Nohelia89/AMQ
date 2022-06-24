@@ -5,7 +5,7 @@ import { Table } from "react-bootstrap";
 import axios from "axios";
 
 export default function PayPal({cant, fechaDesde, fechaHasta, idHab, precioNoche, descripcion}) {
-    const {aloj, userId} = useUserContext();
+    const {aloj, userId, userToken} = useUserContext();
  const [show, setShow] = useState(false);
  const [success, setSuccess] = useState(false);
  const [ErrorMessage, setErrorMessage] = useState("");
@@ -42,10 +42,11 @@ var reserva = {
       
 
 console.log(reserva+ "SOY RESERVA")    
-  axios.post(`http://localhost:8080/reserva/alta` , reserva
-  
-    )
-              
+  axios.post(`http://localhost:8080/reserva/alta` ,  { reserva }, {
+    headers: {
+      'Authorization': `token ${userToken}`
+    }
+  })
    
     .then(res => {
       alert("Se realizo la reserva correctamente")
