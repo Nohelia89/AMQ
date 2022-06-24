@@ -30,11 +30,7 @@ function FormAdmin() {
     if (dataForm.password === dataForm.password2) {
 
 
-      axios.post(`http://localhost:8080/usuario/altaAdmin/` + "1", { admin }, {
-        headers: {
-          'Authorization': `token ${userToken}`
-        }
-      })
+      axios.post(`http://localhost:8080/usuario/altaAdmin/` + "1", admin)
         .then(res => {
           alert("El usuario ha sido ingresado con éxito al sistema");
         })
