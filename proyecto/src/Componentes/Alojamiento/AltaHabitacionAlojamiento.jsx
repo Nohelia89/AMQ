@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useState } from "react";
-import { Base64 } from 'js-base64';
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { useUserContext } from "../UserContext/userContext";

@@ -27,7 +27,7 @@ function AgregarAlojamiento() {
   const [paises, setPaises] = useState([])
   const [botontype, setBotonType] = useState('aloj');
 
-  const { userToken, userType } = useUserContext();
+  const { userToken } = useUserContext();
 
   const handleChange = (e) => {
     setDataForm({

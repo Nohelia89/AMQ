@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useState } from "react";
-import { Base64 } from 'js-base64';
 import { Link } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
 import { useUserContext } from "../UserContext/userContext";
@@ -10,7 +9,7 @@ function AgregarHabitacion({ id }) {
 
   const [dataFormH, setDataFormH] = useState({ descripcion: '', camas: '', precionoche: '' })
   const [idAloj, setIdAloj] = useState('')
-  const { userToken, userType } = useUserContext();
+  const { userToken } = useUserContext();
   const [valYa, setValYa] = useState(false)
   const [valW, setValW] = useState(false)
   const [valAi, setValAi] = useState(false)
