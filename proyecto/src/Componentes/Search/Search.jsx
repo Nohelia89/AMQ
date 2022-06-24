@@ -11,7 +11,7 @@ import { useUserContext } from "../UserContext/userContext";
 function Search() {
 
   const {userToken} = useUserContext();
-    const [val , setVal] = useState();
+    const [val , setVal] = useState(1);
     const [valC , setValC] = useState();
     const [valP , setValP] = useState(0);
     const [precioDesde , setPrecioDesde] = useState();
