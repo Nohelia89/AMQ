@@ -9,7 +9,14 @@ import LogWidget from "./LogWidget";
 
 function NavBarAnfitrion() {
 
-  const { userName } = useUserContext();
+
+
+  const { userId, userName, setearIdUsuario } = useUserContext();
+
+  const CerrarSesion = () => {
+    setearIdUsuario("");
+    }
+
 
     return (
 <>
@@ -58,7 +65,7 @@ function NavBarAnfitrion() {
     <Nav>
 
             <NavLink to='/login' className={({ isActive }) => isActive ? 'active' : ''}>
-            <Nav.Link as={Link} to="/login"> {userName === "" ? <LogWidget /> : "Bienvenido "+userName }</Nav.Link>
+            <Nav.Link as={Link} to="/login"> {userId === "" ? <LogWidget /> : "Bienvenido "+userName <CerrarSesion /> }</Nav.Link>
           
             </NavLink>
           </Nav>
