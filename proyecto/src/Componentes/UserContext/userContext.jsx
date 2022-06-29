@@ -8,8 +8,8 @@ function UserContextProvider({children}) {
 
     const [userToken, setUserToken ] = useState();
     const [userType, setUserType ] = useState();
-    const [userId, setUserId ] = useState();
-    const [userName, setUserName ] = useState();
+    const [userId, setUserId ] = useState("");
+    const [userName, setUserName ] = useState("");
     const [compraID, setCompraId ] = useState();
     const [aloj, setAloj ] = useState([]);
 

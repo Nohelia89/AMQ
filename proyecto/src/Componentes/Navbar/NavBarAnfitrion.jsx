@@ -13,8 +13,14 @@ function NavBarAnfitrion() {
 
   const { userId, userName, setearIdUsuario } = useUserContext();
 
+  const cerrar = () => {
+    setearIdUsuario(""); 
+    }
+
   const CerrarSesion = () => {
     setearIdUsuario("");
+    return( <><p> "Bienvenido" +userName </p> <button onClick={cerrar} > Cerrar Sesion </button></>)
+    
     }
 
 
@@ -65,7 +71,7 @@ function NavBarAnfitrion() {
     <Nav>
 
             <NavLink to='/login' className={({ isActive }) => isActive ? 'active' : ''}>
-            <Nav.Link as={Link} to="/login"> {userId === "" ? <LogWidget /> : "Bienvenido "+userName <CerrarSesion /> }</Nav.Link>
+            <Nav.Link as={Link} to="/login"> {userId === "" ? <LogWidget /> : <CerrarSesion />  }</Nav.Link>
           
             </NavLink>
           </Nav>
