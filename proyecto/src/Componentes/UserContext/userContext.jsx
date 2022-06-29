@@ -39,6 +39,11 @@ function UserContextProvider({children}) {
       
         
     }
+    const cerrarSesion = () => {
+        setUserId("")
+      
+        
+    }
 
     const setearNombreUsuario = (id) => {
         setUserName(id)
@@ -47,7 +52,7 @@ function UserContextProvider({children}) {
     }
 
     return (
-        <UserContext.Provider value={{userToken, userType, aloj,userId, userName, setearNombreUsuario,setearIdUsuario, setearAloj, setearToken, setearTipoUsuario, setearCompraId}}>
+        <UserContext.Provider value={{userToken, userType, aloj,userId, userName, setearNombreUsuario,setearIdUsuario, setearAloj, setearToken, setearTipoUsuario, setearCompraId, cerrarSesion}}>
 
         {children}
 

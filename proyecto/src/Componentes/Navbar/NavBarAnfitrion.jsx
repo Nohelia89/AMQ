@@ -1,4 +1,4 @@
-import { Container, Nav, Navbar} from "react-bootstrap";
+import { Button, Container, Nav, Navbar} from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import LogoSinFondoNavBar from "../Logo/LogoSinFondoNavBar";
@@ -11,17 +11,13 @@ function NavBarAnfitrion() {
 
 
 
-  const { userId, userName, setearIdUsuario } = useUserContext();
+  const { userId, userName, cerrarSesion } = useUserContext();
 
   const cerrar = () => {
-    setearIdUsuario(""); 
+    cerrarSesion()
     }
 
-  const CerrarSesion = () => {
-    setearIdUsuario("");
-    return( <><p> "Bienvenido" +userName </p> <button onClick={cerrar} > Cerrar Sesion </button></>)
-    
-    }
+ 
 
 
     return (
@@ -68,13 +64,18 @@ function NavBarAnfitrion() {
    <Nav.Link as={Link} to='/perfil'> <li className="nav-item">Perfil de usuario</li></Nav.Link>
 
    </Nav>
-    <Nav>
+   
 
-            <NavLink to='/login' className={({ isActive }) => isActive ? 'active' : ''}>
-            <Nav.Link as={Link} to="/login"> {userId === "" ? <LogWidget /> : <CerrarSesion />  }</Nav.Link>
+    {userId === "" ?
+         <Nav>
+            <Nav.Link as={Link} to="/login">  <LogWidget /> </Nav.Link>
           
-            </NavLink>
+            </Nav>
+            : 
+            <Nav>
+           {"Bienvenido"+userName}<Button variant="dark" onClick={() => cerrar()}>Cerrar Sesión</Button> 
           </Nav>
+        }
   </Navbar.Collapse>
 </Container>
 </Navbar>  
