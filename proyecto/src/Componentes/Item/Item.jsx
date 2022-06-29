@@ -1,4 +1,4 @@
-import { Button, Card, ListGroup, ListGroupItem } from "react-bootstrap"
+import { Button, Card, ListGroup, ListGroupItem, Nav } from "react-bootstrap"
 import { useEffect, useState } from "react";
 import { getFirestore, collection, getDoc, doc, getDocs, where, query } from "firebase/firestore";
 import { getFirestoreApp } from "../Alojamiento/firebase";
@@ -57,26 +57,25 @@ var obj = {"url1": url1,"url2": url2,"url3": url3, "aloj": aloj};
 
 
   return (
-    <div>
+    <div >
 
-      <Card className={"card-grid"} style={{ width: '18rem' } }>
-        <Card.Img className={"card-img"} variant="top" src={url1} />
-        <Card.Body>
-          <Card.Title>Nombre:{aloj.nombre}</Card.Title>
-          <Card.Text>
-
+      <Card className={"card-grid"} style={{ width: '20rem' } }>
+        <Card.Img className={"card_image"} variant="top" src={url1} />
+        <Card.Body class="card_content">
+          <Card.Title class="card_title">{aloj.nombre}</Card.Title>
+          <Card.Text class="card_text">
+               
+          Ciudad: {aloj.direcion.ciudad}
+       
           </Card.Text>
-        </Card.Body>
-        <ListGroup className="list-group-flush">
-          <ListGroupItem> Pais: {aloj.direcion.ciudad}</ListGroupItem>
-
-        </ListGroup>
+     
+      
 
 
-        <Card.Body>
-          <Link to='/detalleAlojamiento'>
-            <Button variant="dark" onClick={setear} >Más Info</Button>
-          </Link>
+       
+          <Nav.Link as={Link} to='/detalleAlojamiento'>
+            <Button class="btn card_btn" onClick={setear} >Más Info</Button>
+          </Nav.Link>
 
 
         </Card.Body>

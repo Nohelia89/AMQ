@@ -8,6 +8,7 @@ import ReservaAloj from "../DetalleAlojamiento/ReservaAloj";
 import { useUserContext } from "../UserContext/userContext";
 import NavBarInvitado from '../Navbar/NavbarInvitado';
 
+
 function DetalleAlojamiento() {
     
       const {aloj} = useUserContext();
@@ -62,17 +63,18 @@ function DetalleAlojamiento() {
 
    botonType === 'sinActualizar' ?  
    
-   (<div class="bod">
+   (<div class="overlay">
       <NavBarInvitado/>
-    <form className="form21" >
-  <Card>
-  <Carousel  activeIndex={index} onSelect={handleSelect}>
-        <Carousel.Item>
+<div style={{padding:'16px 4px 16px 0', position:'absolute'}}>
+  <Card className={"card-grid"}>
+  <Carousel   style={{padding:'16px 4px 16px 0'}} activeIndex={index} onSelect={handleSelect}>
+        <Carousel.Item >
           <img
             src={aloj[0].url1}
             alt="First slide"
-            width="850"
+            width="500"
             height="500"
+            
             
           />
 
@@ -81,7 +83,7 @@ function DetalleAlojamiento() {
           <img
             src={aloj[0].url2}
             alt="Second slide"
-            width="850"
+            width="500"
             height="500"
           />
 
@@ -90,17 +92,17 @@ function DetalleAlojamiento() {
           <img
             src={aloj[0].url3}
             alt="Third slide"
-            width="850"
+            width="500"
             height="500"
           />
   
         </Carousel.Item>
       </Carousel>
-      <Card.Body>
+      <Card.Body class="card_content">
       <p>{aloj[0].aloj.nombre}</p>
       <p>{aloj[0].aloj.descripcion}</p>
       <p>Direccion: {aloj[0].aloj.direcion.calle} {aloj[0].aloj.direcion.numero}, {aloj[0].aloj.direcion.ciudad}, {aloj[0].aloj.direcion.pais.nombre}</p>
-      Habitaciones: <Table striped bordered hover variant="light" style={{ padding: 10 }}>
+      Habitaciones: <Table striped bordered hover variant="light" style={{  width: "1000px",marginBottom: "40px", padding: "10px", borderRadius: "5px",  marginTop: "40px" }}>
 
 <thead>
   <tr>
@@ -124,8 +126,8 @@ function DetalleAlojamiento() {
     </tr>
 
 </tbody>)}
-</Table>
-      Reseñas : <Table striped bordered hover variant="light" style={{ padding: 10 }}>
+</Table >
+      Reseñas : <Table striped bordered hover variant="light"  style={{  width: "1000px",marginBottom: "40px", padding: "10px", borderRadius: "5px",  marginTop: "40px" }}>
 
 <thead>
   <tr>
@@ -147,9 +149,9 @@ function DetalleAlojamiento() {
       <button class="log-in" onClick={reservar} > RESERVAR </button>
   </Card>
 
-  </form>
+
   </div>
-  
+  </div>
    ) :  <Reserva />
     );
   
