@@ -43,11 +43,7 @@ var reserva = {
       
 
 console.log(reserva+ "SOY RESERVA")    
-  axios.post(`http://localhost:8080/reserva/alta` ,  { reserva }, {
-    headers: {
-      'Authorization': `token ${userToken}`
-    }
-  })
+  axios.post(`http://localhost:8080/reserva/alta` , reserva )
    
     .then(res => {
       alert("Se realizo la reserva correctamente")

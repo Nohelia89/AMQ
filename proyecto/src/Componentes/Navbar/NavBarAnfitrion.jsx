@@ -2,11 +2,15 @@ import { Container, Nav, Navbar} from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import LogoSinFondoNavBar from "../Logo/LogoSinFondoNavBar";
+import { useUserContext } from "../UserContext/userContext";
 import LogWidget from "./LogWidget";
 
 
 
 function NavBarAnfitrion() {
+
+  const { userName } = useUserContext();
+
     return (
 <>
 <Navbar collapseOnSelect expand="lg" bg="light" variant="light" >
@@ -54,7 +58,7 @@ function NavBarAnfitrion() {
     <Nav>
 
             <NavLink to='/login' className={({ isActive }) => isActive ? 'active' : ''}>
-            <Nav.Link as={Link} to="/login"><LogWidget /></Nav.Link>
+            <Nav.Link as={Link} to="/login"> {userName === "" ? <LogWidget /> : "Bienvenido "+userName }</Nav.Link>
           
             </NavLink>
           </Nav>

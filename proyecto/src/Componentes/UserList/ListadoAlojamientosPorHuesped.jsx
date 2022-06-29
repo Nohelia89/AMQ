@@ -31,14 +31,10 @@ export default function ListadoAlojamientosPorHuesped() {
         var enviar =
         {
             //id_Anf: userId
-            idUsuario: 10053
+            idUsuario: userId
 
         }
-        axios.post("http://localhost:8080/reserva/listarDatosRequeridosCalificar",  { enviar }, {
-          headers: {
-            'Authorization': `token ${userToken}`
-          }
-        })
+        axios.post("http://localhost:8080/reserva/listarDatosRequeridosCalificar",  enviar )
             .then(res => {
                 const aloj = res.data;
                 setAlojamiento(aloj);
@@ -91,17 +87,13 @@ export default function ListadoAlojamientosPorHuesped() {
     
               var calificacion = {
         
-                idUsuario: 10053,
+                idUsuario: userId,
                 idReserva: id,
                 calificacion: 0,
             
               } ;
 
-                    axios.post("http://localhost:8080/reserva/calificar",  { calificacion }, {
-                      headers: {
-                        'Authorization': `token ${userToken}`
-                      }
-                    })
+                    axios.post("http://localhost:8080/reserva/calificar",  calificacion )
                     
                     .then(res => {
                      alert("SE ELIMINO LA CALIFICACION CORRECTAMENTE")
@@ -149,11 +141,7 @@ export default function ListadoAlojamientosPorHuesped() {
               }; 
             
           
-                    await axios.post("http://localhost:8080/reserva/listarDatosRequeridosCalificar",  { aloj }, {
-                      headers: {
-                        'Authorization': `token ${userToken}`
-                      }
-                    })
+                    await axios.post("http://localhost:8080/reserva/listarDatosRequeridosCalificar", aloj )
                  
                     .then(res => {
                   

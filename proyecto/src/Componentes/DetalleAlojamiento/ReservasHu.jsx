@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import { useEffect, useState } from "react";
 import { useUserContext } from '../UserContext/userContext';
-import NavBarAnfitrion from '../Navbar/NavBarAnfitrion';
+import NavBarHuesped from '../Navbar/NavBarHuesped';
 
 
 export default function ReservasHu() {
@@ -68,7 +68,7 @@ console.log(userId + "user")
     }, {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer A21AAJlLHvZt3hrqp5TF4FYXEbnisc6IZBhAiQli-4-fFJRe7xKSz1qV2nhZ5us1AxH_1qqRHqeDxMIGWEPmY0Mw1USTIAIjg'
+          'Authorization': 'Bearer A21AAJa88PPtzqyN2sCVwqVCMPnwSjI4BhpEnSPsyjVIfTYGhgrZXPOm66Wap7MQVdlukWXHzGuXd0YsEiddgymmKTMxkiMHQ'
 
         }
       }).then(response => {
@@ -107,7 +107,7 @@ console.log(userId + "user")
             <>
 
 {console.log(botonType+"SOY BOTONTYPE")}
-                <NavBarAnfitrion />
+                <NavBarHuesped />
 
                     <Table striped bordered hover variant="light" style={{ padding: 10 }}>
 

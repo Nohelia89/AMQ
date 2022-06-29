@@ -14,11 +14,12 @@ import './Login.scss';
 
 
 export default function Login() {
-   const { setearToken, setearTipoUsuario, setearIdUsuario } = useUserContext();
+   const { setearToken, setearTipoUsuario, setearIdUsuario, setearNombreUsuario } = useUserContext();
    const [dataForm, setDataForm] = useState({ email: '', password: '' })
    const [user, setUser] = useState('');
    const [token, setToken] = useState('');
    const [id, setId] = useState('');
+   const [nomUser, setNomUser] = useState('');
    var hash = Base64.encode(dataForm.password);
    var acceso = {
 
@@ -36,9 +37,10 @@ export default function Login() {
       setearToken(token)
       setearTipoUsuario(user)
       setearIdUsuario(id)
+      setearNombreUsuario(nomUser)
 
 
-   }, [][token, user, id])
+   }, [][token, user, id, nomUser])
 
 
 
@@ -62,10 +64,11 @@ export default function Login() {
       
       .then(response => {
              
-                 
          setToken(response.data.jwToken)
          setUser(response.data.tipo)
          setId(response.data.id)
+         setNomUser(response.data.nombre)
+
          
        })
        .catch(error => {
