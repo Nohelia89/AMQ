@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Button, Container, Nav, Navbar} from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
 import Logo from "../Logo/Logo";
@@ -12,15 +13,18 @@ function NavBarAnfitrion() {
 
 
   const { userId, userName, cerrarSesion } = useUserContext();
+  const [botontype, setBotonType ] = useState('aloj');
 
   const cerrar = () => {
     cerrarSesion()
+    setBotonType("hab")
     }
 
  
 
 
     return (
+      botontype === "aloj" ? 
 <>
 <Navbar collapseOnSelect expand="lg" bg="light" variant="light" >
 <Container>
@@ -82,6 +86,7 @@ function NavBarAnfitrion() {
    
  
 </>
+ : <NavBarAnfitrion />
     )
   }
   
