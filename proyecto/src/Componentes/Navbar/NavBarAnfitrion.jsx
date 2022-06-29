@@ -12,15 +12,18 @@ function NavBarAnfitrion() {
 
 
   const { userId, userName, cerrarSesion } = useUserContext();
+  const [botontype, setBotonType ] = useState('aloj');
 
   const cerrar = () => {
     cerrarSesion()
+    setBotonType("hab")
     }
 
  
 
 
     return (
+      botontype === "aloj" ? 
 <>
 <Navbar collapseOnSelect expand="lg" bg="light" variant="light" >
 <Container>
@@ -82,6 +85,7 @@ function NavBarAnfitrion() {
    
  
 </>
+ : <NavBarAnfitrion />
     )
   }
   
