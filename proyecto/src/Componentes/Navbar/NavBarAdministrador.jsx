@@ -1,12 +1,24 @@
-import { Container, Nav, Navbar} from "react-bootstrap";
+import { Button, Container, Nav, Navbar} from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
 
 import LogoSinFondoNavBar from "../Logo/LogoSinFondoNavBar";
-import LogWidget from "./LogWidget";
+import { useUserContext } from "../UserContext/userContext";
+
 
 
 
 function NavBarAdministrador() {
+
+  const {  userName, cerrarSesion } = useUserContext();
+ 
+
+  const cerrar = () => {
+   
+    cerrarSesion()
+
+  
+    }
+
     return (
 <>
 <Navbar  collapseOnSelect expand="lg" bg="light" variant="light">
@@ -37,13 +49,12 @@ function NavBarAdministrador() {
    <Nav>
    <Nav.Link as={Link} to='/admin'> <li className="nav-item">Registrar Admin</li></Nav.Link>
    </Nav>
-    <Nav>
-
-            <NavLink to='/login' className={({ isActive }) => isActive ? 'active' : ''}>
-            <Nav.Link as={Link} to="/login"><LogWidget /></Nav.Link>
-          
-            </NavLink>
-          </Nav>
+   
+   <Nav>
+   <Nav.Link as={Link} to='/'>
+  {"Bienvenido "+userName}<Button variant="dark" onClick={() => cerrar()}>Cerrar Sesión</Button>
+  </Nav.Link> 
+ </Nav>
   </Navbar.Collapse>
 </Container>
 </Navbar>  

@@ -68,7 +68,7 @@ const handleChange = (e) => {
 
     return (
       botonType === 'sinpaypal' ?  
-      (<div class="bod">
+      (<div class="overlay">
       <form class="form3" onSubmit={reservar} >
       <div className="input_container">
       <p class="form-input2">Fecha Desde: <input required class="form-input1" name='fechaDesde' type='date' value={fechaDesde} onChange={handleChangeDateFrom}></input> </p>  

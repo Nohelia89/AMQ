@@ -1,11 +1,24 @@
-import { Container, Nav, Navbar} from "react-bootstrap";
+import { Button, Container, Nav, Navbar} from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import LogoSinFondoNavBar from "../Logo/LogoSinFondoNavBar";
+import { useUserContext } from "../UserContext/userContext";
 import LogWidget from "./LogWidget";
 
 
 function NavBarHuesped() {
+
+  
+  const { userName,cerrarSesion } = useUserContext();
+
+
+  const cerrar = () => {
+
+    cerrarSesion()
+
+
+    }
+
     return (
 
 <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
@@ -45,11 +58,15 @@ function NavBarHuesped() {
    <Nav.Link as={Link} to='/perfil'> <li className="nav-item">Perfil de usuario</li></Nav.Link>
   
    </Nav>
-            <NavLink to='/login' className={({ isActive }) => isActive ? 'active' : ''}>
-            <Nav.Link as={Link} to="/login"><LogWidget /></Nav.Link>
-          
-            </NavLink>
-          </Nav>
+   </Nav>
+   
+   
+   <Nav>
+   <Nav.Link as={Link} to='/'>
+  {"Bienvenido "+userName}<Button variant="dark" onClick={() => cerrar()}>Cerrar Sesión</Button>
+  </Nav.Link> 
+ </Nav>
+
 
 
        

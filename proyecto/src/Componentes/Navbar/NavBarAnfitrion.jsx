@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Button, Container, Nav, Navbar} from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
-import Logo from "../Logo/Logo";
+
 import LogoSinFondoNavBar from "../Logo/LogoSinFondoNavBar";
 import { useUserContext } from "../UserContext/userContext";
-import LogWidget from "./LogWidget";
+
+import Login from '../Login/Login';
 
 
 
@@ -16,15 +17,17 @@ function NavBarAnfitrion() {
   const [botontype, setBotonType ] = useState('aloj');
 
   const cerrar = () => {
+    console.log("entre al cerrar")
     cerrarSesion()
-    setBotonType("hab")
+    setBotonType('hab')
+    console.log("soy userId del cerrar despues de llamar a la funcion"+userId )
     }
 
  
 
 
     return (
-      botontype === "aloj" ? 
+    
 <>
 <Navbar collapseOnSelect expand="lg" bg="light" variant="light" >
 <Container>
@@ -69,24 +72,20 @@ function NavBarAnfitrion() {
 
    </Nav>
    
-
-    {userId === "" ?
-         <Nav>
-            <Nav.Link as={Link} to="/login">  <LogWidget /> </Nav.Link>
-          
-            </Nav>
-            : 
+   
             <Nav>
-           {"Bienvenido"+userName}<Button variant="dark" onClick={() => cerrar()}>Cerrar Sesión</Button> 
+            <Nav.Link as={Link} to='/'>
+           {"Bienvenido "+userName}<Button variant="dark" onClick={() => cerrar()}>Cerrar Sesión</Button>
+           </Nav.Link> 
           </Nav>
-        }
+        
   </Navbar.Collapse>
 </Container>
 </Navbar>  
    
  
 </>
- : <NavBarAnfitrion />
+
     )
   }
   

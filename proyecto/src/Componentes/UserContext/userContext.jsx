@@ -1,4 +1,5 @@
 import { createContext, useContext, useState} from "react";
+import Login from "../Login/Login";
 
 const UserContext = createContext([])
 
@@ -13,6 +14,17 @@ function UserContextProvider({children}) {
     const [compraID, setCompraId ] = useState();
     const [aloj, setAloj ] = useState([]);
 
+    const cerrarSesion = () => {
+        
+     
+        
+        setUserToken()
+        setUserName("")
+      setUserId("")
+      setUserType()
+
+      
+    }
     const setearCompraId = (com) => {
         setCompraId(com)
            
@@ -39,11 +51,7 @@ function UserContextProvider({children}) {
       
         
     }
-    const cerrarSesion = () => {
-        setUserId("")
-      
-        
-    }
+    
 
     const setearNombreUsuario = (id) => {
         setUserName(id)
