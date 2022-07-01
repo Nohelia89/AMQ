@@ -49,10 +49,12 @@ function NavBarAdministrador() {
    <Nav>
    <Nav.Link as={Link} to='/admin'> <li className="nav-item">Registrar Admin</li></Nav.Link>
    </Nav>
-   
+   <Nav>
+   {"Bienvenido "+userName+"   "}
+   </Nav>
    <Nav>
    <Nav.Link as={Link} to='/'>
-  {"Bienvenido "+userName}<Button variant="dark" onClick={() => cerrar()}>Cerrar Sesión</Button>
+<Button variant="dark" onClick={() => cerrar()}>Cerrar Sesión</Button>
   </Nav.Link> 
  </Nav>
   </Navbar.Collapse>

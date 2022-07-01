@@ -60,7 +60,7 @@ var obj = {"url1": url1,"url2": url2,"url3": url3, "aloj": aloj};
     <div >
 
       <Card className={"card-grid"} style={{ width: '20rem' } }>
-        <Card.Img className={"card_image"} variant="top" src={url1} />
+        <Card.Img className={"card_image"}  pxvariant="top" src={url1} />
         <Card.Body class="card_content">
           <Card.Title class="card_title">{aloj.nombre}</Card.Title>
           <Card.Text class="card_text">

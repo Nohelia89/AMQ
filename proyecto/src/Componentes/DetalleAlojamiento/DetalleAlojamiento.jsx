@@ -65,14 +65,14 @@ function DetalleAlojamiento() {
    
    (<div class="overlay">
       <NavBarInvitado/>
-<div style={{padding:'16px 4px 16px 0', position:'absolute'}}>
-  <Card className={"card-grid"}>
+<div style={{padding:'16px 4px 16px 0', position:'center'}}>
+  
   <Carousel   style={{padding:'16px 4px 16px 0'}} activeIndex={index} onSelect={handleSelect}>
         <Carousel.Item >
           <img
             src={aloj[0].url1}
             alt="First slide"
-            width="500"
+            width="700"
             height="500"
             
             
@@ -83,7 +83,7 @@ function DetalleAlojamiento() {
           <img
             src={aloj[0].url2}
             alt="Second slide"
-            width="500"
+            width="700"
             height="500"
           />
 
@@ -92,17 +92,22 @@ function DetalleAlojamiento() {
           <img
             src={aloj[0].url3}
             alt="Third slide"
-            width="500"
+            width="700"
             height="500"
           />
   
         </Carousel.Item>
       </Carousel>
-      <Card.Body class="card_content">
+  
       <p>{aloj[0].aloj.nombre}</p>
       <p>{aloj[0].aloj.descripcion}</p>
       <p>Direccion: {aloj[0].aloj.direcion.calle} {aloj[0].aloj.direcion.numero}, {aloj[0].aloj.direcion.ciudad}, {aloj[0].aloj.direcion.pais.nombre}</p>
-      Habitaciones: <Table striped bordered hover variant="light" style={{  width: "1000px",marginBottom: "40px", padding: "10px", borderRadius: "5px",  marginTop: "40px" }}>
+      Habitaciones: 
+      
+      
+      <div style={{ marginLeft: "18%", width: "1000px", padding: "15px", borderRadius: "5px", boxShadow: "0px 9px 30px 9px", border: "1.5px solid gray", backgroundColor: "lightgrey", marginTop: "40px",  marginBottom: "40px"}}>
+      
+      <Table striped bordered hover variant="light" style={{ padding:"10px" }}>
 
 <thead>
   <tr>
@@ -126,8 +131,11 @@ function DetalleAlojamiento() {
     </tr>
 
 </tbody>)}
+
 </Table >
-      Reseñas : <Table striped bordered hover variant="light"  style={{  width: "1000px",marginBottom: "40px", padding: "10px", borderRadius: "5px",  marginTop: "40px" }}>
+
+      Reseñas :   
+      <Table striped bordered hover variant="light" style={{ padding:"10px" }}>
 
 <thead>
   <tr>
@@ -144,12 +152,12 @@ function DetalleAlojamiento() {
 </tbody>)}
 </Table>
 
-      </Card.Body>
+
       
       <button class="log-in" onClick={reservar} > RESERVAR </button>
-  </Card>
 
 
+      </div>
   </div>
   </div>
    ) :  <Reserva />

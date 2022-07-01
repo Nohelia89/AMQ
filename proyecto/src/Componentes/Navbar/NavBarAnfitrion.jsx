@@ -71,11 +71,13 @@ function NavBarAnfitrion() {
    <Nav.Link as={Link} to='/perfil'> <li className="nav-item">Perfil de usuario</li></Nav.Link>
 
    </Nav>
-   
+   <Nav>
+   {"Bienvenido "+userName+"   "}
+   </Nav>
    
             <Nav>
             <Nav.Link as={Link} to='/'>
-           {"Bienvenido "+userName}<Button variant="dark" onClick={() => cerrar()}>Cerrar Sesión</Button>
+         <Button variant="dark" onClick={() => cerrar()}>Cerrar Sesión</Button>
            </Nav.Link> 
           </Nav>
         

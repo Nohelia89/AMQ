@@ -24,13 +24,16 @@
     padding: 0rem;
     background: linear-gradient(to bottom left, #ee98a5 40%, #fac6a6 100%);
 }
-
+.card-image,
 .card-img,
 .card-img-top,
 .card-img-bottom {
-    height: 15rem;
-    width: auto;
-    align-content: flex-start;
+
+    
+      width: 100%;
+      height: 15vw;
+      object-fit: cover;
+  
 }
 
 

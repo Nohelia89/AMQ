@@ -59,11 +59,13 @@ function NavBarHuesped() {
   
    </Nav>
    </Nav>
-   
-   
+
+   <Nav>
+   {"Bienvenido "+userName+"   "}
+   </Nav>
    <Nav>
    <Nav.Link as={Link} to='/'>
-  {"Bienvenido "+userName}<Button variant="dark" onClick={() => cerrar()}>Cerrar Sesión</Button>
+  <Button variant="dark" onClick={() => cerrar()}>Cerrar Sesión</Button>
   </Nav.Link> 
  </Nav>
 
