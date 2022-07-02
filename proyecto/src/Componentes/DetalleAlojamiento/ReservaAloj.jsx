@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useUserContext } from '../UserContext/userContext';
 import { FloatingLabel, Form } from 'react-bootstrap';
 import PayPal from '../PayPal/PayPal';
+import NavBarHuesped from '../Navbar/NavBarHuesped';
 
 export default function ReservaAloj() {
 
@@ -69,6 +70,7 @@ const handleChange = (e) => {
     return (
       botonType === 'sinpaypal' ?  
       (<div class="overlay">
+        <NavBarHuesped/>
       <form class="form3" onSubmit={reservar} >
       <div className="input_container">
       <p class="form-input2">Fecha Desde: <input required class="form-input1" name='fechaDesde' type='date' value={fechaDesde} onChange={handleChangeDateFrom}></input> </p>  

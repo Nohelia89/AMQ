@@ -140,7 +140,7 @@ const initialOptions = {
   botonType === 'solopagar' ?  
   (  
   <PayPalScriptProvider options={initialOptions}>
-    
+       <NavBarHuesped/>
     <div className="form21" >
      <div>
        <div className="wrapper">
