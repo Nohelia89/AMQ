@@ -6,6 +6,7 @@ import axios from 'axios';
 import { Base64 } from 'js-base64';
 import { useUserContext } from '../UserContext/userContext';
 import NavBarInvitado from '../Navbar/NavbarInvitado';
+import Login from '../Login/Login';
 
 function FormHuesped() {
 
@@ -13,7 +14,7 @@ function FormHuesped() {
   const [dataForm, setDataForm] = useState({ nombre: '', apellido: '', email: '', password: '', password2: '' })
   const { userToken } = useUserContext();
   var hash = Base64.encode(dataForm.password);
-
+  const [botonType, setBotonType] = useState('sinActualizar');
 
   const generateUser = async (e) => {
     e.preventDefault();
@@ -36,6 +37,7 @@ function FormHuesped() {
       axios.post(`http://localhost:8080/usuario/altaHuesped`, huesped )
         .then(res => {
           alert("El usuario ha sido ingresado con éxito al sistema");
+          setBotonType("Actualizado")
         })
         .catch(error => {
           alert("ERROR: " + error.response.data.mensaje);
@@ -51,7 +53,7 @@ function FormHuesped() {
     })
   }
   return (
-
+    botonType === 'sinActualizar' ?  
 
     <div class="overlay">
       <NavBarInvitado/>
@@ -85,6 +87,8 @@ function FormHuesped() {
 
       </form>
     </div>
+    :
+    <Login/>
 
   );
 
