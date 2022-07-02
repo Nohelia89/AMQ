@@ -1,12 +1,13 @@
 
 
-import { Card, Carousel, Table } from "react-bootstrap";
+import { Button, Card, Carousel, Table } from "react-bootstrap";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import ReservaAloj from "../DetalleAlojamiento/ReservaAloj";
 
 import { useUserContext } from "../UserContext/userContext";
 import NavBarInvitado from '../Navbar/NavbarInvitado';
+import { Link } from "react-router-dom";
 
 
 function DetalleAlojamiento() {
@@ -14,7 +15,7 @@ function DetalleAlojamiento() {
       const {aloj} = useUserContext();
       const [reseña, setReseña] = useState([]);
   
-    const { userToken } = useUserContext();
+    const { userToken, userId } = useUserContext();
       const [botonType, setBotonType] = useState('sinActualizar');
 
     
@@ -152,10 +153,33 @@ function DetalleAlojamiento() {
 </tbody>)}
 </Table>
 
+{ userId ===""? 
+    
+   
 
-      
+    <div > 
+
+<Link to={'/mainInvitado'}>
+
+      <button class="log-in"  style={{margin:'10px'}} > VOLVER </button>
+            </Link>
+           
+           
+            <Link to={'/login'}>
+            <button class="log-in" > RESERVAR </button>
+            </Link>
+    
+      </div>
+:
+<div>
+<Link to={'/mainInvitado'}>
+
+<button class="log-in"  style={{margin:'10px'}} > VOLVER </button>
+      </Link>
+     
       <button class="log-in" onClick={reservar} > RESERVAR </button>
-
+      </div>
+}
 
       </div>
   </div>
