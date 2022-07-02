@@ -188,6 +188,26 @@ input:focus {
     letter-spacing: 0.05em;   }
 
 
+#id {
+    background:  rgb(210, 203, 236); display: inline-block;
+        color: #252537;
+      
+        width: 280px;
+        height: 50px;
+      
+       
+        border-radius: 5px;
+        
+        outline: none;
+        border: none;
+      
+        cursor: pointer;
+        text-align: center;
+        transition: all 0.2s linear;
+        
+       
+        letter-spacing: 0.05em;   
+}
 /* buttons hover */
 button:hover {
     transform: translatey(3px);
