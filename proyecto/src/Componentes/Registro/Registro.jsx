@@ -28,13 +28,13 @@ export default function Registro() {
 
 
                             <Link to={'/huesped'}>
-                                <Button style={{ marginRight: "5px" }} variant="dark" >Huesped</Button>
+                                <button style={{ marginBottom:"10px" }}  class="sign-up" >Huesped</button>
                             </Link>
 
 
 
                             <Link to={'/anfitrion'}>
-                                <Button variant="dark" >Anfitrion</Button>
+                                <button  class="sign-up" >Anfitrion</button>
                             </Link>
 
                         </div>
