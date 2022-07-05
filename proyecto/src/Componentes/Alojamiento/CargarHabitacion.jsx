@@ -60,7 +60,6 @@ const handleChangeDe = (e) => {
 }
     const generateData = async (e) => {
         e.preventDefault();
-        console.log("ENTRE A GENERATE");
         
         
       var anfitrion = {
@@ -69,7 +68,6 @@ const handleChangeDe = (e) => {
           nombre: dataUser.nombre,
           apellido: dataUser.apellido,
           activo: true,
-          bloqueado: true,
           pass: hash,
           tipo: "an",
           calificacion: 0,
