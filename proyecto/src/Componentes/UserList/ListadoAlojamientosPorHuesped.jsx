@@ -202,10 +202,10 @@ export default function ListadoAlojamientosPorHuesped() {
     </FloatingLabel>
   </Col>
   <Col md style={{padding:"10px"}} >
-  <FloatingLabel controlId="floatingSelectGrid" label="Tipo de Usuario">
+  <FloatingLabel controlId="floatingSelectGrid" label="Alojamiento Activo/No Activo">
       <Form.Select aria-label="Floating label select example" value={val1} onChange={handleChange1}> 
-        <option value="true">Disponible</option>
-        <option value="false">No disponible</option>
+        <option value="true">Activo</option>
+        <option value="false">No Activo</option>
    
       </Form.Select>
     </FloatingLabel>
