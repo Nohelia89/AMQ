@@ -8,6 +8,7 @@ import AltaHabitacionAlojamiento from './AltaHabitacionAlojamiento';
 import axios from 'axios';
 import { useUserContext } from '../UserContext/userContext';
 import { Form } from "react-bootstrap";
+import NavBarAnfitrion from '../Navbar/NavBarAnfitrion';
 
 
 
@@ -142,6 +143,7 @@ function AgregarAlojamiento() {
     botontype === "aloj" ?
 
       <div className="bod1">
+        <NavBarAnfitrion/>
         <form className="form1" >
           <div className="tit">NUEVO ALOJAMIENTO</div>
           <div className="input_container">

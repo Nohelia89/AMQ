@@ -17,10 +17,10 @@ function NavBarAnfitrion() {
   const [botontype, setBotonType ] = useState('aloj');
 
   const cerrar = () => {
-    console.log("entre al cerrar")
+  
     cerrarSesion()
     setBotonType('hab')
-    console.log("soy userId del cerrar despues de llamar a la funcion"+userId )
+    
     }
 
  
