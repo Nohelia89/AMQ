@@ -221,7 +221,7 @@ export default function ListadoAlojamientosPorHuesped() {
 {console.log(botonType+"SOY BOTONTYPE")}
              
                 {isLoading ? <h2>Cargando...</h2> :
-                    <Table striped bordered hover variant="light" style={{ padding: 10 }}>
+                   <Table striped bordered hover variant="light" style={{ marginLeft: "18%", width: "1000px",marginBottom: "40px", padding: "15px", borderRadius: "5px", boxShadow: "0px 9px 30px 9px", border: "1.5px solid gray", backgroundColor: "lightgrey", marginTop: "40px" }}>
 
                         <thead>
                             <tr>
