@@ -4,6 +4,7 @@ import { useUserContext } from "../UserContext/userContext";
 import { Table } from "react-bootstrap";
 import axios from "axios";
 import NavBarHuesped from '../Navbar/NavBarHuesped';
+import MainAnfitrion from "../Main/MainAnfitrion";
 export default function PayPal({cant, fechaDesde, fechaHasta, idHab, precioNoche, descripcion}) {
     const {aloj, userId, userToken} = useUserContext();
  const [show, setShow] = useState(false);
@@ -13,11 +14,11 @@ export default function PayPal({cant, fechaDesde, fechaHasta, idHab, precioNoche
  const [compraID, setCompraID] = useState('');
  const [auth, setAuth] = useState();
  const [botonType, setBotonType] = useState('solopagar');
-
+ const [botonType2, setBotonType2] = useState('sinActualizar');
  const Boton = () => {
     
   return(
-  <div class="bod">
+  <div class="overlay">
     <NavBarHuesped/>
     <form class="form4" >
   <button class = "log-in" onClick={FinalReserva}>Confirmar Reserva</button>
@@ -47,6 +48,8 @@ console.log(reserva+ "SOY RESERVA")
    
     .then(res => {
       alert("Se realizo la reserva correctamente")
+      setBotonType("Actualizado")
+
       })
       .catch(error => {
         alert("ERROR: "+error.response.data.mensaje);
@@ -136,7 +139,7 @@ const initialOptions = {
   intent: "authorize"
 };
  return (
-
+  botonType2 === 'sinActualizar' ?  
   botonType === 'solopagar' ?  
   (  
   <PayPalScriptProvider options={initialOptions}>
@@ -195,5 +198,7 @@ const initialOptions = {
      </div>
    </PayPalScriptProvider> )
    : <Boton />
+
+   :<MainAnfitrion/>
  )
 }

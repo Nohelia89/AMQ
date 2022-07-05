@@ -5,6 +5,8 @@ import { Base64 } from 'js-base64';
 import { Form } from "react-bootstrap";
 import Login from "../Login/Login";
 
+import NavBarInvitado from "../Navbar/NavbarInvitado";
+
 function CargarHabitacion({dataUser, dataAloj, dataAlojdir, pais}) {
 console.log(dataAloj)
     const [dataFormH, setDataFormH] = useState({descripcion: '', camas: '', precionoche: ''})
@@ -147,7 +149,9 @@ const handleChangeDe = (e) => {
        
     return (
       botonType === 'sinActualizar' ? 
+   
         <div className="bod1">
+             <NavBarInvitado/>
              <form className="form1"  onSubmit={generateData} >
              <div className="tit">HABITACION</div>
              <div className="input_container">
