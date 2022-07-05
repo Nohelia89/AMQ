@@ -17,7 +17,6 @@ function Search() {
   const [precioDesde, setPrecioDesde] = useState();
   const [precioHasta, setPrecioHasta] = useState();
   const [valorPais, setValor] = useState([]);
-  const [botontype, setBotonType] = useState('sincards');
   const [aloj, setAloj] = useState([]);
 
 
@@ -104,11 +103,11 @@ function Search() {
 
 
       .then(response => {
-        console.log("soy el primer aloj"+aloj+"+++++++++++++++++++++++++++++++++++++")
+
         setAloj("")
-        console.log("setee aloj en vacio"+aloj+"+++++++++++++++++++++++++++++++++++++")
+     
         setAloj(response.data)
-        console.log("soy el nuevo aloj"+aloj+"+++++++++++++++++++++++++++++++++++++")
+
   
 
 
