@@ -30,7 +30,7 @@ export default function ListadoAlojamientosAnf() {
         }
         axios.post("http://localhost:8080/alojamiento/listarAlojamientos",  { idAnf }, {
             headers: {
-              'Authorization': `token ${userToken}`
+              'Authorization': `${userToken}`
             }
           })
             .then(res => {
@@ -84,7 +84,7 @@ export default function ListadoAlojamientosAnf() {
     const DesactivarAloj = (id) => {
         axios.post(`http://localhost:8080/alojamiento/desactivarAlojamiento/` + id ,  {}, {
             headers: {
-              'Authorization': `token ${userToken}`
+              'Authorization': `${userToken}`
             }
           })
 
