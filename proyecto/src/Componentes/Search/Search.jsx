@@ -21,37 +21,6 @@ function Search() {
 
 
 
-  useEffect(() => {
-
-
-    setPrecioDesde(0);
-    setPrecioHasta(50);
-
-    if (valP === "1") {
-      console.log("entre al if 1")
-
-      setPrecioDesde(0);
-      setPrecioHasta(50);
-    } else if (valP === "2") {
-      console.log("entre al if 2")
-      setPrecioDesde(51);
-      setPrecioHasta(100);
-    } else if (valP === "3") {
-      setPrecioDesde("101");
-      setPrecioHasta("200");
-    } else if (valP === "4") {
-      setPrecioDesde("201");
-      setPrecioHasta("300");
-    } else if (valP === "5") {
-      setPrecioDesde("301");
-      setPrecioHasta("1000");
-    }
-
-
-
-
-
-  }, [valP])
 
 
   useEffect(() => {
@@ -80,6 +49,32 @@ function Search() {
 
 
   async function buscar() {
+
+
+
+    setPrecioDesde(0);
+    setPrecioHasta(50);
+
+    if (valP === "1") {
+      console.log("entre al if 1")
+
+      setPrecioDesde(0);
+      setPrecioHasta(50);
+    } else if (valP === "2") {
+      console.log("entre al if 2")
+      setPrecioDesde(51);
+      setPrecioHasta(100);
+    } else if (valP === "3") {
+      setPrecioDesde("101");
+      setPrecioHasta("200");
+    } else if (valP === "4") {
+      setPrecioDesde("201");
+      setPrecioHasta("300");
+    } else if (valP === "5") {
+      setPrecioDesde("301");
+      setPrecioHasta("1000");
+    }
+
 
 
 
@@ -152,16 +147,6 @@ function Search() {
 
 
 
-  const Habitacion = () => {
-
-    return (
-      <>
-
-
-        <CardGroup><ItemList alojamiento={aloj} /></CardGroup>
-      </>
-    )
-  }
 
 
   const handleChange = (e) => {
@@ -219,7 +204,7 @@ function Search() {
 
         </Row>
       </div>
-      <Habitacion />
+      <CardGroup><ItemList alojamiento={aloj} /></CardGroup>
     </>
 
   )
