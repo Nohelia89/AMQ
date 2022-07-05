@@ -45,7 +45,7 @@ function NavBarHuesped() {
    <Nav className="me-auto">
    
    
-   <Nav.Link as={Link} to='/cancelarReserva'> <li className="nav-item">Cancelar Reserva</li></Nav.Link>
+   <Nav.Link as={Link} to='/cancelarReserva'> <li className="nav-item">Reservas</li></Nav.Link>
 
    </Nav>
 
