@@ -60,12 +60,12 @@ function FormAnfitrion() {
            
         <div style={{ padding: "10px", marginTop: "-30px" }}>
 
-                    <Link to={'/registro'}>
-                        <Button style={{ marginTop: "10px", marginRight: "-500px" }} variant="dark" >Volver</Button>
-                        </Link>
+        <Link to={'/registro'}>
+            <button style={{marginRight: "10px", marginTop:"100px" }}  class="sign-up">Volver</button>
+          </Link>
                         
-                    <button  style={{ marginLeft: "-500px"}}  variant="dark" class="btn submits boton" onClick={changeStateButton}>Crear Alojamiento</button>
-                  
+                    <button  style={{ marginLeft: "10px"}}  id="formulario" class="sign-up" onClick={changeStateButton}>Crear Alojamiento</button>
+                   
                 </div>
 
 

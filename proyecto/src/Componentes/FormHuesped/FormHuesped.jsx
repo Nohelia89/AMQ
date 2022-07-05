@@ -77,10 +77,10 @@ function FormHuesped() {
         <div  style={{ padding: "10px", marginTop: "60px" }}>
 
           <Link to={'/registro'}>
-            <button style={{ marginTop: "10px", marginRight: "-500px" }}  class="sign-up">Volver</button>
+            <button style={{marginRight: "10px" }}  class="sign-up">Volver</button>
           </Link>
 
-          <button style={{ marginLeft: "-500px"}}  id="formulario" class="sign-up">Registrar huesped</button>
+          <button style={{ marginLeft: "10px"}}  id="formulario" class="sign-up">Registrar huesped</button>
         </div>
 
 

@@ -133,6 +133,7 @@ const handleChangeDe = (e) => {
                 .then(res => {
            
                   setIdAloj(res.data.id)
+                  alert(response.data.mensaje);
 
                 })
                 .catch(error => {
