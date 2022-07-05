@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Base64 } from 'js-base64';
 
 import { Form } from "react-bootstrap";
+import Login from "../Login/Login";
 
 function CargarHabitacion({dataUser, dataAloj, dataAlojdir, pais}) {
 console.log(dataAloj)
@@ -15,7 +16,7 @@ console.log(dataAloj)
     const [valTv, setValTv] = useState(false)
     const [valPa, setValPa] = useState(false)
     const [valDe, setValDe] = useState(false)
-    
+    const [botonType, setBotonType] = useState('sinActualizar');
     var hash = Base64.encode(dataUser.password2); 
 
     const handleChangeYa = (e) => {
@@ -133,8 +134,8 @@ const handleChangeDe = (e) => {
                 .then(res => {
            
                   setIdAloj(res.data.id)
-                  alert(response.data.mensaje);
-
+                  alert("El usuario ha sido ingresado con éxito al sistema");
+                  setBotonType("Actualizado")
                 })
                 .catch(error => {
                   alert("ERROR: " + error.response.data.mensaje);
@@ -145,7 +146,7 @@ const handleChangeDe = (e) => {
         }
        
     return (
-    
+      botonType === 'sinActualizar' ? 
         <div className="bod1">
              <form className="form1"  onSubmit={generateData} >
              <div className="tit">HABITACION</div>
@@ -190,7 +191,7 @@ const handleChangeDe = (e) => {
                
            </form>
          </div>
-   
+   :    <Login/>
        
      )
 }
