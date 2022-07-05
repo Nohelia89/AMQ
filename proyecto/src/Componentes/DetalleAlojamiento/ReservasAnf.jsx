@@ -121,7 +121,7 @@ console.log(userId + "user")
       axios.post("https://api-m.sandbox.paypal.com/v2/payments/captures/"+idPayPal+"/refund", {}, {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer A21AAJa88PPtzqyN2sCVwqVCMPnwSjI4BhpEnSPsyjVIfTYGhgrZXPOm66Wap7MQVdlukWXHzGuXd0YsEiddgymmKTMxkiMHQ'
+          'Authorization': 'Bearer A21AAKriErtp2I-tdhIHZ2JR4JFNVJrAMaaBnifqKqYBGecpr4bjfXDrX3Qi5JuTQLvObxM8tAE4aWGPypWVJzOadaPFWrjSw'
 
         }
       }).then(response => {
@@ -168,7 +168,7 @@ console.log(userId + "user")
       axios.post("https://api-m.sandbox.paypal.com/v2/payments/authorizations/"+idPayPal+"/void", {}, {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer A21AAJa88PPtzqyN2sCVwqVCMPnwSjI4BhpEnSPsyjVIfTYGhgrZXPOm66Wap7MQVdlukWXHzGuXd0YsEiddgymmKTMxkiMHQ'
+          'Authorization': 'Bearer A21AAKriErtp2I-tdhIHZ2JR4JFNVJrAMaaBnifqKqYBGecpr4bjfXDrX3Qi5JuTQLvObxM8tAE4aWGPypWVJzOadaPFWrjSw'
 
         }
         

@@ -9,16 +9,16 @@ import { useUserContext } from '../UserContext/userContext';
 
 function UserProfile() {
   const [user, setUser] = useState([]);
-  const [idAnf, setIdAnf] = useState(10041);
-  const { userToken } = useUserContext();
+  const [idAnf, setIdAnf] = useState();
+  const { userToken, userId } = useUserContext();
   useEffect(() => {
 
 
    
       
-    axios.post(`http://localhost:8080/usuario/buscar/`+ idAnf, {}, {
+    axios.post(`http://localhost:8080/usuario/buscar/`+ userId, {}, {
       headers: {
-        'Authorization': `token ${userToken}`
+        'Authorization': `${userToken}`
       }
     })
         .then(res => {

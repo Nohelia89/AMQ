@@ -31,7 +31,7 @@ export default function ListadoAnfitrion() {
 
     axios.post("http://localhost:8080/usuario/listar",  { anfitriones }, {
       headers: {
-        'Authorization': `token ${userToken}`
+        'Authorization': `${userToken}`
       }
     })
       .then(res => {
@@ -82,7 +82,7 @@ export default function ListadoAnfitrion() {
 
     const response = await axios.post(`http://localhost:8080/usuario/listar`,  { usuario }, {
       headers: {
-        'Authorization': `token ${userToken}`
+        'Authorization': `${userToken}`
       }
     })
       
@@ -116,7 +116,7 @@ export default function ListadoAnfitrion() {
   const Aprobar = (id) => {
     axios.get(`http://localhost:8080/usuario/aprobarAnfitrion/` + id, {
       headers: {
-        'Authorization': `token ${userToken}`
+        'Authorization': `${userToken}`
       }
     })
 
@@ -134,7 +134,7 @@ export default function ListadoAnfitrion() {
   const Rechazar = (id) => {
     axios.get(`http://localhost:8080/usuario/rechazarAnfitrion/` + id, {
       headers: {
-        'Authorization': `token ${userToken}`
+        'Authorization': `${userToken}`
       }
     })
 
