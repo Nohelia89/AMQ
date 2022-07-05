@@ -25,7 +25,7 @@ console.log(userId + "user")
           ]
         },{
           headers: {
-            'Authorization': `token ${userToken}`
+            'Authorization': `${userToken}`
           }
         })
             .then(res => {
@@ -75,7 +75,7 @@ console.log(userId + "user")
       
         axios.post("http://localhost:8080/reserva/cancelarReservaAprobada/" + idRes, {factura},{
           headers: {
-            'Authorization': `token ${userToken}`
+            'Authorization': `${userToken}`
           }
         })
         
