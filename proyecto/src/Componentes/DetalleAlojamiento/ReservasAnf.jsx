@@ -23,7 +23,7 @@ export default function ReservasAnf() {
 console.log(userId + "user")
         axios.get("http://localhost:8080/reserva/listarReservasPendientesYAprobadas/" + userId, {
           headers: {
-            'Authorization': `token ${userToken}`
+            'Authorization': `${userToken}`
           }
         })
             .then(res => {
@@ -57,7 +57,7 @@ console.log(userId + "user")
 
     axios.get("http://localhost:8080/reserva/confirmar/" + idRes,{
       headers: {
-        'Authorization': `token ${userToken}`
+        'Authorization': `${userToken}`
       }
     })
                 
@@ -70,7 +70,7 @@ console.log(userId + "user")
           axios.post("https://api-m.sandbox.paypal.com/v2/payments/authorizations/"+idPayPal+"/capture", {}, {
             headers: {
               'Content-Type': 'application/json',
-              'Authorization': 'Bearer A21AAJlLHvZt3hrqp5TF4FYXEbnisc6IZBhAiQli-4-fFJRe7xKSz1qV2nhZ5us1AxH_1qqRHqeDxMIGWEPmY0Mw1USTIAIjg'
+              'Authorization': 'Bearer A21AAJefxOqn6cwG-FdTNuGnTTn9DOXczoOoUOXsJ5Hl5yjDC6P_32jWyy1Aq9cIssmfKg1z2PlU2P3wyDK2sePRfilu7GNyg'
     
             }
             
@@ -84,7 +84,7 @@ console.log(userId + "user")
                 idPaypal: response.data.id
             },{
               headers: {
-                'Authorization': `token ${userToken}`
+                'Authorization': `${userToken}`
               }
             })
             .then(res => { 
@@ -121,7 +121,7 @@ console.log(userId + "user")
       axios.post("https://api-m.sandbox.paypal.com/v2/payments/captures/"+idPayPal+"/refund", {}, {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer A21AAKriErtp2I-tdhIHZ2JR4JFNVJrAMaaBnifqKqYBGecpr4bjfXDrX3Qi5JuTQLvObxM8tAE4aWGPypWVJzOadaPFWrjSw'
+          'Authorization': 'Bearer A21AAJefxOqn6cwG-FdTNuGnTTn9DOXczoOoUOXsJ5Hl5yjDC6P_32jWyy1Aq9cIssmfKg1z2PlU2P3wyDK2sePRfilu7GNyg'
 
         }
       }).then(response => {
@@ -129,7 +129,7 @@ console.log(userId + "user")
         setRefund(response.data.id)
         axios.post("http://localhost:8080/reserva/cancelarReservaAprobada/" + idRes,  {factura},{
           headers: {
-            'Authorization': `token ${userToken}`
+            'Authorization': `${userToken}`
           }
         })
                 
@@ -168,7 +168,7 @@ console.log(userId + "user")
       axios.post("https://api-m.sandbox.paypal.com/v2/payments/authorizations/"+idPayPal+"/void", {}, {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer A21AAKriErtp2I-tdhIHZ2JR4JFNVJrAMaaBnifqKqYBGecpr4bjfXDrX3Qi5JuTQLvObxM8tAE4aWGPypWVJzOadaPFWrjSw'
+          'Authorization': 'Bearer A21AAJefxOqn6cwG-FdTNuGnTTn9DOXczoOoUOXsJ5Hl5yjDC6P_32jWyy1Aq9cIssmfKg1z2PlU2P3wyDK2sePRfilu7GNyg'
 
         }
         
@@ -178,7 +178,7 @@ console.log(userId + "user")
         setVoide(response.data.id)
         axios.get("http://localhost:8080/reserva/cancelarReservaPendiente/" + idRes,  {factura},{
           headers: {
-            'Authorization': `token ${userToken}`
+            'Authorization': `${userToken}`
           }
         })
                 
