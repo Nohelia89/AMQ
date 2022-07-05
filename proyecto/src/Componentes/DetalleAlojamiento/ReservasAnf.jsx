@@ -204,7 +204,7 @@ console.log(userId + "user")
 {console.log(botonType+"SOY BOTONTYPE")}
                 <NavBarAnfitrion />
 
-                    <Table striped bordered hover variant="light" style={{ padding: 10 }}>
+                <Table striped bordered hover variant="light" style={{ marginLeft: "18%", width: "1000px",marginBottom: "40px", padding: "15px", borderRadius: "5px", boxShadow: "0px 9px 30px 9px", border: "1.5px solid gray", backgroundColor: "lightgrey", marginTop: "40px" }}>
 
                         <thead>
                             <tr>
