@@ -34,7 +34,7 @@ export default function ListadoHuesped() {
 
     axios.post("http://localhost:8080/usuario/listar", { huespedes }, {
       headers: {
-        'Authorization': `token ${userToken}`
+        'Authorization': `${userToken}`
       }
     })
       .then(res => {
@@ -90,7 +90,7 @@ export default function ListadoHuesped() {
 
     await axios.post(`http://localhost:8080/usuario/listar`, { usuario }, {
       headers: {
-        'Authorization': `token ${userToken}`
+        'Authorization': `${userToken}`
       }
     })
    

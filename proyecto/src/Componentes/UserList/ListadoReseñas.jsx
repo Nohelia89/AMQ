@@ -35,7 +35,7 @@ export default function ListadoReseñas({id}) {
 console.log(idAloj)
    axios.post('http://localhost:8080/reserva/listarResenas',{ datos }, {
     headers: {
-      'Authorization': `token ${userToken}`
+      'Authorization': `${userToken}`
     }
   })
   .then(res => {
@@ -74,7 +74,7 @@ console.log(idAloj)
 
           const response =   await axios.post('http://localhost:8080/reserva/listarResenas', { datos }, {
             headers: {
-              'Authorization': `token ${userToken}`
+              'Authorization': `${userToken}`
             }
           })
           .then(res => {

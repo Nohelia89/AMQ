@@ -35,7 +35,7 @@ export default function HistoricoAlojamientosAnfitrion() {
     }
     axios.post("http://localhost:8080/reserva/listarDatosRequeridosCalificar",  { enviar }, {
       headers: {
-        'Authorization': `token ${userToken}`
+        'Authorization': `${userToken}`
       }
     })
       .then(res => {
@@ -54,7 +54,7 @@ export default function HistoricoAlojamientosAnfitrion() {
 
     axios.get(`http://localhost:8080/alojamiento/getPaises`, {
       headers: {
-        'Authorization': `token ${userToken}`
+        'Authorization': `${userToken}`
       }
     })
       .then(res => {
@@ -95,7 +95,7 @@ export default function HistoricoAlojamientosAnfitrion() {
 
     var calificacion = {
 
-      idUsuario: 10053,
+      idUsuario: userId,
       idReserva: id,
       calificacion: 0,
 
@@ -103,7 +103,7 @@ export default function HistoricoAlojamientosAnfitrion() {
 
     axios.post("http://localhost:8080/reserva/calificar",  { calificacion }, {
       headers: {
-        'Authorization': `token ${userToken}`
+        'Authorization': `${userToken}`
       }
     })
 
@@ -149,7 +149,7 @@ export default function HistoricoAlojamientosAnfitrion() {
 
       aloj_activo: val1,
       idPais: val,
-      idUsuario: 10053
+      idUsuario: userId
 
 
     };
@@ -157,7 +157,7 @@ export default function HistoricoAlojamientosAnfitrion() {
 
     await axios.post("http://localhost:8080/reserva/listarDatosRequeridosCalificar", { aloj }, {
       headers: {
-        'Authorization': `token ${userToken}`
+        'Authorization': `${userToken}`
       }
     })
 
