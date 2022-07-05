@@ -51,7 +51,7 @@ function ModificarCalificacionDeAnfitrion({ id, cal }) {
 
     axios.post("http://localhost:8080/reserva/calificar", {calificacion},{
                   headers: {
-                    'Authorization': `token ${userToken}`
+                    'Authorization': `${userToken}`
                   }
                 })
       .then(res => {

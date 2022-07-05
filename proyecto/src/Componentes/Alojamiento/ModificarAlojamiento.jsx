@@ -57,7 +57,7 @@ function ModificarAlojamiento({id}) {
                
                 axios.post(`http://localhost:8080/alojamiento/modificar`, {alojamiento},{
                   headers: {
-                    'Authorization': `token ${userToken}`
+                    'Authorization': `${userToken}`
                   }
                 })
                 
@@ -76,7 +76,7 @@ function ModificarAlojamiento({id}) {
 
         axios.get('http://localhost:8080/alojamiento/buscarAlojamiento/'+ id,{
           headers: {
-            'Authorization': `token ${userToken}`
+            'Authorization': `${userToken}`
           }
         })
             .then(res => {
