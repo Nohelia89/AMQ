@@ -4,6 +4,7 @@ import { Button } from "react-bootstrap";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useUserContext } from '../UserContext/userContext';
+import NavBarAnfitrion from '../Navbar/NavBarAnfitrion';
 
 
 
@@ -42,7 +43,7 @@ function UserProfile() {
         
 
         <div class="overlay">
-      
+      <NavBarAnfitrion/>
         <form class="form1">
         <div class="tit">PERFIL HUESPED</div>
       

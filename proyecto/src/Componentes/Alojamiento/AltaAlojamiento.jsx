@@ -8,6 +8,7 @@ import CargarHabitacion from './CargarHabitacion';
 import { Form } from 'react-bootstrap';
 
 import axios from 'axios';
+import NavBarInvitado from '../Navbar/NavbarInvitado';
 
 
 
@@ -139,6 +140,7 @@ const uploadFirestore = async (e) =>{
     botontype === "aloj" ? 
 
         <div className="bod1">
+          <NavBarInvitado/>
           <form className="form1" >
           <div className="tit">NUEVO ALOJAMIENTO</div>
           <div className="input_container">
