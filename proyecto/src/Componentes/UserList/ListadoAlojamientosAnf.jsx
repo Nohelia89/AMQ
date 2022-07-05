@@ -28,7 +28,7 @@ export default function ListadoAlojamientosAnf() {
             
             id_anf: userId
         }
-        axios.post("http://localhost:8080/alojamiento/listarAlojamientos",  { idAnf }, {
+        axios.post("http://localhost:8080/alojamiento/listarAlojamientos",  idAnf , {
             headers: {
               'Authorization': `${userToken}`
             }

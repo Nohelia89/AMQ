@@ -105,7 +105,7 @@ function AgregarAlojamiento() {
 
     axios.get(`http://localhost:8080/alojamiento/getPaises`, {
       headers: {
-        'Authorization': `token ${userToken}`
+        'Authorization': `${userToken}`
       }
     })
       .then(res => {

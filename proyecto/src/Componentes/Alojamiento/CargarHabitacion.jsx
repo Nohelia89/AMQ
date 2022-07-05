@@ -6,12 +6,14 @@ import { Form } from "react-bootstrap";
 import Login from "../Login/Login";
 
 import NavBarInvitado from "../Navbar/NavbarInvitado";
+import { useUserContext } from "../UserContext/userContext";
 
 function CargarHabitacion({dataUser, dataAloj, dataAlojdir, pais}) {
 console.log(dataAloj)
     const [dataFormH, setDataFormH] = useState({descripcion: '', camas: '', precionoche: ''})
     const [idAloj, setIdAloj] = useState('')
     
+  const { userToken } = useUserContext();
     const [valYa, setValYa] = useState(false)
     const [valW, setValW] = useState(false)
     const [valAi, setValAi] = useState(false)
@@ -129,7 +131,11 @@ const handleChangeDe = (e) => {
 
         var enviar = { anfitrion, alojamiento,habitacion }
            
-                axios.post(`http://localhost:8080/usuario/altaAnfitiron`, enviar )
+                axios.post(`http://localhost:8080/usuario/altaAnfitiron`, enviar, {
+                  headers: {
+                    'Authorization': `${userToken}`
+                  }
+                }  )
                 
                 .then(res => {
            

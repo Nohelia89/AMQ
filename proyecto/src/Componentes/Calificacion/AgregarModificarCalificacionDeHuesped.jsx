@@ -47,7 +47,7 @@ function AgregarModificarCalificacionDeHuesped({id}) {
                 
   
            
-                axios.post("http://localhost:8080/reserva/calificar",{calificacion},{
+                axios.post("http://localhost:8080/reserva/calificar",calificacion,{
                   headers: {
                     'Authorization': `${userToken}`
                   }
@@ -82,7 +82,7 @@ function AgregarModificarCalificacionDeHuesped({id}) {
              
 
              <button className = "btn submits boton">Calificar</button>
-             <Link to={'/mainHuesped'}>
+             <Link to={'/mainAnfitrion'}>
               <Button variant="dark" >Menu Principal</Button>
             </Link>
 

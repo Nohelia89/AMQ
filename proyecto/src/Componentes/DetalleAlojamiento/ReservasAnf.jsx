@@ -70,7 +70,7 @@ console.log(userId + "user")
           axios.post("https://api-m.sandbox.paypal.com/v2/payments/authorizations/"+idPayPal+"/capture", {}, {
             headers: {
               'Content-Type': 'application/json',
-              'Authorization': 'Bearer A21AAJefxOqn6cwG-FdTNuGnTTn9DOXczoOoUOXsJ5Hl5yjDC6P_32jWyy1Aq9cIssmfKg1z2PlU2P3wyDK2sePRfilu7GNyg'
+              'Authorization': 'Bearer A21AAJRlNdhtbggssobMXJwJaj1kmbmRGxMp8XWgAE8PHTEJElNILh-BDfJZdPq_NSNYnNp1n0uK5QFaIEzgZhyG86wFm_mFA'
     
             }
             
@@ -121,7 +121,7 @@ console.log(userId + "user")
       axios.post("https://api-m.sandbox.paypal.com/v2/payments/captures/"+idPayPal+"/refund", {}, {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer A21AAJefxOqn6cwG-FdTNuGnTTn9DOXczoOoUOXsJ5Hl5yjDC6P_32jWyy1Aq9cIssmfKg1z2PlU2P3wyDK2sePRfilu7GNyg'
+          'Authorization': 'Bearer A21AAJRlNdhtbggssobMXJwJaj1kmbmRGxMp8XWgAE8PHTEJElNILh-BDfJZdPq_NSNYnNp1n0uK5QFaIEzgZhyG86wFm_mFA'
 
         }
       }).then(response => {
@@ -168,7 +168,7 @@ console.log(userId + "user")
       axios.post("https://api-m.sandbox.paypal.com/v2/payments/authorizations/"+idPayPal+"/void", {}, {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer A21AAJefxOqn6cwG-FdTNuGnTTn9DOXczoOoUOXsJ5Hl5yjDC6P_32jWyy1Aq9cIssmfKg1z2PlU2P3wyDK2sePRfilu7GNyg'
+          'Authorization': 'Bearer A21AAJRlNdhtbggssobMXJwJaj1kmbmRGxMp8XWgAE8PHTEJElNILh-BDfJZdPq_NSNYnNp1n0uK5QFaIEzgZhyG86wFm_mFA'
 
         }
         
@@ -176,7 +176,7 @@ console.log(userId + "user")
        .then(response => {
         console.log("Reembolso de pago exitoso");
         setVoide(response.data.id)
-        axios.get("http://localhost:8080/reserva/cancelarReservaPendiente/" + idRes,  {factura},{
+        axios.get("http://localhost:8080/reserva/cancelarReservaPendiente/" + idRes,  factura,{
           headers: {
             'Authorization': `${userToken}`
           }

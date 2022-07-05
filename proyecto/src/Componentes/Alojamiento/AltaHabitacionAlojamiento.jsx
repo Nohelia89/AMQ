@@ -70,7 +70,7 @@ function AltaHabitacionAlojamiento({ dataAloj, pais, direccion }) {
 
 
 
-    axios.post('http://localhost:8080/alojamiento/altaAlojHab', {enviar},{
+    axios.post('http://localhost:8080/alojamiento/altaAlojHab', enviar,{
       headers: {
         'Authorization': `${userToken}`
       }

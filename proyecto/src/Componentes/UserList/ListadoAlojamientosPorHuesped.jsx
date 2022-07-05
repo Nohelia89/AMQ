@@ -246,7 +246,7 @@ export default function ListadoAlojamientosPorHuesped() {
                                 <td>{alojamiento.hu_calificacion}</td>
                                 <td>{alojamiento.anf_calificacion}</td>
                                 {alojamiento.aloj_activo	  ?      <td>DISPONIBLE</td>:      <td>NO DISPONIBLE</td>}
-                                {alojamiento.hu_calificacion === 0	  ? 
+                                {alojamiento.anf_calificacion === 0	  ? 
                                 <td><Button variant="dark" onClick={() => CalificarAnf(alojamiento.res_id)}>Calificar</Button></td>
                                 :
                                 <td><Button variant="dark" onClick={() => ModificarCal(alojamiento.res_id, alojamiento.anf_calificacion)}>Modificar</Button></td>}

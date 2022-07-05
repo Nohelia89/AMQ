@@ -29,7 +29,7 @@ export default function ListadoAnfitrion() {
     };
 
 
-    axios.post("http://localhost:8080/usuario/listar",  { anfitriones }, {
+    axios.post("http://localhost:8080/usuario/listar",  anfitriones , {
       headers: {
         'Authorization': `${userToken}`
       }
@@ -80,7 +80,7 @@ export default function ListadoAnfitrion() {
     };
 
 
-    const response = await axios.post(`http://localhost:8080/usuario/listar`,  { usuario }, {
+    const response = await axios.post(`http://localhost:8080/usuario/listar`,   usuario , {
       headers: {
         'Authorization': `${userToken}`
       }

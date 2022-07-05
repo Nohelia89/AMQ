@@ -32,7 +32,7 @@ export default function ListadoHuesped() {
 
 
 
-    axios.post("http://localhost:8080/usuario/listar", { huespedes }, {
+    axios.post("http://localhost:8080/usuario/listar",  huespedes , {
       headers: {
         'Authorization': `${userToken}`
       }
@@ -88,7 +88,7 @@ export default function ListadoHuesped() {
     };
 
 
-    await axios.post(`http://localhost:8080/usuario/listar`, { usuario }, {
+    await axios.post(`http://localhost:8080/usuario/listar`,  usuario , {
       headers: {
         'Authorization': `${userToken}`
       }

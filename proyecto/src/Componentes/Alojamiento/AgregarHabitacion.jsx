@@ -82,9 +82,9 @@ setValDe(e.target.checked);
 
 
 
-    axios.post('http://localhost:8080/alojamiento/agregarHabitaciones/' + id, {habitacion},{
+    axios.post('http://localhost:8080/alojamiento/agregarHabitaciones/' + id, habitacion,{
       headers: {
-        'Authorization': `token ${userToken}`
+        'Authorization': `${userToken}`
       }
     })
 

@@ -249,8 +249,8 @@ export default function HistoricoAlojamientosAnfitrion() {
                 <td>{alojamiento.aloj_dir_calle}{alojamiento.aloj_dir_numero}</td>
                 <td>{alojamiento.aloj_dir_ciudad}</td>
                 <td>{alojamiento.aloj_dir_pais_nombre}</td>
-                <td>{alojamiento.hu_calificacion}</td>
                 <td>{alojamiento.anf_calificacion}</td>
+                <td>{alojamiento.hu_calificacion}</td>
 
 
                 {alojamiento.hu_calificacion === 0 ?

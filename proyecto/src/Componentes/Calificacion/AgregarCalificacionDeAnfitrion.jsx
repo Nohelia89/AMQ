@@ -45,7 +45,7 @@ function AgregarCalificacionDeAnfitrion({id}) {
                 
   
            
-                axios.post("http://localhost:8080/reserva/calificar", {calificacion},{
+                axios.post("http://localhost:8080/reserva/calificar", calificacion,{
                   headers: {
                     'Authorization': `${userToken}`
                   }

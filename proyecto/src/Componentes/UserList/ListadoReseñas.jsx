@@ -33,7 +33,7 @@ export default function ListadoReseñas({id}) {
     }
    
 console.log(idAloj)
-   axios.post('http://localhost:8080/reserva/listarResenas',{ datos }, {
+   axios.post('http://localhost:8080/reserva/listarResenas', datos , {
     headers: {
       'Authorization': `${userToken}`
     }
@@ -72,7 +72,7 @@ console.log(idAloj)
     
   
 
-          const response =   await axios.post('http://localhost:8080/reserva/listarResenas', { datos }, {
+          const response =   await axios.post('http://localhost:8080/reserva/listarResenas',  datos , {
             headers: {
               'Authorization': `${userToken}`
             }

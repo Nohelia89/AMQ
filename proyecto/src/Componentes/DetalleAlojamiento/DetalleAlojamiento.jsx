@@ -42,9 +42,9 @@ function DetalleAlojamiento() {
                 idAloj: aloj[0].aloj.id
             }
            
-           axios.post('http://localhost:8080/reserva/listarResenas', {datos},{
+           axios.post('http://localhost:8080/reserva/listarResenas', datos,{
             headers: {
-              'Authorization': `token ${userToken}`
+              'Authorization': `${userToken}`
             }
           })
           .then(res => {
