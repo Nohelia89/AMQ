@@ -254,12 +254,12 @@ export default function HistoricoAlojamientosAnfitrion() {
 
 
                 {alojamiento.hu_calificacion === 0 ?
-                  <td><Button variant="light" onClick={() => CalificarAnf(alojamiento.res_id)}>Calificar</Button></td>
+                  <td><button class="calificar" onClick={() => CalificarAnf(alojamiento.res_id)}>Calificar</button></td>
                   :
-                  <td><Button variant="light" onClick={() => ModificarCal(alojamiento.res_id, alojamiento.anf_calificacion)}>Modificar</Button></td>}
+                  <td><button class="modificar"onClick={() => ModificarCal(alojamiento.res_id, alojamiento.anf_calificacion)}>Modificar</button></td>}
 
 
-                <td><Button variant="dark" onClick={() => EliminarCal(alojamiento.res_id)}>X</Button></td>
+                <td><button class="eliminar" onClick={() => EliminarCal(alojamiento.res_id)}>X</button></td>
               </tr>
 
             </tbody>)}

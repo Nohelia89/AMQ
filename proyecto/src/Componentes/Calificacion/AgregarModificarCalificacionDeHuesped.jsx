@@ -73,17 +73,17 @@ function AgregarModificarCalificacionDeHuesped({id}) {
       botonType === "sinActualizar" ?
 <>
 <NavBarAnfitrion/>
-        <div className="bod1">
-             <form className="form1"  onSubmit={generateData} >
+        <div className="overlay">
+             <form className="form3"  onSubmit={generateData} >
              <div className="tit">CALIFICACION</div>
              <div className="input_container">
              <p className="form-input2" type="Calificacion:"><input required class="form-input1" name='calificacion' type='text' value={dataForm.calificacion} onChange={handleChange} placeholder='Ingrese calificacion'></input></p>
 </div>
              
 
-             <button className = "btn submits boton">Calificar</button>
+<button className = "sign-up"style={{marginTop:"40px",  marginBottom:"20px" }} >Calificar</button>
              <Link to={'/mainAnfitrion'}>
-              <Button variant="dark" >Menu Principal</Button>
+              <button className = "sign-up" >Menu Principal</button>
             </Link>
 
            </form>
