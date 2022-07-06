@@ -129,7 +129,7 @@ console.log(userId + "user")
                                 <td>{reservas.res_fechaInicio}</td>
                                 <td>{reservas.res_fechaFin}</td>
                                 {reservas.res_estado === "APROBADO" ?   
-                                <td><Button variant="danger" onClick={() => Cancelar(reservas.res_id,reservas.facturas[0].idPaypal )}>Cancelar</Button></td> : <td>CANCELADA</td>
+                                <td><button class="eliminar" onClick={() => Cancelar(reservas.res_id,reservas.facturas[0].idPaypal )}>X</button></td> : <td>CANCELADA</td>
                                  }
             
                             </tr>

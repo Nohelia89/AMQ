@@ -48,7 +48,7 @@ function UserProfile() {
         <div class="overlay">
       
       <NavBarHuesped/>
-        <form class="form1">
+        <form class="form6">
         <div class="tit">PERFIL HUESPED</div>
       
   
@@ -68,7 +68,7 @@ function UserProfile() {
 
         <div>
         <Link to={'/mainHuesped'}>
-              <button class="sign-up" >Volver</button>
+              <button class="sign-up" style={{marginTop:"40px" }} >Volver</button>
             </Link>
 
        

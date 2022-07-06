@@ -67,17 +67,17 @@ function AgregarCalificacionDeAnfitrion({id}) {
       botonType === "sinActualizar" ?
 <>
 <NavBarHuesped/>
-        <div className="bod1">
-             <form className="form1"  onSubmit={generateData} >
+        <div className="overlay">
+             <form className="form6"  onSubmit={generateData} >
              <div className="tit">CALIFICACION</div>
              <div className="input_container">
-             <p className="form-input2" type="Calificacion:"><input required class="form-input1" name='calificacion' type='text' value={dataForm.calificacion} onChange={handleChange} placeholder='Ingrese calificacion'></input></p>
+             <p className="form-input2" type="Calificación:"style={{marginTop:"10px"}}><input required class="form-input1" name='calificacion' type='text' value={dataForm.calificacion} onChange={handleChange} placeholder='Ingrese calificacion'></input></p>
 </div>
-             <p className="form-input2" type="Reseña:"><textarea className="textarea" rows="7" cols="70" name='resena' type='text'  onChange={handleChange} value={dataForm.resena}></textarea></p>
+             <p className="form-input2" type="Reseña:" style={{marginTop:"20px"}}><textarea  required className="textarea" style={{marginTop:"10px"}}rows="5" cols="50" name='resena' type='text'  onChange={handleChange} value={dataForm.resena}></textarea></p>
 
-             <button className = "btn submits boton">Calificar</button>
+             <button className = "sign-up"style={{marginTop:"40px",  marginBottom:"20px" }} >Calificar</button>
              <Link to={'/mainHuesped'}>
-              <Button variant="dark" >Menu Principal</Button>
+              <button className = "sign-up" >Menu Principal</button>
             </Link>
 
            </form>
