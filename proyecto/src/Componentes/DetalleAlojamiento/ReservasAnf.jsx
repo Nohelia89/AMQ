@@ -203,7 +203,7 @@ console.log(userId + "user")
 
 {console.log(botonType+"SOY BOTONTYPE")}
                 <NavBarAnfitrion />
-
+                <div style={{ marginLeft: "18%", width: "1000px", padding: "15px", borderRadius: "5px", boxShadow: "0px 9px 30px 9px", border: "1.5px solid gray", backgroundColor: "lightgrey", marginTop: "40px",  marginBottom: "40px"}}>
                 <Table striped bordered hover variant="light" style={{ marginLeft: "18%", width: "1000px",marginBottom: "40px", padding: "15px", borderRadius: "5px", boxShadow: "0px 9px 30px 9px", border: "1.5px solid gray", backgroundColor: "lightgrey", marginTop: "40px" }}>
 
                         <thead>
@@ -212,8 +212,8 @@ console.log(userId + "user")
                                 <th>Habitacion</th>
                                 <th>Fecha Inicio</th>
                                 <th>Fecha Fin</th>
-                                <th>Aceptar/Rechazar</th>
-                                <th>Cancelar</th>
+                                <th>Aceptar/Cancelar</th>
+                                <th>Rechazar</th>
 
                             </tr>
                         </thead>
@@ -225,18 +225,18 @@ console.log(userId + "user")
                                 <td>{reservas.res_fechaInicio}</td>
                                 <td>{reservas.res_fechaFin}</td>
                                 {reservas.res_estado === "PENDIENTE" ?   
-                                <td><Button variant="success" onClick={() => Aceptar(reservas.facturas[0].idPaypal, reservas.res_id, reservas.facturas[0].idFactura)}>Aceptar</Button></td> :  
-                                 (botonType === "aprobado" || reservas.res_estado === "APROBADO" ? <td><Button variant="danger" onClick={() => Cancelar(reservas.res_id, reservas.facturas[0].idPaypal)}>Cancelar</Button></td> : <td>Cancelada</td> )
+                                <td><button class="calificar" onClick={() => Aceptar(reservas.facturas[0].idPaypal, reservas.res_id, reservas.facturas[0].idFactura)}>Aceptar</button></td> :  
+                                 (botonType === "aprobado" || reservas.res_estado === "APROBADO" ? <td><button class="modificar" onClick={() => Cancelar(reservas.res_id, reservas.facturas[0].idPaypal)}>Cancelar</button></td> : <td>Cancelada</td> )
                                  }
                                {reservas.res_estado === "PENDIENTE" ?   
-                                <td><Button variant="danger" onClick={() => Rechazar(reservas.res_id, reservas.facturas[0].idPaypal)}>Rechazar</Button></td> :  <td>Rechazada</td> }
+                                <td><button class="eliminar" onClick={() => Rechazar(reservas.res_id, reservas.facturas[0].idPaypal)}>X</button></td> :  <td>Rechazada</td> }
                                
                             </tr>
 
                         </tbody>)}
                     </Table>
 
-                
+       </div>         
 
             </>
           : <ReservasAnf />

@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { Base64 } from 'js-base64';
 import { useEffect, useState } from 'react';
+import { Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import LogoSinFondoNavBar from '../Logo/LogoSinFondoNavBar';
@@ -121,9 +122,9 @@ export default function Login() {
                      <button class="sign-up">Registrarse </button>
                   </Link>
 
-                  <Link to="/forgot">
+                  <Nav.Link as={Link}to="/forgot">
                      <button class="btn submits frgt-pass" >¿Olvidaste tu contraseña?</button>
-                  </Link>
+                  </Nav.Link>
 
 
                </div>

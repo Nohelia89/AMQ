@@ -146,15 +146,15 @@ export default function ListadoAlojamientosAnf() {
                                 <td>{alojamiento.direcion.calle}{alojamiento.direcion.numero}</td>
                                 <td>{alojamiento.direcion.ciudad}</td>
                                 <td>{alojamiento.direcion.pais.nombre}</td>
-                                { alojamiento.activo === true ? 
-                                <td><Button variant="light" onClick={() => ModificarAloj(alojamiento.id)}>Modificar</Button></td> : <td>Modificar</td>  } 
+                                { alojamiento.activo === true && alojamiento.activo===true? 
+                                <td><button class="modificar" onClick={() => ModificarAloj(alojamiento.id)}>Modificar</button></td> : <td>---</td>  } 
                                   { alojamiento.activo === true ? 
-                                <td><Button variant="light" onClick={() => VerReseñas(alojamiento.id)}>Reseñas</Button></td> : <td>Reseñas</td>  }
-                                 { alojamiento.activo === true ? 
-                                <td><Button variant="light" onClick={() => AgregarHab(alojamiento.id)}>Agregar</Button></td> : <td>Agregar</td>  }
+                                <td><button class="calificar" onClick={() => VerReseñas(alojamiento.id)}>Reseñas</button></td> : <td>Reseñas</td>  }
+                                 { alojamiento.activo === true && alojamiento.activo===true? 
+                                <td><button class="calificar" onClick={() => AgregarHab(alojamiento.id)}>Agregar</button></td> : <td>---</td>  }
 
                                 { alojamiento.activo === true ? 
-                             <td><Button variant="dark" onClick={() => DesactivarAloj(alojamiento.id)}> X </Button></td> : <td>Desactivado</td>   
+                             <td><button class="eliminar" onClick={() => DesactivarAloj(alojamiento.id)}> X </button></td> : <td>Desactivado</td>   
                                      } 
                                
                             </tr>

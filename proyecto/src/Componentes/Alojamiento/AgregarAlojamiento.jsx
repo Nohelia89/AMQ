@@ -153,7 +153,7 @@ function AgregarAlojamiento() {
               <input required class="form-input1" name='numero' type='text' value={dir.numero} onChange={handleChange1} placeholder='Numero'></input>
               <input required class="form-input1" name='ciudad' type='text' value={dir.ciudad} onChange={handleChange1} placeholder='Ciudad'></input></p>
           </div>
-          <Form.Select aria-label="Floating label select example" value={pais} onChange={handleChange2}>
+          <Form.Select style={{width:"300px"}} aria-label="Floating label select example" value={pais} onChange={handleChange2}>
 
             {paises.map((option) => {
               return (<option key={option.id} value={option.id}>{option.valor}</option>);
@@ -163,24 +163,24 @@ function AgregarAlojamiento() {
 
           </Form.Select>
 
-          <p className="form-input2" type="Descripcion:"><textarea className="textarea" rows="7" cols="70" name='descripcion' type='text' onChange={handleChange} value={dataForm.descripcion}></textarea></p>
+          <p className="form-input2" type="Descripcion:"><textarea required className="textarea" rows="5" cols="50" name='descripcion' type='text' onChange={handleChange} value={dataForm.descripcion}></textarea></p>
 
           <center>
-            <input type="file" onChange={(e) => { setImage(e.target.files[0]) }} />
-            <button onClick={upload1}>Subir</button>
+            <input type="file" required onChange={(e) => { setImage(e.target.files[0]) }} />
+            <button  className="modificar"  onClick={upload1}>Subir</button>
           </center>
           <center>
-            <input type="file" onChange={(e) => { setImage2(e.target.files[0]) }} />
-            <button onClick={upload2}>Subir</button>
+            <input required type="file" onChange={(e) => { setImage2(e.target.files[0]) }} />
+            <button  className="modificar" style={{marginTop:"5px"}} onClick={upload2}>Subir</button>
           </center>
           <center>
             <input type="file" onChange={(e) => { setImage3(e.target.files[0]) }} />
-            <button onClick={upload3}>Subir</button>
+            <button className="modificar" style={{marginTop:"5px"}} onClick={upload3}>Subir</button>
           </center>
 
-          <button className="boton2" onClick={uploadFirestore}>Cargar Imagenes</button> <br></br>
+          <button className="sign-up" onClick={uploadFirestore} style={{marginTop:"10px"}}>Cargar Imagenes</button> <br></br>
 
-          <button className="boton" onClick={changeStateButton}>Cargar Habitacion</button>
+          <button className="sign-up"  style={{marginTop:"5px"}} onClick={changeStateButton}>Cargar Habitacion</button>
         </form>
 
       </div>

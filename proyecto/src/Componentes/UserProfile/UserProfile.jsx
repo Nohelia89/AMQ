@@ -81,7 +81,7 @@ function UserProfile() {
    <div class="overlay">
       
       <NavBarAnfitrion/>
-        <form class="form1">
+        <form class="form6">
         <div class="tit">PERFIL ANFITRION</div>
       
   

@@ -53,7 +53,7 @@ export default function Forgot2() {
     
   <input required class="form-input1" name='password' type='password' value={dataForm.password} onChange={handleChange} placeholder='Ingrese Password'></input>
     
-      <button class = "btn submits boton">Enviar</button>
+      <button class = "sign-up">Enviar</button>
      
     </form>
   </div>

@@ -59,7 +59,7 @@ export default function Forgot() {
         
               <p class="form-input2" type="Mail" ><input required class="form-input1" name='email' type='email' value={dataForm.email} onChange={handleChange} placeholder='Ingrese email'></input></p>
         
-              <button class = "btn submits boton" onClick={Resetear}>Enviar</button>
+              <button class = "sign-up" onClick={Resetear}>Enviar</button>
         
             </form>
           </div>

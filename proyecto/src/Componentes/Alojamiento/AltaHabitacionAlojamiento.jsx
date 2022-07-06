@@ -89,18 +89,18 @@ function AltaHabitacionAlojamiento({ dataAloj, pais, direccion }) {
   return (
 
     <div className="bod1">
-      <form className="form1" onSubmit={generateData} >
+      <form className="form6" onSubmit={generateData} >
         <div className="tit">HABITACION</div>
         <div className="input_container">
           <p className="form-input2" type="Precio Por Noche (en US$):"><input required class="form-input1" name='precionoche' type='text' value={dataFormH.precionoche} onChange={handleChangeH} placeholder='Ingrese Precio por Noche'></input></p>
           <p className="form-input2" type="Camas"><input required class="form-input1" name='camas' type='text' value={dataFormH.camas} onChange={handleChangeH} placeholder='Ingrese Cantidad de Camas'></input></p></div>
-        <p className="form-input2" type="Descripcion:"><textarea className="textarea" rows="7" cols="70" name='descripcion' type='text' onChange={handleChangeH} value={dataFormH.descripcion}></textarea></p>
+        <p className="form-input2" type="Descripcion:"><textarea style={{ marginBottom:"40px" }} className="textarea" rows="5" cols="50" name='descripcion' type='text' onChange={handleChangeH} value={dataFormH.descripcion}></textarea></p>
 
-        <button className="btn submits boton">Registrar</button>
+  
+        <button className="sign-up" style={{marginLeft:"30px", marginTop:"20px" }}>Agregar</button>
         <Link to={'/mainAnfitrion'}>
-          <Button variant="dark" >Volver</Button>
+          <button class="sign-up" style={{marginLeft:"30px",marginTop:"10px" }} >Volver</button>
         </Link>
-
       </form>
     </div>
 
