@@ -247,12 +247,12 @@ export default function ListadoAlojamientosPorHuesped() {
                                 <td>{alojamiento.anf_calificacion}</td>
                                 {alojamiento.aloj_activo	  ?      <td>DISPONIBLE</td>:      <td>NO DISPONIBLE</td>}
                                 {alojamiento.anf_calificacion === 0	  ? 
-                                <td><Button variant="dark" onClick={() => CalificarAnf(alojamiento.res_id)}>Calificar</Button></td>
+                                <td><button class="calificar" onClick={() => CalificarAnf(alojamiento.res_id)}>Calificar</button></td>
                                 :
-                                <td><Button variant="dark" onClick={() => ModificarCal(alojamiento.res_id, alojamiento.anf_calificacion)}>Modificar</Button></td>}
+                                <td><button class="modificar" onClick={() => ModificarCal(alojamiento.res_id, alojamiento.anf_calificacion)}>Modificar</button></td>}
                                 
                              
-                                <td><Button variant="dark" onClick={() => EliminarCal(alojamiento.res_id)}>X</Button></td>
+                                <td><button class="eliminar" onClick={() => EliminarCal(alojamiento.res_id)}>X</button></td>
                             </tr>
 
                         </tbody>)}

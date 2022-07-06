@@ -226,3 +226,56 @@ button:hover {
         transform: translateY(5px);
     }
 } 
+.modificar {background:  linear-gradient(to bottom left, #8b8b8b 40%, #b1b0b0 100%); display: inline-block;
+    color: #ffffff;
+  
+    width: 80px;
+    height: 40px;
+  
+   
+    border-radius: 5px;
+    
+    outline: none;
+    border: none;
+  
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s linear;}
+    
+
+    .calificar {background:  linear-gradient(to bottom left, #EF8D9C 40%, #FFC39E 100%); display: inline-block;
+        color: #ffffff;
+      
+        width: 80px;
+        height: 40px;
+      
+       
+        border-radius: 5px;
+        
+        outline: none;
+        border: none;
+      
+        cursor: pointer;
+        text-align: center;
+        transition: all 0.2s linear;
+   
+    letter-spacing: 0.05em;   }
+
+    .eliminar {background:  linear-gradient(to bottom left, #d6d2d2 100%, #FFC39E 100%); display: inline-block;
+        color: #646464;
+      
+        width: 30px;
+        height: 40px;
+      
+       
+        border-radius: 5px;
+        
+        outline: none;
+        border: none;
+      
+        cursor: pointer;
+        text-align: center;
+        transition: all 0.2s linear;
+        
+       
+        letter-spacing: 0.05em;   }
