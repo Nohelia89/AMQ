@@ -8,6 +8,7 @@ import NavBarAnfitrion from '../Navbar/NavBarAnfitrion';
 import AgregarHabitacion from '../Alojamiento/AgregarHabitacion';
 import ListadoReseñas from './ListadoReseñas';
 import ModificarAlojamiento from '../Modificar/ModificarAlojamiento';
+import Loading from '../Loading/Loading';
 
 
 export default function ListadoAlojamientosAnf() {
@@ -121,8 +122,9 @@ export default function ListadoAlojamientosAnf() {
 
 
                 <NavBarAnfitrion />
-<div style={{ marginLeft: "18%", width: "1000px", padding: "15px", borderRadius: "5px", boxShadow: "0px 9px 30px 9px", border: "1.5px solid gray", backgroundColor: "lightgrey", marginTop: "40px",  marginBottom: "40px"}}>
-                {isLoading ? <h2>Cargando...</h2> :
+
+                {isLoading ? <Loading/> :
+                <div style={{ marginLeft: "18%", width: "1000px", padding: "15px", borderRadius: "5px", boxShadow: "0px 9px 30px 9px", border: "1.5px solid gray", backgroundColor: "lightgrey", marginTop: "40px",  marginBottom: "40px"}}>
                     <Table striped bordered hover variant="light" style={{ padding: 10 }}>
 
                         <thead>
@@ -162,7 +164,7 @@ export default function ListadoAlojamientosAnf() {
                         </tbody>)}
                     </Table>
 
-                }</div>
+                    </div> }
 
             </>
             :    (botonType === "habitacion" ) ? 
