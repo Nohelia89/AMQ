@@ -8,6 +8,7 @@ import { Col, FloatingLabel, Row, Form, CardGroup } from "react-bootstrap";
 
 import AgregarModificarCalificacionDeHuesped from '../Calificacion/AgregarModificarCalificacionDeHuesped';
 import NavBarAnfitrion from '../Navbar/NavBarAnfitrion';
+import Loading from '../Loading/Loading';
 
 
 
@@ -227,7 +228,7 @@ export default function HistoricoAlojamientosAnfitrion() {
 
         {console.log(botonType + "SOY BOTONTYPE")}
 
-        {isLoading ? <h2>Cargando...</h2> :
+        {isLoading ? <Loading/> :
           <Table striped bordered hover variant="light" style={{ marginLeft: "18%", width: "1000px",marginBottom: "40px", padding: "15px", borderRadius: "5px", boxShadow: "0px 9px 30px 9px", border: "1.5px solid gray", backgroundColor: "lightgrey", marginTop: "40px" }}>
 
             <thead>
