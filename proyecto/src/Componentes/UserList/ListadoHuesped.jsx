@@ -13,7 +13,10 @@ export default function ListadoHuesped() {
   const [huesped, setHuesped] = useState([]);
   const [val1, setVal1] = useState(true);
   const [valC, setValC] = useState();
-
+  const [list, setList] = useState([]);
+  const [list2, setList2] = useState([]);
+  const [sort, setSort] = useState('sinOrdenar');
+  const [sort2, setSort2] = useState('sinOrdenar');
   const [calDesde, setCalDesde] = useState();
   const [calHasta, setCalHasta] = useState();
   const { userToken } = useUserContext();
@@ -73,6 +76,44 @@ export default function ListadoHuesped() {
 
 
   }, [valC])
+
+  
+  const ordenarDescTipo = () => {
+    setSort2('sinOrdenar');
+    setSort('sinOrdenar');
+    var lista =  huesped.sort((a, b) => (a.nombre > b.nombre ? 1 : a.nombre < b.nombre ? -1 : 0))
+    setList(lista);
+    setSort('Ordenado');
+    
+  }
+
+  const ordenarAscTipo = () => {
+    setSort('sinOrdenar');
+    setSort2('sinOrdenar');
+    var lista =  huesped.sort((a, b) => (a.nombre > b.nombre ? -1 : a.nombre < b.nombre ? 1 : 0))
+    setList2(lista);
+    setSort2('Ordenado');
+    
+  }
+
+  const ordenarDescCal = () => {
+    setSort2('sinOrdenar');
+    setSort('sinOrdenar');
+    var lista =  huesped.sort((a, b) => (a.calificacion > b.calificacion ? 1 : a.calificacion < b.calificacion ? -1 : 0))
+    setList(lista);
+    setSort('Ordenado');
+    
+  }
+
+  const ordenarAscCal = () => {
+    setSort('sinOrdenar');
+    setSort2('sinOrdenar');
+    var lista =  huesped.sort((a, b) => (a.calificacion > b.calificacion ? -1 : a.calificacion < b.calificacion ? 1 : 0))
+    setList2(lista);
+    setSort2('Ordenado');
+    
+  }
+
 
 
   async function buscarConFiltro() {
@@ -167,16 +208,17 @@ export default function ListadoHuesped() {
             <thead>
               <tr>
 
-                <th>Nombre</th>
+                <th>Nombre <button onClick={ordenarAscTipo}>ASC</button> <button onClick={ordenarDescTipo}>DESC</button></th>
                 <th>Apellido</th>
                 <th>Mail</th>
-                <th>Calificación</th>
+                <th>Calificación <button onClick={ordenarAscCal}>ASC</button> <button onClick={ordenarDescCal}>DESC</button> </th>
                 <th>Activo</th>
 
 
               </tr>
             </thead>
-            {huesped.map(huesped => <tbody key={huesped.id} >
+            { sort === 'sinOrdenar' || sort2 === 'sinOrdenar' ?
+            huesped.map(huesped => <tbody key={huesped.id} >
               <tr>
 
                 <td>{huesped.nombre}</td>
@@ -190,7 +232,36 @@ export default function ListadoHuesped() {
 
               </tr>
 
-            </tbody>)}
+            </tbody>) : (sort === 'Ordenado' ?
+             list.map(huesped => <tbody key={huesped.id} >
+              <tr>
+
+                <td>{huesped.nombre}</td>
+                <td>{huesped.apellido}</td>
+                <td>{huesped.email}</td>
+                <td>{huesped.calificacionGlobal}</td>
+                {huesped.activo === true ?
+                  <td>Activo</td> : <td>Inactivo</td>}
+
+                <td>{huesped.activo}</td>
+
+              </tr>
+
+            </tbody>) :  list2.map(huesped => <tbody key={huesped.id} >
+              <tr>
+
+                <td>{huesped.nombre}</td>
+                <td>{huesped.apellido}</td>
+                <td>{huesped.email}</td>
+                <td>{huesped.calificacionGlobal}</td>
+                {huesped.activo === true ?
+                  <td>Activo</td> : <td>Inactivo</td>}
+
+                <td>{huesped.activo}</td>
+
+              </tr>
+
+            </tbody>) )}
           </Table>
 
         }
