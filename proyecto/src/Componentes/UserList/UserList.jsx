@@ -144,7 +144,7 @@ export default function UserList() {
 
     console.log(valH)
 
-    await axios.post(`http://localhost:8080/usuario/listar`,  { usuario }, {
+    await axios.post(`http://localhost:8080/usuario/listar`,   usuario , {
       headers: {
         'Authorization': `${userToken}`
       }
@@ -271,11 +271,11 @@ export default function UserList() {
 
             <thead>
               <tr>
-                <th>Tipo <button onClick={ordenarAscTipo}>ASC</button> <button onClick={ordenarDescTipo}>DESC</button></th>
+                <th>Tipo <button onClick={ordenarAscTipo}>↑</button> <button onClick={ordenarDescTipo}>↓</button></th>
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Mail</th>
-                <th>Calificación Global <button onClick={ordenarAscCal}>ASC</button> <button onClick={ordenarDescCal}>DESC</button></th>
+                <th>Calificación Global <button onClick={ordenarAscCal}>↑</button> <button onClick={ordenarDescCal}>↓</button></th>
                 <th>Estado</th>
                 <th>Bloqueado/Desbloqueado</th>
 
