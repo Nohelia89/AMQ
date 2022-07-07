@@ -40,6 +40,7 @@ function FormAdmin() {
       } )
         .then(res => {
           alert("El usuario ha sido ingresado con éxito al sistema");
+          setBotonType("actualizado")
         })
         .catch(error => {
           alert("ERROR: " + error.response.data.mensaje);

@@ -92,7 +92,7 @@ export default function ListadoAnfitrion() {
 
       })
       .catch(error => {
-   //     alert("ERROR: " + error.response.data.mensaje);
+      alert("ERROR: " + error.response.data.mensaje);
       });
 
 
