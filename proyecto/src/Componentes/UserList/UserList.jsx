@@ -258,7 +258,7 @@ export default function UserList() {
                   <td><button class="modificar" onClick={() => Desactivar(usuario.id)}>Desactivar</button></td> : <td>Desactivado</td>) : <td>Activo</td>
                 }
                 {usuario.tipo !== "Ad" ? (usuario.bloqueado === true ?
-                  <td><button class="calificar" onClick={() => Desbloquear(usuario.id)}> Desbloquear </button></td> : <td><button class="modificar" onClick={() => Bloquear(usuario.id)}>Bloquear</button></td>) : <td>Desbloqueado</td>
+                  <td><button class="calificar" style={{ width: "110px" }} onClick={() => Desbloquear(usuario.id)}> Desbloquear </button></td> : <td><button class="modificar" style={{ width: "110px" }}  onClick={() => Bloquear(usuario.id)}>Bloquear</button></td>) : <td>Desbloqueado</td>
                 }
 
               </tr>
