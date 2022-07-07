@@ -14,7 +14,10 @@ export default function UserList() {
   const [usuario, setUsuario] = useState([]);
   const { userToken, userType } = useUserContext();
   const [botonType, setBotonType] = useState('sinActualizar');
-
+  const [list, setList] = useState([]);
+  const [list2, setList2] = useState([]);
+  const [sort, setSort] = useState('sinOrdenar');
+  const [sort2, setSort2] = useState('sinOrdenar');
   const [val1, setVal1] = useState(true);
   const [valC, setValC] = useState();
   const [valH, setValH] = useState('Ad');
@@ -159,9 +162,41 @@ export default function UserList() {
 
   }
 
+  const ordenarDescTipo = () => {
+    setSort2('sinOrdenar');
+    setSort('sinOrdenar');
+    var lista =  usuario.sort((a, b) => (a.tipo > b.tipo ? 1 : a.tipo < b.tipo ? -1 : 0))
+    setList(lista);
+    setSort('Ordenado');
+    
+  }
 
+  const ordenarAscTipo = () => {
+    setSort('sinOrdenar');
+    setSort2('sinOrdenar');
+    var lista =  usuario.sort((a, b) => (a.tipo > b.tipo ? -1 : a.tipo < b.tipo ? 1 : 0))
+    setList2(lista);
+    setSort2('Ordenado');
+    
+  }
 
+  const ordenarDescCal = () => {
+    setSort2('sinOrdenar');
+    setSort('sinOrdenar');
+    var lista =  usuario.sort((a, b) => (a.calificacion > b.calificacion ? 1 : a.calificacion < b.calificacion ? -1 : 0))
+    setList(lista);
+    setSort('Ordenado');
+    
+  }
 
+  const ordenarAscCal = () => {
+    setSort('sinOrdenar');
+    setSort2('sinOrdenar');
+    var lista =  usuario.sort((a, b) => (a.calificacion > b.calificacion ? -1 : a.calificacion < b.calificacion ? 1 : 0))
+    setList2(lista);
+    setSort2('Ordenado');
+    
+  }
 
   const handleChange = (e) => {
 
@@ -183,8 +218,9 @@ export default function UserList() {
 
   return (
     botonType === "sinActualizar" ?
-
-      <>
+    <>
+   
+     
 
         <NavBarAdministrador />
         <div style={{ marginLeft: "18%", width: "1000px",marginBottom: "40px", padding: "15px", borderRadius: "5px", boxShadow: "0px 9px 30px 9px", border: "1.5px solid gray", backgroundColor: "lightgrey", marginTop: "40px" }}>
@@ -235,17 +271,18 @@ export default function UserList() {
 
             <thead>
               <tr>
-                <th>Tipo</th>
+                <th>Tipo <button onClick={ordenarAscTipo}>ASC</button> <button onClick={ordenarDescTipo}>DESC</button></th>
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Mail</th>
-                <th>Calificación Global</th>
+                <th>Calificación Global <button onClick={ordenarAscCal}>ASC</button> <button onClick={ordenarDescCal}>DESC</button></th>
                 <th>Estado</th>
                 <th>Bloqueado/Desbloqueado</th>
 
               </tr>
             </thead>
-            {usuario.map(usuario => <tbody key={usuario.id} >
+            { sort === 'sinOrdenar' || sort2 === 'sinOrdenar' ?
+            usuario.map(usuario => <tbody key={usuario.id} >
               <tr>
                 {usuario.tipo === "Ad" ?
                   <td>Administrador</td> : (usuario.tipo === "Hu" ? <td>Huesped</td> : <td>Anfitrion</td>)
@@ -263,7 +300,45 @@ export default function UserList() {
 
               </tr>
 
-            </tbody>)}
+            </tbody>) : (sort === 'Ordenado' ?
+             list.map(usuario => <tbody key={usuario.id} >
+              <tr>
+                {usuario.tipo === "Ad" ?
+                  <td>Administrador</td> : (usuario.tipo === "Hu" ? <td>Huesped</td> : <td>Anfitrion</td>)
+                }
+                <td>{usuario.nombre}</td>
+                <td>{usuario.apellido}</td>
+                <td>{usuario.email}</td>
+                <td>{usuario.calificacion}</td>
+                {usuario.tipo !== "Ad" ? (usuario.activo === true ?
+                  <td><button class="modificar" onClick={() => Desactivar(usuario.id)}>Desactivar</button></td> : <td>Desactivado</td>) : <td>Activo</td>
+                }
+                {usuario.tipo !== "Ad" ? (usuario.bloqueado === true ?
+                  <td><button class="calificar" style={{ width: "110px" }} onClick={() => Desbloquear(usuario.id)}> Desbloquear </button></td> : <td><button class="modificar" style={{ width: "110px" }}  onClick={() => Bloquear(usuario.id)}>Bloquear</button></td>) : <td>Desbloqueado</td>
+                }
+
+              </tr>
+
+            </tbody>) : list2.map(usuario => <tbody key={usuario.id} >
+              <tr>
+                {usuario.tipo === "Ad" ?
+                  <td>Administrador</td> : (usuario.tipo === "Hu" ? <td>Huesped</td> : <td>Anfitrion</td>)
+                }
+                <td>{usuario.nombre}</td>
+                <td>{usuario.apellido}</td>
+                <td>{usuario.email}</td>
+                <td>{usuario.calificacion}</td>
+                {usuario.tipo !== "Ad" ? (usuario.activo === true ?
+                  <td><button class="modificar" onClick={() => Desactivar(usuario.id)}>Desactivar</button></td> : <td>Desactivado</td>) : <td>Activo</td>
+                }
+                {usuario.tipo !== "Ad" ? (usuario.bloqueado === true ?
+                  <td><button class="calificar" style={{ width: "110px" }} onClick={() => Desbloquear(usuario.id)}> Desbloquear </button></td> : <td><button class="modificar" style={{ width: "110px" }}  onClick={() => Bloquear(usuario.id)}>Bloquear</button></td>) : <td>Desbloqueado</td>
+                }
+
+              </tr>
+
+            </tbody>) )
+            }
           </Table>
 
         }
