@@ -18,7 +18,7 @@ function Loading() {
             />
       
  
-        <h2>Cargando</h2>
+
    
 
 

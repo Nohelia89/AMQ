@@ -6,6 +6,7 @@ import axios from 'axios';
 import { Base64 } from 'js-base64';
 import { useUserContext } from "../UserContext/userContext";
 import NavBarInvitado from '../Navbar/NavbarInvitado';
+import Login from '../Login/Login';
 
 function FormAdmin() {
 
@@ -13,6 +14,7 @@ function FormAdmin() {
   const [dataForm, setDataForm] = useState({ nombre: '', apellido: '', email: '', password: '', password2: '' })
   const { userToken } = useUserContext();
   var hash = Base64.encode(dataForm.password);
+  const [botonType, setBotonType] = useState('sinActualizar');
 
   var admin = {
 
@@ -54,7 +56,7 @@ function FormAdmin() {
   }
   return (
 
-
+    botonType === 'sinActualizar' ?  
     <div class="overlay">
       <NavBarInvitado/>
       <form class="form1" onSubmit={generateAdmin}>
@@ -74,19 +76,21 @@ function FormAdmin() {
 
         <br />
 
-        <div style={{ padding: "10px", marginTop: "60px" }}>
-          <Link to={'/registro'}>
-            <Button style={{ marginTop: "10px", marginRight: "-500px" }} variant="dark" >Volver</Button>
-          </Link>
+        <div  style={{ padding: "10px", marginTop: "60px" }}>
 
-          <button style={{ marginLeft: "-500px"}} variant="dark" class="btn submits boton">Registrar administrador</button>
-        </div>
+<Link to={'/mainAdministrador'}>
+  <button style={{marginRight: "10px" }}  class="sign-up">Volver</button>
+</Link>
+
+<button style={{ marginLeft: "10px"}}  id="formulario" class="sign-up">Registrar Administardor</button>
+</div>
 
 
 
       </form>
     </div>
-
+:
+<Login/>
   );
 
 }

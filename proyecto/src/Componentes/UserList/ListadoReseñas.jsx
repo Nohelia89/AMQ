@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import NavBarAnfitrion from '../Navbar/NavBarAnfitrion';
 import { Col, FloatingLabel, Row, Form } from "react-bootstrap";
 import { useUserContext } from '../UserContext/userContext';
+import Loading from '../Loading/Loading';
 
 
 
@@ -137,7 +138,7 @@ return (
   
 </Row>
 </div>    
-    {isLoading ? <h2>Cargando...</h2> : 
+    {isLoading ? <Loading/> : 
              <Table striped bordered hover variant="light" style={{ marginLeft: "18%", width: "1000px",marginBottom: "40px", padding: "15px", borderRadius: "5px", boxShadow: "0px 9px 30px 9px", border: "1.5px solid gray", backgroundColor: "lightgrey", marginTop: "40px" }}>
 
           <thead>
