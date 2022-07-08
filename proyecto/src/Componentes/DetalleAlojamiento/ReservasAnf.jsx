@@ -226,10 +226,10 @@ console.log(userId + "user")
                                 <td>{reservas.res_fechaFin}</td>
                                 {reservas.res_estado === "PENDIENTE" ?   
                                 <td><button class="calificar" onClick={() => Aceptar(reservas.facturas[0].idPaypal, reservas.res_id, reservas.facturas[0].idFactura)}>Aceptar</button></td> :  
-                                 (botonType === "aprobado" || reservas.res_estado === "APROBADO" ? <td><button class="modificar" onClick={() => Cancelar(reservas.res_id, reservas.facturas[0].idPaypal)}>Cancelar</button></td> : (botonType === 'rechazado' ? <td>Cancelar</td> : <td>Cancelada</td> ))
+                                 (reservas.res_estado === "APROBADO") ? <td><button class="modificar" onClick={() => Cancelar(reservas.res_id, reservas.facturas[0].idPaypal)}>Cancelar</button></td> : (botonType === 'rechazado' ? <td>Cancelar</td> : <td>Cancelada</td> )
                                  }
                                {reservas.res_estado === "PENDIENTE" ?   
-                                <td><button class="eliminar" onClick={() => Rechazar(reservas.res_id, reservas.facturas[0].idPaypal)}>X</button></td> :  <td>Rechazada</td> }
+                                <td><button class="eliminar" onClick={() => Rechazar(reservas.res_id, reservas.facturas[0].idPaypal)}>X</button></td> : (reservas.res_estado === "RECHAZADO") ?<td>Rechazada</td> : <td>---</td> }
                                
                             </tr>
 
