@@ -8,7 +8,9 @@ import CargarHabitacion from './CargarHabitacion';
 import { Form } from 'react-bootstrap';
 
 import axios from 'axios';
-import NavBarInvitado from '../Navbar/NavbarInvitado';
+
+
+import NavBarInvitado from "../Navbar/NavbarInvitado";
 
 
 
@@ -172,24 +174,24 @@ const uploadFirestore = async (e) =>{
 
 
 </Form.Select>
-          <p className="form-input2" type="Descripcion:"><textarea className="textarea" rows="7" cols="70" name='descripcion' type='text'  onChange={handleChange} value={dataForm.descripcion}></textarea></p>
+          <p className="form-input2" type="Descripcion:"><textarea className="textarea" rows="5" cols="50" name='descripcion' type='text'  onChange={handleChange} value={dataForm.descripcion}></textarea></p>
     
           <center>
           <input type="file" onChange={(e)=>{setImage(e.target.files[0])}}/>
-          <button onClick={upload1}>Subir</button> 
+          <button className="modificar" style={{marginTop:"5px"}} onClick={upload1}>Subir</button> 
           </center>
           <center>
-          <input type="file" onChange={(e)=>{setImage2(e.target.files[0])}}/>
-          <button onClick={upload2}>Subir</button>
+          <input  type="file" onChange={(e)=>{setImage2(e.target.files[0])}}/>
+          <button className="modificar" style={{marginTop:"5px"}} onClick={upload2}>Subir</button>
           </center>
           <center>
           <input type="file" onChange={(e)=>{setImage3(e.target.files[0])}}/>
-          <button onClick={upload3}>Subir</button>
+          <button className="modificar" style={{marginTop:"5px"}} onClick={upload3}>Subir</button>
           </center>
 
-          <button className = "boton2" onClick={uploadFirestore}>Cargar Imagenes</button> <br></br>
+          <button className="sign-up" onClick={uploadFirestore}  style={{marginTop:"10px"}}>Cargar Imagenes</button> <br></br>
       
-          <button className = "boton" onClick={changeStateButton}>Cargar Habitacion</button>
+          <button className="sign-up" style={{marginTop:"5px"}}  onClick={changeStateButton}>Cargar Habitacion</button>
         </form>
         
       </div>
