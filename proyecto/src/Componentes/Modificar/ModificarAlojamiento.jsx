@@ -84,8 +84,9 @@ function ModificarAlojamiento({id}) {
                 
                 .then(res => {
                   console.log(res);
-                
+                  alert("Datos actualizados correctamente"); 
                   setBotonType("actualizar")
+                
                 })
                 .catch(error => {
                     alert("ERROR: " + error.response.data.mensaje); 
