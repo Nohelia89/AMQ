@@ -68,7 +68,7 @@ console.log(userId + "user")
     }, {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer A21AAI_s1R7hNOPhhSG_M7eDAcigyBG5GpROgUz3muXD9I-1ptr2hz6nxM7-V5XpqmJBG1hjgRnuoZzyHHz92s8rY6cTt5SbQ'
+          'Authorization': 'Bearer A21AAJkub1bo6XNgVJpK9A4wDfwErfw4NB2UlfwNTk3TvO_RrK90lpSslm9thjbdUYaNNPXKfy0RUVJFBhCpyO1C-EdXxsVbg'
 
         }
       }).then(response => {
