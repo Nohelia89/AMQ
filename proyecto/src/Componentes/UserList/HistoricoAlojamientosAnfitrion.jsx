@@ -314,8 +314,8 @@ export default function HistoricoAlojamientosAnfitrion() {
                 <td>{alojamiento.aloj_dir_pais_nombre}</td>
                 <td>{alojamiento.res_fechaInicio}</td>
                 <td>{alojamiento.res_fechaFin}</td>
-                <td>{alojamiento.anf_calificacion} </td>
-                <td>{alojamiento.hu_calificacion} </td>
+              {alojamiento.anf_calificacion ===0 ||alojamiento.anf_calificacion ===-1} ?     <td>---</td>:<td>{alojamiento.anf_calificacion} </td>
+                 {alojamiento.hu_calificacion ===0 ||alojamiento.hu_calificacion ===-1} ?     <td>---</td>:<td>{alojamiento.hu_calificacion} </td>
 
 
                 {alojamiento.hu_calificacion === 0 ?
