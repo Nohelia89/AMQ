@@ -8,6 +8,7 @@ import NavBarAnfitrion from '../Navbar/NavBarAnfitrion';
 import { Col, FloatingLabel, Row, Form } from "react-bootstrap";
 import { useUserContext } from '../UserContext/userContext';
 import Loading from '../Loading/Loading';
+import ListadoAlojamientosAnf from './ListadoAlojamientosAnf';
 
 
 
@@ -49,7 +50,8 @@ console.log(idAloj)
     setIsLoading(false);
   })
   .catch(error => {
-    alert("ERROR: " + error.response.data.mensaje);
+    
+    setBotonType("sin datos")
   });
 
    
@@ -89,7 +91,8 @@ console.log(idAloj)
       
           })
           .catch(error => {
-            alert("ERROR: " + error.response.data.mensaje);
+         
+            setBotonType("sin datos")
           });
     
        
@@ -201,9 +204,10 @@ return (
     }
 
   </>
-  :
+  :(botonType === "sin datos" ) ? <ListadoAlojamientosAnf/>:
   <>
   <ListadoReseñas/>
   </>
+
 ) 
 }
