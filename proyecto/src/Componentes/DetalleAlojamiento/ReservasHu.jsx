@@ -68,12 +68,12 @@ console.log(userId + "user")
     }, {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer A21AAJRlNdhtbggssobMXJwJaj1kmbmRGxMp8XWgAE8PHTEJElNILh-BDfJZdPq_NSNYnNp1n0uK5QFaIEzgZhyG86wFm_mFA'
+          'Authorization': 'Bearer A21AAL6Zi9mkPDW-j5mkcAWhbjMXNILYNhfBIfQUt0_V-cGVNsdQ1EQ42K3Wlu9RxlJuL9OSxDgs4a-F6Tt07Zh1gH_tiUmpw'
 
         }
       }).then(response => {
       
-        axios.post("http://localhost:8080/reserva/cancelarReservaAprobada/" + idRes, {factura},{
+        axios.post("http://localhost:8080/reserva/cancelarReservaAprobada/" + idRes, factura,{
           headers: {
             'Authorization': `${userToken}`
           }

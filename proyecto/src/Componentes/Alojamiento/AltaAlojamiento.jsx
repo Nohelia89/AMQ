@@ -92,10 +92,22 @@ const upload2 = async (e) =>{
   }
     
   const Habitacion= ()=> {
-    console.log(dataForm);
-    return (
-    <CargarHabitacion dataUser={dataUser} dataAloj={dataForm} dataAlojdir={dir} pais={pais}  />
-    )
+
+    if (dataForm.nombre !== '' && dataForm.descripcion !== '' && dir.calle !== ''&& dir.numero !== '' && dir.ciudad !== '' && pais !== '' ){ 
+     
+
+          return (
+      
+            <CargarHabitacion dataUser={dataUser} dataAloj={dataForm} dataAlojdir={dir} pais={pais}  />
+              
+            )
+         
+
+  }else{
+      alert('Debe completar todos los datos del formulario antes de continuar')
+      return(<AltaAlojamiento dataUser={dataUser} />)
+  }
+
   }
 
     

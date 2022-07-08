@@ -75,15 +75,13 @@ export default function ListadoAlojamientosAnf() {
 
     const ModificarAloj = (id) => {
 
-
-
         setIdAloj(id)
      
         setBotonType("modificar")
     }
 
     const DesactivarAloj = (id) => {
-        axios.post(`http://localhost:8080/alojamiento/desactivarAlojamiento/` + id ,  {}, {
+        axios.post(`http://localhost:8080/alojamiento/desactivarAlojamiento/` + id , {
             headers: {
               'Authorization': `${userToken}`
             }
@@ -129,6 +127,7 @@ export default function ListadoAlojamientosAnf() {
 
                         <thead>
                             <tr>
+                            <th>Nombre</th>
                                 <th>Descripción</th>
                                 <th>Dirección</th>
                                 <th>Ciudad</th>
@@ -142,7 +141,7 @@ export default function ListadoAlojamientosAnf() {
                         </thead>
                         {alojamiento.map(alojamiento => <tbody key={alojamiento.id} >
                             <tr>
-
+                            <td>{alojamiento.nombre}</td>
                                 <td>{alojamiento.descripcion}</td>
                                 
                                 <td>{alojamiento.direcion.calle}{alojamiento.direcion.numero}</td>

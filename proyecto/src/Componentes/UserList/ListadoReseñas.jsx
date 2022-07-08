@@ -22,6 +22,10 @@ export default function ListadoReseñas({id}) {
   const [idAloj, setIdAloj] = useState('')
 
   const [botonType, setBotonType ] = useState('sinActualizar');
+  const [list, setList] = useState([]);
+  const [list2, setList2] = useState([]);
+  const [sort, setSort] = useState('sinOrdenar');
+  const [sort2, setSort2] = useState('sinOrdenar');
 
 
   useEffect(() => {
@@ -96,20 +100,25 @@ console.log(idAloj)
        setValP(e.target.value);
       }
     
- 
- 
-
-
-
-
-          
-            
-              
-            
-
-
-
+      const ordenarDescCal = () => {
+        setSort2('sinOrdenar');
+        setSort('sinOrdenar');
+        var lista =  reseña.sort((a, b) => (a.calHuesp > b.calHuesp ? 1 : a.calHuesp < b.calHuesp ? -1 : 0))
+        setList(lista);
+        setSort('Ordenado');
+        
+      }
     
+      const ordenarAscCal = () => {
+        setSort('sinOrdenar');
+        setSort2('sinOrdenar');
+        var lista =  reseña.sort((a, b) => (a.calHuesp > b.calHuesp ? -1 : a.calHuesp < b.calHuesp ? 1 : 0))
+        setList2(lista);
+        setSort2('Ordenado');
+        
+      }
+ 
+
 
 return (
   botonType === "sinActualizar" ? 
@@ -143,13 +152,14 @@ return (
 
           <thead>
             <tr>
-              <th>Calificacion Huesped</th>
+              <th>Calificacion Huesped <button onClick={ordenarAscCal}>↑</button> <button onClick={ordenarDescCal}>↓</button></th>
        
               <th>Fecha</th>
               <th>Reseña</th>
             </tr>
           </thead>
-          {reseña.map(reseña => <tbody key={reseña.id} >
+          { sort === 'sinOrdenar' || sort2 === 'sinOrdenar' ?
+          reseña.map(reseña => <tbody key={reseña.id} >
             <tr>
         
               <td>{reseña.calHuesp}</td>
@@ -160,7 +170,32 @@ return (
            
               </tr>
          
-          </tbody>)}
+          </tbody>) : (sort === 'Ordenado' ?
+            list.map(reseña => <tbody key={reseña.id} >
+              <tr>
+          
+                <td>{reseña.calHuesp}</td>
+      
+                <td>{reseña.fechaResena}</td>
+                <td>{reseña.resena}</td>
+            
+             
+                </tr>
+           
+            </tbody>) :
+              list2.map(reseña => <tbody key={reseña.id} >
+                <tr>
+            
+                  <td>{reseña.calHuesp}</td>
+        
+                  <td>{reseña.fechaResena}</td>
+                  <td>{reseña.resena}</td>
+              
+               
+                  </tr>
+             
+              </tbody>))
+          }
         </Table>
   
     }

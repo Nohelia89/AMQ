@@ -80,7 +80,7 @@ setValDe(e.target.checked);
 
 
 
-
+    if (dataFormH.camas !== '' && dataFormH.descripcion !== '' && dataFormH.precioNoche !== '' ){ 
 
     axios.post('http://localhost:8080/alojamiento/agregarHabitaciones/' + id, habitacion,{
       headers: {
@@ -95,6 +95,11 @@ setValDe(e.target.checked);
       .catch(error => {
         alert("ERROR: " + error.response.data.mensaje); 
       });
+    }  else  {
+      alert('Debe completar todos los datos del formulario antes de continuar');
+      return(
+        <AgregarHabitacion id={id} />);
+}
 
   }
 

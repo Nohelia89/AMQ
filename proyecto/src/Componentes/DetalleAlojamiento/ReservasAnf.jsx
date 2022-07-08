@@ -70,7 +70,7 @@ console.log(userId + "user")
           axios.post("https://api-m.sandbox.paypal.com/v2/payments/authorizations/"+idPayPal+"/capture", {}, {
             headers: {
               'Content-Type': 'application/json',
-              'Authorization': 'Bearer A21AAJRlNdhtbggssobMXJwJaj1kmbmRGxMp8XWgAE8PHTEJElNILh-BDfJZdPq_NSNYnNp1n0uK5QFaIEzgZhyG86wFm_mFA'
+              'Authorization': 'Bearer A21AAL6Zi9mkPDW-j5mkcAWhbjMXNILYNhfBIfQUt0_V-cGVNsdQ1EQ42K3Wlu9RxlJuL9OSxDgs4a-F6Tt07Zh1gH_tiUmpw'
     
             }
             
@@ -121,13 +121,13 @@ console.log(userId + "user")
       axios.post("https://api-m.sandbox.paypal.com/v2/payments/captures/"+idPayPal+"/refund", {}, {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer A21AAJRlNdhtbggssobMXJwJaj1kmbmRGxMp8XWgAE8PHTEJElNILh-BDfJZdPq_NSNYnNp1n0uK5QFaIEzgZhyG86wFm_mFA'
+          'Authorization': 'Bearer A21AAL6Zi9mkPDW-j5mkcAWhbjMXNILYNhfBIfQUt0_V-cGVNsdQ1EQ42K3Wlu9RxlJuL9OSxDgs4a-F6Tt07Zh1gH_tiUmpw'
 
         }
       }).then(response => {
         console.log("Reembolso de pago exitoso");
         setRefund(response.data.id)
-        axios.post("http://localhost:8080/reserva/cancelarReservaAprobada/" + idRes,  {factura},{
+        axios.post("http://localhost:8080/reserva/cancelarReservaAprobada/" + idRes,  factura,{
           headers: {
             'Authorization': `${userToken}`
           }
@@ -168,7 +168,7 @@ console.log(userId + "user")
       axios.post("https://api-m.sandbox.paypal.com/v2/payments/authorizations/"+idPayPal+"/void", {}, {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer A21AAJRlNdhtbggssobMXJwJaj1kmbmRGxMp8XWgAE8PHTEJElNILh-BDfJZdPq_NSNYnNp1n0uK5QFaIEzgZhyG86wFm_mFA'
+          'Authorization': 'Bearer A21AAL6Zi9mkPDW-j5mkcAWhbjMXNILYNhfBIfQUt0_V-cGVNsdQ1EQ42K3Wlu9RxlJuL9OSxDgs4a-F6Tt07Zh1gH_tiUmpw'
 
         }
         
@@ -176,7 +176,7 @@ console.log(userId + "user")
        .then(response => {
         console.log("Reembolso de pago exitoso");
         setVoide(response.data.id)
-        axios.get("http://localhost:8080/reserva/cancelarReservaPendiente/" + idRes,  factura,{
+        axios.get("http://localhost:8080/reserva/cancelarReservaPendiente/" + idRes, {
           headers: {
             'Authorization': `${userToken}`
           }
@@ -226,7 +226,7 @@ console.log(userId + "user")
                                 <td>{reservas.res_fechaFin}</td>
                                 {reservas.res_estado === "PENDIENTE" ?   
                                 <td><button class="calificar" onClick={() => Aceptar(reservas.facturas[0].idPaypal, reservas.res_id, reservas.facturas[0].idFactura)}>Aceptar</button></td> :  
-                                 (botonType === "aprobado" || reservas.res_estado === "APROBADO" ? <td><button class="modificar" onClick={() => Cancelar(reservas.res_id, reservas.facturas[0].idPaypal)}>Cancelar</button></td> : <td>Cancelada</td> )
+                                 (botonType === "aprobado" || reservas.res_estado === "APROBADO" ? <td><button class="modificar" onClick={() => Cancelar(reservas.res_id, reservas.facturas[0].idPaypal)}>Cancelar</button></td> : (botonType === 'rechazado' ? <td>Cancelar</td> : <td>Cancelada</td> ))
                                  }
                                {reservas.res_estado === "PENDIENTE" ?   
                                 <td><button class="eliminar" onClick={() => Rechazar(reservas.res_id, reservas.facturas[0].idPaypal)}>X</button></td> :  <td>Rechazada</td> }

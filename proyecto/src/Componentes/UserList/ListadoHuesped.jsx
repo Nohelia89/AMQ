@@ -208,10 +208,10 @@ export default function ListadoHuesped() {
             <thead>
               <tr>
 
-                <th>Nombre <button onClick={ordenarAscTipo}>ASC</button> <button onClick={ordenarDescTipo}>DESC</button></th>
+                <th>Nombre <button onClick={ordenarAscTipo}>↑</button> <button onClick={ordenarDescTipo}>↓</button></th>
                 <th>Apellido</th>
                 <th>Mail</th>
-                <th>Calificación <button onClick={ordenarAscCal}>ASC</button> <button onClick={ordenarDescCal}>DESC</button> </th>
+                <th>Calificación <button onClick={ordenarAscCal}>↑</button> <button onClick={ordenarDescCal}>↓</button> </th>
                 <th>Activo</th>
 
 

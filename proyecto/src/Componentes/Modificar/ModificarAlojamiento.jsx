@@ -7,6 +7,7 @@ import './Alojamiento.css';
 import axios from 'axios';
 
 import NavBarAnfitrion from "../Navbar/NavBarAnfitrion";
+import { useUserContext } from '../UserContext/userContext';
 
 
 function ModificarAlojamiento({id}) {
@@ -18,6 +19,7 @@ function ModificarAlojamiento({id}) {
     const [image , setImage] = useState('');
     const [image2 , setImage2] = useState('');
     const [image3 , setImage3] = useState(''); */
+    const { userToken,  userId } = useUserContext();
     const [dataForm, setDataForm] = useState({newNombre: '', newDescripcion: '', newDireccion: '', newCalle:'', newCiudad: '', newPais: ''})
     const [botontype, setBotonType ] = useState('');
     const [aloj , setAloj] = useState([]);
@@ -64,7 +66,11 @@ function ModificarAlojamiento({id}) {
    
           
                
-                axios.post(`http://localhost:8080/alojamiento/modificar`, alojamiento )
+                axios.post(`http://localhost:8080/alojamiento/modificar`, alojamiento, {
+                  headers: {
+                    'Authorization': `${userToken}`
+                  }
+                } )
                 
                 .then(res => {
                   console.log(res);
@@ -76,7 +82,11 @@ function ModificarAlojamiento({id}) {
 
       useEffect(() => {
 
-        axios.get('http://localhost:8080/alojamiento/buscarAlojamiento/'+ id)
+        axios.get('http://localhost:8080/alojamiento/buscarAlojamiento/'+ id, {
+          headers: {
+            'Authorization': `${userToken}`
+          }
+        })
             .then(res => {
                 const aloj = res.data;
                 setAloj(aloj);

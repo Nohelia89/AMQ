@@ -93,10 +93,16 @@ function AgregarAlojamiento() {
 
   const Habitacion = () => {
 
-    return (
-
+    if (dataForm.nombre !== '' && dataForm.descripcion !== '' && dir.calle !== ''&& dir.numero !== '' && dir.ciudad !== '' && pais !== '' ){ 
+     
+      return (
       <AltaHabitacionAlojamiento dataAloj={dataForm} pais={pais} direccion={dir} />
     )
+    
+  }else{
+    alert('Debe completar todos los datos del formulario antes de continuar')
+    return(<AgregarAlojamiento />)
+}
   }
 
   useEffect(() => {

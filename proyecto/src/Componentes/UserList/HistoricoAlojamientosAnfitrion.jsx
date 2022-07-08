@@ -22,7 +22,11 @@ export default function HistoricoAlojamientosAnfitrion() {
   const [botonType, setBotonType] = useState('sinActualizar');
   const [val, setVal] = useState();
   const [val1, setVal1] = useState(true);
-  const [paises, setPaises] = useState([])
+  const [paises, setPaises] = useState([]);
+  const [list, setList] = useState([]);
+  const [list2, setList2] = useState([]);
+  const [sort, setSort] = useState('sinOrdenar');
+  const [sort2, setSort2] = useState('sinOrdenar');
 
 
   useEffect(() => {
@@ -42,7 +46,7 @@ export default function HistoricoAlojamientosAnfitrion() {
       .then(res => {
         const aloj = res.data;
         setAlojamiento(aloj);
-
+        console.log(res.data);
         setIsLoading(false);
       })
       .catch(error => {
@@ -177,6 +181,60 @@ export default function HistoricoAlojamientosAnfitrion() {
 
   }
 
+  const ordenarDescTipo = () => {
+    setSort2('sinOrdenar');
+    setSort('sinOrdenar');
+    var lista =  alojamiento.sort((a, b) => (a.aloj_dir_ciudad > b.aloj_dir_ciudad ? 1 : a.aloj_dir_ciudad < b.aloj_dir_ciudad ? -1 : 0))
+    setList(lista);
+    setSort('Ordenado');
+    
+  }
+
+  const ordenarAscTipo = () => {
+    setSort('sinOrdenar');
+    setSort2('sinOrdenar');
+    var lista =  alojamiento.sort((a, b) => (a.aloj_dir_ciudad > b.aloj_dir_ciudad ? -1 : a.aloj_dir_ciudad < b.aloj_dir_ciudad ? 1 : 0))
+    setList2(lista);
+    setSort2('Ordenado');
+    
+  }
+
+  const ordenarDescCal = () => {
+    setSort2('sinOrdenar');
+    setSort('sinOrdenar');
+    var lista =  alojamiento.sort((a, b) => (a.anf_calificacion > b.anf_calificacion ? 1 : a.anf_calificacion < b.anf_calificacion ? -1 : 0))
+    setList(lista);
+    setSort('Ordenado');
+    
+  }
+
+  const ordenarAscCal = () => {
+    setSort('sinOrdenar');
+    setSort2('sinOrdenar');
+    var lista =  alojamiento.sort((a, b) => (a.anf_calificacion > b.anf_calificacion ? -1 : a.anf_calificacion < b.anf_calificacion ? 1 : 0))
+    setList2(lista);
+    setSort2('Ordenado');
+    
+  }
+
+  
+  const ordenarDescCal1 = () => {
+    setSort2('sinOrdenar');
+    setSort('sinOrdenar');
+    var lista =  alojamiento.sort((a, b) => (a.hu_calificacion > b.hu_calificacion ? 1 : a.hu_calificacion < b.hu_calificacion ? -1 : 0))
+    setList(lista);
+    setSort('Ordenado');
+    
+  }
+
+  const ordenarAscCal1 = () => {
+    setSort('sinOrdenar');
+    setSort2('sinOrdenar');
+    var lista =  alojamiento.sort((a, b) => (a.hu_calificacion > b.hu_calificacion ? -1 : a.hu_calificacion < b.hu_calificacion ? 1 : 0))
+    setList2(lista);
+    setSort2('Ordenado');
+    
+  }
 
 
 
@@ -233,25 +291,31 @@ export default function HistoricoAlojamientosAnfitrion() {
 
             <thead>
               <tr>
+              <th>Huesped</th>
                 <th>Descripción</th>
                 <th>Dirección</th>
-                <th>Ciudad</th>
+                <th>Ciudad <button onClick={ordenarAscTipo}>↑</button> <button onClick={ordenarDescTipo}>↓</button></th>
                 <th>País</th>
-                <th>Calificacion obtenida</th>
-                <th>Calificacion otorgada</th>
+                <th>Fecha Inicio</th>
+                <th>Fecha Fin</th>
+                <th>Calificacion obtenida <button onClick={ordenarAscCal1}>↑</button> <button onClick={ordenarDescCal1}>↓</button></th>
+                <th>Calificacion otorgada <button onClick={ordenarAscCal}>↑</button> <button onClick={ordenarDescCal}>↓</button></th>
                 <th>Calificacion</th>
                 <th>Eliminar Calificacion</th>
               </tr>
             </thead>
-            {alojamiento.map(alojamiento => <tbody key={alojamiento.res_id} >
+            { sort === 'sinOrdenar' || sort2 === 'sinOrdenar' ?
+            alojamiento.map(alojamiento => <tbody key={alojamiento.res_id} >
               <tr>
-
+                <td>{alojamiento.hu_nombre}</td>
                 <td>{alojamiento.aloj_descripcion}</td>
                 <td>{alojamiento.aloj_dir_calle}{alojamiento.aloj_dir_numero}</td>
-                <td>{alojamiento.aloj_dir_ciudad}</td>
+                <td>{alojamiento.aloj_dir_ciudad} </td>
                 <td>{alojamiento.aloj_dir_pais_nombre}</td>
-                <td>{alojamiento.anf_calificacion}</td>
-                <td>{alojamiento.hu_calificacion}</td>
+                <td>{alojamiento.res_fechaInicio}</td>
+                <td>{alojamiento.res_fechaFin}</td>
+                <td>{alojamiento.anf_calificacion} </td>
+                <td>{alojamiento.hu_calificacion} </td>
 
 
                 {alojamiento.hu_calificacion === 0 ?
@@ -263,7 +327,53 @@ export default function HistoricoAlojamientosAnfitrion() {
                 <td><button class="eliminar" onClick={() => EliminarCal(alojamiento.res_id)}>X</button></td>
               </tr>
 
-            </tbody>)}
+            </tbody>) : (sort === 'Ordenado' ?
+              list.map(alojamiento => <tbody key={alojamiento.res_id} >
+                <tr>
+                <td>{alojamiento.hu_nombre}</td>
+                  <td>{alojamiento.aloj_descripcion}</td>
+                  <td>{alojamiento.aloj_dir_calle}{alojamiento.aloj_dir_numero}</td>
+                  <td>{alojamiento.aloj_dir_ciudad} </td>
+                  <td>{alojamiento.aloj_dir_pais_nombre}</td>
+                  <td>{alojamiento.res_fechaInicio}</td>
+                <td>{alojamiento.res_fechaFin}</td>
+                  <td>{alojamiento.anf_calificacion} </td>
+                  <td>{alojamiento.hu_calificacion} </td>
+  
+  
+                  {alojamiento.hu_calificacion === 0 ?
+                    <td><button class="calificar" onClick={() => CalificarAnf(alojamiento.res_id)}>Calificar</button></td>
+                    :
+                    <td><button class="modificar"onClick={() => ModificarCal(alojamiento.res_id, alojamiento.anf_calificacion)}>Modificar</button></td>}
+  
+  
+                  <td><button class="eliminar" onClick={() => EliminarCal(alojamiento.res_id)}>X</button></td>
+                </tr>
+  
+              </tbody>) :  list2.map(alojamiento => <tbody key={alojamiento.res_id} >
+                <tr>
+                <td>{alojamiento.hu_nombre}</td>
+                  <td>{alojamiento.aloj_descripcion}</td>
+                  <td>{alojamiento.aloj_dir_calle}{alojamiento.aloj_dir_numero}</td>
+                  <td>{alojamiento.aloj_dir_ciudad} </td>
+                  <td>{alojamiento.aloj_dir_pais_nombre}</td>
+                  <td>{alojamiento.res_fechaInicio}</td>
+                <td>{alojamiento.res_fechaFin}</td>
+                  <td>{alojamiento.anf_calificacion} </td>
+                  <td>{alojamiento.hu_calificacion} </td>
+  
+  
+                  {alojamiento.hu_calificacion === 0 ?
+                    <td><button class="calificar" onClick={() => CalificarAnf(alojamiento.res_id)}>Calificar</button></td>
+                    :
+                    <td><button class="modificar"onClick={() => ModificarCal(alojamiento.res_id, alojamiento.anf_calificacion)}>Modificar</button></td>}
+  
+  
+                  <td><button class="eliminar" onClick={() => EliminarCal(alojamiento.res_id)}>X</button></td>
+                </tr>
+  
+              </tbody>))
+          }
           </Table>
 
         }

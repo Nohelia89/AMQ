@@ -131,7 +131,9 @@ const handleChangeDe = (e) => {
 
         var enviar = { anfitrion, alojamiento,habitacion }
            
-                axios.post(`http://localhost:8080/usuario/altaAnfitiron`, enviar, {
+        if (dataFormH.camas !== '' && dataFormH.descripcion !== '' && dataFormH.precioNoche !== '' ){ 
+          
+          axios.post(`http://localhost:8080/usuario/altaAnfitiron`, enviar, {
                   headers: {
                     'Authorization': `${userToken}`
                   }
@@ -147,8 +149,11 @@ const handleChangeDe = (e) => {
                   alert("ERROR: " + error.response.data.mensaje);
                 })
 
-               
-          
+              }  else  {
+                alert('Debe completar todos los datos del formulario antes de continuar');
+                return(
+                  <CargarHabitacion dataUser={dataUser} dataAloj={dataAloj} dataAlojdir={dataAlojdir} pais={pais}  />);
+          }
         }
        
     return (

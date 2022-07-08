@@ -11,13 +11,20 @@ function FormAnfitrion() {
 
 
     const CargarAlojamiento= ()=> {
+        if (dataForm.nombre !== '' && dataForm.apellido !== '' && dataForm.email !== ''&& dataForm.password !== '' && dataForm.password2 !== '' ){ 
+     
         if (dataForm.password === dataForm.password2) {
-        return (
+            return (
         
-            <AltaAlojamiento dataUser={dataForm} />
-            
-          )
-        }
+                <AltaAlojamiento dataUser={dataForm} />
+                
+              )
+           
+            }
+    }else{
+        alert('Debe completar todos los datos del formulario antes de continuar')
+        return(<FormAnfitrion />)
+    }
       }
     
       const changeStateButton = (e) => {

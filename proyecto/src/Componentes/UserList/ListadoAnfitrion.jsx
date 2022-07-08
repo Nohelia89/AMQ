@@ -18,6 +18,10 @@ export default function ListadoAnfitrion() {
   const [calHasta, setCalHasta] = useState();
   const { userToken } = useUserContext();
   const [botonType, setBotonType] = useState('sinActualizar');
+  const [list, setList] = useState([]);
+  const [list2, setList2] = useState([]);
+  const [sort, setSort] = useState('sinOrdenar');
+  const [sort2, setSort2] = useState('sinOrdenar');
 
 
   useEffect(() => {
@@ -69,6 +73,8 @@ export default function ListadoAnfitrion() {
   async function buscarConFiltro() {
 
 
+ 
+  
 
     var usuario = {
 
@@ -112,7 +118,41 @@ export default function ListadoAnfitrion() {
 
 
 
+  const ordenarDescTipo = () => {
+    setSort2('sinOrdenar');
+    setSort('sinOrdenar');
+    var lista =  anfitrion.sort((a, b) => (a.nombre > b.nombre ? 1 : a.nombre < b.nombre ? -1 : 0))
+    setList(lista);
+    setSort('Ordenado');
+    
+  }
 
+  const ordenarAscTipo = () => {
+    setSort('sinOrdenar');
+    setSort2('sinOrdenar');
+    var lista =  anfitrion.sort((a, b) => (a.nombre > b.nombre ? -1 : a.nombre < b.nombre ? 1 : 0))
+    setList2(lista);
+    setSort2('Ordenado');
+    
+  }
+
+  const ordenarDescCal = () => {
+    setSort2('sinOrdenar');
+    setSort('sinOrdenar');
+    var lista =  anfitrion.sort((a, b) => (a.calificacionGlobal > b.calificacionGlobal ? 1 : a.calificacionGlobal < b.calificacionGlobal ? -1 : 0))
+    setList(lista);
+    setSort('Ordenado');
+    
+  }
+
+  const ordenarAscCal = () => {
+    setSort('sinOrdenar');
+    setSort2('sinOrdenar');
+    var lista =  anfitrion.sort((a, b) => (a.calificacionGlobal > b.calificacionGlobal ? -1 : a.calificacionGlobal < b.calificacionGlobal ? 1 : 0))
+    setList2(lista);
+    setSort2('Ordenado');
+    
+  }
 
   const Aprobar = (id) => {
     axios.get(`http://localhost:8080/usuario/aprobarAnfitrion/` + id, {
@@ -194,16 +234,17 @@ export default function ListadoAnfitrion() {
             <thead>
               <tr>
 
-                <th>Nombre</th>
+                <th>Nombre <button onClick={ordenarAscTipo}>↑</button> <button onClick={ordenarDescTipo}>↓</button></th>
                 <th>Apellido</th>
                 <th>Mail</th>
-                <th>Calificación</th>
+                <th>Calificación <button onClick={ordenarAscCal}>↑</button> <button onClick={ordenarDescCal}>↓</button></th>
                 <th>Estado</th>
                 <th>Rechazar</th>
 
               </tr>
             </thead>
-            {anfitrion.map(anfitrion => <tbody key={anfitrion.id} >
+            { sort === 'sinOrdenar' || sort2 === 'sinOrdenar' ?
+            anfitrion.map(anfitrion => <tbody key={anfitrion.id} >
               <tr>
 
                 <td>{anfitrion.nombre}</td>
@@ -222,7 +263,46 @@ export default function ListadoAnfitrion() {
                 }
               </tr>
 
-            </tbody>)}
+            </tbody>): (sort === 'Ordenado' ? 
+             list.map(anfitrion => <tbody key={anfitrion.id} >
+              <tr>
+
+                <td>{anfitrion.nombre}</td>
+                <td>{anfitrion.apellido}</td>
+                <td>{anfitrion.email}</td>
+                <td>{anfitrion.calificacionGlobal}</td>
+                {anfitrion.estado === 'PENDIENTE' ?
+                  <td><button class="calificar" onClick={() => Aprobar(anfitrion.id)}> Aprobar </button></td> :
+                  <td>APROBADO</td>
+
+                }
+                {anfitrion.estado === 'PENDIENTE' ?
+                  <td><button class="modificar" onClick={() => Rechazar(anfitrion.id)}>Rechazar</button></td> :
+
+                  <td>--- </td>
+                }
+              </tr>
+
+            </tbody>):   list2.map(anfitrion => <tbody key={anfitrion.id} >
+              <tr>
+
+                <td>{anfitrion.nombre}</td>
+                <td>{anfitrion.apellido}</td>
+                <td>{anfitrion.email}</td>
+                <td>{anfitrion.calificacionGlobal}</td>
+                {anfitrion.estado === 'PENDIENTE' ?
+                  <td><button class="calificar" onClick={() => Aprobar(anfitrion.id)}> Aprobar </button></td> :
+                  <td>APROBADO</td>
+
+                }
+                {anfitrion.estado === 'PENDIENTE' ?
+                  <td><button class="modificar" onClick={() => Rechazar(anfitrion.id)}>Rechazar</button></td> :
+
+                  <td>--- </td>
+                }
+              </tr>
+
+            </tbody>))}
           </Table>
 
         }

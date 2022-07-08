@@ -29,7 +29,7 @@ function Search() {
 
     axios.post(`http://localhost:8080/alojamiento/listarAlojamientos`, {
       headers: {
-        'Authorization': `Basic ${userToken}`
+        'Authorization': `${userToken}`
       }
     })
 
@@ -92,7 +92,7 @@ function Search() {
 
     await axios.post(`http://localhost:8080/alojamiento/listarAlojamientos`, alojamiento, {
       headers: {
-        'Authorization': `Basic ${userToken}`
+        'Authorization': `${userToken}`
       }
     })
 
@@ -129,7 +129,7 @@ function Search() {
 
     axios.get(`http://localhost:8080/alojamiento/getPaisesEnAlojamiento`, {
       headers: {
-        'Authorization': `token ${userToken}`
+        'Authorization': `${userToken}`
       }
     })
       .then(res => {

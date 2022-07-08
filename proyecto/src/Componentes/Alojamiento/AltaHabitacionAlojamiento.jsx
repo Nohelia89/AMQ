@@ -68,7 +68,7 @@ function AltaHabitacionAlojamiento({ dataAloj, pais, direccion }) {
     }
 
 
-
+    if (dataFormH.camas !== '' && dataFormH.descripcion !== '' && dataFormH.precioNoche !== '' ){ 
 
     axios.post('http://localhost:8080/alojamiento/altaAlojHab', enviar,{
       headers: {
@@ -83,6 +83,12 @@ function AltaHabitacionAlojamiento({ dataAloj, pais, direccion }) {
       .catch(error => {
         alert("ERROR: " + error.response.data.mensaje);
       });
+
+    }  else  {
+      alert('Debe completar todos los datos del formulario antes de continuar');
+      return(
+        <AltaHabitacionAlojamiento dataAloj={dataAloj} direccion={direccion} pais={pais}  />);
+    }
 
   }
 
