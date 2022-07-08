@@ -18,7 +18,7 @@ function UserProfile() {
 
    
       
-    axios.post(`http://localhost:8080/usuario/buscar/`+ userId, {
+    axios.post(`http://localhost:8080/usuario/buscar/`+ userId, {}, {
       headers: {
         'Authorization': `${userToken}`
       }
