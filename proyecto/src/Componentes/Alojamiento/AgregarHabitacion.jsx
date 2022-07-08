@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
 import { useUserContext } from "../UserContext/userContext";
+import NavBarAnfitrion from "../Navbar/NavBarAnfitrion";
 
 
 function AgregarHabitacion({ id }) {
@@ -106,6 +107,7 @@ setValDe(e.target.checked);
   return (
 
     <div className="overlay">
+      <NavBarAnfitrion/>
       <form className="form1" onSubmit={generateData} >
         <div className="tit">HABITACION</div>
         <div className="input_container">
