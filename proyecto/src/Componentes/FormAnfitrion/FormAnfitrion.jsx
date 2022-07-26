@@ -57,8 +57,8 @@ function FormAnfitrion() {
                     <p class="form-input2" type="Apellido:"><input required class="form-input1" name='apellido' type='text' value={dataForm.apellido} onChange={handleChange} placeholder='Ingrese Apellido'></input></p>
                 </div>
                 <div>
+                <p class="form-input2" type="Telefono:"><input required class="form-input1" name='telefono' type='text' value={dataForm.telefono} onChange={handleChange} placeholder='Ingrese Teléfono'></input></p>
                     <p class="form-input2" type="Mail:"><input required class="form-input1" name='email' type='email' value={dataForm.email} onChange={handleChange} placeholder='Ingrese email'></input></p>
-                    <p class="form-input2" type="Apellido:"><input required class="form-input1" name='telefono' type='text' value={dataForm.telefono} onChange={handleChange} placeholder='Ingrese Teléfono'></input></p>
                     <p class="form-input2" type="Password:"><input required type='password' name='password' class="form-input1" value={dataForm.password} onChange={handleChange} placeholder='Ingrese Password'></input></p>
                     <input required type='password' name='password2' class="form-input1" value={dataForm.password2} onChange={handleChange} placeholder='Repita Password'></input>
                 </div>
