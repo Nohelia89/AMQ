@@ -26,8 +26,13 @@ function Search() {
   useEffect(() => {
 
 
+    var aloj2 = {
 
-    axios.post(`http://localhost:8080/alojamiento/listarAlojamientos`, {
+      aloj_activo: true
+ 
+    };
+
+    axios.post(`http://localhost:8080/alojamiento/listarAlojamientos`, aloj2, {
       headers: {
         'Authorization': `${userToken}`
       }

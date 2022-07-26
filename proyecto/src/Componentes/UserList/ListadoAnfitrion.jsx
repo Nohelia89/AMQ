@@ -250,7 +250,7 @@ export default function ListadoAnfitrion() {
                 <td>{anfitrion.nombre}</td>
                 <td>{anfitrion.apellido}</td>
                 <td>{anfitrion.email}</td>
-                <td>{anfitrion.calificacionGlobal}</td>
+                { anfitrion.calificacionGlobal ===0 ||anfitrion.calificacionGlobal ===-1 ?     <td>---</td>:<td>{anfitrion.calificacionGlobal } </td>}
                 {anfitrion.estado === 'PENDIENTE' ?
                   <td><button class="calificar" onClick={() => Aprobar(anfitrion.id)}> Aprobar </button></td> :
                   <td>APROBADO</td>
