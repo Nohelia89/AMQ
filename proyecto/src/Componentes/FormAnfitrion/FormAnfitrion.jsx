@@ -6,12 +6,12 @@ import NavBarInvitado from '../Navbar/NavbarInvitado';
 
 function FormAnfitrion() {
 
-    const [dataForm, setDataForm] = useState({ nombre: '', apellido: '', email: '', password: '', password2: '', activo: false })
+    const [dataForm, setDataForm] = useState({ nombre: '', apellido: '', telefono:'', email: '', password: '', password2: '', activo: false })
     const [botontype, setBotonType ] = useState('aloj');
 
 
     const CargarAlojamiento= ()=> {
-        if (dataForm.nombre !== '' && dataForm.apellido !== '' && dataForm.email !== ''&& dataForm.password !== '' && dataForm.password2 !== '' ){ 
+        if (dataForm.nombre !== '' && dataForm.apellido !== ''&& dataForm.telefono !== '' && dataForm.email !== ''&& dataForm.password !== '' && dataForm.password2 !== '' ){ 
      
         if (dataForm.password === dataForm.password2) {
             return (
@@ -58,6 +58,7 @@ function FormAnfitrion() {
                 </div>
                 <div>
                     <p class="form-input2" type="Mail:"><input required class="form-input1" name='email' type='email' value={dataForm.email} onChange={handleChange} placeholder='Ingrese email'></input></p>
+                    <p class="form-input2" type="Apellido:"><input required class="form-input1" name='telefono' type='text' value={dataForm.telefono} onChange={handleChange} placeholder='Ingrese Teléfono'></input></p>
                     <p class="form-input2" type="Password:"><input required type='password' name='password' class="form-input1" value={dataForm.password} onChange={handleChange} placeholder='Ingrese Password'></input></p>
                     <input required type='password' name='password2' class="form-input1" value={dataForm.password2} onChange={handleChange} placeholder='Repita Password'></input>
                 </div>

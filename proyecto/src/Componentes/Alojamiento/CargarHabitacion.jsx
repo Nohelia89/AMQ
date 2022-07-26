@@ -69,6 +69,7 @@ const handleChangeDe = (e) => {
           email: dataUser.email,
           nombre: dataUser.nombre,
           apellido: dataUser.apellido,
+          telefono: dataUser.telefono,
           activo: true,
           pass: hash,
           tipo: "an",
